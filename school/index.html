@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="/css/style.css">
+<script src="/js/index.js" defer></script>
+
+<title>学校紹介｜淡路三原高校コンピュータ部</title>
+<style>
+#mapWrap::before {
+	padding-top: 100%;
+}
+#school {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+}
+#autoSlider {
+	width: 21em;
+	margin-right: 1em;
+}
+#autoSlider::before {
+	padding-top: 75%;
+}
+#autoSlider a {
+	visibility: hidden;
+	animation: autoSlider 25s infinite;
+	box-shadow: .3em .3em 1em #555;
+}
+#autoSlider img {
+	height: 100%;
+}
+@keyframes autoSlider {
+	 0%, 30% {opacity: 0; visibility: hidden;}
+	10%, 20% {opacity: 1; visibility: visible;}
+}
+#autoSlider :nth-child(2) {animation-delay: 5s;}
+#autoSlider :nth-child(3) {animation-delay: 10s;}
+#autoSlider :nth-child(4) {animation-delay: 15s;}
+#autoSlider :nth-child(5) {animation-delay: 20s;}
+</style>
+
+<header id="header">
+	<a href="/"><h1>淡路三原高校<br>コンピュータ部</h1></a>
+</header>
+<nav id="nav">
+	<a href="/school/">学校紹介</a><a href="/club/">部活動紹介</a><a href="/club/works">作ったもの</a><a href="/club/others">その他</a>
+</nav>
+<main>
+<article id="article">
+
+<h2>学校紹介</h2>
+<section>
+	<h3>淡路三原高校について</h3>
+	<p>
+		淡路三原高校は淡路島の南部、南あわじ市にある唯一の高校です。<br>
+		<a href="history">三原高校</a>と<a href="shichi">志知高校</a
+		>の発展的統合により、<time>2007年</time>に開校しました。<br>
+		<a href="students">生徒定員</a>は720名で、5つの類型とサイエンスコースが設置されています。
+	</p>
+	<p>
+		淡路三原高校には、<a href="specialties#gymnastics">三高体操</a>や<a href="ookubo"
+		>大久保踊り</a>、<a href="decoration">デコレーション作り</a>など<br>
+		旧三原高校から受け継がれている<a href="specialties">「三高名物」</a>があります。<br>
+		また、<a href="clubs">部活動</a>では郷土部の人形浄瑠璃の海外公演や、<br>
+		放送部の高校放送コンテスト全国大会の出場など、様々な活躍を見せています。
+	</p>
+	<div id="mapWrap" class="fixedAspectRatio sxs">
+		<iframe allowfullscreen src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1648.6580961236402!2d134.77974128716798!3d34.28190933358319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3554a6cebdc8120f%3A0xa1ecae9637c7c175!2z5YW15bqr55yM56uL5reh6Lev5LiJ5Y6f6auY562J5a2m5qCh!5e0!3m2!1sja!2sjp!4v1489550895967"></iframe>
+	</div>
+	<a href="layout">
+		<img class="sxs" src="/src/others/layout.png" alt="学校配置図">
+	</a>
+</section>
+
+<section>
+	<h3>淡路三原高校に関するページ</h3>
+	<div id="school">
+		<ul>
+			<li><a href="layout">校舎の変遷</a>
+			<li><a href="history">三原高校の沿革</a>
+			<li><a href="buildings">建物について</a>
+			<li><a href="dininghall">食堂（生徒集会室）</a>
+			<li><a href="specialties">三高名物</a>
+			<li><a href="decoration">デコレーション作り</a>
+			<li><a href="ookubo">大久保踊り</a>
+			<li><a href="tenmei">天明の縄騒動</a>
+			<li><a href="students">生徒数の推移</a>
+			<li><a href="clubs">部活動の変遷</a>
+			<li><a href="songs">高校の歌一覧</a>
+			<li><a href="shichi">志知高校</a>
+			<li><a href="references">出典一覧</a>
+		</ul>
+		<div id="autoSlider" class="fixedAspectRatio">
+			<a><img src="/src/buildings/buildingA1.jpg"></a>
+			<a><img src="/src/buildings/buildingA3.jpg"></a>
+			<a><img src="/src/buildings/buildingC2.jpg"></a>
+			<a><img src="/src/buildings/buildingD1.jpg"></a>
+			<a><img src="/src/buildings/yard3.jpg"></a>
+		</div>
+	</div>
+</section>
+
+</article>
+</main>
+<footer id="footer">
+	<small>© 2016-2019 淡路三原高校コンピュータ部</small>
+</footer>

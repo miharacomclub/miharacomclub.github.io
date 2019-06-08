@@ -1,0 +1,214 @@
+html {
+	overflow-y: scroll;
+	font: 18px/1.7 Arial,sans-serif;
+	background-color: rgba(0,80,56,.1);
+}
+body {
+	width: 43em;
+	max-width: 99%;
+	margin: auto;
+	-webkit-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	background-color: hsl(0,0%,99%);
+}
+@media (max-width:792px) {
+	body {width: 25em;}
+}
+@media (max-width:468px) {
+	html {font-size: 3.85vw;}
+}
+
+/* h1,h2は1回のみ使用する */
+h1 {
+	font-size: 1.65em;
+	position: relative;
+	padding: .15em 0 .05em;
+	margin: 0;
+	line-height: 1.2;
+	letter-spacing: .2em;
+	text-align: center;
+	color: black;
+}
+h1::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	content: "";
+	background-repeat: no-repeat;
+	background-size: auto 105%, auto 117%;
+	background-image: url(img/sanae.png), url(img/suwako.png);
+	background-position: calc(50% - 5.7em) 0, calc(50% + 5.7em) 0;
+}
+h2 {
+	font-size: 1.38em;
+	padding-left: .4em;
+	border: green solid 0;
+	border-width: 0 0 .1em .7em;
+	margin: 0 0 .8em -.7em;
+}
+@media (max-width:792px) {
+	h2 {margin: 0 0 .8em 0;}
+}
+
+#nav {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+	box-shadow: 0 .1em .2em #333;
+}
+#nav a {
+	display: table-cell;
+	font-size: 1.1em;
+	padding-top: .1em;
+	white-space: nowrap;
+	font-weight: bold;
+	text-align: center;
+	background-color: green;
+	color: white;
+}
+#nav a:not(:last-child) {
+	border-right: 1px solid white;
+}
+#nav a:hover {
+	opacity: .6;
+}
+#article {
+	margin: 1.5em 1.25em 0 2.75em;
+}
+@media (max-width:792px) {
+	#article {margin: 1em .65em 0 .85em;}
+}
+#footer {
+	padding-bottom: 1em;
+	text-align: center;
+}
+
+#onlyIE { /* IE8以降 */
+	display: none;
+	font-weight: bold;
+	display: block\0;
+}
+.clear::after,
+h2 ~ section::after {
+	display: block;
+	clear: both;
+	content: "";
+}
+h2 ~ section {
+	margin-bottom: 2em;
+}
+h3, h4 {
+	padding-left: .4em;
+	border-left: green solid .8em;
+	margin: 0 0 1em;
+}
+a {
+	text-decoration: none;
+	color: hsl(220,100%,35%);
+}
+a:hover {
+	color: green;
+}
+a[href*=":"]::after {
+	content: "　";
+	display: inline-block;
+	width: 1em;
+	background: center/1.1em no-repeat url(img/linkicon.svg);
+}
+a[href$=".pdf"]::after {
+	width: 2em;
+	background-position: -3%, 103%;
+	background-image: url(img/PDF_24.png), url(img/linkicon.svg);
+}
+blockquote {
+	margin: 1em 0;
+	padding: .1px 1em; /* marginが相殺しないように.1pxを追加する */
+	background-color: #eee;
+}
+blockquote header,
+blockquote footer {margin: 1em 0;}
+blockquote header {text-align: center;}
+blockquote footer {text-align: right;}
+
+label  {cursor: pointer;}
+table  {border-collapse: collapse;}
+ul, ol {padding-left: 1.5em;}
+th, td {padding: 0;}
+iframe {border: 0;}
+figure {margin: 0;}
+cite   {font-style: normal;}
+cite::before {content: "『";}
+cite::after  {content: "』";}
+
+@media (max-width:792px) {
+	p br {display: none;}
+}
+
+.listTable {
+	line-height: 2;
+}
+.listTable tr {
+	border-bottom: 1px solid #ccc;
+}
+.listTable tr:first-child {
+	border-top: 1px solid #ccc;
+}
+.listTable th, .listTable td {
+	padding: 0 .25em;
+}
+
+.fixedAspectRatio {
+	position: relative;
+	width: 30em;
+	max-width: 100%;
+}
+.fixedAspectRatio::before {
+	content: "";
+	display: block;
+	padding-top: calc(9 / 16 * 100%);
+}
+.fixedAspectRatio > * {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.sxs,
+.sxsImgs img {
+	float: left;
+	width: 19em;
+	margin: 0 .5em .5em 0;
+}
+@media (max-width:792px) {
+	.sxs + p,
+	.sxsImgs img + p {
+		clear: both;
+	}
+}
+
+[data-tooltip] {
+	position: relative;
+	white-space: nowrap;
+}
+[data-tooltip]::before {
+	font-size: .9rem;
+	position: absolute;
+	top: 100%;
+	padding: 0 .2em;
+	border: 1px #777 solid;
+	pointer-events: none;
+	z-index: 9;
+	font-weight: normal;
+	line-height: 1.5;
+	color: black;
+	box-shadow: .15em .15em .2em rgba(0,0,0,.3);
+	background-color: lightyellow;
+}
+[data-tooltip]:hover::before {
+	content: attr(data-tooltip);
+}

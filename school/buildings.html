@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="/css/style.css">
+<script src="/js/index.js" defer></script>
+
+<title>建物について｜淡路三原高校コンピュータ部</title>
+<style>
+#mottoList {
+	list-style-type: none;
+}
+#dormitory blockquote {
+	white-space: nowrap;
+}
+/* not演算子を使うとき、all andは省略できない */
+@media not all and (max-width:792px) {
+	#tsuchigaImgs img {
+		float: right;
+	}
+	#dormitory > p:last-of-type {
+		float: right;
+		margin-top: 0;
+		width: 50%;
+	}
+	br.mob {
+		display: none;
+	}
+}
+@media (max-width:792px) {
+ 	br.mob,
+	br.mobpc {
+		display: inline;
+	}
+}
+</style>
+
+<body class="sxsImgs">
+<header id="header">
+	<a href="/"><h1>淡路三原高校<br>コンピュータ部</h1></a>
+</header>
+<nav id="nav">
+	<a href="/school/">学校紹介</a><a href="/club/">部活動紹介</a><a href="/club/works">作ったもの</a><a href="/club/others">その他</a>
+</nav>
+<main>
+<article id="article">
+
+<h2>建物について</h2>
+<section>
+	<h3>仮設校舎</h3>
+	<p>
+		<time>2016年</time>に、B棟とC棟の耐震補強工事が行われました。<br>
+		工事中は、校舎の代わりとなる仮設校舎が建てられていました。
+	</p>
+	<p>
+		工事の発端は、<time>1981年</time>以前に建てられた、耐震基準に満たない学校施設を<br>
+		全て耐震化するという、兵庫県教育委員会の目標です。<br>
+		（<a target="_blank" href="http://www.hyogo-c.ed.jp/~zaimu-bo/H30gaiyou.pdf"
+		>県立学校施設の耐震化の進捗状況について</a>）<br>
+		ちなみに、A棟は<time>1982年</time>に建てられたため、工事の対象ではありません。
+	</p>
+	<a><img src="/src/buildings/tmp1.jpg" alt="仮設校舎の外観"></a>
+	<a><img src="/src/buildings/tmp2.jpg" alt="仮設校舎の教室"></a>
+</section>
+
+<section>
+	<h3>格技場兼生徒集会室棟</h3>
+	<p>
+		<time>1983年</time>に、格技場兼生徒集会室棟が建設されました。
+	</p>
+	<p>
+		当時、黎明館を南隣に建てて連結し、更にグラウンドを見渡せる<br>
+		ベランダを設置する予定でしたが、最終的に中止となりました。<br>
+		しかし、格技場棟自体は当初の予定通りに建設されたため、その形跡が残っています。
+	</p>
+	<a><img src="/src/buildings/traces1.jpg" alt="格技場兼生徒集会室棟の外観"></a>
+	<a><img src="/src/buildings/traces2.jpg" alt="格技場兼生徒集会室棟の外観"></a>
+</section>
+
+<section>
+	<h3>仮設の渡り廊下</h3>
+	<a><img src="/src/others/doors.jpg" alt="C棟の外観"></a>
+	<p>
+		<time>1979年</time>、B棟の西半分が建てられました。<br>
+		（<a href="layout#1979">当時の配置図はこちら</a>）
+	</p>
+	<p>
+		当時は昇降口棟が無く、<br>
+		B棟とC棟を繋ぐ通路が必要だったため、<br>
+		仮設の渡り廊下が設置されていました。<br>
+		B14教室とC棟廊下にある扉は<br>
+		その名残です。
+	</p>
+</section>
+
+<section>
+	<h3>槌賀記念室</h3>
+	<p>
+		<time>1956年</time>に槌賀研究室が、教え子の寄付金により建てられました。<br>
+		その後、<time>1973年</time>に開始した、木造校舎を鉄筋コンクリート造に改築する事業の中で<br>
+		研究室は取り壊され、<time>1981年</time>に槌賀記念室に改称してA棟3階へ移転しました。
+	</p>
+	<p>
+		槌賀記念室には、槌賀安平氏が採集、発見した<br>
+		貝類、コケ類などの標本が陳列されています。<br>
+		標本や資料の劣化を防ぐために、文化祭当日にのみ開放されます。
+	</p>
+	<div id="tsuchigaImgs" class="clear">
+		<a><img src="/src/buildings/buildingA4.jpg" alt="槌賀記念室"></a>
+		<a><img src="/src/buildings/tsuchiga.jpg" alt="槌賀記念室のそばにある胸像"></a>
+	</div>
+
+	<blockquote>
+		<p>
+			槌賀安平先生は<time>明治十九年</time>三原郡南淡町賀集に<ruby>生<rt>あ</ruby>る<br>
+			幼にして<ruby>穎<rt>えい</ruby>悟今や生物学界の権威たるのみならず<ruby>夙<rt>つと</ruby>に大教育家の令名あり<br>
+			<time>明治四十二年</time>広島髙等師範学校を卒業し教育に従事するや<br>
+			独特の教授法により左のモットーを以て終始一貫す
+		</p>
+		<ul id="mottoList">
+			<li>一、勉めて自ら研究せよ
+			<li>一、精密に観察実験せよ
+			<li>一、正確に思考せよ
+		</ul>
+		<p>
+			三重奈良兵庫の三県に於て先生の教を受けし者を始め<br>
+			知名の士は其の髙徳を仰ぎ其の学殖を慕ひ<ruby>鴻<rt>こう</ruby>恩に報ぜんとし<br>
+			有志も亦大いに之に賛同し永く先生の功績を顕彰せんとして<br>
+			<ruby>兹<rt>ここ</ruby>に槌賀研究室を建築すといふこと<ruby>爾<rt>しか</ruby>り
+		</p>
+		<footer>
+			<time>昭和三十二年五月一日</time>　兵庫県三原髙等学校<br>
+			寿像 刻　南淡町 賀集　北川定平
+		</footer>
+	</blockquote>
+</section>
+
+<section>
+	<h3>若い力</h3>
+	<a><img src="/src/buildings/artworks1.jpg" alt="若い力"></a>
+	<p class="clear">
+		三原高校は、南あわじ市出身の<br>
+		彫刻家である菊川<ruby>晋<rt>のぶ</ruby>久氏に、<br>
+		16回生の卒業記念の彫刻を依頼しました。<br>
+		当時、やり投げで名を馳せていたため、<br>
+		やり投げの彫刻の予定でしたが、<br>
+		槍が折れる恐れがあるとして<br>
+		砲丸投げの彫刻になりました。
+	</p>
+	<p>
+		そして、<time>1964年2月</time>に完成し、体育館前に建立しました。<br>
+		<cite>若い力</cite>と名付けられたこの彫刻は、「武」や「動」の象徴であり、<br>
+		若い力によって躍進を続ける三原高校を表しています。
+	</p>
+</section>
+
+<section>
+	<h3>清い心</h3>
+	<a><img src="/src/buildings/artworks3.jpg" alt="清い心"></a>
+	<p class="clear">
+		<time>1965年</time>、17回生の卒業記念品代と<br>
+		防火貯水槽建設の予算を使い、防火用水を<br>
+		兼ねた噴水と庭園が完成しました。<br>
+		かつて、現在のテニスコート付近に防火<br>
+		貯水槽を兼ねたプールがありましたが、<br>
+		体育館まで遠いため別に建設されました。<br>
+		（<a href="layout#1965">当時の配置図はこちら</a>）
+	</p>
+	<p>
+		<cite>清い心</cite>と名付けられたこの庭園は、「文」や「静」の象徴であり、<br>
+		当時の学年主任の人格を表しています。<br>
+		そして、<cite>若い力</cite>と併せて「静と動」や「文武両道」を象徴しています。
+	</p>
+</section>
+
+<section id="dormitory">
+	<h3>寄宿舎</h3>
+	<p>
+		<time>1950年</time>、三原高校が校地の移転を開始しました。<br>
+		そして、旧校地の建物を、寄宿舎や職員寮に改装していきました。<br>
+		（<a target="_blank" href="/src/buildings/dormitory.png"
+		>配置図はこちら</a>）主に南淡、灘、沼島地区の生徒が入寮していました。
+	</p>
+	<p>
+		ピークを迎えた<time>1965年</time>の寄宿舎生は44名、<br>
+		寄宿舎に収容できないため下宿している生徒は28名でした。<br>
+		また、寄宿舎の食堂を利用する生徒や教員は相当数いました。
+	</p>
+	<p>
+		しかし<time>1989年</time>に、建物の老朽化と<br>
+		入寮者の減少により寄宿舎は廃止され、<br>
+		建物は取り壊されました。<br>
+		現在、<a target="_blank" href="https://www.google.co.jp/maps/place/Unnamed+Road,+%E5%B8%82%E9%9D%92%E6%9C%A8+%E5%8D%97%E3%81%82%E3%82%8F%E3%81%98%E5%B8%82+%E5%85%B5%E5%BA%AB%E7%9C%8C+656-0462/@34.2845762,134.7776251,3a,75y,317h,90t/data=!3m4!1e1!3m2!1sCKMs-LB1OAmaiH_kKDW-Kw!2e0!4m6!1m3!3m2!1s0x3554a6cb705262b7:0x430bb34a042f2fc8!2zVW5uYW1lZCBSb2FkLCDluILpnZLmnKgg5Y2X44GC44KP44GY5biCIOWFteW6q-ecjCA2NTYtMDQ2Mg!3m1!1s0x3554a6cb705262b7:0x430bb34a042f2fc8"
+		>寄宿舎（旧三原高校）跡</a>には<br>
+		石碑が立っています。
+	</p>
+	<a><img src="/src/buildings/stele.jpg" alt="寄宿舎跡"></a>
+	<div class="clear"></div>
+
+	<blockquote>
+		<header>
+			兵庫県立三原高等学校並びに寄宿舎跡
+		</header>
+		<p>
+			<time>昭和八年</time> 私立真如裁縫女学校が広田の地より<br class="mob">ここに移転<br>
+			その後 真如実科高等女学校<br class="mob">
+			真如高等女学校 兵庫県三原高等女学校<br class="mob"> を経て<br>
+			<time>昭和二十二年</time> 県営移管となり<br class="mob">
+			<time>昭和二十三年</time> 県立三原高等学校となる<br class="mobpc">
+		</p>
+		<p>
+			<time>昭和二十八年</time> 学校が南東三百米の地に移った後<br class="mobpc">
+			その後地に寄宿舎が整備され以来 幾多の<br class="mob">英才を育ててきたが<br>
+			<time>昭和六十三年三月</time><br class="mob">
+			その使命を果たし閉鎖さる
+		</p>
+		<footer>
+			<time>昭和六十三年三月</time> 兵庫県立三原高等学校
+		</footer>
+	</blockquote>
+</section>
+
+<section>
+	<h3>巌島神社</h3>
+	<p>
+		かつて三原高校の東隣には神社がありました。（<a href="layout#1972">当時の学校配置図はこちら</a>）<br>
+		<time>1973年</time>、校舎拡張工事のため<a target="_blank" href="https://www.google.co.jp/maps/place/%E3%80%92656-0462+%E5%85%B5%E5%BA%AB%E7%9C%8C%E5%8D%97%E3%81%82%E3%82%8F%E3%81%98%E5%B8%82%E5%B8%82%E9%9D%92%E6%9C%A8+%E5%B7%8C%E5%B3%B6%E7%A5%9E%E7%A4%BE/data=!3m1!1e3!4m6!1m3!3m2!1s0x3554a6ce500e5b21:0x2904c0fdecca4e5d!2z44CSNjU2LTA0NjIg5YW15bqr55yM5Y2X44GC44KP44GY5biC5biC6Z2S5pyo77yR77yZ77yY4oiS77yVIOS4ieWOn-WBpeW6t-W6g-WgtA!3m1!1s0x3554a6ce59d51b75:0x667ae3805ae37904"
+		>三原健康広場の西隣</a>に移築されました。<br>
+		現在、神社の跡地に特別教室棟（C棟）があります。
+	</p>
+	<a><img src="/src/buildings/shrine1.jpg" alt="巌島神社の鳥居"></a>
+	<a><img src="/src/buildings/shrine2.jpg" alt="巌島神社の拝殿"></a>
+</section>
+
+</article>
+</main>
+<footer id="footer">
+	<small>© 2016-2019 淡路三原高校コンピュータ部</small>
+</footer>

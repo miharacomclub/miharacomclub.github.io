@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<link rel="stylesheet" href="/css/iframe.css">
+<style>
+body {
+	font-size: .95em;
+}
+table {
+	width: 100%;
+}
+td,
+input,
+textarea {
+	border: 1px solid #aaa;
+}
+td {
+	padding: .6em .4em;
+}
+td:first-child:not(:only-child) {
+	width: 1em;
+	white-space: nowrap;
+	text-align: center;
+	background-color: #eee;
+}
+input,
+textarea,
+button {
+	font-size: 1em;
+	font-family: inherit;
+	display: block;
+	box-sizing: border-box;
+}
+input,
+textarea {
+	padding: .05em .1em;
+}
+input {
+	width: 12em;
+	max-width: 75%;
+}
+textarea {
+	width: 100%;
+	height: 6em;
+	resize: none;
+}
+button {
+	-webkit-appearance: none; /* mac用 */
+	cursor: pointer;
+	margin: auto;
+	height: 2em;
+}
+.required::after {
+	content: " (必須)";
+	font-size: .9em;
+	color: orangered;
+}
+</style>
+
+<form action="https://app.lisket.jp/form_maker/message/10082" method="post">
+	<input type="hidden" name="data[verification_code]" value="736890608bce8573abbadc9e786fb5f734742247">
+	<table>
+		<tr>
+			<td><label for="data_name">ハンドル名</label>
+			<td><input id="data_name" type="text" name="data[name]">
+		<tr>
+			<td><label for="data_mail">メールアドレス</label>
+			<td><input id="data_mail" type="email" name="data[mail]">
+		<tr>
+			<td><label for="data_field_2" class="required">内容</label>
+			<td><textarea id="data_field_2" name="data[field_2]" required></textarea>
+		<tr>
+			<td colspan="2"><button>送信</button>
+	</table>
+</form>

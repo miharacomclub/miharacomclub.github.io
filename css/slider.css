@@ -1,0 +1,131 @@
+#slider {
+	position: relative;
+	width: 35em;
+	max-width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+[name="slide"] {
+	display: none;
+}
+#slider a {
+	display: table;
+	margin: auto;
+	line-height: 0;
+}
+
+#slider figure {
+	opacity: 0;
+	transition: opacity .5s linear;
+}
+#slider :checked + * + figure {
+	opacity: 1;
+	z-index: 1;
+}
+#slider figure:first-of-type {
+	position: relative; /* z-index */
+	width: 100%;
+	order: -1;
+}
+#slider figure:not(:first-of-type),
+#btns {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+#slider figcaption {
+	font-size: 1.3em;
+	padding: .1em .5em .2em;
+	margin: .2em 0 .3em;
+	color: white;
+	background-color: #aaa;
+}
+#slider figure img,
+#btns {
+	height: 18em;
+}
+@media (max-width:792px) {
+	#slider figure img,
+	#btns {
+		height: 14em;
+	}
+}
+#slider label img,
+[name="slide"] + label {
+	height: 4.9em;
+}
+[name="slide"] + label {
+	float: left;
+	border: .05em solid gray;
+	margin: 0 .2em .2em 0;
+	opacity: .4;
+}
+[name="slide"]:checked + label {
+	opacity: 1;
+	border-color: coral;
+}
+
+#btns * {
+	position: absolute;
+	display: none;
+	top: calc((100% - 2.25em) / 2);
+	width: 2.25em;
+	height: 2.25em;
+	z-index: 2;
+	border-radius: 50%;
+	opacity: .65;
+	background-color: gray;
+}
+#slide1:last-of-type ~ #btns {
+	display: none;
+}
+
+#slide1:checked~#btns :last-child,
+#slide2:checked~#btns :nth-child(1),
+#slide3:checked~#btns :nth-child(2),
+#slide4:checked~#btns :nth-child(3),
+#slide5:checked~#btns :nth-child(4),
+#slide6:checked~#btns :nth-child(5),
+#slide7:checked~#btns :nth-child(6),
+#slide8:checked~#btns :nth-child(7),
+#slide9:checked~#btns :nth-child(8),
+#slide10:checked~#btns :nth-child(9),
+#slide11:checked~#btns :nth-child(10) {
+	display: block;
+}
+#slide1:checked~#btns :nth-child(2),
+#slide2:checked~#btns :nth-child(3),
+#slide3:checked~#btns :nth-child(4),
+#slide4:checked~#btns :nth-child(5),
+#slide5:checked~#btns :nth-child(6),
+#slide6:checked~#btns :nth-child(7),
+#slide7:checked~#btns :nth-child(8),
+#slide8:checked~#btns :nth-child(9),
+#slide9:checked~#btns :nth-child(10),
+#slide10:checked~#btns :nth-child(11),
+:not(#slide2):last-of-type:checked~#btns :first-child {
+	display: block;
+	right: 0;
+	transform: scaleX(-1);
+}
+
+#btns ::before,
+#btns ::after {
+	position: absolute;
+	top: 50%;
+	left: 27%;
+	width: calc(15% * 2 * 1.414);
+	height: 15%;
+	content: "";
+	border-radius: calc(2.25em * .15);
+	background-color: hsl(0,0%,99%);
+	transform-origin: top left;
+}
+#btns ::before {
+	transform: rotate(-45deg);
+}
+#btns ::after {
+	transform: rotate(45deg)translateY(-100%);
+}

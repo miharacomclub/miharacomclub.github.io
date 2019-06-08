@@ -1,0 +1,206 @@
+body {
+	transform: translateZ(0); /* safari */
+	position: relative;
+	box-sizing: border-box;
+	width: 30.3em;
+	max-width: 100%;
+	border: 0 solid transparent;
+	border-width: 0 .15em;
+	counter-reset: qCnt rightCnt;
+	line-height: 1.6;
+}
+input,
+section:not(:target) {
+	position: absolute;
+	/* display:noneにするとcounterが動かない */
+	visibility: hidden;
+	z-index: -1;
+}
+section {
+	display: inline;
+}
+[id*="r"]:checked {
+	counter-increment: rightCnt;
+}
+aside {
+	font-size: .9em;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+aside::before {
+	content: "ジャンル：";
+}
+aside::after {
+	content: "　" counter(rightCnt) "問正解（全" counter(qCnt) "問）";
+}
+
+header, div {
+	cursor: pointer;
+	outline: none;
+	-webkit-tap-highlight-color: transparent;
+}
+header {
+	display: table;
+	/* margin-topにすると、問題切り替え時にasideが隠れてしまう */
+	border-top: calc(.9em * 1.6) solid transparent;
+	margin-bottom: .3em;
+	counter-reset: choiceIndex;
+	counter-increment: qCnt;
+}
+_:-ms-lang(x), header {
+	border-top-width: 0;
+}
+div:last-of-type {
+	margin-bottom: -99em;
+}
+:checked ~ div:last-of-type {
+	margin-bottom: .3em;
+}
+:checked ~ div:last-of-type::after {
+	float: left;
+	margin-right: .25em;
+	line-height: 2;
+	pointer-events: none;
+	content: "不正解";
+}
+[id*="r"]:checked ~ div:last-of-type::after {
+	content: "正解";
+}
+
+h1,
+label {
+	display: table;
+	transition:	transform .3s,
+		box-shadow .3s,
+		background-color .3s;
+}
+h1 {
+	font-size: 1.05em;
+	padding: .1em;
+	border: 0 solid #aaa;
+	border-width: 1px 0;
+	margin: 0;
+	font-weight: normal;
+}
+:root {
+	--bg-rgb: 0,110,255;
+	--bg-rgb-right: 0,139,0;
+	--bg-rgb-wrong: 239,0,0;
+	--bg-opacity: .08;
+}
+label {
+	table-layout: fixed;
+	width: 100%;
+	box-sizing: border-box;
+	padding: .3em;
+	margin: .2em 0;
+	background-color: rgba(var(--bg-rgb),var(--bg-opacity));
+	counter-increment: choiceIndex;
+}
+:checked ~ div label {
+	pointer-events: none;
+	--bg-rgb: var(--bg-rgb-wrong);
+}
+:checked ~ div [for*="r"] {
+	--bg-rgb: var(--bg-rgb-right);
+}
+:nth-child(1):checked ~ :nth-of-type(1) label,
+:nth-child(2):checked ~ :nth-of-type(2) label,
+:nth-child(3):checked ~ :nth-of-type(3) label,
+:nth-child(4):checked ~ :nth-of-type(4) label {
+	outline: .1em dashed #777;
+	outline-offset: -.1em;
+}
+div:hover label {
+	--bg-opacity: .16;
+}
+:focus h1,
+:focus label {
+	transform: translateY(-.1em);
+	box-shadow: 0 .15em .15em #aaa;
+	--bg-opacity: .18;
+}
+
+small {
+	position: absolute;
+	font-size: .9rem;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	border: 0 solid transparent;
+	border-width: .2rem 0 9em;
+	table-layout: fixed;
+	cursor: auto;
+	background-color: hsl(0,0%,99%);
+	display: none;
+}
+:checked ~ :hover small,
+:checked ~ :focus small {
+	display: table;
+}
+:checked ~ :hover:not(:focus) small {
+	z-index: -1;
+}
+
+h1::before,
+label::before,
+small::before {
+	display: table-cell;
+	vertical-align: middle;
+	white-space: nowrap;
+	text-align: center;
+}
+h1::before {
+	content: "問" counter(qCnt) "：";
+}
+label::before {
+	content: counter(choiceIndex, upper-alpha);
+	width: 1em;
+	padding-right: .2em;
+}
+small::before {
+	content: "補足：";
+	width: 3em;
+}
+/* [tabindex] > :first-child:not(:only-child) */
+:checked ~ header h1:not(:only-child)::before,
+:checked ~ div label:not(:only-child)::before {
+	font-weight: bold;
+}
+
+div + .origBtn::after {
+	content: "次の問題";
+}
+aside + .origBtn::after {
+	content: "選択画面に戻る";
+}
+a img {
+	position: absolute;
+	bottom: -.25em;
+	right: 0;
+	height: 3.5em;
+	transition: height .5s;
+	z-index: 1;
+	display: none;
+}
+:checked ~ a img {
+	display: block;
+}
+a:hover img {
+	height: 10.5em;
+}
+
+.overline {
+	text-decoration: overline;
+}
+#darkgreen,
+#steelgreen {color: white;}
+#vividblue  {color: mediumblue;}
+#darkgreen  {background-color: rgb(0,86,56);}
+#steelgreen {background-color: darkslategray;}
+#freshgreen {background-color: lightgreen;}
+[id$=green] {
+	margin: 0 .1em;
+	padding: 0 .4em;
+}

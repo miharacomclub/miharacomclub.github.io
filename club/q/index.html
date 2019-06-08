@@ -1,3 +1,117 @@
-<!DOCTYPE html>
-<title>test</title>
-<p>test</p>
+﻿<!DOCTYPE html>
+<link rel="stylesheet" href="/css/iframe.css">
+<style>
+p {
+	margin-top: 0;
+}
+
+.anchorBtns {
+	position: relative;
+	font-size: .95em;
+	float: left;
+	display: flex;
+	flex-flow: column wrap;
+	align-content: flex-start;
+	height: 9.5em;
+	margin-top: 1.7em;
+}
+@media (max-width:522px) { /* parent:792px */
+	.anchorBtns {height: 7em;}
+}
+#school {
+	width: 23em;
+}
+.anchorBtns > * {
+	width: 5em;
+	margin: .1em;
+	line-height: 1.9;
+}
+.anchorBtns::before {
+	position: absolute;
+	left: 0;
+	bottom: 100%;
+	content: attr(data-title);
+}
+
+.rnd {
+	position: relative;
+	overflow: hidden;
+}
+.rnd::before {
+	content: "ランダム";
+}
+.rnd div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	animation: scroll 1s infinite;
+}
+.rnd div:hover {
+	animation-play-state: paused;
+}
+@keyframes scroll {
+	to {transform: translateY(-100%);}
+}
+#school .rnd div {
+	animation-timing-function: steps(9);
+}
+#subjects .rnd div {
+	animation-timing-function: steps(7);
+}
+.rnd a {
+	display: block;
+}
+.rnd a::before {
+	content: "　";
+}
+</style>
+
+<p>
+	ボタンを選択すると、約10問出題されます。<br>
+	解答後、<b>太字</b>になった選択肢に触れると、補足を見ることができます。
+</p>
+<div id="school" class="anchorBtns" data-title="淡路三原高校">
+	<a href="history#1">沿革</a>
+	<a href="tradition#1">校風</a>
+	<a href="regulations#1">校則</a>
+	<a href="curriculum#1">教育課程</a>
+	<a href="songs#1">校歌</a>
+	<a href="buildings#1">建物</a>
+	<a href="rooms#1">部屋</a>
+	<a href="clubs#1">部活動</a>
+	<a href="others#1">その他</a>
+	<span class="rnd">
+		<div>
+			<a href="history#1"></a>
+			<a href="tradition#1"></a>
+			<a href="regulations#1"></a>
+			<a href="curriculum#1"></a>
+			<a href="songs#1"></a>
+			<a href="buildings#1"></a>
+			<a href="rooms#1"></a>
+			<a href="clubs#1"></a>
+			<a href="others#1"></a>
+		</div>
+	</span>
+</div>
+<div id="subjects" class="anchorBtns" data-title="教科">
+	<a href="math#1">数学</a>
+	<a href="chemistry#1">化学</a>
+	<a href="geohis#1">地歴</a>
+	<a href="civics#1">公民</a>
+	<a href="subjects#1">その他教科</a>
+	<a href="units#1">単位</a>
+	<a href="homonyms#1">同音異義語</a>
+	<span class="rnd">
+		<div>
+			<a href="math#1"></a>
+			<a href="chemistry#1"></a>
+			<a href="geohis#1"></a>
+			<a href="civics#1"></a>
+			<a href="subjects#1"></a>
+			<a href="units#1"></a>
+			<a href="homonyms#1"></a>
+		</div>
+	</span>
+</div>

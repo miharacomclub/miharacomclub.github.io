@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="/css/style.css">
+<script src="/js/index.js" defer></script>
+
+<title>タイピングゲーム｜淡路三原高校コンピュータ部</title>
+<link rel="stylesheet" href="/css/typing.css">
+<script src="/js/typing.js" type="module"></script>
+
+<header id="header">
+	<a href="/"><h1>淡路三原高校<br>コンピュータ部</h1></a>
+</header>
+<nav id="nav">
+	<a href="/school/">学校紹介</a><a href="/club/">部活動紹介</a><a href="/club/works">作ったもの</a><a href="/club/others">その他</a>
+</nav>
+<main>
+<article id="article">
+
+<h2>タイピングゲーム</h2>
+
+<section id="selectionScreen">
+	<input id="words" type="radio" name="tab">
+	<section class="frame themeButtons">
+		<button data-tsv-name="gojuuonn" data-caption="手慣らしにどうぞ。" data-in-order>五十音</button>
+		<button data-tsv-name="prefectures" data-caption="北海道～沖縄までの47都道府県名です。">都道府県名</button>
+		<button data-tsv-name="asia" data-caption="アジアの国名です。">アジアの国名</button>
+		<button data-tsv-name="africa" data-caption="アフリカの国名です。">アフリカの国名</button>
+		<button data-tsv-name="europe" data-caption="ヨーロッパの国名です。">ヨーロッパの国名</button>
+		<button data-tsv-name="northamerica" data-caption="北アメリカの国名です。">北アメリカの国名</button>
+		<button data-tsv-name="southamerica" data-caption="南アメリカの国名です。">南アメリカの国名</button>
+		<button data-tsv-name="oceania" data-caption="オセアニアの国名です。">オセアニアの国名</button>
+		<button data-tsv-name="kanji_country" data-caption="国名の難読漢字です。">国名の漢字</button>
+		<button data-tsv-name="kanji_seafood" data-caption="魚介類の難読漢字です。">魚介類の漢字</button>
+		<button data-tsv-name="kanji_insect"  data-caption="虫の難読漢字です。">虫の漢字</button>
+		<button data-tsv-name="kanji_bird"    data-caption="鳥の難読漢字です。">鳥の漢字</button>
+		<button data-tsv-name="kanji_animal"  data-caption="その他の動物の難読漢字です。">動物の漢字</button>
+		<button data-tsv-name="kanji_vegi_fruit" data-caption="野菜・果物の難読漢字です。">野菜・果物の漢字</button>
+		<button data-tsv-name="kanji_sport"   data-caption="スポーツの漢字です。">スポーツの漢字</button>
+		<button data-tsv-name="elementsymbol_easy" data-caption="覚えておくべき重要な元素記号です。">基本の元素記号</button>
+		<button data-tsv-name="elementsymbol_hard" data-caption="難しい元素記号です。全てわかるとすごいです。">難しい元素記号</button>
+	</section>
+
+	<input id="short" type="radio" name="tab">
+	<section class="frame themeButtons">
+		<button data-tsv-name="kotowaza1" data-caption="ア行の有名なことわざです。">ことわざ①</button>
+		<button data-tsv-name="kotowaza2" data-caption="カ行の有名なことわざです。">ことわざ②</button>
+		<button data-tsv-name="kotowaza3" data-caption="サ行の有名なことわざです。">ことわざ③</button>
+		<button data-tsv-name="kotowaza4" data-caption="タ行の有名なことわざです。">ことわざ④</button>
+		<button data-tsv-name="kotowaza5" data-caption="ナ行の有名なことわざです。">ことわざ⑤</button>
+		<button data-tsv-name="kotowaza6" data-caption="ハ、マ行の有名なことわざです。">ことわざ⑥</button>
+		<button data-tsv-name="kotowaza7" data-caption="ヤ、ラ、ワ行の有名なことわざです。">ことわざ⑦</button>
+		<button data-tsv-name="kotowaza"  data-caption="ことわざの中からランダムで出題されます。" data-multiple-tsvs>ことわざR</button>
+		<button data-tsv-name="idiom_body1" data-caption="頭、顔、目に関する慣用句です。">体の慣用句①</button>
+		<button data-tsv-name="idiom_body2" data-caption="鼻、口、耳に関する慣用句です。">体の慣用句②</button>
+		<button data-tsv-name="idiom_body3" data-caption="腕、手に関する慣用句です。">体の慣用句③</button>
+		<button data-tsv-name="idiom_body4" data-caption="胸、腹、足に関する慣用句です。">体の慣用句④</button>
+		<button data-tsv-name="idiom_body5" data-caption="その他の部分に関する慣用句です。">体の慣用句⑤</button>
+		<button data-tsv-name="idiom_body"  data-caption="体の慣用句の中からランダムで出題されます。" data-multiple-tsvs>体の慣用句R</button>
+		<button data-tsv-name="kojiseigoshort" data-caption="短い故事成語です。">故事成語①</button>
+		<button data-tsv-name="kojiseigolong"  data-caption="長い故事成語です。">故事成語②</button>
+		<button data-tsv-name="irohauta" data-caption="有名な歌です。47文字あります。" data-in-order>いろは歌</button>
+	</section>
+
+	<input id="long" type="radio" name="tab">
+	<section class="frame themeButtons">
+		<button data-tsv-name="taketorimonogatari" data-caption="「今は昔、竹取の翁～」 平安時代初期の日本最古の物語です。作者不明。">竹取物語</button>
+		<button data-tsv-name="makuranosousi" data-caption="「春はあけぼの～」 平安時代中期の日本最古の随筆です。清少納言著。">枕草子</button>
+		<button data-tsv-name="houjouki" data-caption="「ゆく河の流れは絶えずして～」 鎌倉時代初期の随筆です。鴨長明著。">方丈記</button>
+		<button data-tsv-name="heikemonogatari" data-caption="「祇園精舎の鐘の声～」 鎌倉時代初期の軍記物語です。作者不明。">平家物語</button>
+		<button data-tsv-name="turezuregusa" data-caption="「つれづれなるままに～」 鎌倉時代後期の随筆です。兼好法師著。">徒然草</button>
+		<button data-tsv-name="okunohosomiti" data-caption="「月日は百代の過客にして～」 江戸時代中期の俳諧紀行です。松尾芭蕉著。">おくの細道</button>
+		<button data-tsv-name="amenimomakezu" data-caption="「雨にもまけず、風にもまけず～」 宮沢賢治の詩です。">雨にもまけず</button>
+		<button data-tsv-name="jugemu" data-caption="「寿限無寿限無～」 有名な落語です。">寿限無</button>
+		<button data-tsv-name="shunnbou" data-caption="「国破れて山河在り～」 杜甫の律詩です。">春望</button>
+		<button data-tsv-name="constitution" data-caption="日本国憲法の条文の前にある文章で、趣旨や基本原則について記しています。">日本国憲法前文</button>
+		<button data-tsv-name="kouka" data-caption="「豊かなみどり諭鶴羽の～」 淡路三原高校校歌の歌詞です。">淡路三原高校校歌</button>
+		<button data-tsv-name="seitokai1" data-caption="淡路三原高校の生徒会会則です。第1条から第9条まで。">生徒会会則①</button>
+		<button data-tsv-name="seitokai2" data-caption="淡路三原高校の生徒会会則です。第10条から第21条まで。">生徒会会則②</button>
+		<button data-tsv-name="seitokai3" data-caption="淡路三原高校の生徒会会則です。第22条から第26条まで。">生徒会会則③</button>
+		<button data-tsv-name="seitokai4" data-caption="淡路三原高校の生徒会会則です。第27条から第35条まで。">生徒会会則④</button>
+		<button data-tsv-name="seitokai5" data-caption="淡路三原高校の生徒会会則です。第36条から第41条まで。">生徒会会則⑤</button>
+		<button data-tsv-name="nicchoku" data-caption="淡路三原高校の日直の心得です。">日直の心得</button>
+		<button data-tsv-name="shokudou" data-caption="淡路三原高校の食堂利用の心得です。">食堂利用の心得</button>
+	</section>
+
+	<input id="_about" type="radio" name="tab" checked>
+	<section class="frame">
+		<div>
+			<h3>タイピングゲームについて</h3>
+			<p id="onlyIE">
+				現在お使いのブラウザではご利用になれません。<br>
+				<a target="_blank" href="https://www.google.com/intl/ja_ALL/chrome/"
+				>Google Chrome</a>や、<a target="_blank" href="https://www.mozilla.org/ja/firefox/new/"
+				>Firefox</a>など他のブラウザをお使いください。
+			</p>
+			<p>
+				単語、短文、長文から、様々なテーマを選べます。<br>
+				キーを入力すると同時にゲームが開始します。
+			</p>
+			<p>
+				ゲーム終了時に、スコアとランクが表示されます。
+			</p>
+		</div>
+
+		<ul id="rankList" data-caption="正誤率が97%のときに必要な打鍵速度です。" data-score="0" style="--high-score:0">
+			<li style="--required-score:930;color:transparent">
+			<li data-required-kps="15.9" data-score="900" style="--score-range:50; --required-score:900;color:purple">Cheater
+			<li data-required-kps="15.1" data-score="850" style="--score-range:50; --required-score:850;color:navy">Tachyon
+			<li data-required-kps="14.2" data-score="800" style="--score-range:50; --required-score:800;color:gold">Lightning
+			<li data-required-kps="13.3" data-score="750" style="--score-range:50; --required-score:750;color:lightpink">Comet
+			<li data-required-kps="12.4" data-score="700" style="--score-range:50; --required-score:700;color:turquoise">Meteor
+			<li data-required-kps="11.5" data-score="650" style="--score-range:50; --required-score:650;color:tomato">Rocket
+			<li data-required-kps="10.6" data-score="600" style="--score-range:50; --required-score:600;color:dodgerblue">Jet
+			<li data-required-kps="9.7"  data-score="550" style="--score-range:50; --required-score:550;color:darkgray">Bullet
+			<li data-required-kps="8.9"  data-score="500" style="--score-range:50; --required-score:500;color:mediumblue">Sonic
+			<li data-required-kps="8"    data-score="450" style="--score-range:50; --required-score:450;color:orange">Falcon
+			<li data-required-kps="7.1"  data-score="400" style="--score-range:50; --required-score:400;color:chocolate">Arrow
+			<li data-required-kps="5.3"  data-score="300" style="--score-range:100;--required-score:300;color:goldenrod">S
+			<li data-required-kps="4"    data-score="225" style="--score-range:75; --required-score:225;color:orangered">A
+			<li data-required-kps="2.7"  data-score="150" style="--score-range:75; --required-score:150;color:limegreen">B
+			<li data-required-kps="1.3"  data-score="75"  style="--score-range:75; --required-score:75; color:blue">C
+			<li data-required-kps="0"    data-score="0"   style="--score-range:75; --required-score:0;  color:gray">D
+		</ul>
+	</section>
+
+	<nav id="categoryTabs">
+		<label for="words" data-caption="単語です。">単語</label>
+		<label for="short" data-caption="句読点がない短文です。">短文</label>
+		<label for="long"  data-caption="句読点がある長文です。古典文学は現代仮名遣いです。">長文</label>
+		<label for="_about" data-caption="このゲームについてです。">説明</label>
+	</nav>
+	<aside></aside>
+</section>
+
+
+<section id="typingScreen">
+	<header>
+		<div data-tooltip="矢印キーで値を変更できます。">
+			残り：<input id="remainingNum" tabindex="0" type="number" min="3" max="99" maxlength="2" required>
+		</div>
+		<h3 id="textTitle"></h3>
+		<div class="kbdButtonWrapper">
+			<kbd data-event-key="Escape">esc</kbd>で戻る
+		</div>
+	</header>
+
+	<div id="sentencesFrame" class="frame">
+		<p id="rubyBase"></p>
+		<p id="rubySentence"><span class="typed"></span><span></span></p>
+		<p id="romanized"><span class="typed"></span><span></span></p>
+	</div>
+	<div id="meter"></div>
+	<p id="nextRubyBase"></p>
+
+	<div id="keyboard">
+		<kbd id="hankaku"></kbd><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd><kbd>5</kbd><kbd>6</kbd><kbd>7</kbd><kbd>8</kbd><kbd>9</kbd><kbd>0</kbd><kbd>-</kbd><kbd>^</kbd><kbd>￥</kbd><kbd id="backspace"></kbd><div class="clear"></div>
+		<kbd id="tab"></kbd><kbd>Q</kbd><kbd>W</kbd><kbd>E</kbd><kbd>R</kbd><kbd>T</kbd><kbd>Y</kbd><kbd>U</kbd><kbd>I</kbd><kbd>O</kbd><kbd>P</kbd><kbd>@</kbd><kbd>[</kbd><kbd id="enter"></kbd><div class="clear"></div>
+		<kbd id="caps"></kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><kbd>F</kbd><kbd>G</kbd><kbd>H</kbd><kbd>J</kbd><kbd>K</kbd><kbd>L</kbd><kbd>;</kbd><kbd>:</kbd><kbd>]</kbd><div class="clear"></div>
+		<kbd id="lshift">shift</kbd><kbd>Z</kbd><kbd>X</kbd><kbd>C</kbd><kbd>V</kbd><kbd>B</kbd><kbd>N</kbd><kbd>M</kbd><kbd>,</kbd><kbd>.</kbd><kbd>/</kbd><kbd>\</kbd><kbd id="rshift">shift</kbd>
+	</div>
+</section>
+
+
+<section id="resultsScreen">
+	<div id="resultsFrame" class="frame clear">
+		<h3>結果</h3>
+		<dl>
+			<dt>スコア<dd>
+			<dt>ランク<dd id="rankName">
+		</dl>
+		<dl>
+			<dt>時間<dd data-unit="秒">
+			<dt>打鍵数<dd data-unit="打">
+			<dt>速度<dd data-unit="打/秒">
+		</dl>
+		<dl>
+			<dt>正誤率<dd data-unit="%">
+			<dt>ミス<dd data-unit="打">
+			<dt data-tooltip="一分間の打鍵数">KPM<dd>
+		</dl>
+	</div>
+
+	<div class="kbdButtonWrapper">
+		<kbd data-event-key=" ">space</kbd>でもう一度
+		　<kbd data-event-key="Escape">esc</kbd>で選択画面へ戻る
+	</div>
+</section>
+
+</article>
+</main>
+<footer id="footer">
+	<small>© 2016-2019 淡路三原高校コンピュータ部</small>
+</footer>

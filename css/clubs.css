@@ -1,0 +1,152 @@
+[name="clubs"] {
+	display: none;
+}
+[name="clubs"] + label {
+	display: inline-block;
+	padding: 0 .1em;
+	border-width: .05em;
+	border-style: solid;
+	line-height: 1.4;
+}
+[name="clubs"]:checked + label  {
+	border-bottom-width: .25em;
+}
+[for="active"]    {border-color: hsl(212,45%,70%);}
+[for="suspended"] {border-color: hsl( 79,41%,70%);}
+[for="abolished"] {border-color: hsl(  1,47%,70%);}
+[for="culture"]   {border-color: hsl(212,45%,70%);}
+[for="sports"]    {border-color: hsl(212,45%,83%);}
+
+#clubs {
+	position: relative;
+	overflow: hidden;
+	line-height: 1;
+	margin-top: .5em;
+}
+#bars, #bars * {
+	position: relative;
+}
+#bars {
+	left: calc(-44%/.76);
+	width: calc(100%/.76);
+}
+#bars div {
+	white-space: nowrap;
+	margin-bottom: .1em;
+}
+#sports:not(:checked)    ~ #clubs .spo,
+#culture:not(:checked)   ~ #clubs .cul,
+#active:not(:checked)    ~ #clubs .act,
+#suspended:not(:checked) ~ #clubs .sus,
+#abolished:not(:checked) ~ #clubs .abo {
+	display: none;
+}
+
+#bars span {
+	display: inline-block;
+	width: 100%;
+	width: calc(var(--length, 100) * 1%);
+	box-sizing: border-box;
+	padding: .07em 0 .03em .1em;
+	background-repeat: no-repeat;
+}
+::-ms-backdrop, #bars .abo, #bars span:not(:only-child) {display: none;} /* IE11 */
+
+.integrated {
+	top: .6em;
+}
+[style*="fade"] {
+	/* edgeは#rgbaに対応していない */
+	/* safariはtransparent(#0000)にすると、グラデーションが黒くなる */
+	background-image: linear-gradient(to var(--image-direction, left), rgba(255,255,255,.75), rgba(255,255,255,0));
+	background-position: var(--image-position, right);
+	/* edgeはheight 100%を指定する必要がある */
+	background-size: calc(var(--fade-in, var(--fade-out)) / var(--length, 100) * 100%) 100%;
+}
+[style*="fade-in"] {
+	--image-direction: right;
+	--image-position: left;
+}
+
+.act.spo span {background-color: hsl(212,45%,83%);}
+.act.cul span {background-color: hsl(212,45%,70%);}
+.sus.spo span {background-color: hsl( 79,41%,83%);}
+.sus.cul span {background-color: hsl( 79,41%,70%);}
+.abo.spo span {background-color: hsl(  1,47%,83%);}
+.abo.cul span {background-color: hsl(  1,47%,70%);}
+
+
+#years, #columns {
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	min-height: 3.5em;
+}
+#years {
+	left: calc(-9%/.76);
+	width: calc(80%/.76);
+	pointer-events: none;
+	counter-reset: tickValue 1930;
+}
+#years *,
+#columns * {
+	flex: auto;
+}
+#years * {
+	position: relative;
+	counter-increment: tickValue 10;
+}
+
+#years ::before,
+#years ::after,
+#columns ::before,
+#columns ::after {
+	position: absolute;
+	height: 1em;
+	padding-top: .15em;
+	background-color: hsl(0,0%,99%);
+}
+#years ::after,
+#columns ::after {
+	bottom: 0;
+}
+#years ::before,
+#years ::after {
+	left: 0;
+	width: 100%;
+	text-align: center;
+	content: counter(tickValue);
+}
+#columns ::before,
+#columns ::after {
+	right: 0;
+	pointer-events: none;
+	padding-left: .5em;
+	z-index: 1;
+}
+
+
+#columns        {counter-reset: year 1943 jpYear 18;}
+#columns *      {counter-increment: year jpYear;}
+#columns :hover {background-color: rgba(0,0,0,.2);}
+
+#columns :hover::before,
+#columns :hover::after {
+	content: counter(year) "年度（"
+		var(--era-name, "令和")
+		var(--era-year, counter(jpYear)) "年度）";
+}
+#columns :nth-child(76),  /* 76 - 46 = 30 令和 */
+#columns :nth-child(46) { /* 46 + 18 = 64 平成 */
+	counter-reset: jpYear;
+	--era-year: "元"
+}
+#columns :nth-child(-n+75) {--era-name: "平成";}
+#columns :nth-child(-n+45) {--era-name: "昭和";}
+#columns :nth-child(10n-3) {
+	border-left: 1px solid rgba(0,0,0,.2);
+	box-sizing: border-box;
+}
