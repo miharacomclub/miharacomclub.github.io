@@ -52,7 +52,7 @@ const _parseJpDateStr = jpDateStr => {
 	// 二十三 → 2103 → 23
 	const ymd = splitIntoYmd(jpDateStr.slice(2)).map(v => +v
 		.replace(/\D/g, kanji => "元一二三四五六七八九十".indexOf(kanji) || 1)
-		.replace(/(\D)\D?\D(\D)/, "$1$2")
+		.replace(/(\d)\d?\d(\d)/, "$1$2")
 	);
 	const eraIndex = eraNames.indexOf(jpDateStr.slice(0, 2));
 	ymd[0] += zerothYears[eraIndex];
