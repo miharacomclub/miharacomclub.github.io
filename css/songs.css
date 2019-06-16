@@ -26,8 +26,5 @@ audio {
 	margin: 0;
 }
 .lyricsWrapper ol li {
-	margin: 0 3em 1em 1.5em;
-}
-.lyricsWrapper ol li:only-child {
-	list-style-type: none;
+	margin: 0 2em 1em 2.5em;
 }

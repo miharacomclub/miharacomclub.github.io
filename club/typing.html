@@ -83,7 +83,7 @@
 		<button data-tsv-name="shokudou" data-caption="淡路三原高校の食堂利用の心得です。">食堂利用の心得</button>
 	</section>
 
-	<input id="_about" type="radio" name="tab" checked>
+	<input id="about" type="radio" name="tab" checked>
 	<section class="frame">
 		<div>
 			<h3>タイピングゲームについて</h3>
@@ -127,7 +127,7 @@
 		<label for="words" data-caption="単語です。">単語</label>
 		<label for="short" data-caption="句読点がない短文です。">短文</label>
 		<label for="long"  data-caption="句読点がある長文です。古典文学は現代仮名遣いです。">長文</label>
-		<label for="_about" data-caption="このゲームについてです。">説明</label>
+		<label for="about" data-caption="このゲームについてです。">説明</label>
 	</nav>
 	<aside></aside>
 </section>
@@ -153,10 +153,10 @@
 	<p id="nextRubyBase"></p>
 
 	<div id="keyboard">
-		<kbd id="hankaku"></kbd><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd><kbd>5</kbd><kbd>6</kbd><kbd>7</kbd><kbd>8</kbd><kbd>9</kbd><kbd>0</kbd><kbd>-</kbd><kbd>^</kbd><kbd>￥</kbd><kbd id="backspace"></kbd><div class="clear"></div>
+		<kbd id="hankaku" data-other-id="zenkaku"></kbd><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd><kbd>5</kbd><kbd>6</kbd><kbd>7</kbd><kbd>8</kbd><kbd>9</kbd><kbd>0</kbd><kbd>-</kbd><kbd>^</kbd><kbd>￥</kbd><kbd id="backspace"></kbd><div class="clear"></div>
 		<kbd id="tab"></kbd><kbd>Q</kbd><kbd>W</kbd><kbd>E</kbd><kbd>R</kbd><kbd>T</kbd><kbd>Y</kbd><kbd>U</kbd><kbd>I</kbd><kbd>O</kbd><kbd>P</kbd><kbd>@</kbd><kbd>[</kbd><kbd id="enter"></kbd><div class="clear"></div>
-		<kbd id="caps"></kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><kbd>F</kbd><kbd>G</kbd><kbd>H</kbd><kbd>J</kbd><kbd>K</kbd><kbd>L</kbd><kbd>;</kbd><kbd>:</kbd><kbd>]</kbd><div class="clear"></div>
-		<kbd id="lshift">shift</kbd><kbd>Z</kbd><kbd>X</kbd><kbd>C</kbd><kbd>V</kbd><kbd>B</kbd><kbd>N</kbd><kbd>M</kbd><kbd>,</kbd><kbd>.</kbd><kbd>/</kbd><kbd>\</kbd><kbd id="rshift">shift</kbd>
+		<kbd id="capslock" data-other-id="alphanumeric"></kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><kbd>F</kbd><kbd>G</kbd><kbd>H</kbd><kbd>J</kbd><kbd>K</kbd><kbd>L</kbd><kbd>;</kbd><kbd>:</kbd><kbd>]</kbd><div class="clear"></div>
+		<kbd id="shift">shift</kbd><kbd>Z</kbd><kbd>X</kbd><kbd>C</kbd><kbd>V</kbd><kbd>B</kbd><kbd>N</kbd><kbd>M</kbd><kbd>,</kbd><kbd>.</kbd><kbd>/</kbd><kbd>\</kbd><kbd id="rShift">shift</kbd>
 	</div>
 </section>
 

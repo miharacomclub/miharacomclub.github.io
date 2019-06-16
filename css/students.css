@@ -1,17 +1,19 @@
 .graph {
 	position: relative;
-	padding: .1px 0;
+	display: none\0; /* IE8+ */
+	padding-left: 2em;
+	--unit: calc(37rem / 99);
 }
-@media (max-width:792px) {
+#cap  {--nmax: 72;}
+#grad {--nmax: 99;}
+@media (max-width:800px) {
 	.graph {
 		overflow-x: scroll;
 	}
 }
-#cap      {padding-left: 2em;}
-#grad     {padding-left: 1.5em;}
-#cap  > * {width: 27rem;}
-#grad > * {width: 37rem;}
-
+.graph > * {
+	width: calc(var(--unit) * var(--nmax));
+}
 .graph figcaption {
 	font-size: 1.3em;
 	position: absolute;
@@ -20,53 +22,48 @@
 	font-weight: bold;
 }
 .graph .fixedAspectRatio {
-	position: relative;
-	margin: 2em 0;
+	border: 0 solid transparent;
+	border-width: 2em 0;
 	max-width: none;
 }
-#cap  .fixedAspectRatio::before {
-	padding-top: calc(1600%/.73 / 40);
-}
-#grad .fixedAspectRatio::before {
-	padding-top: calc(600%/1.00 / 15);
+.graph .fixedAspectRatio::before {
+	padding-top: calc(40 * var(--unit)); /* 1600 / 40 = 600 / 15 */
 }
 
-
-.hLines, .vLines {
+.hLines,
+.vLines {
 	display: flex;
 	justify-content: space-between;
+	padding: 0 calc(var(--unit) / 2);
 }
 .hLines {
-	box-sizing: border-box;
 	flex-flow: column-reverse;
+	counter-reset: tickValue;
+	box-sizing: border-box;
 }
-#cap  .hLines,
-#cap  .vLines {padding: 0 calc(1%/.73);}
-#grad .hLines,
-#grad .vLines {padding: 0 calc(1%/1.00);}
-#cap  .vLines {width: calc(70%/.73);}
-#grad .vLines {width: calc(90%/1.00);}
-
+#cap  .hLines {--tick-interval: 200;}
+#grad .hLines {--tick-interval: 100;}
+      .vLines {--tick-interval: 10;}
+#cap  .vLines {
+	width: calc(70 * var(--unit));
+	counter-reset: tickValue 1950;
+}
+#grad .vLines {
+	width: calc(90 * var(--unit));
+	counter-reset: tickValue 1920;
+}
 .hLines *,
 .vLines * {
 	position: relative;
 	font-size: .85em;
 	border: 0 solid #aaa;
-	line-height: 1;
 }
-.hLines * {
-	border-top-width: 1px;
+.hLines * {border-top-width: 1px;}
+.vLines * {border-left-width: 1px;}
+.hLines :not(:first-child),
+.vLines :not(:first-child) {
+	counter-increment: tickValue var(--tick-interval);
 }
-.vLines * {
-	border-left-width: 1px;
-}
-      .hLines      :first-child  {counter-reset: tickValue;}
-#cap  .vLines      :first-child  {counter-reset: tickValue 1950;}
-#grad .vLines      :first-child  {counter-reset: tickValue 1920;}
-#cap  .hLines :not(:first-child) {counter-increment: tickValue 200;}
-#grad .hLines :not(:first-child) {counter-increment: tickValue 100;}
-      .vLines :not(:first-child) {counter-increment: tickValue 10;}
-
 .hLines ::before,
 .vLines ::before {
 	position: absolute;
@@ -74,51 +71,39 @@
 	line-height: 0;
 }
 .hLines ::before {
-	right: calc(100% + .5em);
+	right: calc(100% + var(--unit));
 }
 .vLines ::before {
-	left: -1.1em;
 	bottom: -1.1em;
+	left: -1.1em;
 }
-
 
 .columns,
 .columns * {
-	background-size: auto 100%;
-	background-repeat: no-repeat;
+	background-size: cover;
 }
 .columns {
 	display: flex;
-	box-sizing: border-box;
+	background-position: center;
 }
 .columns * {
+	font-size: .9em;
 	position: relative;
 	flex: auto;
-	font-size: .9em;
 	cursor: pointer;
-	counter-increment: year jpYear;
+	background-position: calc((var(--n) - 1) / (var(--nmax) - 1) * 100%);
 }
-
-#cap  .columns        {background-image: url(img/cap.svg#lines);}
-#grad .columns        {background-image: url(img/grad.svg#areas);}
-#cap  .columns *      {background-position: calc((var(--n) - 1) / (.73 - .02) * 1%);}
-#grad .columns *      {background-position: calc((var(--n) - 1) / (1.00 - .02) * 1%);}
-#cap  .columns :hover {margin: 0 calc(-.5%/.73);}
-#grad .columns :hover {margin: 0 calc(-.5%/1.00);}
-#cap  .columns,
-#cap  .columns :hover {padding: 0 calc(.5%/.73);}
-#grad .columns,
-#grad .columns :hover {padding: 0 calc(.5%/1.00);}
-#cap  .columns :nth-child(odd):hover  {background-image: url(img/cap.svg#odd);}
+.columns :hover {
+	padding: 0 calc(var(--unit) / 2);
+	margin: 0 calc(var(--unit) / -2);
+}
+#cap  .columns {background-image: url(img/cap.svg#lines);}
+#grad .columns {background-image: url(img/grad.svg#areas);}
+#cap  .columns :nth-child(odd ):hover {background-image: url(img/cap.svg#odd);}
 #cap  .columns :nth-child(even):hover {background-image: url(img/cap.svg#even);}
-#grad .columns :nth-child(odd):hover  {background-image: url(img/grad.svg#odd);}
+#grad .columns :nth-child(odd ):hover {background-image: url(img/grad.svg#odd);}
 #grad .columns :nth-child(even):hover {background-image: url(img/grad.svg#even);}
 #grad .columns :first-child           {pointer-events: none;}
-
-::-ms-backdrop, .columns {transform: scale(1,-1);pointer-events: none;} /* IE11 */
-::-ms-backdrop, #cap  .columns {background-image: url(img/cap.svg#odd);}
-::-ms-backdrop, #grad .columns {background-image: url(img/grad.svg#odd);}
-
 
 .columns ::before,
 .columns ::after {
@@ -127,7 +112,7 @@
 	left: 1.5em;
 	width: 10em;
 	padding: 0 .5em;
-	border: .1em solid;
+	border: .1em solid transparent;
 	pointer-events: none;
 	white-space: pre;
 	line-height: .4;
@@ -139,87 +124,13 @@
 	left: -12em;
 }
 .columns ::before {
-	margin-right: -13.5em;
 	border-radius: 1em;
 	background-color: rgba(255,255,255,.9);
 	box-shadow: .2em .2em 1em #555;
 }
 .columns ::after {
 	text-align: right;
-	border-color: transparent;
 }
-.columns :hover::after {
-	content: "　\a\a\a\a\a\a\a\a\a\a"
-		var(--data-1,"") "\a\a\a\a"
-		var(--data-2,"") "\a\a\a\a"
-		var(--data-3,"") "\a\a\a\a"
-		var(--data-4,"");
-}
-[data-1] {--data-1: attr(data-1) "名";}
-[data-2] {--data-2: attr(data-2) "名";}
-[data-3] {--data-3: attr(data-3) "名";}
-[data-4] {--data-4: attr(data-4) "名";}
-
-
-.columns :hover::before {
-	content: "　\a\a"
-		"　　　" counter(year) "年度\a\a\a"
-		"　  （" var(--era-name, "令和")
-		var(--era-year, counter(jpYear)) "年度）\a\a\a\a\a"
-		var(--data-1-left,"三原高校") "\a\a\a\a"
-		var(--data-2-left,"志知高校") "\a\a\a\a"
-		var(--data-3-left,"淡路三原高校")
-		var(--data-4-left,"") "\a\a\a";
-	border-color: var(--border-color, darkcyan);
-}
-
-#cap  .columns {counter-reset: year 1949 jpYear 24;}
-#grad .columns {counter-reset: year 1919 jpYear 8;}
-
-#cap  .columns :nth-child(70), /* 40 + 30 = 70  令和 */
-#grad .columns :nth-child(100),/* 70 + 30 = 100 */
-#cap  .columns :nth-child(40), /* 40 + 24 = 64  平成 */
-#grad .columns :nth-child(70), /* 70 -  7 = 63  */
-#grad .columns :nth-child(7) { /*  7 +  8 = 15  昭和 */
-	counter-reset: jpYear 0;
-	--era-year: "元";
-}
-#cap  .columns :nth-child(-n+69),
-#grad .columns :nth-child(-n+99) {--era-name: "平成";}
-#cap  .columns :nth-child(-n+39),
-#grad .columns :nth-child(-n+69) {--era-name: "昭和";}
-#grad .columns :nth-child(-n+6)  {--era-name: "大正";}
-
-#grad .columns :nth-child(-n+55) {
-	--data-2-left: "洲高緑分校";
-	--data-3-left: "洲高西淡分校";
-	--data-4-left: "\a\a\a\a洲高南淡分校";
-	--border-color: dodgerblue;
-}
-#grad .columns :nth-child(-n+41) {
-	--data-2-left: "洲高広田分校";
-}
-#grad .columns :nth-child(-n+38) {
-	--data-3-left: "洲高御原分校";
-}
-#grad .columns :nth-child(-n+36) {
-	--data-4-left: "\a\a\a\a洲高賀集分校";
-}
-#grad .columns :nth-child(-n+31) {
-	--data-1-left: "組合立三原高女";
-	--data-2-left: "県立三原高女";
-	--data-3-left: "三原高女併設中";
-	--data-4-left: "\a\a\a\a三原高校";
-	--border-color: gold;
-}
-#grad .columns :nth-child(-n+24) {
-	--data-1-left: "真如裁縫女学校";
-	--data-2-left: "真如実科高女";
-	--data-3-left: "真如高等女学校";
-	--data-4-left: "";
-	--border-color: lightsalmon;
-}
-
 
 .graph ul {
 	font-size: .95em;
@@ -228,14 +139,14 @@
 	list-style-type: none;
 	text-align: center;
 }
-@media not all and (max-width:792px) {
+@media not all and (max-width:800px) {
 	#cap ul {
 		position: absolute;
 		left: 30rem;
 		top: 50%;
 		width: 8em;
-		text-align: left;
 		transform: translateY(-50%);
+		text-align: left;
 	}
 }
 .graph li,
@@ -248,26 +159,92 @@
 .graph li::before {
 	width: .5em;
 	height: .5em;
-	border: .05em solid;
-	margin: .25em .25em 0 0;
+	border: .05em solid #000;
+	margin: 0 .25em 0 0;
 	content: "";
-	vertical-align: text-top;
 }
-
 #cap li::before {
 	opacity: .9;
 	border-color: #999;
 }
 #grad li::before {
 	opacity: .4;
-	border-color: #111;
 }
-#cap  li:nth-child(1)::before,
-#grad li:nth-child(3)::before {background-color: rgb(0, 86, 56);}
-#cap  li:nth-child(2)::before,
-#grad li:nth-child(5)::before {background-color: limegreen;}
-#cap  li:nth-child(3)::before,
-#grad li:nth-child(6)::before {background-color: darkcyan;}
-#grad li:nth-child(1)::before {background-color: lightsalmon;}
-#grad li:nth-child(2)::before {background-color: gold;}
-#grad li:nth-child(4)::before {background-color: dodgerblue;}
+.graph li.mihara::before  {background-color: rgb(0, 86, 56);}
+.graph li.shichi::before  {background-color: limegreen;}
+.graph li.awaji::before   {background-color: darkcyan;}
+.graph li.shinnyo::before {background-color: lightsalmon;}
+.graph li.kojo::before    {background-color: gold;}
+.graph li.sumoto::before  {background-color: dodgerblue;}
+
+.columns :hover::after {
+	content: "　\a\a \a\a\a \a\a\a\a\a"
+		var(--data-1-value, "") "\a\a\a\a"
+		var(--data-2-value, "") "\a\a\a\a"
+		var(--data-3-value, "") "\a\a\a\a"
+		var(--data-4-value, "");
+}
+[data-1] {--data-1-value: attr(data-1) "名";}
+[data-2] {--data-2-value: attr(data-2) "名";}
+[data-3] {--data-3-value: attr(data-3) "名";}
+[data-4] {--data-4-value: attr(data-4) "名";}
+
+.columns :hover::before {
+	content: "　\a\a"
+		"　　　" counter(year) "年度\a\a\a"
+		"　  （" var(--era-name, "令和")
+		var(--era-year, counter(jpYear)) "年度）\a\a\a\a\a"
+		var(--data-1-name, "三原高校") "\a\a\a\a"
+		var(--data-2-name, "志知高校") "\a\a\a\a"
+		var(--data-3-name, "淡路三原高校")
+		var(--data-4-name, "") "\a\a\a";
+	border-color: var(--column-color, darkcyan);
+}
+#cap  .columns {counter-reset: year 1950 jpYear 25;}
+#grad .columns {counter-reset: year 1920 jpYear 9;}
+.columns :not(:first-child) {
+	counter-increment: year jpYear;
+}
+#cap  .columns :nth-child(70), /*  70 - 40 + 1 = 31  令和 */
+#grad .columns :nth-child(100),/* 100 - 70 + 1 = 31  令和 */
+#cap  .columns :nth-child(40), /*  25 + 40 - 1 = 64  平成 */
+#grad .columns :nth-child(70), /*  70 -  7 + 1 = 64  平成 */
+#grad .columns :nth-child(7) { /*   9 +  7 - 1 = 15  昭和 */
+	counter-reset: jpYear 0;
+	--era-year: "元";
+}
+#cap  .columns :nth-child(-n+69),
+#grad .columns :nth-child(-n+99) {--era-name: "平成";}
+#cap  .columns :nth-child(-n+39),
+#grad .columns :nth-child(-n+69) {--era-name: "昭和";}
+#grad .columns :nth-child(-n+6)  {--era-name: "大正";}
+
+#grad .columns :nth-child(-n+55) {
+	--data-2-name: "洲高緑分校";
+	--data-3-name: "洲高西淡分校";
+	--data-4-name: "\a\a\a\a洲高南淡分校";
+	--column-color: dodgerblue;
+}
+#grad .columns :nth-child(-n+41) {
+	--data-2-name: "洲高広田分校";
+}
+#grad .columns :nth-child(-n+38) {
+	--data-3-name: "洲高御原分校";
+}
+#grad .columns :nth-child(-n+36) {
+	--data-4-name: "\a\a\a\a洲高賀集分校";
+}
+#grad .columns :nth-child(-n+31) {
+	--data-1-name: "組合立三原高女";
+	--data-2-name: "県立三原高女";
+	--data-3-name: "三原高女併設中";
+	--data-4-name: "\a\a\a\a三原高校";
+	--column-color: gold;
+}
+#grad .columns :nth-child(-n+24) {
+	--data-1-name: "真如裁縫女学校";
+	--data-2-name: "真如実科高女";
+	--data-3-name: "真如高等女学校";
+	--data-4-name: "";
+	--column-color: lightsalmon;
+}

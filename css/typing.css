@@ -34,7 +34,7 @@
 	text-align: center;
 	background-color: #ddd;
 }
-#categoryTabs [for="_about"] {
+#categoryTabs [for="about"] {
 	float: right;
 	margin: 0;
 }
@@ -54,7 +54,7 @@
 	height: 19em;
 	padding: 1.5em 1em 1em 1.25em;
 }
-@media (max-width:792px) {
+@media (max-width:800px) {
 	[name="tab"] + section {
 		overflow: scroll;
 		padding: 1.5em .75em 0 1em;
@@ -75,7 +75,7 @@
 	width: 10em;
 	border: .05em solid #aaa;
 	margin: 0 1em .3em 0;
-	background-color: #e9e9e9;
+	background-color: #eee;
 	line-height: 1.9;
 	cursor: pointer;
 }
@@ -83,11 +83,11 @@
 	background-color: transparent;
 }
 /* :not(:checked) + section のために優先度を落とす */
-[id="_about"] + section {
+[id="about"] + section {
 	display: flex;
 	justify-content: space-between;
 }
-#_about + section h3 {
+#about + section h3 {
 	padding: 0;
 	border: none;
 	margin: 0 0 1em;
@@ -135,7 +135,7 @@
 @supports(--css: variables) {
 	#rankList {display: block;}
 }
-@media (max-width:792px) {
+@media (max-width:800px) {
 	#rankList {
 		overflow-y: hidden;
 		width: 4.5em;
@@ -221,7 +221,7 @@
 
 
 
-@media (max-width:792px) {
+@media (max-width:800px) {
 	#typingScreen,
 	#resultsScreen {
 		font-size: calc(23.5em / 39);
@@ -428,13 +428,13 @@ kbd.onTyped,
 	--btm-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 10%));
 }
 
-#hankaku {width: 1.4em;}
-#tab     {width: 2.75em;}
-#caps    {width: 3.75em;}
-#lshift  {width: 5em;}
-#rshift  {width: 3.9em;}
+#hankaku  {width: 1.4em;}
+#tab      {width: 2.75em;}
+#capslock {width: 3.75em;}
+#shift    {width: 5em;}
+#rShift   {width: 3.9em;}
 #enter {
-	--rows-shift: 1em; /* tab-width - caps-width */
+	--rows-shift: 1em; /* tab-width - capslock-width */
 	--enter-width: 2.5em;
 	position: relative;
 	width: calc(var(--enter-width) + var(--rows-shift));

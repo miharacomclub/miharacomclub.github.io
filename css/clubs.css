@@ -50,7 +50,7 @@
 	padding: .07em 0 .03em .1em;
 	background-repeat: no-repeat;
 }
-::-ms-backdrop, #bars .abo, #bars span:not(:only-child) {display: none;} /* IE11 */
+#bars .abo, #bars span:not(:only-child) {display: none\0;} /* IE8+ */
 
 .integrated {
 	top: .6em;
@@ -129,18 +129,23 @@
 }
 
 
-#columns        {counter-reset: year 1943 jpYear 18;}
-#columns *      {counter-increment: year jpYear;}
-#columns :hover {background-color: rgba(0,0,0,.2);}
-
+#columns {
+	counter-reset: year 1944 jpYear 19;
+}
+#columns :not(:first-child) {
+	counter-increment: year jpYear;
+}
+#columns :hover {
+	background-color: rgba(0,0,0,.2);
+}
 #columns :hover::before,
 #columns :hover::after {
 	content: counter(year) "年度（"
 		var(--era-name, "令和")
 		var(--era-year, counter(jpYear)) "年度）";
 }
-#columns :nth-child(76),  /* 76 - 46 = 30 令和 */
-#columns :nth-child(46) { /* 46 + 18 = 64 平成 */
+#columns :nth-child(76),  /* 76 - 46 + 1 = 31 令和 */
+#columns :nth-child(46) { /* 19 + 46 - 1 = 64 平成 */
 	counter-reset: jpYear;
 	--era-year: "元"
 }

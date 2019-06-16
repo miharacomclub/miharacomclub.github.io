@@ -8,19 +8,15 @@ body {
 	max-width: 99%;
 	margin: auto;
 	-webkit-text-size-adjust: 100%;
-	-moz-text-size-adjust: 100%;
-	-ms-text-size-adjust: 100%;
-	text-size-adjust: 100%;
 	background-color: hsl(0,0%,99%);
 }
-@media (max-width:792px) {
+@media (max-width:800px) {
 	body {width: 25em;}
 }
 @media (max-width:468px) {
 	html {font-size: 3.85vw;}
 }
 
-/* h1,h2は1回のみ使用する */
 h1 {
 	font-size: 1.65em;
 	position: relative;
@@ -38,10 +34,8 @@ h1::before {
 	width: 100%;
 	height: 100%;
 	content: "";
-	background-repeat: no-repeat;
-	background-size: auto 105%, auto 117%;
-	background-image: url(img/sanae.png), url(img/suwako.png);
-	background-position: calc(50% - 5.7em) 0, calc(50% + 5.7em) 0;
+	background: no-repeat url(img/sanae.png)  calc(50% - 5.7em) 0 / auto 105%,
+	            no-repeat url(img/suwako.png) calc(50% + 5.7em) 0 / auto 117%;
 }
 h2 {
 	font-size: 1.38em;
@@ -50,8 +44,8 @@ h2 {
 	border-width: 0 0 .1em .7em;
 	margin: 0 0 .8em -.7em;
 }
-@media (max-width:792px) {
-	h2 {margin: 0 0 .8em 0;}
+@media (max-width:800px) {
+	h2 {margin-left: 0;}
 }
 
 #nav {
@@ -79,7 +73,7 @@ h2 {
 #article {
 	margin: 1.5em 1.25em 0 2.75em;
 }
-@media (max-width:792px) {
+@media (max-width:800px) {
 	#article {margin: 1em .65em 0 .85em;}
 }
 #footer {
@@ -87,10 +81,10 @@ h2 {
 	text-align: center;
 }
 
-#onlyIE { /* IE8以降 */
+#onlyIE {
 	display: none;
 	font-weight: bold;
-	display: block\0;
+	display: block\0; /* IE8+ */
 }
 .clear::after,
 h2 ~ section::after {
@@ -144,21 +138,26 @@ cite   {font-style: normal;}
 cite::before {content: "『";}
 cite::after  {content: "』";}
 
-@media (max-width:792px) {
+@media (max-width:800px) {
 	p br {display: none;}
 }
 
 .listTable {
 	line-height: 2;
+	border-top: 1px solid #ccc;
 }
 .listTable tr {
 	border-bottom: 1px solid #ccc;
 }
-.listTable tr:first-child {
-	border-top: 1px solid #ccc;
-}
-.listTable th, .listTable td {
+.listTable th,
+.listTable td {
 	padding: 0 .25em;
+}
+@supports (list-style-type: simp-chinese-informal) {
+	.jpNumberingList { /* cjk-ideographic 一. */
+		list-style-type: simp-chinese-informal; /* 一、 */
+		padding-left: 2.5em;
+	}
 }
 
 .fixedAspectRatio {
@@ -184,9 +183,10 @@ cite::after  {content: "』";}
 	width: 19em;
 	margin: 0 .5em .5em 0;
 }
-@media (max-width:792px) {
+@media (max-width:800px) {
 	.sxs + p,
-	.sxsImgs img + p {
+	.sxsImgs a:not([href]) + p,
+	.sxsImgs a[target="_blank"]:not([href*=":"]) + p {
 		clear: both;
 	}
 }

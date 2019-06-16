@@ -31,12 +31,14 @@ export default class {
 	static onKeyDown(key) {
 		if (key === "Escape") {
 			if (!startTime) return;
-			return resetTyping(), true;
+			resetTyping();
+			return true;
 
 		} else if (!startTime && key === "Tab") {
-			return $("#remainingNum")[
+			$("#remainingNum")[
 				document.activeElement === $("#remainingNum")? "blur": "focus"
-			](), true;
+			]();
+			return true;
 		}
 
 		const typedKbd = searchKbd(key);
@@ -65,7 +67,8 @@ export default class {
 					sounds.incorrect.playCount,
 					(new Date() - startTime) / 1000
 				];
-				return resetTyping(), typingSkills;
+				resetTyping();
+				return typingSkills;
 			};
 			moveToNextSentence();
 		}
@@ -172,17 +175,11 @@ const recolorSentencesAndKbds = () => {
 
 
 const searchKbd = key => {
-	// edgeはkbdEvent.codeに対応していない
-	return (key.length === 1 && $$("kbd").find(
-			kbd => kbd.textContent.toLowerCase() === key)
-		) || $("#" + ({
-			Hankaku: "hankaku",
-			Zenkaku: "hankaku",
-			Tab: "tab",
-			CapsLock: "caps",
-			Alphanumeric: "caps",
-			Shift: "lshift",
-			Backspace: "backspace",
-			Enter: "enter",
-		})[key]);
+	// EdgeはkbdEvent.codeに対応していない
+	const lowerCaseKey = key.toLowerCase();
+	return $$("kbd").find(kbd =>
+			kbd.textContent.toLowerCase() === lowerCaseKey
+			|| kbd.id === lowerCaseKey
+			|| kbd.dataset.otherId === lowerCaseKey
+		);
 };

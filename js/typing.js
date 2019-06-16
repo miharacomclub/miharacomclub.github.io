@@ -110,16 +110,23 @@ const onKeyDown = key => {
 
 		const result = Typing.onKeyDown(key);
 		if (key === "Escape" && !result) {
-			return screens.selection.show(), true;
+			screens.selection.show();
+			return true;
 		}
 		if (!Array.isArray(result)) return result;
 
 		updateTypingResults(result);
-		return screens.results.show(), true;
+		screens.results.show();
+		return true;
 
 	} else if (screens.results.isVisible()) {
-		if (key === "Escape") {return screens.selection.show(), true;}
-		else if (key === " ") {return screens.typing.show(), true;}
+		if (key === "Escape") {
+			screens.selection.show();
+			return true;
+		} else if (key === " ") {
+			screens.typing.show();
+			return true;
+		}
 	}
 };
 
@@ -131,8 +138,12 @@ if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android|Tablet|Mobile)/i)) {
 } else {
 	document.addEventListener("click", event => {
 		const el = event.target;
-		if (el.matches("[data-event-key]")) onKeyDown(el.dataset.eventKey);
-		else if (el.matches("button"))      readyTyping(el);
+		
+		if (el.matches("[data-event-key]")) {
+			onKeyDown(el.dataset.eventKey);
+		} else if (el.matches("button")) {
+			readyTyping(el);
+		}
 	});
 	document.addEventListener("keydown", event => {
 		!(event.ctrlKey || event.metaKey || event.altKey) &&

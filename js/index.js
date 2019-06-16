@@ -49,7 +49,7 @@ const _parseJpDateStr = jpDateStr => {
 		return [ymd, eraNames[eraIndex] + jpYear];
 	}
 
-	// 二十三 → 2103 → 23
+	// 二十三 → (2)1?0(3) → 23
 	const ymd = splitIntoYmd(jpDateStr.slice(2)).map(v => +v
 		.replace(/\D/g, kanji => "元一二三四五六七八九十".indexOf(kanji) || 1)
 		.replace(/(\d)\d?\d(\d)/, "$1$2")

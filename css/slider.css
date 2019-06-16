@@ -18,7 +18,7 @@
 	opacity: 0;
 	transition: opacity .5s linear;
 }
-#slider :checked + * + figure {
+#slider :checked + label + figure {
 	opacity: 1;
 	z-index: 1;
 }
@@ -46,7 +46,7 @@
 #btns {
 	height: 18em;
 }
-@media (max-width:792px) {
+@media (max-width:800px) {
 	#slider figure img,
 	#btns {
 		height: 14em;

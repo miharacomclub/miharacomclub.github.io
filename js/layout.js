@@ -3,8 +3,9 @@ const updateLayout = () => {
 
 	for (const el of $$("[data-period]")) {
 		const period = `${el.dataset.period},9999`.split(",");
-		el.style.display = period[0] <= y && y <= period[1]? "block": "none";
+		el.style.display = (period[0] <= y && y <= period[1])? "block": "none";
 	}
+
 	const photoYear = [1947,1968,1970,1975,1982,1986,2004][
 		[1951,1968,1972,1978,1984,1989,1990].findIndex(v => y <= v)
 	] || 2009;
@@ -16,13 +17,7 @@ const updateLayout = () => {
 };
 
 
-if (location.hash) $("#range").value = location.hash.slice(1);
-$("#range").addEventListener("input", updateLayout);
-updateLayout();
-$("#displayDialog").checked = false;
-
-
-document.addEventListener("click", event => {
+const displayDialogOnClick = event => {
 	if (!event.target.matches("[data-captions] .building, [data-captions] .cover")) return;
 
 	const g = event.target.parentNode;
@@ -31,16 +26,31 @@ document.addEventListener("click", event => {
 
 	for (const [i, caption] of g.dataset.captions.split(",").entries()) {
 		const img = `<img src=/src/buildings/${g.dataset.imgName}${i + 1}.jpg>`;
+	
 		$("#slider").innerHTML += `
-			<input type=radio name=slide id=slide${i + 1}${i? "": " checked"}>
-			<label for=slide${i + 1}>${img}</label>
-			<figure><a>${img}</a><figcaption>${caption}</figcaption></figure>`;
+			<input type="radio" name="slide" id="slide${i + 1}" ${i? "": "checked"}>
+			<label for="slide${i + 1}">${img}</label>
+			<figure>
+				<a>${img}</a>
+				<figcaption>${caption}</figcaption>
+			</figure>`;
 	}
 
-	$("#slider").innerHTML += "<div id=btns></div>";
+	$("#slider").innerHTML += `<div id="btns"></div>`;
 	$("#btns").append(...$$("#slider label").map(label => label.cloneNode(false)));
+
+	// スライドが2枚のとき、ボタンが足らなくなるので増やす
 	if ($$("#btns label").length === 2) $("#btns").innerHTML += $("#btns").innerHTML;
 
+	$("#dialog").removeAttribute("style");
 	$("#displayDialog").checked = true;
 	enableToOpenImgOnClick($("#slider"));
-});
+}
+
+
+if (location.hash) $("#range").value = location.hash.slice(1);
+updateLayout();
+
+$("#range").addEventListener("input", updateLayout);
+document.addEventListener("click", displayDialogOnClick);
+$("#displayDialog").checked = false;
