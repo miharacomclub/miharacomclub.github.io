@@ -48,7 +48,7 @@ header {
 	counter-reset: choiceIndex;
 	counter-increment: qCnt;
 }
-_:-ms-lang(x), header {
+_:-ms-lang(x), header { /* Edge */
 	border-top-width: 0;
 }
 div:last-of-type {
@@ -135,6 +135,7 @@ small {
 	background-color: hsl(0,0%,99%);
 	display: none;
 }
+:checked ~ .forceSup small,
 :checked ~ :hover small,
 :checked ~ :focus small {
 	display: table;
@@ -200,7 +201,7 @@ a:hover img {
 #darkgreen  {background-color: rgb(0,86,56);}
 #steelgreen {background-color: darkslategray;}
 #freshgreen {background-color: lightgreen;}
-[id$=green] {
+[id$="green"] {
 	margin: 0 .1em;
 	padding: 0 .4em;
 }
