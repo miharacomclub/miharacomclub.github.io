@@ -21,7 +21,7 @@ const displayDialogOnClick = event => {
 	if (!event.target.matches("[data-captions] .building, [data-captions] .cover")) return;
 
 	const g = event.target.parentNode;
-	$("#dialog h3").textContent = $("text:last-of-type", g).textContent;
+	$("dialog h3").textContent = $("text:last-of-type", g).textContent;
 	$("#slider").innerHTML = "";
 
 	for (const [i, caption] of g.dataset.captions.split(",").entries()) {
@@ -42,8 +42,7 @@ const displayDialogOnClick = event => {
 	// スライドが2枚のとき、ボタンが足らなくなるので増やす
 	if ($$("#btns label").length === 2) $("#btns").innerHTML += $("#btns").innerHTML;
 
-	$("#dialog").removeAttribute("style");
-	$("#displayDialog").checked = true;
+	$("dialog").setAttribute("open", ""); // dialog.open = true
 	enableToOpenImgOnClick($("#slider"));
 }
 
@@ -53,4 +52,10 @@ updateLayout();
 
 $("#range").addEventListener("input", updateLayout);
 document.addEventListener("click", displayDialogOnClick);
-$("#displayDialog").checked = false;
+
+for (const el of $$("dialog, #close")) {
+	el.addEventListener("click", event => {
+		event.target === event.currentTarget && 
+		$("dialog").removeAttribute("open"); // dialog.open = false
+	});
+}
