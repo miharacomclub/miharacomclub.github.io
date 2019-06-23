@@ -132,7 +132,7 @@ const onKeyDown = key => {
 
 
 if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android|Tablet|Mobile)/i)) {
-    onlyIE.textContent = "このゲームはパソコンでお楽しみください。";
+	onlyIE.textContent = "このゲームはパソコンでお楽しみください。";
 	onlyIE.style.display = "block";
 
 } else {

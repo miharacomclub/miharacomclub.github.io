@@ -153,14 +153,14 @@
 	/* 0以上がtrue、0未満がfalse */
 	/* Arrow以上のランクは、score-rangeが一定である必要がある */
 	--is-display-rank-name: calc(var(--high-score) - var(--required-score));
-	--is-display-rank-area: calc(var(--is-display-rank-name) + var(--score-range, 0));
+	--is-display-rank-area: calc(var(--is-display-rank-name) + var(--score-range, 50));
 	position: relative;
 	font-size: .95em;
 	width: 100%;
 	height: 100%;
-	max-height: calc(var(--score-range) * var(--unit-height));
+	max-height: calc(var(--score-range, 50) * var(--unit-height));
 }
-#rankList li:nth-last-child(n+7) { /* Falcon */
+#rankList li:nth-last-child(n+7) { /* Falcon+ */
 	height: calc((var(--is-display-rank-area) + 1) * 99em);
 	z-index: var(--is-display-rank-area);
 }
@@ -177,7 +177,7 @@
 	background-color: hsl(0,0%,99%);
 	pointer-events: none;
 }
-#rankList li:nth-last-child(n+6)::before { /* Arrow */
+#rankList li:nth-last-child(n+6)::before { /* Arrow+ */
 	left: -5em;
 	max-width: calc(100% + 10em);
 	/* widthが0になると、？が隠れる */
@@ -373,8 +373,6 @@
 	--key-width: 2.25em;
 	--key-height: 2.1em;
 	--border-width: .2em;
-	/* calc(border-width / key-height) とすると、分母に単位があるためエラーとなる */
-	--border-width-rate: calc(100% * .2 / 2.1);
 	--key-gap: .2em;
 	--hue-saturation: 0,0%;
 	--max-lightness: 100%;
@@ -444,16 +442,15 @@ kbd.onTyped,
 	position: absolute;
 	top: calc(-1 * var(--border-width));
 	box-sizing: border-box;
-	z-index: 1;
+	border: inherit;
+	background-color: inherit;
 	content: "";
 }
 #enter::before {
 	left: calc(var(--rows-shift) - var(--border-width));
 	width: var(--enter-width);
 	height: calc(var(--key-height) * 2 + var(--key-gap) * 2);
-	border: inherit;
 	box-shadow: inherit;
-	background-color: inherit;
 	border-radius: inherit;
 	border-top-left-radius: 0;
 }
@@ -461,10 +458,6 @@ kbd.onTyped,
 	left: 0;
 	width: var(--rows-shift);
 	height: var(--key-height);
-	--btm-stop-rate: calc(100% - var(--border-width-rate));
-	/* edgeはdouble-position color stopsに対応していない */
-	background-image: linear-gradient(to bottom,
-		var(--top-color) var(--border-width-rate),
-		var(--bg-color) var(--border-width-rate), var(--bg-color) var(--btm-stop-rate),
-		var(--btm-color) var(--btm-stop-rate));
+	border-left: none;
+	border-right: none;
 }
