@@ -115,7 +115,7 @@ const isKeyCorrectAndFilterCands = key => {
 	if (!(key.match(/[a-z]|\d/i) || puncMarks.some(mark => mark[0] === key))) return;
 
 	const cands = (romajis[kanaIndex] || []).filter(cand => cand[romajiIndex] === key);
-	if (!cands.length) return "incorrect";  // [] はfalsyではない
+	if (!cands.length) return "incorrect"; // [] はfalsyではない
 	romajis[kanaIndex] = cands;
 
 
