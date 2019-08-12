@@ -28,3 +28,12 @@ audio {
 .lyricsWrapper ol li {
 	margin: 0 2em 1em 2.5em;
 }
+@media (min-width:801px) {
+	.lyricsWrapper ol li:nth-child(2) {
+		order: 3;
+	}	
+}
+.lyricsWrapper ol li:only-child {
+	list-style-type: none;
+	margin-left: 1.5em;
+}
