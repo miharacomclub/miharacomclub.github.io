@@ -76,6 +76,11 @@
 	width: 19em;
 	border: .15em solid crimson;
 }
+
+.spacePadding::before {
+	content: "1";
+	visibility: hidden;
+}
 </style>
 
 <header id="header">
@@ -91,7 +96,7 @@
 <section>
 	<h3>食堂について</h3>
 	<p>
-		食堂は、格技場棟（A棟付近にある校舎）の1階にあります。<br>
+		食堂は、格技場棟（A棟の東にある校舎）の1階にあります。<br>
 		口頭で様々なメニューを注文できます。<br>
 		また、1～3限目の休み時間に予約をすると、順番が優先されます。
 	</p>
@@ -156,7 +161,7 @@
 	</div>
 	<ul>
 		<li>メニュー表に触れるとメニューの写真が表示されます。
-		<li>大盛りは通常の値段+80円です。
+		<li>通常の値段に80円足すと、大盛りを注文できます。
 		<li>販売を休止している場合があります。
 	</ul>
 </section>
@@ -169,7 +174,7 @@
 			<th>値段
 		<tr>
 			<td>おにぎり
-			<td>80
+			<td class="spacePadding">80
 		<tr>
 			<td>サンドイッチ
 			<td>100
@@ -190,7 +195,7 @@
 			<td>130
 		<tr>
 			<td>ハッシュドポテト
-			<td>80
+			<td class="spacePadding">80
 		<tr>
 			<td>ポテト
 			<td>100
