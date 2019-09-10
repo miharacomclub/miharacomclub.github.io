@@ -118,7 +118,7 @@ const moveToNextSentence = () => {
 	RomajiJS.init(lines[0][2]);
 
 	$("#rubyBase").textContent		= lines[0][0];
-	$("#nextRubyBase").textContent	= lines[1][0] || "";
+	$("#nextRubyBase").textContent	= (lines[1] || [""])[0];
 	$("#rubySentence").innerHTML	= `<span></span><span>${lines[0][1]}</span>`;	
 	$("#meter").style.setProperty("--value", `${rm.value / lineMax * 100}%`);
 };
