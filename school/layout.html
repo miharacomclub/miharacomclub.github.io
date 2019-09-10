@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta name="viewport" content="width=device-width">
 <link rel="stylesheet" href="/css/style.css">
-<script src="/js/index.js" defer></script>
+<script src="/js/index.js" type="module"></script>
 
 <title>校舎の変遷｜淡路三原高校コンピュータ部</title>
 <link rel="stylesheet" href="/css/slider.css">
@@ -57,7 +57,7 @@
 	<path class="building" d="M819,1760 C 1150,1832 1324,1924 1600,1400 C 1600,1400 1696,1212 1720,1120 C 1720,1120 1796,856 1716,716 L1125,444 z"/>
 	<text class="large" x="1090" y="870" dx="0,30,30,30,30,30,30" dy="0,20,20,20,20,20,20"><!--旧-->第一グラウンド</text>
 </g>
-<g data-period="1985" data-img-name="ground1" data-captions="外観1,外観2,A棟渡り廊下から見た外観">
+<g data-period="1985" data-img-name-prefix="ground1" data-captions="外観1,外観2,外観3,A棟渡り廊下から見た外観">
 	<polygon class="building" points="1096,625 1868,805 1597,1950 875,1770"/>
 	<text class="large" x="1120" y="870" dx="0,35,35,35,35,35,35" dy="0,20,20,20,20,20,20">第一グラウンド</text>
 </g>
@@ -67,7 +67,7 @@
 	<path class="building" d="M1742,707 L1130,421 L1095,62 C 1095,62 1400,0 1520,234 C 1520,234 1630,370 1800,406 C 1800,406 2000,450 1850,600 z"/>
 	<text class="large" x="1200" y="310" dx="0,30,30,30,30,30,30" dy="0,40,40,40,40,40,40"><!--旧-->第二グラウンド</text>
 </g>
-<g data-period="1985" data-img-name="ground2" data-captions="外観1,外観2">
+<g data-period="1985" data-img-name-prefix="ground2" data-captions="外観1,外観2,第二グラウンドと石碑">
 	<polygon class="building" points="1125,170 1966,390 1876,763 1105,581 1146,371"/>
 	<text class="large" x="1230" y="470" dx="0,30,30,30,30,30,30" dy="0,20,20,20,20,20,20">第二グラウンド</text>
 </g>
@@ -84,7 +84,7 @@
 	<polyline class="building" points="800,350 800,578 575,578 528,258 527,260 508,119 802,55"/>
 	<text class="large" x="640" y="250" dx="0,-60,-60" dy="0,80,80"><!--旧-->球技場</text>
 </g>
-<g data-period="1990" data-img-name="ground3" data-captions="球技場">
+<g data-period="1990" data-img-name-prefix="ground3" data-captions="球技場">
 	<rect class="building area" x="559" y="127" width="212" height="160"/>
 	<text x="600,650,700" y="225">球技場</text>
 </g>
@@ -93,7 +93,7 @@
 	<rect class="cover" x="40" y="520" width="110" height="110"/>
 	<text x="75" y="565" dx="0,-40" dy="0,50"><!--旧-->正門</text>
 </g>
-<g data-period="1984" data-img-name="gate0" data-captions="正門">
+<g data-period="1984" data-img-name-prefix="gate0" data-captions="正門">
 	<line class="hideline" x1="89" y1="726" x2="91" y2="770" stroke-width="20"/>
 	<rect class="cover" x="15" y="640" width="110" height="210"/>
 	<text x="40,40" y="740,790">正門</text>
@@ -108,22 +108,22 @@
 	<path class="cover" d="M25,1335 l30,190 h70 l-30,-190 z"/>
 	<text x="35" y="1380" dx="0,-31,-31,-31" dy="0,45,45,45">旧通用門</text>
 </g>
-<g data-period="1984" data-img-name="gate1" data-captions="通用門">
+<g data-period="1984" data-img-name-prefix="gate1" data-captions="通用門">
 	<line class="hideline" x1="70" y1="1194" x2="70" y2="1224" stroke-width="20"/>
 	<rect class="cover" x="5" y="1110" width="100" height="190"/>
 	<text x="15,15,15,15" y="1155,1200,1245,1290">通用門①</text>
 </g>
-<g data-period="1984" data-img-name="gate2" data-captions="通用門">
+<g data-period="1984" data-img-name-prefix="gate2" data-captions="通用門">
 	<line class="hideline" x1="104" y1="1424" x2="110" y2="1457" stroke-width="20"/>
 	<rect class="cover" x="25" y="1365" width="125" height="180"/>
 	<text x="30,40,50,60" y="1405,1450,1495,1540">通用門②</text>
 </g>
-<g data-period="1984" data-img-name="gate3" data-captions="通用門">
+<g data-period="1984" data-img-name-prefix="gate3" data-captions="通用門">
 	<line class="hideline" x1="164" y1="1719" x2="170" y2="1752" stroke-width="20"/>
 	<rect class="cover" x="0" y="1700" width="200" height="80"/>
 	<text x="0,38,80,120" y="1755">通用門③</text>
 </g>
-<g data-period="1985" data-img-name="gate4" data-captions="通用門">
+<g data-period="1985" data-img-name-prefix="gate4" data-captions="通用門">
 	<line class="hideline" x1="201" y1="1912" x2="208" y2="1942" stroke-width="20"/>
 	<rect class="cover" x="25" y="1883" width="205" height="80"/>
 	<text x="30,70,110,150" y="1940">通用門④</text>
@@ -144,7 +144,7 @@
 	<rect class="building" x="245" y="330" width="280" height="190"/>
 	<text x="280" y="440" dx="0,20,20,20">旧体育館</text>
 </g>
-<g data-period="1990" data-img-name="gym" data-captions="体育館">
+<g data-period="1990" data-img-name-prefix="gym" data-captions="体育館">
 	<rect class="building" x="365" y="323" width="385" height="236"/>
 	<text x="415,465,515,565,615,665" y="460">体育館兼講堂</text>
 </g>
@@ -220,14 +220,14 @@
 	<path class="building" d="M800,1755 L450,1650 L332,1626 L132,1556 L110,1470 L416,1556 L498,1470 L840,1564 z"/>
 	<text class="large" x="470" y="1600" dx="0,20,20,20" dy="0,20,20,20">神社境内</text>
 </g>
-<g data-period="1982" data-img-name="buildingA" data-captions="A棟玄関前,B棟から見たA棟,コモンスペース,槌賀記念室">
+<g data-period="1982" data-img-name-prefix="buildingA" data-captions="A棟玄関前,B棟から見たA棟,コモンスペース,胸像,槌賀記念室" data-special-img-names=",,,tsuchiga1,tsuchiga2">
 	<polygon data-to="B" data-period=",1982" points="694,934 694,960 707,960 707,1105 737,1105 737,934"/>
 	<rect data-to="B" x="225" y="930" width="30" height="175"/>
 	<polygon data-to="dininghall" data-period="1983" points="694,934 694,960 707,960 707,1105 737,1105 737,960 827,960 827,810 797,810 797,934"/>
 	<polygon class="building" points="185,844 185,929 258,929 275,945 360,945 377,929 653,929 653,959 692,959 692,929 726,929 726,856 242,856 242,844"/>
 	<text x="290" dx="0,15,15,15,15,15,15" y="907">A棟（管理棟<!-- 本館-->）</text>
 </g>
-<g data-period="1980" data-img-name="buildingD" data-captions="外観,ロッカールーム（生徒昇降口）,中庭から見た外観">
+<g data-period="1980" data-img-name-prefix="buildingD" data-captions="外観,中庭から見た外観,ロッカールーム（生徒昇降口）,昇降口棟2階">
 	<rect data-to="B" x="225" y="1176" width="30" height="24"/>
 	<rect data-to="C" x="225" y="1420" width="30" height="48"/>
 	<rect class="building" x="184" y="1200" width="90" height="220"/>
@@ -237,7 +237,7 @@
 	<rect class="building" x="192" y="1105" width="370" height="70"/>
 	<text x="240" y="1155" dx="0,20,20,20,20">普通教室棟<!--西--></text>
 </g>
-<g data-period="1980" data-img-name="buildingB" data-captions="外観1,外観2">
+<g data-period="1980" data-img-name-prefix="buildingB" data-captions="外観1,外観2,B棟2階">
 	<rect data-to="C" x="707" y="1177" width="30" height="106"/>
 	<rect class="building" x="192" y="1105" width="600" height="70"/>
 	<text x="280" y="1155" dx="0,15,15,15,15,15,15,15,15">B棟（普通教室棟）</text>
@@ -246,7 +246,7 @@
 	<rect class="building" x="187" y="1469" width="400" height="91"/>
 	<text x="250" y="1530" dx="0,20,20,20,20">特別教室棟<!--西--></text>
 </g>
-<g data-period="1976" data-img-name="buildingC" data-captions="C棟と中庭,B棟から見たC棟,C棟1階">
+<g data-period="1976" data-img-name-prefix="buildingC" data-captions="C棟と中庭,B棟から見たC棟,C棟1階">
 	<polygon class="building" points="187,1469 187,1560 792,1560 792,1283 708,1283 708,1464"/>
 	<text x="280" dx="0,15,15,15,15,15,15,15,15" y="1530">C棟（特別教室棟）</text>
 </g>
@@ -262,42 +262,42 @@
 	<polygon class="building" points="1045,231 898,248 901,279 1049,262 1045,231 1056,230 1039,42 815,68 831,256"/>
 	<text x="875,925,975" y="170">プール</text>
 </g>
-<g data-period="1983" data-img-name="dininghall" data-captions="外観1,外観2,B棟から見た外観">
+<g data-period="1983" data-img-name-prefix="dininghall" data-captions="外観1,外観2,B棟から見た外観,グラウンドから見た外観" data-special-img-names=",,,traces2">
 	<rect class="building" x="827" y="698" width="98" height="261"/>
-	<text x="857,857" y="800,880">食堂</text>
+	<text x="855,855,855,855" y="765,815,865,915">格技場棟</text>
 	<text display="none">格技場兼生徒集会室棟</text>
 </g>
-<g data-period="1979" data-img-name="court" data-captions="テニスコート,C棟とテニスコート">
+<g data-period="1979" data-img-name-prefix="court" data-captions="テニスコート,C棟とテニスコート">
 	<line class="frame" x1="449" y1="1595" x2="451" y2="1939"/>
 	<line class="frame" x1="710" y1="1606" x2="710" y2="1827"/>
 	<path class="building area" d="M489 1588 h184v105H489z M489 1712 h184v105H489z M489 1838 h184v105H489z"/>
 	<text x="520,560,600,520,560,600" y="1760,1760,1760,1800,1800,1800">テニスコート</text>
 </g>
-<g data-period="1984" data-img-name="yard" data-captions="外観1,外観2,校歌碑">
+<g data-period="1984" data-img-name-prefix="yard" data-captions="外観1,外観2,外観3,校歌碑">
 	<polygon class="building area" points="449,607 194,607 194,661 272,661 272,731 263,741 263,781 272,792 272,838 242,850 646,850 646,753 449,753"/>
 	<text x="310,380" y="760">前庭</text>
 </g>
-<g data-period="1982" data-img-name="hall" data-captions="人形会館">
+<g data-period="1982" data-img-name-prefix="hall" data-captions="人形会館">
 	<rect class="building" x="456" y="646" width="200" height="100"/>
 	<text x="473,515,557,599,641" y="715">人形会館</text>
 </g>
-<g data-period="1991" data-img-name="lecture" data-captions="講義棟入口,講義棟,C棟3階から見た外観">
+<g data-period="1991" data-img-name-prefix="lecture" data-captions="講義棟入口,講義棟,C棟3階から見た外観">
 	<polygon class="building" points="199,1631 199,1770 218,1770 218,1805 240,1805 240,1842 410,1842 410,1702 331,1702 331,1631"/>
 	<text x="240,290,345" y="1755,1755,1755">講義棟</text><!--2007 -->
 </g>
-<g data-period="1991" data-img-name="monuments" data-captions="三原、志知高校の碑">
+<g data-period="1991" data-img-name-prefix="monuments" data-captions="三原、志知高校の碑">
 	<rect class="building area" x="340" y="1631" width="70" height="60"/>
 	<text x="335" y="1620">校碑</text><!-- 2009 -->
 </g>
-<g data-period="1953" data-img-name="pergola" data-captions="パーゴラ">
+<g data-period="1953" data-img-name-prefix="pergola" data-captions="パーゴラ">
 	<polygon class="building" points="884,1123 860,1246 895,1252 921,1132"/>
 	<text x="825,830,818,812" y="1140,1145,1220,1260" rotate="0,90,0,0">パーゴラ</text>
 </g>
-<g data-period="1984" data-img-name="reimei" data-captions="黎明館">
+<g data-period="1984" data-img-name-prefix="reimei" data-captions="黎明館">
 	<polygon class="building" points="894,324 883,333 883,366 891,371 891,423 916,423 927,418 1076,418 1076,404 1084,397 1084,349 1076,344 1076,324 1060,324 1055,330 1017,330 1010,324 945,324 940,330 922,330 914,324"/>
 	<text x="930,970,1010" y="390">黎明館</text>
 </g>
-<g data-period="1964" data-img-name="artworks" data-captions="若い力,若い力,清い心,清い心">
+<g data-period="1964" data-img-name-prefix="artworks" data-captions="若い力,若い力,清い心,清い心">
 	<rect class="building area" x="76" y="394" width="140" height="70"/>
 	<text x="102,152" y="443">作品</text>
 </g>
@@ -306,11 +306,11 @@
 	<text data-period=",1978" x="560" y="1830">クラブ室</text>
 	<text data-period="1979" x="800" y="1820" dx="0,-50,-50,-50" dy="0,45,45,45">クラブ室</text>
 </g>
-<g data-period="1986" data-img-name="clubrooms1" data-captions="部室棟">
+<g data-period="1986" data-img-name-prefix="clubrooms1" data-captions="部室棟">
 	<rect class="building" x="815" y="590" width="210" height="40"/>
 	<text x="830" y="675">部室棟①</text>
 </g>
-<g data-period="1990" data-img-name="clubrooms2" data-captions="部室棟">
+<g data-period="1990" data-img-name-prefix="clubrooms2" data-captions="部室棟">
 	<rect class="building" x="775" y="440" width="40" height="100"/>
 	<text x="827" y="435" dx="0,-40,-40,-40" dy="0,45,45,45">部室棟②</text>
 </g>

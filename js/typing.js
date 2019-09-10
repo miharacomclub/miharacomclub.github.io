@@ -18,11 +18,10 @@ for (const scr of $$("[id$=Screen]")) {
 screens.selection.show();
 
 
-
 const storage = JSON.parse(localStorage.getItem("typing")) || {};
 
 const storeHighScore = score => {
-	if (!storage.highScore || storage.highScore < score) {
+	if ((storage.highScore || -1) < score) {
 		storage.highScore = score;
 		localStorage.setItem("typing", JSON.stringify(storage));
 	}
@@ -31,74 +30,73 @@ const storeHighScore = score => {
 };
 storeHighScore(0);
 
-
 // keyは整数なので、自動で昇順に並び替えられる
 const rankNamesAndColors = {};
 
-for (const item of $$("[data-required-kps]")) {
-	const rankName      = item.textContent.trim();
-	const rankColor     = item.style.getPropertyValue("color");
-	const requiredScore = +item.style.getPropertyValue("--required-score");
+$$("#rankList li").reduce((superior, item) => {
+	const rankName		= item.textContent.trim();
+	const rankColor		= item.style.color;
+	const requiredScore	= +item.style.getPropertyValue("--required-score");
+	const superiorScore	= +superior.style.getPropertyValue("--required-score") || 950;
+
+	item.dataset.score	= requiredScore;
+	item.dataset.requiredKps = Math.round(requiredScore / 60 / 0.97 ** 2 * 10) / 10;
+	item.style.setProperty("--score-range", superiorScore - requiredScore);
+	superior.style.setProperty("--inferior-score", requiredScore);
 
 	if (rankName.length > 1) {
 		rankNamesAndColors[requiredScore] = [rankName, rankColor];
-		continue;
+	} else {
+		const suffixes = ["-","","+","++"];
+		for (let score = requiredScore; score < superiorScore; score += 25) {
+			rankNamesAndColors[score] = [rankName + suffixes.shift(), rankColor];
+		}
 	}
-	const suffixes = ["-","","+","++"];
-	const scoreMax = requiredScore + +item.style.getPropertyValue("--score-range");
-
-	for (let score = requiredScore; score < scoreMax; score += 25) {
-		rankNamesAndColors[score] = [rankName + suffixes.shift(), rankColor];
-	}
-}
+	return item;
+});
+$("#rankList").style.visibility = "";
 
 
-
-const updateTypingResults = typingSkills => {
-	const [keystrokes, typos, time] = typingSkills;
-	const kps      = keystrokes / time;
-	const kpm      = kps * 60;
-	const accuracy = keystrokes / (keystrokes + typos);
-	const score    = Math.round(kpm * accuracy ** 2);
-
+const showResultsScreen = (keystrokes, typos, time) => {
+	const kps		= keystrokes / time;
+	const kpm		= kps * 60;
+	const accuracy	= keystrokes / (keystrokes + typos);
+	
+	const score		= Math.round(kpm * accuracy ** 2);
 	const [rankName, rankColor] = rankNamesAndColors[
 		Object.keys(rankNamesAndColors).reverse().find(value => value <= score)
 	];
-	const roundOff   = num => Math.round(num * 10) / 10;
-	const ddContents = [
-		score, rankName,
+
+	const roundOff	= num => Math.round(num * 10) / 10;
+	const ddValues	= [score, rankName,
 		roundOff(time), keystrokes, roundOff(kps),
 		roundOff(accuracy * 100), typos, Math.round(kpm)
 	];
-
-	for (const dd of $$("#resultsFrame dd")) {
-		dd.textContent = ddContents.shift();
-	}
+	for (const dd of $$("#resultsFrame dd")) dd.textContent = ddValues.shift();
+	
 	$("#rankName").style.color = rankColor;
 	storeHighScore(score);
+	screens.results.show();
 };
 
 
+import TypeJS from "./type.js";
 
-import Typing from "./type.js";
-
-const readyTyping = async clickedBtn => {
+const prepareGame = async clickedBtn => {
 	const category = $("[name=tab]:checked").id;
-	const tsvData = clickedBtn.dataset;
-
-	const tsv = (await Promise.all(
-		$$(`[data-tsv-name^="${tsvData.tsvName}"]:not([data-multiple-tsvs])`).map(btn =>
-			fetch(`/src/typing/${category}/${btn.dataset.tsvName}.tsv`)
-			.then(response => response.ok? response.text(): "")
-		)
-	)).filter(v => v).join("\n");
-	if (!tsv) return;
-
-	Typing.init(
+	const btns = $$(`[data-tsv-name^="${clickedBtn.dataset.tsvName}"]`);
+	if (btns.length > 1) btns.pop();
+	
+	const tsv = (await Promise.all(btns.map(btn =>
+		fetch(`/src/typing/${category}/${btn.dataset.tsvName}.tsv`).then(resp => resp.ok && resp.text())
+	))).filter(v => v);
+	if (tsv.length === 0) return;
+	
+	TypeJS.init(
 		clickedBtn.textContent,
-		tsv,
-		!("inOrder" in tsvData || category === "long"),
-		"multipleTsvs" in tsvData && 20
+		tsv.join("\n"),
+		!("inOrder" in clickedBtn.dataset || category === "long"),
+		tsv.length > 1 && 20
 	);
 	screens.typing.show();
 };
@@ -107,46 +105,44 @@ const readyTyping = async clickedBtn => {
 // return truthy → preventDefault
 const onKeyDown = key => {
 	if (screens.typing.isVisible()) {
+		const result = TypeJS.onKeyDown(key);
 
-		const result = Typing.onKeyDown(key);
 		if (key === "Escape" && !result) {
 			screens.selection.show();
 			return true;
 		}
-		if (!Array.isArray(result)) return result;
+		Array.isArray(result) && showResultsScreen(...result);
+		return result;
 
-		updateTypingResults(result);
-		screens.results.show();
+	} else if (screens.results.isVisible() && [" ", "Escape"].includes(key)) {
+		screens[key === " "? "typing": "selection"].show();
 		return true;
-
-	} else if (screens.results.isVisible()) {
-		if (key === "Escape") {
-			screens.selection.show();
-			return true;
-		} else if (key === " ") {
-			screens.typing.show();
-			return true;
-		}
 	}
 };
 
 
-if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android|Tablet|Mobile)/i)) {
-	onlyIE.textContent = "このゲームはパソコンでお楽しみください。";
-	onlyIE.style.display = "block";
-
+if (/(Phone|iPad|iPod|Android|Tablet|Mobile|Touch)/i.test(navigator.userAgent)) {
+	$("#about + section strong").style.display = "";
+	
 } else {
 	document.addEventListener("click", event => {
 		const el = event.target;
-		
 		if (el.matches("[data-event-key]")) {
 			onKeyDown(el.dataset.eventKey);
 		} else if (el.matches("button")) {
-			readyTyping(el);
+			prepareGame(el);
 		}
 	});
+
 	document.addEventListener("keydown", event => {
-		!(event.ctrlKey || event.metaKey || event.altKey) &&
-		onKeyDown(event.key) && event.preventDefault();
+		if (event.key === "Shift") {
+			TypeJS.onShiftStateChange(true);		
+		} else if (!(event.ctrlKey || event.metaKey || event.altKey)) {
+			onKeyDown(event.key) && event.preventDefault();
+		}
+	});
+	
+	document.addEventListener("keyup", event => {
+		event.key === "Shift" && TypeJS.onShiftStateChange(false);
 	});
 }

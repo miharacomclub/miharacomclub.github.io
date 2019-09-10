@@ -1,5 +1,5 @@
 #selectionScreen:not([style]) ~ section {
-	display: none; /* FOUCを防ぐ */
+	display: none; /* FOUCを防ぐためにcssに記述する */
 }
 [id$="Screen"] {
 	height: 24em;
@@ -20,23 +20,23 @@
 	order: -1;
 	width: 100%;
 	box-sizing: border-box;
-	padding: 0 .5em; /* section border-radius */
-	margin-bottom: -1px;
+	padding: 0 .5em;
 }
 #categoryTabs label {
-	float: left;
 	font-size: 1.05em;
+	float: left;
 	width: 5rem;
 	box-sizing: border-box;
 	border: 1px solid black;
+	border-bottom: none;
 	margin-right: .25em;
 	border-radius: .5em .5em 0 0;
 	text-align: center;
 	background-color: #ddd;
 }
-#categoryTabs [for="about"] {
+#categoryTabs :last-child {
+	margin-right: 0;
 	float: right;
-	margin: 0;
 }
 :nth-of-type(1):checked ~ #categoryTabs :nth-child(1),
 :nth-of-type(2):checked ~ #categoryTabs :nth-child(2),
@@ -52,38 +52,44 @@
 [name="tab"] + section {
 	width: 100%;
 	height: 19em;
-	padding: 1.5em 1em 1em 1.25em;
+	padding: 1.25em 1em .75em 1.25em;
 }
-@media (max-width:800px) {
-	[name="tab"] + section {
-		overflow: scroll;
-		padding: 1.5em .75em 0 1em;
-	}
-}
-
 .themeButtons {
 	display: flex;
 	align-content: flex-start;
 	flex-flow: column wrap;
+}
+@media (max-width:800px) {
+	[name="tab"] + section {
+		padding: 1.25em .75em .5em 1em;
+	}
+	section.themeButtons {
+		overflow-x: scroll;
+		padding-bottom: 0;
+	}
+	.themeButtons::after {
+		width: 9.4em;
+		height: .1px;
+		content: "";
+	}
 }
 .themeButtons button {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
 	font: inherit;
-	font-size: .95em;
-	width: 10em;
+	font-size: .9em;
+	width: 9.4em;
 	border: .05em solid #aaa;
-	margin: 0 1em .3em 0;
+	margin: .15em 1em .15em 0;
 	background-color: #eee;
-	line-height: 1.9;
+	line-height: 1.8;
 	cursor: pointer;
 }
 .themeButtons button:active {
 	background-color: transparent;
 }
-/* :not(:checked) + section のために優先度を落とす */
-[id="about"] + section {
+#about:checked + section {
 	display: flex;
 	justify-content: space-between;
 }
@@ -94,55 +100,25 @@
 	font-size: 1.1em;
 }
 
-#selectionScreen aside,
-[data-caption]:hover::before {
-	font-size: 1rem;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	height: 2.5em;
-	box-sizing: border-box;
-	border: 1px solid black;
-}
-[data-caption]:hover::before {
-	display: flex;
-	padding: 0 .75em;
-	align-items: center;
-	line-height: 1.1;
-	text-align: left;
-	font-weight: normal;
-	content: attr(data-caption);
-}
-
-
-
 #rankList {
+	display: block;
+	display: none\0;
 	width: 6em;
+	flex-shrink: 0;
 	padding: 0 2.5em;
 	margin: 0;
 	overflow-x: hidden;
 	overflow-y: scroll;
-	flex-shrink: 0;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
 	cursor: default;
-	display: none;
-	--unit-height: 1rem / 29;
-}
-@supports(--css: variables) {
-	#rankList {display: block;}
+	--unit-height: 1rem / 28; /* DからArrowまで入る高さ */
 }
 @media (max-width:800px) {
 	#rankList {
 		overflow-y: hidden;
 		width: 4.5em;
-		padding: 0 0 0 2.5em;
+		padding-right: 0;
 	}
 }
-
 #rankList li,
 #rankList li::before {
 	display: flex;
@@ -150,29 +126,23 @@
 	align-items: center;
 }
 #rankList li {
-	/* 0以上がtrue、0未満がfalse */
-	/* Arrow以上のランクは、score-rangeが一定である必要がある */
-	--is-display-rank-name: calc(var(--high-score) - var(--required-score));
-	--is-display-rank-area: calc(var(--is-display-rank-name) + var(--score-range, 50));
-	position: relative;
 	font-size: .95em;
+	position: relative;
 	width: 100%;
-	height: 100%;
-	max-height: calc(var(--score-range, 50) * var(--unit-height));
+	height: 99em;
+	max-height: calc(var(--score-range) * var(--unit-height));
 }
 #rankList li:nth-last-child(n+7) { /* Falcon+ */
-	height: calc((var(--is-display-rank-area) + 1) * 99em);
-	z-index: var(--is-display-rank-area);
+	--is-visible: calc(var(--high-score) - var(--inferior-score));
+	height: calc((var(--is-visible) + 1) * 99em);
+	z-index: var(--is-visible);
 }
-/* --high-scoreが870以上のとき、#rankList::afterが見切れないようにする */
-#rankList li:first-child {
-	height: calc(var(--is-display-rank-name) * var(--unit-height));
+#rankList li:first-child { /* #rankList::afterが見切れないようにする */
+	height: calc((var(--is-visible) - 30) * var(--unit-height));
 	max-height: none;
 }
-
 #rankList li::before {
 	position: absolute;
-	top: 0;
 	height: 100%;
 	background-color: hsl(0,0%,99%);
 	pointer-events: none;
@@ -180,23 +150,21 @@
 #rankList li:nth-last-child(n+6)::before { /* Arrow+ */
 	left: -5em;
 	max-width: calc(100% + 10em);
-	/* widthが0になると、？が隠れる */
-	width: calc(var(--is-display-rank-name) * -99em);
+	width: calc((var(--required-score) - var(--high-score)) * 99em);
 	content: "？";
 }
 #rankList li:hover::before {
-	font-size: .95em;
+	font-size: .9rem;
 	left: 0;
 	width: 100%;
-	box-sizing: border-box;
 	border-top: 2px solid transparent;
+	box-sizing: border-box;
 	background-clip: content-box;
 	content: attr(data-required-kps) "打/秒";
 }
-
 #rankList::after,
 #rankList li::after {
-	font-size: .9em;
+	font-size: .9rem;
 	width: 100%;
 	border-top: 1px solid currentcolor;
 	line-height: 0;
@@ -211,15 +179,30 @@
 	transform: translateY(calc(var(--high-score) * var(--unit-height) * -1));
 }
 #rankList li::after {
-	font-size: .95em;
 	position: absolute;
-	left: 0;
 	bottom: -1px;
 	direction: rtl;
 }
 
-
-
+[data-caption=""]::before,
+[data-caption]:hover::before {
+	font-size: 1rem;
+	display: flex;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 2.5em;
+	box-sizing: border-box;
+	padding: 0 .75em;
+	line-height: 1.2;
+	outline: 1px solid black;
+	outline-offset: -1px;
+	align-items: center;
+	text-align: left;
+	font-weight: normal;
+	content: attr(data-caption);
+}
 
 @media (max-width:800px) {
 	#typingScreen,
@@ -227,31 +210,25 @@
 		font-size: calc(23.5em / 39);
 	}
 }
-
 #typingScreen header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	margin: 0 0 .5em;
 }
-#typingScreen header div {
-	width: 6em;
-}
-#remainingNum {
+#remaining {
 	font-size: 1.35em;
-	background-color: transparent;
-	width: 2em;
+	width: 2.1em;
 	border: 0;
+	background-color: transparent;
+	color: black;
+}
+#remaining:not(:disabled) {
 	outline: 1px solid #aaa;
 }
-#remainingNum:invalid {
+#remaining:invalid {
 	box-shadow: 0 0 .5em red;
 }
-#remainingNum:disabled {
-	color: black;
-	outline: 0;
-}
-
 #textTitle {
 	display: inline-block;
 	font-size: 1.35em;
@@ -284,27 +261,32 @@
 #rubySentence {
 	font-size: 1.2em;
 	line-height: 1.9;
-	font-weight: bold;
 	color: silver;
 }
-#rubySentence .typed {
+#typingScreen:not(.EnglishMode) #rubySentence {
+	font-weight: bold;
+}
+#rubySentence :first-child {
 	color: limegreen;
 }
 #romanized {
 	font-size: 1.35em;
 	color: silver;
-	font-weight: normal;
 }
-#romanized .typed {
+#romanized :first-child {
 	color: darkorange;
+}
+.EnglishMode #romanized {
+	display: none;
+}
+.invisibleMode p:not(#rubyBase) {
+	color: transparent;
 }
 #meter {
 	height: .2em;
 	margin: .2em .5em;
 	outline: inset .1em #ddd;
-	--value: 50%;
-	background-image: linear-gradient(to right,
-		tomato var(--value), transparent var(--value));
+	background-image: linear-gradient(to right, tomato var(--value), transparent var(--value));
 }
 #nextRubyBase {
 	margin: 0 0 .1em .3em;
@@ -312,12 +294,23 @@
 #nextRubyBase::before {
 	content: "次：";
 }
-
-
-#resultsScreen {
-	padding-top: .1px;
-	box-sizing: border-box;
+.alphabet,
+.shiftIsPressed [data-on-shift] {
+	position: relative;
+	overflow: hidden;
+	text-indent: -3em;
 }
+.alphabet::after,
+.shiftIsPressed [data-on-shift]::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	text-indent: 0;
+	content: attr(data-on-shift);
+}
+
 #resultsFrame {
 	margin: 1.5em auto 1em;
 	width: 22em;
@@ -325,12 +318,12 @@
 	white-space: nowrap;
 }
 #resultsFrame h3 {
+	font-size: 1.5em;
 	padding: 0;
 	border: 0;
 	margin: 0;
-	font-size: 1.4em;
-	text-align: center;
 	line-height: 1.2;
+	text-align: center;
 }
 #resultsFrame dl:first-of-type {
 	font-size: 1.25em;
@@ -341,10 +334,9 @@
 	width: 50%;
 	margin: 0;
 }
-#resultsFrame dt,
 #resultsFrame dd {
 	border-bottom: .05em solid #999;
-	margin-bottom: .5em;
+	margin: 0 0 .5em 0;
 }
 #resultsFrame dt {
 	float: left;
@@ -357,16 +349,9 @@
 #resultsFrame dd::after {
 	content: attr(data-unit);
 }
-
-.kbdButtonWrapper {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+#resultsScreen footer {
+	text-align: center;
 }
-#resultsScreen [data-event-key=" "] {
-	width: 6.5em;
-}
-
 
 
 :root {
@@ -377,30 +362,19 @@
 	--hue-saturation: 0,0%;
 	--max-lightness: 100%;
 }
-.candidate {
-	--hue-saturation: 0,100%;
-}
-.otherCandidates {
-	--hue-saturation: 210,100%;
-}
-.candidate,
-.otherCandidates {
-	--max-lightness: 95%;
-	color: hsl(var(--hue-saturation),50%);
-}
-
-/* display:inline-blockにすると、押下時にずれる */
-#keyboard kbd {
-	float: left;
-}
+#typingScreen:not(.invisibleMode) .candidate		{--hue-saturation: 0,100%;}
+#typingScreen:not(.invisibleMode) .otherCandidates	{--hue-saturation: 210,100%;}
+#typingScreen:not(.invisibleMode) .candidate,
+#typingScreen:not(.invisibleMode) .otherCandidates	{--max-lightness: 95%;}
 kbd {
-	--top-color: hsl(var(--hue-saturation), var(--max-lightness));
-	--bg-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 5%));
-	--lr-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 10%));
-	--btm-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 15%));
-	--shadow-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 25%));
-
+	--top-color:	hsl(var(--hue-saturation), var(--max-lightness));
+	--bg-color:		hsl(var(--hue-saturation), calc(var(--max-lightness) - 5%));
+	--lr-color:		hsl(var(--hue-saturation), calc(var(--max-lightness) - 10%));
+	--btm-color:	hsl(var(--hue-saturation), calc(var(--max-lightness) - 15%));
+	--shadow-color:	hsl(var(--hue-saturation), calc(var(--max-lightness) - 25%));
+	color:			hsl(var(--hue-saturation), calc((var(--max-lightness) - 100%) * -10));
 	display: inline-block;
+	font: inherit;
 	box-sizing: border-box;
 	width: var(--key-width);
 	height: var(--key-height);
@@ -410,35 +384,48 @@ kbd {
 	border-radius: var(--border-width);
 	background-color: var(--bg-color);
 	box-shadow: 0 0 0 .1em var(--shadow-color);
-	font: inherit;
 	text-align: center;
+	vertical-align: middle;
 }
 [data-event-key]:hover {
-	box-shadow: 0 0 0 .1em var(--shadow-color),
-		0 0 .5em hsl(0,100%,50%);
+	box-shadow: 0 0 0 .1em var(--shadow-color), 0 0 .5em hsl(0,100%,50%);
 }
-kbd.onTyped,
+kbd.onType,
+kbd.onType::after,
+[data-pseudo-key]:hover,
 [data-event-key]:active {
-	line-height: 1.8;
 	--top-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 28%));
 	--bg-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 15%));
 	--lr-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 20%));
 	--btm-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 10%));
+	padding-top: .05em;
 }
 
-#hankaku  {width: 1.4em;}
-#tab      {width: 2.75em;}
-#capslock {width: 3.75em;}
-#shift    {width: 5em;}
-#rShift   {width: 3.9em;}
-#enter {
+[data-pseudo-key]::after	{content: attr(data-pseudo-key);}
+[data-pseudo-key="Tab"]		{width: 3em;}
+[data-pseudo-key="Shift"]	{width: 4.5em;}
+[data-event-key=" "]		{width: 6em;}
+[data-event-key="Escape"]	{width: 2.5em;}
+[data-code="ShiftRight"]	{width: 3.9em;}
+#Hankaku	{width: 1.4em;}
+#Tab		{width: 2.75em;}
+#CapsLock	{width: 3.75em;}
+#Shift		{width: 5em;}
+#Space {
+	width: 8em;
+	margin-left: 13.5em;
+}
+#typingScreen:not(.EnglishMode) #Space {
+	display: none;
+}
+#Enter {
 	--rows-shift: 1em; /* tab-width - capslock-width */
 	--enter-width: 2.5em;
 	position: relative;
 	width: calc(var(--enter-width) + var(--rows-shift));
 }
-#enter::before,
-#enter::after {
+#Enter::before,
+#Enter::after {
 	position: absolute;
 	top: calc(-1 * var(--border-width));
 	box-sizing: border-box;
@@ -446,7 +433,7 @@ kbd.onTyped,
 	background-color: inherit;
 	content: "";
 }
-#enter::before {
+#Enter::before {
 	left: calc(var(--rows-shift) - var(--border-width));
 	width: var(--enter-width);
 	height: calc(var(--key-height) * 2 + var(--key-gap) * 2);
@@ -454,10 +441,9 @@ kbd.onTyped,
 	border-radius: inherit;
 	border-top-left-radius: 0;
 }
-#enter::after {
-	left: 0;
+#Enter::after {
+	left: .05em;
 	width: var(--rows-shift);
 	height: var(--key-height);
-	border-left: none;
-	border-right: none;
+	border-style: solid none;
 }

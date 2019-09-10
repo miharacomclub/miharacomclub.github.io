@@ -35,8 +35,8 @@ h1::before {
 	height: 100%;
 	content: "";
 	background:
-		no-repeat url(img/sanae.png)  calc(50% - 5.7em) 0 / auto 105%,
-		no-repeat url(img/suwako.png) calc(50% + 5.7em) 0 / auto 117%;
+		no-repeat url(img/sanae.png)  calc(50% - 5.7em) 0 / auto 111%,
+		no-repeat url(img/suwako.png) calc(50% + 5.7em) 0 / auto 125%;
 }
 h2 {
 	font-size: 1.38em;
@@ -87,6 +87,12 @@ h2 {
 	font-weight: bold;
 	display: block\0; /* IE8+ */
 }
+.preventCollapse::before, /* 上方向のマージン相殺を防ぐ */
+blockquote::before  {
+	display: block;
+	height: .1px;
+	content: "";
+}
 .clear::after,
 h2 ~ section::after {
 	display: block;
@@ -121,7 +127,7 @@ a[href$=".pdf"]::after {
 }
 blockquote {
 	margin: 1em 0;
-	padding: .1px 1em; /* marginが相殺しないように.1pxを追加する */
+	padding: 0 1em;
 	background-color: #eee;
 }
 blockquote header,
