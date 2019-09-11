@@ -19,7 +19,7 @@ export default class {
 		romajiIndex = 0;
 		kanaIndex = 0;
 	}
-	static getCands() {
+	static getCands() { // Setで重複削除
 		return [...new Set(romajis[kanaIndex].map(cand => cand[romajiIndex]))];
 	}
 	static getKanaIndex() {
@@ -78,7 +78,7 @@ export default class {
 			}
 
 			const prependCandsIfPrevKanaIs = (kana, filter, map) => hiraganas[i - 1] === kana &&
-				_romajis[i - 1].unshift(...new Set(_romajis[i].filter(filter).map(map))); // Setで重複削除
+				_romajis[i - 1].unshift(...new Set(_romajis[i].filter(filter).map(map)));
 
 			// っう [[ww促,ltu,ltsu,xtu,xtsu], [u,wu,whu]]
 			prependCandsIfPrevKanaIs("っ",

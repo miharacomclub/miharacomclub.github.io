@@ -44,12 +44,10 @@ header {
 	display: table;
 	/* margin-topにすると、問題切り替え時にasideが隠れてしまう */
 	border-top: calc(.9em * 1.6) solid transparent;
+	border-top: none\0;
 	margin-bottom: .3em;
 	counter-reset: choiceIndex;
 	counter-increment: qCnt;
-}
-_:-ms-lang(x), header { /* Edge */
-	border-top-width: 0;
 }
 div:last-of-type {
 	margin-bottom: -99em;

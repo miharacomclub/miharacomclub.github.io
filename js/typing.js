@@ -107,7 +107,7 @@ const onKeyDown = key => {
 	if (screens.typing.isVisible()) {
 		const result = TypeJS.onKeyDown(key);
 
-		if (key === "Escape" && !result) {
+		if (!result && key === "Escape") {
 			screens.selection.show();
 			return true;
 		}
