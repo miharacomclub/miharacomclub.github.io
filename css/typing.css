@@ -1,15 +1,18 @@
-#selectionScreen:not([style]) ~ section {
-	display: none; /* FOUCを防ぐためにcssに記述する */
-}
-[id$="Screen"] {
-	height: 24em;
-}
 .frame {
 	box-sizing: border-box;
 	border: 1px black solid;
 	border-radius: .5em;
 }
-
+[type="checkbox"],
+#displaySelection:not(:checked)	~ #selectionScreen,
+#displaySelection:checked		~ #typingScreen,
+#displayResults:not(:checked)	~ * #results {
+	display: none;
+}
+#selectionScreen,
+#typingScreen {
+	height: 24em;
+}
 
 #selectionScreen {
 	display: flex;
@@ -110,6 +113,9 @@
 	overflow-x: hidden;
 	overflow-y: scroll;
 	cursor: default;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 	--unit-height: 1rem / 28; /* DからArrowまで入る高さ */
 }
 @media (max-width:800px) {
@@ -205,10 +211,12 @@
 }
 
 @media (max-width:800px) {
-	#typingScreen,
-	#resultsScreen {
+	#typingScreen {
 		font-size: calc(23.5em / 39);
 	}
+}
+#typingScreen {
+	position: relative;
 }
 #typingScreen header {
 	display: flex;
@@ -263,7 +271,7 @@
 	line-height: 1.9;
 	color: silver;
 }
-#typingScreen:not(.EnglishMode) #rubySentence {
+#englishMode:not(:checked) ~ * #rubySentence {
 	font-weight: bold;
 }
 #rubySentence :first-child {
@@ -276,10 +284,10 @@
 #romanized :first-child {
 	color: darkorange;
 }
-.EnglishMode #romanized {
+#englishMode:checked ~ * #romanized {
 	display: none;
 }
-.invisibleMode p:not(#rubyBase) {
+#invisibleMode:checked ~ * #typing p:not(#rubyBase) {
 	color: transparent;
 }
 #meter {
@@ -295,13 +303,13 @@
 	content: "次：";
 }
 .alphabet,
-.shiftIsPressed [data-on-shift] {
+#shiftIsPressed:checked ~ * [data-on-shift] {
 	position: relative;
 	overflow: hidden;
 	text-indent: -3em;
 }
 .alphabet::after,
-.shiftIsPressed [data-on-shift]::after {
+#shiftIsPressed:checked ~ * [data-on-shift]::after {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -311,13 +319,22 @@
 	content: attr(data-on-shift);
 }
 
-#resultsFrame {
-	margin: 1.5em auto 1em;
+#results {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 1.25em;
 	width: 22em;
 	padding: 1.25em;
+	margin: auto;
 	white-space: nowrap;
+	background-color: hsl(0,0%,99%);
+	z-index: 1;
 }
-#resultsFrame h3 {
+#displayResults:checked ~ * #typing {
+	opacity: 0.2;
+}
+#results h3 {
 	font-size: 1.5em;
 	padding: 0;
 	border: 0;
@@ -325,32 +342,29 @@
 	line-height: 1.2;
 	text-align: center;
 }
-#resultsFrame dl:first-of-type {
+#results dl:first-of-type {
 	font-size: 1.25em;
 }
-#resultsFrame dl:not(:first-of-type) {
+#results dl:not(:first-of-type) {
 	font-size: 1.05em;
 	float: left;
 	width: 50%;
 	margin: 0;
 }
-#resultsFrame dd {
+#results dd {
 	border-bottom: .05em solid #999;
 	margin: 0 0 .5em 0;
 }
-#resultsFrame dt {
+#results dt {
 	float: left;
 	width: calc(50% + .5em);
 	text-align: right;
 }
-#resultsFrame dt::after {
+#results dt::after {
 	content: "：";
 }
-#resultsFrame dd::after {
+#results dd::after {
 	content: attr(data-unit);
-}
-#resultsScreen footer {
-	text-align: center;
 }
 
 
@@ -362,10 +376,10 @@
 	--hue-saturation: 0,0%;
 	--max-lightness: 100%;
 }
-#typingScreen:not(.invisibleMode) .candidate		{--hue-saturation: 0,100%;}
-#typingScreen:not(.invisibleMode) .otherCandidates	{--hue-saturation: 210,100%;}
-#typingScreen:not(.invisibleMode) .candidate,
-#typingScreen:not(.invisibleMode) .otherCandidates	{--max-lightness: 95%;}
+#invisibleMode:not(:checked) ~ * .candidate			{--hue-saturation: 0,100%;}
+#invisibleMode:not(:checked) ~ * .otherCandidates	{--hue-saturation: 210,100%;}
+#invisibleMode:not(:checked) ~ * .candidate,
+#invisibleMode:not(:checked) ~ * .otherCandidates	{--max-lightness: 95%;}
 kbd {
 	--top-color:	hsl(var(--hue-saturation), var(--max-lightness));
 	--bg-color:		hsl(var(--hue-saturation), calc(var(--max-lightness) - 5%));
@@ -387,13 +401,10 @@ kbd {
 	text-align: center;
 	vertical-align: middle;
 }
-[data-event-key]:hover {
-	box-shadow: 0 0 0 .1em var(--shadow-color), 0 0 .5em hsl(0,100%,50%);
-}
 kbd.onType,
 kbd.onType::after,
 [data-pseudo-key]:hover,
-[data-event-key]:active {
+#shiftIsPressed:checked ~ * #Shift {
 	--top-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 28%));
 	--bg-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 15%));
 	--lr-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 20%));
@@ -401,11 +412,8 @@ kbd.onType::after,
 	padding-top: .05em;
 }
 
-[data-pseudo-key]::after	{content: attr(data-pseudo-key);}
 [data-pseudo-key="Tab"]		{width: 3em;}
 [data-pseudo-key="Shift"]	{width: 4.5em;}
-[data-event-key=" "]		{width: 6em;}
-[data-event-key="Escape"]	{width: 2.5em;}
 [data-code="ShiftRight"]	{width: 3.9em;}
 #Hankaku	{width: 1.4em;}
 #Tab		{width: 2.75em;}
@@ -415,7 +423,7 @@ kbd.onType::after,
 	width: 8em;
 	margin-left: 13.5em;
 }
-#typingScreen:not(.EnglishMode) #Space {
+#englishMode:not(:checked) ~ * #Space {
 	display: none;
 }
 #Enter {

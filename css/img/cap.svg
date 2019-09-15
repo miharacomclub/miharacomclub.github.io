@@ -45,9 +45,9 @@
 	<defs>
 		<circle id="_marker" cx="1" cy="1" r="1"/>
 	</defs>
-	<view id="odd"   viewBox="-40    0 2920 1600"/>
-	<view id="even"  viewBox="-40 2000 2920 1600"/>
-	<view id="lines" viewBox="-40 4000 2920 1600"/>
+	<view id="odd"		viewBox="-40    0 2920 1600"/>
+	<view id="even"		viewBox="-40 2000 2920 1600"/>
+	<view id="lines"	viewBox="-40 4000 2920 1600"/>
 
 	<g id="mihara">
 		<marker id="_mihara" markerUnits="userSpaceOnUse" markerWidth="72" markerHeight="72" viewBox="0 0 2 2" refX="1" refY="1"><use xlink:href="#_marker"/></marker>

@@ -34,9 +34,8 @@ h1::before {
 	width: 100%;
 	height: 100%;
 	content: "";
-	background:
-		no-repeat url(img/sanae.png)  calc(50% - 5.7em) 0 / auto 111%,
-		no-repeat url(img/suwako.png) calc(50% + 5.7em) 0 / auto 125%;
+	background:	no-repeat url(img/sanae.png)  calc(50% - 5.7em) 0 / auto 111%,
+				no-repeat url(img/suwako.png) calc(50% + 5.7em) 0 / auto 125%;
 }
 h2 {
 	font-size: 1.38em;
@@ -88,7 +87,7 @@ h2 {
 	display: block\0; /* IE8+ */
 }
 .preventCollapse::before, /* 上方向のマージン相殺を防ぐ */
-blockquote::before  {
+blockquote::before {
 	display: block;
 	height: .1px;
 	content: "";
@@ -135,13 +134,13 @@ blockquote footer {margin: 1em 0;}
 blockquote header {text-align: center;}
 blockquote footer {text-align: right;}
 
-label  {cursor: pointer;}
-table  {border-collapse: collapse;}
-ul, ol {padding-left: 1.5em;}
-th, td {padding: 0;}
-iframe {border: 0;}
-figure {margin: 0;}
-cite   {font-style: normal;}
+label	{cursor: pointer;}
+table	{border-collapse: collapse;}
+ul, ol	{padding-left: 1.5em;}
+th, td	{padding: 0;}
+iframe	{border: 0;}
+figure	{margin: 0;}
+cite	{font-style: normal;}
 cite::before {content: "『";}
 cite::after  {content: "』";}
 
@@ -160,11 +159,9 @@ cite::after  {content: "』";}
 .listTable td {
 	padding: 0 .25em;
 }
-@supports (list-style-type: simp-chinese-informal) {
-	.jpNumberingList { /* cjk-ideographic 一. */
-		list-style-type: simp-chinese-informal; /* 一、 */
-		padding-left: 2.5em;
-	}
+.jpNumberingList {
+	list-style-type: simp-chinese-informal;
+	padding-left: 2.5em;
 }
 
 .fixedAspectRatio {

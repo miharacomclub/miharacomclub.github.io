@@ -8,14 +8,14 @@
 	border-style: solid;
 	line-height: 1.4;
 }
-[name="clubs"]:checked + label  {
+[name="clubs"]:checked + label {
 	border-bottom-width: .25em;
 }
-[for="active"]    {border-color: hsl(212,45%,70%);}
-[for="suspended"] {border-color: hsl( 79,41%,70%);}
-[for="abolished"] {border-color: hsl(  1,47%,70%);}
-[for="culture"]   {border-color: hsl(212,45%,70%);}
-[for="sports"]    {border-color: hsl(212,45%,83%);}
+[for="active"]		{border-color: hsl(212,45%,70%);}
+[for="suspended"]	{border-color: hsl( 79,41%,70%);}
+[for="abolished"]	{border-color: hsl(  1,47%,70%);}
+[for="culture"]		{border-color: hsl(212,45%,70%);}
+[for="sports"]		{border-color: hsl(212,45%,83%);}
 
 #clubs {
 	position: relative;
@@ -34,11 +34,11 @@
 	white-space: nowrap;
 	margin-bottom: .1em;
 }
-#sports:not(:checked)    ~ #clubs .spo,
-#culture:not(:checked)   ~ #clubs .cul,
-#active:not(:checked)    ~ #clubs .act,
-#suspended:not(:checked) ~ #clubs .sus,
-#abolished:not(:checked) ~ #clubs .abo {
+#sports:not(:checked)		~ #clubs .spo,
+#culture:not(:checked)		~ #clubs .cul,
+#active:not(:checked)		~ #clubs .act,
+#suspended:not(:checked)	~ #clubs .sus,
+#abolished:not(:checked)	~ #clubs .abo {
 	display: none;
 }
 

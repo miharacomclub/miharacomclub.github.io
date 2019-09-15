@@ -2,7 +2,6 @@ html {
 	font: 18px/1.7 Arial,sans-serif;
 	overflow-y: hidden;
 }
-/* iframe(width:100%) */
 @media (max-width:423px) { /* parent:~468px */
 	html {font-size: 4.26vw;}
 }
@@ -34,14 +33,14 @@ a[href$=".pdf"]::after {
 }
 
 sub,
-sup   {line-height: 0;}
-table {border-collapse: collapse;}
-label {cursor: pointer;}
-cite  {font-style: normal;}
-cite::before {content: "『";}
-cite::after  {content: "』";}
-q::before    {content: "「";}
-q::after     {content: "」";}
+sup		{line-height: 0;}
+table	{border-collapse: collapse;}
+label	{cursor: pointer;}
+cite	{font-style: normal;}
+cite::before	{content: "『";}
+cite::after		{content: "』";}
+q::before		{content: "「";}
+q::after		{content: "」";}
 .clear::after {
 	content: "";
 	clear: both;

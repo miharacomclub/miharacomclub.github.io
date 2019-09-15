@@ -65,9 +65,9 @@
 		<circle id="_marker" cx="1" cy="1" r="1"/>
 	</defs>
 
-	<view id="odd"   viewBox="-15    0 1500 600"/>
-	<view id="even"  viewBox="-15 1000 1500 600"/>
-	<view id="areas" viewBox="-15 2000 1500 600"/>
+	<view id="odd"		viewBox="-15    0 1500 600"/>
+	<view id="even"		viewBox="-15 1000 1500 600"/>
+	<view id="areas"	viewBox="-15 2000 1500 600"/>
 
 	<g id="shinnyo">
 		<!-- markerの属性は、cssで設定できない -->
