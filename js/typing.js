@@ -20,8 +20,7 @@
 			lines,
 			btn.textContent,
 			tsvs.length > 1 && 20,
-			!"inOrder" in btn.dataset && category !== "long",
-			btn.dataset.tsvName.includes("english")
+			!("inOrder" in btn.dataset || category === "long")
 		);
 	});
 
@@ -77,7 +76,7 @@ const Game = (() => {
 	},
 
 
-	prepare = (lines, title, defaultValue, needsShuffle, englishMode) => {
+	prepare = (lines, title, defaultValue, needsShuffle) => {
 
 		text = lines.map(line => line.replace(/^[^\t]+$/, "$&\t$&").split(/\t/));
 		for (const line of text) line.push(Romaji.romanizeKana(line[1]));
@@ -86,7 +85,7 @@ const Game = (() => {
 		rm.defaultValue	= rm.placeholder = defaultValue || +rm.max;
 
 		$("#textTitle").textContent		= title;
-		$("#englishMode").checked		= englishMode;
+		$("#englishMode").checked		= title.includes("英語");
 		$("#invisibleMode").checked		= $("#shiftIsPressed").checked;
 		$("#displaySelection").checked	= false;
 
