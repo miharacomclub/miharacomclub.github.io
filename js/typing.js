@@ -1,26 +1,32 @@
 {
-	if (/(Phone|iPad|iPod|Android|Tablet|Mobile)/i.test(navigator.userAgent)) $("#onlyMobile").style.display = "";
+	for (const input of $$("input")) input.checked = input.defaultChecked;
+
 
 	const doDefault = Symbol();
 
 	document.addEventListener("click", async event => {
-		if (!event.target.matches("#selectionScreen button")) return;
+		const el = event.target;
 
-		const btn		= event.target;
+		if (el.matches("#typingScreen kbd")) {
+			const key = ($("#shiftIsPressed").checked && el.dataset.onShift) || el.textContent || el.id;
+			return key && key !== "Shift" && Game.onKeyDown(key);
+		}
+		if (!el.matches("#selectionScreen button")) return;
+
 		const category	= $("[name=tab]:checked").id;
-		const btns		= $$(`[data-tsv-name^="${btn.dataset.tsvName}"]`);
+		const btns		= $$(`[data-tsv-name^="${el.dataset.tsvName}"]`);
 		btns.length > 1 && btns.pop();
 
-		const tsvs		= await Promise.all(btns.map(el =>
-			fetch(`/src/typing/${category}/${el.dataset.tsvName}.tsv`).then(res => res.ok && res.text())
+		const tsvs		= await Promise.all(btns.map(btn =>
+			fetch(`/src/typing/${category}/${btn.dataset.tsvName}.tsv`).then(res => res.ok && res.text())
 		));
 		const lines		= tsvs.join("\n").split(/\r?\n/).filter(v => v);
 
 		lines.length > 0 && Game.prepare(
 			lines,
-			btn.textContent,
+			el.textContent,
 			tsvs.length > 1 && 20,
-			!("inOrder" in btn.dataset || category === "long")
+			!("inOrder" in el.dataset || category === "long")
 		);
 	});
 
@@ -43,10 +49,13 @@
 const Game = (() => {
 	// text > line > romajis, kanas, sentence > cands > cand, romaji > key
 	let text, startTime;
-	const rm	= $("#remaining"),
+	const rm = $("#remaining"),
+
 
 	onKeyDown = (key, doDefault) => {
-		if (doDefault !== Results.onKeyDown(key, doDefault)) return;
+
+		const typedKbd = Kbds.search(key, true);
+		if ($("#displayResults").checked) return Results.onKeyDown(key, doDefault);
 
 		if (!startTime) {
 			const isRmFocused = rm === document.activeElement;
@@ -55,12 +64,7 @@ const Game = (() => {
 			if (key === "Escape")	return $("#displaySelection").checked = true;
 		}
 
-		const typedKbd = Kbds.search(key);
-		if (!typedKbd) return doDefault;
-
-		typedKbd.classList.add("onType");
-		setTimeout(() => typedKbd.classList.remove("onType"), 100);
-
+		if (!typedKbd)					return doDefault;
 		if (key === "Escape")			return reset();
 		if (!Romaji.isKeyCorrect(key))	return onTypo();
 
@@ -176,6 +180,12 @@ const Results = (() => {
 
 	roundOff = num => Math.round(num * 10) / 10,
 
+	onKeyDown = (key, doDefault) => {
+		$("#displayResults").checked = key !== "Escape";
+		return key !== "Escape" && doDefault;
+	},
+
+
 	storeHighScore = score => {
 		if ((storage.highScore || -1) < score) {
 			storage.highScore = score;
@@ -203,12 +213,6 @@ const Results = (() => {
 		$("#rankName").style.color = rankColor;
 		storeHighScore(score);
 		$("#displayResults").checked = true;
-	},
-
-
-	onKeyDown = (key, doDefault) => {
-		if (!$("#displayResults").checked) return doDefault;
-		$("#displayResults").checked = key !== "Escape";
 	};
 
 
@@ -233,11 +237,10 @@ const Results = (() => {
 		}
 		return item;
 	});
-
 	$("#rankList").style.visibility = "";
 	storeHighScore(0);
 
-	return {show, onKeyDown};
+	return {onKeyDown, show};
 })();
 
 
@@ -331,10 +334,19 @@ const Romaji = (() => {
 
 const Kbds = (() => {
 	const
-	els		= $$("#typingScreen kbd"),
-	keys	= els.map(kbd => [kbd.textContent, kbd.id, kbd.dataset.otherKey, kbd.dataset.onShift].filter(v => v)),
+	els = $$("#typingScreen kbd"),
+	keys = els.map(kbd => [kbd.textContent, kbd.id, kbd.dataset.otherKey, kbd.dataset.onShift].filter(v => v)),
 
-	search	= keyName => els[keys.findIndex(keyNames => keyNames.includes(keyName))];
+
+	search = (keyName, typeIfFound = false) => {
+		const kbd = els[keys.findIndex(keyNames => keyNames.includes(keyName))];
+
+		if (typeIfFound && kbd) {
+			kbd.classList.add("onType");
+			setTimeout(() => kbd.classList.remove("onType"), 100);
+		}
+		return kbd;
+	};
 	return {search};
 })();
 

@@ -302,12 +302,17 @@
 #nextRubyBase::before {
 	content: "次：";
 }
+#keyboard {
+	touch-action: manipulation;
+}
+[data-keycap],
 .alphabet,
 #shiftIsPressed:checked ~ * [data-on-shift] {
 	position: relative;
 	overflow: hidden;
 	text-indent: -3em;
 }
+[data-keycap]::after,
 .alphabet::after,
 #shiftIsPressed:checked ~ * [data-on-shift]::after {
 	position: absolute;
@@ -317,6 +322,9 @@
 	bottom: 0;
 	text-indent: 0;
 	content: attr(data-on-shift);
+}
+[data-keycap]::after {
+	content: attr(data-keycap);
 }
 
 #results {
@@ -400,16 +408,19 @@ kbd {
 	box-shadow: 0 0 0 .1em var(--shadow-color);
 	text-align: center;
 	vertical-align: middle;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 kbd.onType,
 kbd.onType::after,
-[data-pseudo-key]:hover,
+kbd:active,
 #shiftIsPressed:checked ~ * #Shift {
 	--top-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 28%));
 	--bg-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 15%));
 	--lr-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 20%));
 	--btm-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 10%));
-	padding-top: .05em;
+	line-height: 1.8;
 }
 
 [data-pseudo-key="Tab"]		{width: 3em;}
