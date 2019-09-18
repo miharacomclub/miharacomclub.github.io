@@ -18,7 +18,7 @@
 		btns.length > 1 && btns.pop();
 
 		const tsvs		= await Promise.all(btns.map(btn =>
-			fetch(`/src/typing/${category}/${btn.dataset.tsvName}.tsv`).then(res => res.ok && res.text())
+			fetch(`/src/typing/${category}/${btn.dataset.tsvName}.tsv`).then(res => res.ok? res.text(): "")
 		));
 		const lines		= tsvs.join("\n").split(/\r?\n/).filter(v => v);
 
@@ -26,7 +26,7 @@
 			lines,
 			el.textContent,
 			tsvs.length > 1 && 20,
-			!("inOrder" in el.dataset || category === "long")
+			!("inOrder" in el.dataset || ["long", "classic"].includes(category))
 		);
 	});
 
@@ -49,7 +49,7 @@
 const Game = (() => {
 	// text > line > romajis, kanas, sentence > cands > cand, romaji > key
 	let text, startTime;
-	const rm = $("#remaining"),
+	const rmn = $("#remainingNum"),
 
 
 	onKeyDown = (key, doDefault) => {
@@ -58,9 +58,9 @@ const Game = (() => {
 		if ($("#displayResults").checked) return Results.onKeyDown(key, doDefault);
 
 		if (!startTime) {
-			const isRmFocused = rm === document.activeElement;
-			if (key === "Tab")		return rm[isRmFocused? "blur": "focus"]();
-			if (isRmFocused)		return doDefault;
+			const isRmnFocused = rmn === document.activeElement;
+			if (key === "Tab")		return rmn[isRmnFocused? "blur": "focus"]();
+			if (isRmnFocused)		return doDefault;
 			if (key === "Escape")	return $("#displaySelection").checked = true;
 		}
 
@@ -85,8 +85,8 @@ const Game = (() => {
 		text = lines.map(line => line.replace(/^[^\t]+$/, "$&\t$&").split(/\t/));
 		for (const line of text) line.push(Romaji.romanizeKana(line[1]));
 
-		rm.max			= Math.min(text.length, 99);
-		rm.defaultValue	= rm.placeholder = defaultValue || +rm.max;
+		rmn.max				= Math.min(text.length, 99);
+		rmn.defaultValue	= rmn.placeholder = defaultValue || +rmn.max;
 
 		$("#textTitle").textContent		= title;
 		$("#englishMode").checked		= title.includes("英語");
@@ -101,14 +101,14 @@ const Game = (() => {
 		if (needsShuffle) text.needsShuffle = needsShuffle;
 
 		if (text.needsShuffle) {
-			for (let i = text.length; --i;) {
+			for (let i = text.length; --i > 0;) {
 				const j = Math.floor(Math.random() * (i + 1));
 				[text[i], text[j]] = [text[j], text[i]];
 			}
 		}
-		startTime = 0;
-		rm.value = +rm.defaultValue + 1;
-		rm.disabled = false;
+		startTime		= 0;
+		rmn.value		= +rmn.defaultValue + 1;
+		rmn.disabled	= false;
 
 		$("#sentencesFrame").classList.remove("frameOnTypo");
 		moveToNext();
@@ -117,9 +117,9 @@ const Game = (() => {
 
 	start = () => {
 		Sounds.correct.playCount = Sounds.incorrect.playCount = 0;
-		if (!rm.checkValidity()) rm.value = rm.placeholder;
-		rm.defaultValue	= rm.value;
-		rm.disabled		= true;
+		if (!rmn.checkValidity()) rmn.value = rmn.placeholder;
+		rmn.defaultValue	= rmn.value;
+		rmn.disabled		= true;
 		startTime		= new Date();
 	},
 
@@ -156,16 +156,16 @@ const Game = (() => {
 
 
 	moveToNext = () => {
-		if (--rm.value < 1) return [
+		if (--rmn.value < 1) return [
 			Sounds.correct.playCount, Sounds.incorrect.playCount, (new Date() - startTime) / 1000
 		];
-		const lines = [...text].splice(rm.defaultValue - rm.value, 2);
+		const lines = [...text].splice(rmn.defaultValue - rmn.value, 2);
 		Romaji.prepare(lines[0][2]);
 
 		$("#rubyBase").textContent		= lines[0][0];
-		$("#nextRubyBase").textContent	= rm.value - 1? lines[1][0]: "";
+		$("#nextSentence").textContent	= rmn.value - 1? lines[1][+$("#englishMode").checked]: "";
 		$("#rubySentence").innerHTML	= `<span></span><span>${lines[0][1]}</span>`;
-		$("#meter").style.setProperty("--value", `${rm.value / rm.defaultValue * 100}%`);
+		$("#meter").style.setProperty("--value", `${rmn.value / rmn.defaultValue * 100}%`);
 		recolor();
 	};
 
@@ -297,7 +297,7 @@ const Romaji = (() => {
 		const hiraganas = sentence.replace(/[ァ-ヶ]/g, katakana => String.fromCharCode(katakana.charCodeAt(0) - 0x60));
 		const _romajis = [...hiraganas].map(kana => [...(table[kana] || kana)]);
 
-		for (let i = hiraganas.length; --i;) {
+		for (let i = hiraganas.length; --i > 0;) {
 
 			// うぁ [[wha拗,u,wu,whu], [la,xa]]
 			if ("ぁぃぅぇぉゃゅょ".includes(hiraganas[i])) {

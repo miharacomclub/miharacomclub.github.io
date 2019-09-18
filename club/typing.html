@@ -26,7 +26,7 @@
 <section id="selectionScreen" data-caption="">
 	<input id="words" type="radio" name="tab">
 	<section class="frame themeButtons">
-		<button data-tsv-name="syllabary_50" data-caption="手慣らしにどうぞ。" data-in-order>五十音</button>
+		<button data-tsv-name="syllabary_50" data-in-order>五十音</button>
 		<button data-tsv-name="countries_asia"			>アジアの国名</button>
 		<button data-tsv-name="countries_africa"		>アフリカの国名</button>
 		<button data-tsv-name="countries_europe"		>ヨーロッパの国名</button>
@@ -39,7 +39,7 @@
 		<button data-tsv-name="kanji_animals"	data-caption="主に哺乳類の漢字です。">動物の漢字</button>
 		<button data-tsv-name="kanji_aquatics"	>魚介類の漢字</button>
 		<button data-tsv-name="kanji_birds"		>鳥の漢字</button>
-		<button data-tsv-name="kanji_insects"	>虫の漢字</button>
+		<button data-tsv-name="kanji_insects"	data-caption="主に昆虫の漢字です。">虫の漢字</button>
 		<button data-tsv-name="kanji_vegetables">野菜の漢字</button>
 		<button data-tsv-name="kanji_fruits"	>果物の漢字</button>
 		<button data-tsv-name="kanji_"			>難読漢字</button>
@@ -57,39 +57,64 @@
 		<button data-tsv-name="proverbs6" data-caption="は行、ま行の有名なことわざです。">ことわざ⑥</button>
 		<button data-tsv-name="proverbs7" data-caption="や行、ら行、わ行の有名なことわざです。">ことわざ⑦</button>
 		<button data-tsv-name="proverbs"  data-caption="有名なことわざです。">ことわざ</button>
+		<button data-tsv-name="idioms_cn1" data-caption="ひらがなのない、短い故事成語です。">故事成語①</button>
+		<button data-tsv-name="idioms_cn2" data-caption="短い故事成語です。">故事成語②</button>
+		<button data-tsv-name="idioms_cn3" data-caption="長い故事成語です。">故事成語③</button>
 		<button data-tsv-name="idioms_body1" data-caption="頭、顔、目の慣用句です。">体の慣用句①</button>
 		<button data-tsv-name="idioms_body2" data-caption="鼻、口、耳の慣用句です。">体の慣用句②</button>
 		<button data-tsv-name="idioms_body3" data-caption="腕、手の慣用句です。">体の慣用句③</button>
 		<button data-tsv-name="idioms_body4" data-caption="胸、腹、足の慣用句です。">体の慣用句④</button>
 		<button data-tsv-name="idioms_body5" data-caption="その他の体の部位の慣用句です。">体の慣用句⑤</button>
 		<button data-tsv-name="idioms_body"  data-caption="体の部位の慣用句です。">体の慣用句</button>
-		<button data-tsv-name="idioms_cn_short">短い故事成語</button>
-		<button data-tsv-name="idioms_cn_long" >長い故事成語</button>
-		<button data-tsv-name="pangram_iroha" data-caption="仮名が重複しない、47文字の有名な歌です。" data-in-order>いろは歌</button>
-		<button data-tsv-name="pangram_torina" data-caption="明治時代に作られた、仮名が重複しない48文字の歌です。" data-in-order>とりな歌</button>
-		<button data-tsv-name="english_proverbs">英語のことわざ</button>
+		<button data-tsv-name="english_proverbs1">英語のことわざ①</button>
+		<button data-tsv-name="english_proverbs2">英語のことわざ②</button>
+		<button data-tsv-name="english_proverbs3">英語のことわざ③</button>
 	</section>
 	<input id="long" type="radio" name="tab">
 	<section class="frame themeButtons">
-		<button data-tsv-name="classics_bamboo_cutter"		data-caption="「今は昔、竹取の翁…」平安時代初期の日本最古の物語です。作者不明。">竹取物語</button>
-		<button data-tsv-name="classics_pillow_book"		data-caption="「春はあけぼの…」平安時代中期の日本最古の随筆です。清少納言著。">枕草子</button>
-		<button data-tsv-name="classics_account_of_my_hut"	data-caption="「ゆく河の流れは絶えずして…」鎌倉時代初期の随筆です。鴨長明著。">方丈記</button>
-		<button data-tsv-name="classics_tales_of_heike"		data-caption="「祇園精舎の鐘の声…」鎌倉時代初期の軍記物語です。作者不明。">平家物語</button>
-		<button data-tsv-name="classics_harvest_of_leisure"	data-caption="「つれづれなるままに…」鎌倉時代後期の随筆です。兼好法師著。">徒然草</button>
-		<button data-tsv-name="classics_narrow_road"		data-caption="「月日は百代の過客にして…」江戸時代中期の紀行文です。松尾芭蕉著。">おくのほそ道</button>
-		<button data-tsv-name="unbeaten_by_rain"			data-caption="「雨ニモマケズ 風ニモマケズ…」宮沢賢治の詩です。">雨ニモマケズ</button>
-		<button data-tsv-name="classics_limitless_life"		data-caption="「寿限無寿限無…」有名な落語です。">寿限無</button>
-		<button data-tsv-name="classics_spring_morning"		data-caption="「春眠暁を覚えず…」孟浩然の五言絶句です。">春暁</button>
-		<button data-tsv-name="classics_spring_view"		data-caption="「国破れて山河在り…」杜甫の五言律詩です。">春望</button>
-		<button data-tsv-name="preamble_of_constitution"	data-caption="「日本国民は、正当に選挙された…」日本国憲法の条文の前にある文章です。">日本国憲法前文</button>
 		<button data-tsv-name="rules_student_council1"	data-caption="淡路三原高校の生徒会会則 第1条から第9条までです。"  >生徒会会則①</button>
-		<button data-tsv-name="rules_student_council2"	data-caption="淡路三原高校の生徒会会則 第10条から第21条までです。">生徒会会則②</button>
-		<button data-tsv-name="rules_student_council3"	data-caption="淡路三原高校の生徒会会則 第22条から第26条までです。">生徒会会則③</button>
-		<button data-tsv-name="rules_student_council4"	data-caption="淡路三原高校の生徒会会則 第27条から第35条までです。">生徒会会則④</button>
-		<button data-tsv-name="rules_student_council5"	data-caption="淡路三原高校の生徒会会則 第36条から第41条までです。">生徒会会則⑤</button>
+		<button data-tsv-name="rules_student_council2"	data-caption="淡路三原高校の生徒会会則 第10条から第18条までです。">生徒会会則②</button>
+		<button data-tsv-name="rules_student_council3"	data-caption="淡路三原高校の生徒会会則 第19条から第25条までです。">生徒会会則③</button>
+		<button data-tsv-name="rules_student_council4"	data-caption="淡路三原高校の生徒会会則 第26条から第30条までです。">生徒会会則④</button>
+		<button data-tsv-name="rules_student_council5"	data-caption="淡路三原高校の生徒会会則 第31条から第37条までです。">生徒会会則⑤</button>
+		<button data-tsv-name="rules_student_council6"	data-caption="淡路三原高校の生徒会会則 第38条から第41条までです。">生徒会会則⑥</button>
 		<button data-tsv-name="rules_day_duty"			data-caption="淡路三原高校の日直の心得です。">日直の心得</button>
 		<button data-tsv-name="rules_dining_hall"		data-caption="淡路三原高校の食堂利用の心得です。">食堂利用の心得</button>
 		<button data-tsv-name="school_song"				data-caption="「豊かなみどり 諭鶴羽の…」淡路三原高校校歌の歌詞です。">淡路三原高校校歌</button>
+		<button data-tsv-name="school_song_former"		data-caption="「ゆたかにみのる 島山を…」三原高校校歌の歌詞です。">三原高校校歌</button>
+		<button data-tsv-name="a_bell_a_bird_and_me"	data-caption="「わたしが両手を広げても…」金子みすゞの詩です。">私と小鳥と鈴と</button>
+		<button data-tsv-name="unbeaten_by_rain"		data-caption="「雨ニモマケズ 風ニモマケズ…」宮沢賢治の詩です。">雨ニモマケズ</button>
+		<button data-tsv-name="an_encouragement_of_learning"	data-caption="「天は人の上に人を造らず…」1872年に初編が発表された福沢諭吉の著書です。">学問のすゝめ</button>
+		<button data-tsv-name="i_am_a_cat"				data-caption="「吾輩は猫である。名前はまだない…」1905年発表の夏目漱石の処女小説です。">吾輩は猫である</button>
+		<button data-tsv-name="master_darling"			data-caption="「親譲りの無鉄砲で子供の時から…」1906年発表の夏目漱石の中編小説です。">坊ちゃん</button>
+		<button data-tsv-name="grass_pillow"			data-caption="「山路を登りながら、こう考えた…」1906年発表の夏目漱石の中編小説です。">草枕</button>
+		<button data-tsv-name="heart"					data-caption="「私はその人を常に先生と呼んでいた…」1914年発表の夏目漱石の長編小説です。">こころ</button>
+		<button data-tsv-name="run_melos"				data-caption="「メロスは激怒した…」1940年発表の太宰治の短編小説です。">走れメロス</button>
+		<button data-tsv-name="preamble_of_constitution"data-caption="「日本国民は、正当に選挙された…」日本国憲法の条文の前にある文章です。">日本国憲法前文</button>
+		<button data-tsv-name="a_tale_of_two_cities"	data-caption="『A Tale of Two Cities』チャールズ・ディケンズによる長編歴史小説です。">二都物語（英語）</button>
+	</section>
+	<input id="classic" type="radio" name="tab">
+	<section class="frame themeButtons">
+		<button data-tsv-name="collection_of_japanese_poems"		data-caption="「やまと歌は、人の心を…」平安時代初期の勅撰和歌集です。紀貫之ら作。">古今和歌集</button>
+		<button data-tsv-name="the_tale_of_the_bamboo_cutter"		data-caption="「今は昔、竹取の翁…」平安時代初期の日本最古の物語です。作者不明。">竹取物語</button>
+		<button data-tsv-name="tosa_diary"				data-caption="「男もすなる日記…」平安時代中期の日本最古の日記文学です。紀貫之作。">土佐日記</button>
+		<button data-tsv-name="the_tale_of_ise"			data-caption="「昔、男、初冠して…」平安時代中期の歌物語です。作者不明。">伊勢物語</button>
+		<button data-tsv-name="the_pillow_book"			data-caption="「春はあけぼの…」平安時代中期の日本最古の随筆です。清少納言作。">枕草子</button>
+		<button data-tsv-name="the_tale_of_genji"		data-caption="「いづれの御時にか…」平安時代中期の世界最古の長編小説です。紫式部作。">源氏物語</button>
+		<button data-tsv-name="an_account_of_my_hut"	data-caption="「ゆく河の流れは絶えずして…」鎌倉時代初期の随筆です。鴨長明作。">方丈記</button>
+		<button data-tsv-name="the_tale_of_heike"		data-caption="「祇園精舎の鐘の声…」鎌倉時代初期の軍記物語です。作者不明。">平家物語</button>
+		<button data-tsv-name="the_harvest_of_leisure"	data-caption="「つれづれなるままに…」鎌倉時代後期の随筆です。兼好法師作。">徒然草</button>
+		<button data-tsv-name="the_narrow_road_to_the_deep_north"	data-caption="「月日は百代の過客にして…」江戸時代中期の紀行文です。松尾芭蕉作。">おくのほそ道</button>
+		<button data-tsv-name="the_analects1"			data-caption="「学びて時に之を習う…」『論語』の冒頭（学而第一の第一節）です。">論語①</button>
+		<button data-tsv-name="the_analects2"			data-caption="「吾十有五にして学に志す…」『論語』為政第二の第四節です。">論語②</button>
+		<button data-tsv-name="spring_dawn"				data-caption="「春眠暁を覚えず…」孟浩然の五言絶句です。">春暁</button>
+		<button data-tsv-name="spring_view"				data-caption="「国破れて山河在り…」杜甫の五言律詩です。">春望</button>
+		<button data-tsv-name="quatrain"				data-caption="「江碧にして鳥愈白く…」杜甫の五言絶句です。">絶句</button>
+		<button data-tsv-name="quiet_night_thought"		data-caption="「床前月光を看る…」李白の五言絶句です。">静夜思</button>
+		<button data-tsv-name="yellow_crane_tower"		data-caption="『黄鶴楼にて孟浩然の広陵に之くを送る』李白の七言絶句です。">黄鶴楼にて…</button>
+		<button data-tsv-name="limitless_life"			data-caption="「寿限無寿限無…」有名な落語です。">寿限無</button>
+		<button data-tsv-name="pangram_iroha" 			data-caption="仮名が重複しない、47文字の有名な歌です。">いろは歌</button>
+		<button data-tsv-name="pangram_torina" 			data-caption="明治時代に作られた、仮名が重複しない48文字の歌です。">とりな歌</button>
 	</section>
 	<input id="about" type="radio" name="tab" checked>
 	<section class="frame">
@@ -133,8 +158,9 @@
 	</section>
 	<nav id="categoryTabs">
 		<label for="words">単語</label>
-		<label for="short" data-caption="句読点のない短文です。">短文</label>
-		<label for="long" data-caption="主に句読点のある長文です。">長文</label>
+		<label for="short">短文</label>
+		<label for="long">長文</label>
+		<label for="classic">古典</label>
 		<label for="about">説明</label>
 	</nav>
 </section>
@@ -142,7 +168,7 @@
 <section id="typingScreen">
 	<header>
 		<div>
-			残り：<input id="remaining" type="number" min="3" required>
+			残り：<input id="remainingNum" type="number" min="3" required>
 		</div>
 		<h3 id="textTitle"></h3>
 		<div>
@@ -156,12 +182,12 @@
 			<p id="romanized"><span></span><span></span></p>
 		</div>
 		<div id="meter"></div>
-		<p id="nextRubyBase"></p>
+		<p id="nextSentence"></p>
 		<div id="keyboard">
 			<kbd id="Hankaku" data-other-key="Zenkaku"></kbd><kbd data-on-shift="!">1</kbd><kbd data-on-shift='"'>2</kbd><kbd data-on-shift="#">3</kbd><kbd data-on-shift="$">4</kbd><kbd data-on-shift="%">5</kbd><kbd data-on-shift="&">6</kbd><kbd data-on-shift="'">7</kbd><kbd data-on-shift="(">8</kbd><kbd data-on-shift=")">9</kbd><kbd data-on-shift="" >0</kbd><kbd data-on-shift="=">-</kbd><kbd data-on-shift="~">^</kbd><kbd data-other-key="\" data-on-shift="|" data-code="IntlYen">￥</kbd><kbd id="Backspace"></kbd><div class="clear"></div>
 			<kbd id="Tab"></kbd><kbd data-on-shift="Q" class="alphabet">q</kbd><kbd data-on-shift="W" class="alphabet">w</kbd><kbd data-on-shift="E" class="alphabet">e</kbd><kbd data-on-shift="R" class="alphabet">r</kbd><kbd data-on-shift="T" class="alphabet">t</kbd><kbd data-on-shift="Y" class="alphabet">y</kbd><kbd data-on-shift="U" class="alphabet">u</kbd><kbd data-on-shift="I" class="alphabet">i</kbd><kbd data-on-shift="O" class="alphabet">o</kbd><kbd data-on-shift="P" class="alphabet">p</kbd><kbd data-on-shift="`">@</kbd><kbd data-on-shift="{">[</kbd><kbd id="Enter"></kbd><div class="clear"></div>
 			<kbd id="CapsLock" data-other-key="Alphanumeric"></kbd><kbd data-on-shift="A" class="alphabet">a</kbd><kbd data-on-shift="S" class="alphabet">s</kbd><kbd data-on-shift="D" class="alphabet">d</kbd><kbd data-on-shift="F" class="alphabet">f</kbd><kbd data-on-shift="G" class="alphabet">g</kbd><kbd data-on-shift="H" class="alphabet">h</kbd><kbd data-on-shift="J" class="alphabet">j</kbd><kbd data-on-shift="K" class="alphabet">k</kbd><kbd data-on-shift="L" class="alphabet">l</kbd><kbd data-on-shift="+">;</kbd><kbd data-on-shift="*">:</kbd><kbd data-on-shift="}">]</kbd><div class="clear"></div>
-			<label for="shiftIsPressed"><kbd id="Shift" data-code="ShiftLeft">Shift</kbd></label><kbd data-on-shift="Z" class="alphabet">z</kbd><kbd data-on-shift="X" class="alphabet">x</kbd><kbd data-on-shift="C" class="alphabet">c</kbd><kbd data-on-shift="V" class="alphabet">v</kbd><kbd data-on-shift="B" class="alphabet">b</kbd><kbd data-on-shift="N" class="alphabet">n</kbd><kbd data-on-shift="M" class="alphabet">m</kbd><kbd data-on-shift="<">,</kbd><kbd data-on-shift=">">.</kbd><kbd data-on-shift="?">/</kbd><kbd data-on-shift="_" data-code="IntlRo">\</kbd><kbd data-code="ShiftRight">Shift</kbd><div class="clear"></div>
+			<label for="shiftIsPressed"><kbd id="Shift" data-code="ShiftLeft">Shift</kbd></label><kbd data-on-shift="Z" class="alphabet">z</kbd><kbd data-on-shift="X" class="alphabet">x</kbd><kbd data-on-shift="C" class="alphabet">c</kbd><kbd data-on-shift="V" class="alphabet">v</kbd><kbd data-on-shift="B" class="alphabet">b</kbd><kbd data-on-shift="N" class="alphabet">n</kbd><kbd data-on-shift="M" class="alphabet">m</kbd><kbd data-on-shift="<">,</kbd><kbd data-on-shift=">">.</kbd><kbd data-on-shift="?">/</kbd><kbd data-on-shift="_" data-code="IntlRo">\</kbd><label for="shiftIsPressed"><kbd data-code="ShiftRight">Shift</kbd></label><div class="clear"></div>
 			<kbd id="Space"> </kbd>
 		</div>
 	</section>

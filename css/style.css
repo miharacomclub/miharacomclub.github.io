@@ -86,8 +86,9 @@ h2 {
 	font-weight: bold;
 	display: block\0; /* IE8+ */
 }
-.preventCollapse::before, /* 上方向のマージン相殺を防ぐ */
-blockquote::before {
+.preventCollapse::before, /* マージン相殺を防ぐ */
+blockquote::before,
+blockquote::after {
 	display: block;
 	height: .1px;
 	content: "";

@@ -41,10 +41,11 @@
 	margin-right: 0;
 	float: right;
 }
-:nth-of-type(1):checked ~ #categoryTabs :nth-child(1),
-:nth-of-type(2):checked ~ #categoryTabs :nth-child(2),
-:nth-of-type(3):checked ~ #categoryTabs :nth-child(3),
-:nth-of-type(4):checked ~ #categoryTabs :nth-child(4) {
+[name="tab"]:nth-of-type(1):checked ~ #categoryTabs :nth-child(1),
+[name="tab"]:nth-of-type(2):checked ~ #categoryTabs :nth-child(2),
+[name="tab"]:nth-of-type(3):checked ~ #categoryTabs :nth-child(3),
+[name="tab"]:nth-of-type(4):checked ~ #categoryTabs :nth-child(4),
+[name="tab"]:last-of-type:checked   ~ #categoryTabs :last-child {
 	background-color: transparent;
 }
 
@@ -63,6 +64,9 @@
 	flex-flow: column wrap;
 }
 @media (max-width:800px) {
+	#categoryTabs label {
+		width: 4rem;
+	}
 	[name="tab"] + section {
 		padding: 1.25em .75em .5em 1em;
 	}
@@ -120,8 +124,7 @@
 }
 @media (max-width:800px) {
 	#rankList {
-		overflow-y: hidden;
-		width: 4.5em;
+		width: 5em;
 		padding-right: 0;
 	}
 }
@@ -184,6 +187,15 @@
 	pointer-events: none;
 	transform: translateY(calc(var(--high-score) * var(--unit-height) * -1));
 }
+@media (max-width:800px) {
+	#rankList::after {
+		direction: rtl;
+		border-color: black;
+		color: white;
+		--shadow: 0 0 .15em black;
+		text-shadow: var(--shadow), var(--shadow), var(--shadow);
+	}
+}
 #rankList li::after {
 	position: absolute;
 	bottom: -1px;
@@ -224,17 +236,17 @@
 	justify-content: space-between;
 	margin: 0 0 .5em;
 }
-#remaining {
+#remainingNum {
 	font-size: 1.35em;
 	width: 2.1em;
 	border: 0;
 	background-color: transparent;
 	color: black;
 }
-#remaining:not(:disabled) {
+#remainingNum:not(:disabled) {
 	outline: 1px solid #aaa;
 }
-#remaining:invalid {
+#remainingNum:invalid {
 	box-shadow: 0 0 .5em red;
 }
 #textTitle {
@@ -262,8 +274,11 @@
 	margin: 0;
 }
 #rubyBase {
-	font-size: 1.35em;
+	font-size: 1.32em;
 	line-height: 1.9;
+}
+#englishMode:not(:checked) ~ * #rubyBase,
+#englishMode:not(:checked) ~ * #rubySentence {
 	font-weight: bold;
 }
 #rubySentence {
@@ -271,21 +286,18 @@
 	line-height: 1.9;
 	color: silver;
 }
-#englishMode:not(:checked) ~ * #rubySentence {
-	font-weight: bold;
-}
 #rubySentence :first-child {
 	color: limegreen;
 }
 #romanized {
-	font-size: 1.35em;
+	font-size: 1.3em;
 	color: silver;
+}
+#englishMode:checked ~ * #rubySentence {
+	display: none;
 }
 #romanized :first-child {
 	color: darkorange;
-}
-#englishMode:checked ~ * #romanized {
-	display: none;
 }
 #invisibleMode:checked ~ * #typing p:not(#rubyBase) {
 	color: transparent;
@@ -296,10 +308,10 @@
 	outline: inset .1em #ddd;
 	background-image: linear-gradient(to right, tomato var(--value), transparent var(--value));
 }
-#nextRubyBase {
+#nextSentence {
 	margin: 0 0 .1em .3em;
 }
-#nextRubyBase::before {
+#nextSentence::before {
 	content: "次：";
 }
 #keyboard {
@@ -408,6 +420,7 @@ kbd {
 	box-shadow: 0 0 0 .1em var(--shadow-color);
 	text-align: center;
 	vertical-align: middle;
+	cursor: pointer;
 	-webkit-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
