@@ -12,15 +12,14 @@ window.openImgInNewTabOnClick = (target = document) => {
 };
 
 
-window.complementTimeElAttrs = (target = document) => {
+const complementTimeElAttrs = (target = document) => {
 	for (const timeEl of $$("time:not([datetime])", target)) {
 
 		const jpDateStr = (timeEl.dataset.datePrefix || "").replace(
 			/-*$/, hyphens => timeEl.textContent.slice(hyphens.length)
 		);
-		const [ymd, yearValue] = parseJpDateStr(jpDateStr);
-
-		const isoDateStr = ymd.join("-0").replace(/-0(\d\d)/g, "-$1");
+		const [ymd, yearValue]	= parseJpDateStr(jpDateStr);
+		const isoDateStr		= ymd.join("-0").replace(/-0(\d\d)/g, "-$1");
 		timeEl.setAttribute("datetime", isoDateStr);
 
 		// [data-tooltip]内は、改行されないため短くする

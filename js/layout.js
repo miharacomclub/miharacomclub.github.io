@@ -11,9 +11,8 @@ const updateLayout = () => {
 	] || 2009;
 
 	$("#aerialPhoto image").setAttribute("xlink:href", `/src/aerial/${photoYear}.jpg`);
-	$("#aerialPhoto text").textContent = `${photoYear}年撮影`;
-	
-	$("#currentYear").textContent = `（${y < $("#range").max? y + "年": "現在"}）`;
+	$("#aerialPhoto text").textContent	= `${photoYear}年撮影`;
+	$("#currentYear").textContent		= `（${y < $("#range").max? y + "年": "現在"}）`;
 };
 
 
@@ -21,10 +20,11 @@ const displayDialogOnClick = event => {
 	if (!event.target.matches("[data-captions] .building, [data-captions] .cover")) return;
 
 	const g = event.target.parentNode;
-	$("dialog h3").textContent = $("text:last-of-type", g).textContent;
-	$("#slider").innerHTML = "";
+	$("dialog h3").textContent	= $("text:last-of-type", g).textContent;
+	$("#slider").innerHTML		= "";
 
 	const specialNames = (g.dataset.specialImgNames || "").split(",");
+
 	for (const [i, caption] of g.dataset.captions.split(",").entries()) {
 
 		const img = `<img src=/src/buildings/${specialNames[i] || g.dataset.imgNamePrefix + (i + 1)}.jpg>`;
@@ -55,10 +55,10 @@ $("#range").addEventListener("input", updateLayout);
 document.addEventListener("click", displayDialogOnClick);
 
 for (const el of $$("dialog, #close")) {
-	el.addEventListener("click", event => {
-		event.target === event.currentTarget && $("dialog").removeAttribute("open");
-	});
+	el.addEventListener("click", event =>
+		event.target === event.currentTarget && $("dialog").removeAttribute("open")
+	);
 }
-document.addEventListener("keydown", event => {
-	event.key === "Escape" && $("dialog").removeAttribute("open"); // , event.preventDefault();
-});
+document.addEventListener("keydown", event =>
+	event.key === "Escape" && $("dialog").removeAttribute("open") // , event.preventDefault();
+);

@@ -1,48 +1,50 @@
-{
-	for (const input of $$("input")) input.checked = input.defaultChecked;
+const doDefault = Symbol();
+
+for (const input of $$("input")) input.checked = input.defaultChecked;
 
 
-	const doDefault = Symbol();
+document.addEventListener("click", async event => {
+	const el = event.target;
+	if (!el.matches("#selectionScreen button")) return;
 
-	document.addEventListener("click", async event => {
-		const el = event.target;
+	const category	= $("[name=tab]:checked").id;
+	const btns		= $$(`[data-tsv-name^="${el.dataset.tsvName}"]`);
+	btns.length > 1 && btns.pop();
 
-		if (el.matches("#typingScreen kbd")) {
-			const key = ($("#shiftIsPressed").checked && el.dataset.onShift) || el.textContent || el.id;
-			return key && key !== "Shift" && Game.onKeyDown(key);
-		}
-		if (!el.matches("#selectionScreen button")) return;
+	const tsvs		= await Promise.all(btns.map(btn =>
+		fetch(`/src/typing/${category}/${btn.dataset.tsvName}.tsv`).then(res => res.ok? res.text(): "")
+	));
+	const lines		= tsvs.join("\n").split(/\r?\n/).filter(v => v);
 
-		const category	= $("[name=tab]:checked").id;
-		const btns		= $$(`[data-tsv-name^="${el.dataset.tsvName}"]`);
-		btns.length > 1 && btns.pop();
-
-		const tsvs		= await Promise.all(btns.map(btn =>
-			fetch(`/src/typing/${category}/${btn.dataset.tsvName}.tsv`).then(res => res.ok? res.text(): "")
-		));
-		const lines		= tsvs.join("\n").split(/\r?\n/).filter(v => v);
-
-		lines.length > 0 && Game.prepare(
-			lines,
-			el.textContent,
-			tsvs.length > 1 && 20,
-			!("inOrder" in el.dataset || ["long", "classic"].includes(category))
-		);
-	});
+	lines.length > 0 && Game.prepare(
+		lines,
+		el.textContent,
+		tsvs.length > 1 && 20,
+		!("inOrder" in el.dataset || ["long", "classic"].includes(category))
+	);
+});
 
 
-	document.addEventListener("keyup",   event =>  $("#shiftIsPressed").checked = event.shiftKey);
-	document.addEventListener("keydown", event => {$("#shiftIsPressed").checked = event.shiftKey;
-		event.ctrlKey
-		|| event.metaKey
-		|| event.altKey
-		|| event.key === "Shift"
-		|| (event.shiftKey && event.key === "0")
-		|| $("#displaySelection").checked
-		|| doDefault === Game.onKeyDown(event.key, doDefault)
-		|| event.preventDefault();
-	});
-}
+document.addEventListener("mousedown", async event => {
+	const el = event.target;
+	if (!el.matches("#typingScreen :not(label) > kbd")) return;
+	
+	const key = $("#shiftIsPressed").checked? el.dataset.onShift: el.textContent || el.id;
+	key && Game.onKeyDown(key);
+});
+
+
+document.addEventListener("keyup",   event =>  $("#shiftIsPressed").checked = event.shiftKey);
+document.addEventListener("keydown", event => {$("#shiftIsPressed").checked = event.shiftKey;
+	event.ctrlKey
+	|| event.metaKey
+	|| event.altKey
+	|| event.key === "Shift"
+	|| (event.shiftKey && event.key === "0")
+	|| $("#displaySelection").checked
+	|| doDefault === Game.onKeyDown(event.key)
+	|| event.preventDefault();
+});
 
 
 
@@ -52,10 +54,10 @@ const Game = (() => {
 	const rmn = $("#remainingNum"),
 
 
-	onKeyDown = (key, doDefault) => {
+	onKeyDown = key => {
 
 		const typedKbd = Kbds.search(key, true);
-		if ($("#displayResults").checked) return Results.onKeyDown(key, doDefault);
+		if ($("#displayResults").checked) return Results.onKeyDown(key);
 
 		if (!startTime) {
 			const isRmnFocused = rmn === document.activeElement;
@@ -180,7 +182,7 @@ const Results = (() => {
 
 	roundOff = num => Math.round(num * 10) / 10,
 
-	onKeyDown = (key, doDefault) => {
+	onKeyDown = key => {
 		$("#displayResults").checked = key !== "Escape";
 		return key !== "Escape" && doDefault;
 	},
