@@ -424,10 +424,12 @@ kbd {
 	-webkit-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	-webkit-tap-highlight-color: transparent;
+	tap-highlight-color: transparent;
 }
 kbd.onType,
 kbd.onType::after,
-kbd:active,
+[data-pseudo-key]:active,
 #shiftIsPressed:checked ~ * #Shift {
 	--top-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 28%));
 	--bg-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 15%));

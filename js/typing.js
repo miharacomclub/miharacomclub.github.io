@@ -1,7 +1,7 @@
-const doDefault = Symbol();
-
 for (const input of $$("input")) input.checked = input.defaultChecked;
 
+
+const doDefault = Symbol();
 
 document.addEventListener("click", async event => {
 	const el = event.target;
@@ -25,13 +25,21 @@ document.addEventListener("click", async event => {
 });
 
 
-document.addEventListener("mousedown", async event => {
+const onKbdPressed = event => {
 	const el = event.target;
-	if (!el.matches("#typingScreen :not(label) > kbd")) return;
-	
-	const key = $("#shiftIsPressed").checked? el.dataset.onShift: el.textContent || el.id;
-	key && Game.onKeyDown(key);
-});
+	if (!el.matches("#typingScreen kbd")) return;
+
+	if (el.textContent === "Shift") {
+		$("#shiftIsPressed").checked = !$("#shiftIsPressed").checked;
+	} else {
+		const key = $("#shiftIsPressed").checked? el.dataset.onShift: el.textContent || el.id;
+		if (!key) return;
+		Game.onKeyDown(key);
+	}
+	event.preventDefault();
+};
+document.addEventListener("touchstart", onKbdPressed, {passive: false});
+document.addEventListener("mousedown", onKbdPressed);
 
 
 document.addEventListener("keyup",   event =>  $("#shiftIsPressed").checked = event.shiftKey);
