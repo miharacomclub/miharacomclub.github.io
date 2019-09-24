@@ -297,8 +297,10 @@ const Romaji = (() => {
 			romajis[kanaIndex + 1] = [""];
 		}
 
-		romajiIndex %= cands[0].length;
-		romajiIndex === 0 && romajis[++kanaIndex] && romajis[kanaIndex][0] === "" && kanaIndex++;
+		if ((romajiIndex %= cands[0].length) === 0) {
+			kanaIndex++;
+			romajis[kanaIndex] && romajis[kanaIndex][0] === "" && kanaIndex++;
+		}
 		return true;
 	},
 
