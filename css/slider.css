@@ -54,7 +54,7 @@
 }
 #slider label img,
 [name="slide"] + label {
-	height: 4.9em;
+	height: 4.8em;
 }
 [name="slide"] + label {
 	float: left;
@@ -92,7 +92,8 @@
 #slide8:checked~#btns :nth-child(7),
 #slide9:checked~#btns :nth-child(8),
 #slide10:checked~#btns :nth-child(9),
-#slide11:checked~#btns :nth-child(10) {
+#slide11:checked~#btns :nth-child(10),
+#slide12:checked~#btns :nth-child(11) {
 	display: block;
 }
 #slide1:checked~#btns :nth-child(2),
@@ -105,6 +106,7 @@
 #slide8:checked~#btns :nth-child(9),
 #slide9:checked~#btns :nth-child(10),
 #slide10:checked~#btns :nth-child(11),
+#slide11:checked~#btns :nth-child(12),
 :not(#slide2):last-of-type:checked~#btns :first-child {
 	display: block;
 	right: 0;

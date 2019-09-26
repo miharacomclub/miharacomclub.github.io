@@ -74,7 +74,12 @@
 	top: 100%;
 	left: 0;
 	width: 19em;
-	border: .15em solid crimson;
+	outline: .15em solid crimson;
+	outline-offset: -.15em;
+}
+span[data-price]:nth-of-type(n+9) + a img {
+	left: auto;
+	right: 0;
 }
 
 .spacePadding::before {
