@@ -24,12 +24,12 @@ a[href*=":"]::after {
 	content: "　";
 	display: inline-block;
 	width: 1em;
-	background: center/1.1em no-repeat url(img/linkicon.svg);
+	background: center/1.1em no-repeat url(/src/common/linkicon.svg);
 }
 a[href$=".pdf"]::after {
 	width: 2em;
 	background-position: -3%, 103%;
-	background-image: url(img/PDF_24.png), url(img/linkicon.svg);
+	background-image: url(/src/common/PDF_24.png), url(/src/common/linkicon.svg);
 }
 
 sub,
@@ -69,8 +69,8 @@ q::after		{content: "」";}
 	content: attr(data-tooltip);
 }
 
-.origBtn,
-.anchorBtns > * {
+.anchorButton,
+.anchorButtons > * {
 	display: inline-block;
 	padding: 0 .4em;
 	border: solid #aaa .05em;
@@ -79,7 +79,7 @@ q::after		{content: "」";}
 	text-align: center;
 	color: black !important;
 }
-.origBtn:active,
-.anchorBtns > :active {
+.anchorButton:active,
+.anchorButtons > :active {
 	background-color: white;
 }

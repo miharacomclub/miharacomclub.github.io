@@ -97,12 +97,12 @@
 	padding: 0 calc(var(--unit) / 2);
 	margin: 0 calc(var(--unit) / -2);
 }
-#cap  .columns {background-image: url(img/cap.svg#lines);}
-#grad .columns {background-image: url(img/grad.svg#areas);}
-#cap  .columns :nth-child(odd ):hover	{background-image: url(img/cap.svg#odd);}
-#cap  .columns :nth-child(even):hover	{background-image: url(img/cap.svg#even);}
-#grad .columns :nth-child(odd ):hover	{background-image: url(img/grad.svg#odd);}
-#grad .columns :nth-child(even):hover	{background-image: url(img/grad.svg#even);}
+#cap  .columns {background-image: url(/src/students/cap.svg#lines);}
+#grad .columns {background-image: url(/src/students/grad.svg#areas);}
+#cap  .columns :nth-child(odd ):hover	{background-image: url(/src/students/cap.svg#odd);}
+#cap  .columns :nth-child(even):hover	{background-image: url(/src/students/cap.svg#even);}
+#grad .columns :nth-child(odd ):hover	{background-image: url(/src/students/grad.svg#odd);}
+#grad .columns :nth-child(even):hover	{background-image: url(/src/students/grad.svg#even);}
 #grad .columns :first-child				{pointer-events: none;}
 
 .columns ::before,

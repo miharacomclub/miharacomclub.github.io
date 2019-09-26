@@ -93,7 +93,7 @@
 #slide9:checked~#btns :nth-child(8),
 #slide10:checked~#btns :nth-child(9),
 #slide11:checked~#btns :nth-child(10),
-#slide12:checked~#btns :nth-child(11) {
+:last-of-type:checked~#btns :nth-last-of-type(2) {
 	display: block;
 }
 #slide1:checked~#btns :nth-child(2),

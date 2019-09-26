@@ -168,10 +168,10 @@ small::before {
 	font-weight: bold;
 }
 
-div + .origBtn::after {
+div + .anchorButton::after {
 	content: "次の問題";
 }
-aside + .origBtn::after {
+aside + .anchorButton::after {
 	content: "選択画面に戻る";
 }
 a img {
