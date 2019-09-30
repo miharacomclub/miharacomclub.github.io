@@ -130,7 +130,7 @@ const Game = (() => {
 		if (!rmn.checkValidity()) rmn.value = rmn.placeholder;
 		rmn.defaultValue	= rmn.value;
 		rmn.disabled		= true;
-		startTime		= new Date();
+		startTime			= new Date();
 	},
 
 

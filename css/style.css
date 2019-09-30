@@ -141,7 +141,6 @@ ul, ol	{padding-left: 1.5em;}
 th, td	{padding: 0;}
 iframe	{border: 0;}
 figure	{margin: 0;}
-cite	{font-style: normal;}
 cite::before {content: "『";}
 cite::after  {content: "』";}
 

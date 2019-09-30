@@ -31,11 +31,11 @@
 
 <section>
 	<h3>部活動年表</h3>
-	<input id="active"		type="checkbox" name="clubs" checked><label for="active">活動中</label>
-	<input id="suspended"	type="checkbox" name="clubs" checked><label for="suspended">休部</label>
-	<input id="abolished"	type="checkbox" name="clubs" checked><label for="abolished">廃部</label>
-	　<input id="culture"	type="checkbox" name="clubs" checked><label for="culture">総務･文化部</label>
-	<input id="sports"		type="checkbox" name="clubs" checked><label for="sports">体育部</label>
+	<input id="active"		type="checkbox" name="clubs" checked><label for="active"	>活動中</label>
+	<input id="suspended"	type="checkbox" name="clubs" checked><label for="suspended"	>休部</label>
+	<input id="abolished"	type="checkbox" name="clubs" checked><label for="abolished"	>廃部</label>
+	　<input id="culture"	type="checkbox" name="clubs" checked><label for="culture"	>総務･文化部</label>
+	<input id="sports"		type="checkbox" name="clubs" checked><label for="sports"	>体育部</label>
 	<div class="clear"></div>
 
 	<figure id="clubs">
@@ -44,15 +44,12 @@
 			<div class="act spo" style="left:44%"><span>バレー</span></div>
 			<div class="act cul" style="left:44%"><span style="--fade-in:2">書道</span></div>
 			<div class="act cul" style="left:46%">
-				<span style="--length:21" class="integrated">茶華道</span
+				<span style="--length:21;--integrated:2">茶華道</span
 				><span style="--length:10">生花</span
-				><span style="--length:10.5;--fade-out:1.5" class="integrated">　</span
+				><span style="--length:10.5;--fade-out:1.5;--integrated:2">　</span
 				><span style="--fade-in:1.5">華道</span>
 			</div>
-			<div class="act cul" style="left:67%">
-				<span style="--length:10">茶道</span
-				><span style="left:10.5%;--fade-in:1.5">　</span>
-			</div>
+			<div class="act cul" style="left:67%"><span style="--length:10">茶道</span><span style="left:10.5%;--fade-in:1.5">　</span></div>
 			<div class="act spo" style="left:47%"><span>陸上競技</span></div>
 			<div class="abo cul" style="left:48%"><span style="--length: 8;--fade-out: 2">購買（旧商業部）</span></div>
 			<div class="abo cul" style="left:48%"><span style="--length:26">珠算（旧商業部）</span></div>
@@ -65,28 +62,36 @@
 			<div class="act spo" style="left:49%"><span>ソフトテニス（旧庭球）</span></div>
 			<div class="act spo" style="left:49%"><span>ソフトボール</span></div>
 			<div class="abo cul" style="left:50%"><span style="--length:57">園芸</span></div>
-			<div class="act cul" style="left:50%"><span style="--length:35">国語</span><span class="integrated">国語文芸</span></div>
+			<div class="act cul" style="left:50%">
+				<span style="--length:35">国語</span
+				><span style="--length:34;--integrated:2">国語文芸</span
+				><span style="--length: 1;--integrated:4" id="media">メデ<br>ィア<br>総合</span>
+			</div>
 			<div class="act cul" style="left:51%"><span style="--length:34">文芸</span></div>
-			<div class="act cul" style="left:50%"><span style="--length:54">生物</span></div>
-			<div class="act cul" style="left:51%"><span style="--length:53">物理</span><span style="left:1px">科学</span></div>
+			<div class="act cul" style="left:50%"><span style="--length: 3">カメラ</span><span style="left:12%;--length:54">写真</span></div>
+			<div class="act cul" style="left:54%"><span style="--length:65">新聞</span></div>
+			<div class="act cul" style="left:50%">
+				<span style="--length:54">生物</span
+				><span style="--length:15;--integrated:3">科学</span
+				><span style="--length: 1;--integrated:4" id="natural">自然<br>科学</span>
+			</div>
+			<div class="act cul" style="left:51%"><span style="--length:53">物理</span></div>
 			<div class="act cul" style="left:51%"><span style="--length:53">化学</span></div>
+			<div class="act cul" style="left:55%"><span style="--length:64">地学</span></div>
 			<div class="act cul" style="left:50%"><span>音楽</span></div>
-			<div class="act cul" style="left:50%"><span style="--length: 3">カメラ</span><span style="left:12%">写真</span></div>
 			<div class="act cul" style="left:50%"><span style="--fade-in:5">英語</span></div>
 			<div class="abo cul" style="left:51%"><span style="--length:22">弁論</span></div>
 			<div class="abo cul" style="left:51%"><span style="--length:51;--fade-out:10">英文タイプ（旧商業部）</span></div>
 			<div class="act spo" style="left:51%"><span>バスケットボール</span></div>
 			<div class="act cul" style="left:51%"><span>放送</span></div>
 			<div class="abo cul" style="left:52%"><span style="--length: 7;--fade-out: 6">農業</span></div>
-			<div class="abo cul" style="left:52%"><span style="--length:36">洋裁</span><span style="--length:18" class="integrated">洋裁手工芸</span></div>
+			<div class="abo cul" style="left:52%"><span style="--length:36">洋裁</span><span style="--length:18;--integrated:2">洋裁手工芸</span></div>
 			<div class="abo cul" style="left:52%"><span style="--length:36">手工芸</span></div>
 			<div class="act cul" style="left:52%"><span>郷土</span></div>
 			<div class="act cul" style="left:52%"><span>食物</span></div>
 			<div class="act spo" style="left:53%"><span>水泳</span></div>
 			<div class="act cul" style="left:53%"><span>美術</span></div>
-			<div class="act cul" style="left:54%"><span>新聞</span></div>
 			<div class="act spo" style="left:55%"><span>剣道</span></div>
-			<div class="act cul" style="left:55%"><span>地学</span></div>
 			<div class="act spo" style="left:58%"><span>柔道</span></div>
 			<div class="abo cul" style="left:59%"><span style="--length:30;--fade-out:10">バレエ</span></div>
 			<div class="act spo" style="left:66%"><span>野外活動</span></div>

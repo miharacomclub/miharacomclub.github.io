@@ -31,7 +31,7 @@ audio {
 @media (min-width:801px) {
 	.songSection ol li:nth-child(2) {
 		order: 3;
-	}	
+	}
 }
 .songSection ol li:only-child {
 	list-style-type: none;

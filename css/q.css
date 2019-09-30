@@ -16,9 +16,6 @@ section:not(:target) {
 	visibility: hidden;
 	z-index: -1;
 }
-section {
-	display: inline;
-}
 [id*="r"]:checked {
 	counter-increment: rightCnt;
 }
@@ -49,22 +46,6 @@ header {
 	margin-bottom: .3em;
 	counter-reset: choiceIndex;
 	counter-increment: qCnt;
-}
-div:last-of-type {
-	margin-bottom: -99em;
-}
-:checked ~ div:last-of-type {
-	margin-bottom: .3em;
-}
-:checked ~ div:last-of-type::after {
-	float: left;
-	margin-right: .25em;
-	line-height: 2;
-	pointer-events: none;
-	content: "不正解";
-}
-[id*="r"]:checked ~ div:last-of-type::after {
-	content: "正解";
 }
 
 h1,
@@ -168,11 +149,29 @@ small::before {
 	font-weight: bold;
 }
 
-div + .anchorButton::after {
+div:last-of-type {
+	margin-bottom: .3em;
+}
+:checked ~ div:last-of-type::after {
+	float: left;
+	margin: .25em .25em 0 0;
+	pointer-events: none;
+	content: "不正解";
+}
+[id*="r"]:checked ~ div:last-of-type::after {
+	content: "正解";
+}
+[href^="#"]::after {
 	content: "次の問題";
 }
-aside + .anchorButton::after {
+[href="./"]::after {
 	content: "選択画面に戻る";
+}
+.anchorButton {
+	display: none;
+}
+:checked ~ .anchorButton {
+	display: inline-block;
 }
 a img {
 	position: absolute;

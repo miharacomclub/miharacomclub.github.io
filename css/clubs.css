@@ -67,6 +67,28 @@
 	--image-direction: right;
 	--image-position: left;
 }
+[style*="integrated"] {
+	--height: calc(var(--integrated) * 1.2em - var(--shift-top));
+	--shift-top: .75em;
+	--shift-bottom: .35em;
+	margin-bottom: calc((var(--integrated) - 1) * -1.2em + var(--shift-bottom));
+	height: var(--height);
+	line-height: var(--height);
+	z-index: 1;
+	vertical-align: bottom;
+}
+[style*="integrated"] + [style*="integrated"] {
+	--shift-top: 1.1em;
+	--shift-bottom: .35em;
+}
+#media,
+#natural {
+	direction: rtl;
+	line-height: 1.2;
+}
+#natural {
+	border-top: .5em solid transparent;
+}
 
 .act.spo span {background-color: hsl(212,45%,83%);}
 .act.cul span {background-color: hsl(212,45%,70%);}
@@ -84,6 +106,9 @@
 	width: 100%;
 	height: 100%;
 	min-height: 3.5em;
+}
+#columns {
+	z-index: 2;
 }
 #years {
 	left: calc(-9%/.76);
