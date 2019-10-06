@@ -3,9 +3,9 @@ window.$$ = (selector, target = document) => [...target.querySelectorAll(selecto
 
 
 window.openImgInNewTabOnClick = (target = document) => {
-	for (const a of $$("a:not([href])", target)) {
-		Object.assign(a, { // a.srcは絶対パスを返す
-			href: $("img", a).getAttribute("src"),
+	for (const a of $$("a", target).filter(a => !a.attributes.length)) {
+		Object.assign(a, {
+			href: $("img", a).getAttribute("src"), // a.srcは絶対パスを返す
 			target: "_blank"
 		});
 	}

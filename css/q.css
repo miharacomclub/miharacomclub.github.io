@@ -12,9 +12,7 @@ body {
 input,
 section:not(:target) {
 	position: absolute;
-	/* display:noneにするとcounterが動かない */
-	visibility: hidden;
-	z-index: -1;
+	visibility: hidden; /* display:noneにするとcounterが動かない */
 }
 [id*="r"]:checked {
 	counter-increment: rightCnt;
@@ -40,9 +38,7 @@ div {
 }
 header {
 	display: table;
-	/* margin-topにすると、問題切り替え時にasideが隠れてしまう */
 	border-top: calc(.9em * 1.6) solid transparent;
-	border-top: none\0;
 	margin-bottom: .3em;
 	counter-reset: choiceIndex;
 	counter-increment: qCnt;
@@ -51,9 +47,7 @@ header {
 h1,
 label {
 	display: table;
-	transition:	transform .3s,
-		box-shadow .3s,
-		background-color .3s;
+	transition:	transform .3s, box-shadow .3s, background-color .3s;
 }
 h1 {
 	font-size: 1.05em;
@@ -63,27 +57,21 @@ h1 {
 	margin: 0;
 	font-weight: normal;
 }
-:root {
-	--bg-rgb: 0,110,255;
-	--bg-rgb-right: 0,139,0;
-	--bg-rgb-wrong: 239,0,0;
-	--bg-opacity: .08;
-}
 label {
 	table-layout: fixed;
 	width: 100%;
 	box-sizing: border-box;
 	padding: .3em;
 	margin: .2em 0;
-	background-color: rgba(var(--bg-rgb),var(--bg-opacity));
+	background-color: rgba(var(--bg-rgb, 0,110,255), var(--bg-opacity, .08));
 	counter-increment: choiceIndex;
 }
 :checked ~ div label {
 	pointer-events: none;
-	--bg-rgb: var(--bg-rgb-wrong);
+	--bg-rgb: 239,0,0;
 }
 :checked ~ div [for*="r"] {
-	--bg-rgb: var(--bg-rgb-right);
+	--bg-rgb: 0,139,0;
 }
 :nth-child(1):checked ~ :nth-of-type(1) label,
 :nth-child(2):checked ~ :nth-of-type(2) label,
@@ -95,8 +83,8 @@ label {
 div:hover label {
 	--bg-opacity: .16;
 }
-:focus h1,
-:focus label {
+header:focus h1,
+div:focus label {
 	transform: translateY(-.1em);
 	box-shadow: 0 .15em .15em #aaa;
 	--bg-opacity: .18;
@@ -136,13 +124,13 @@ h1::before {
 	content: "問" counter(qCnt) "：";
 }
 label::before {
-	content: counter(choiceIndex, upper-alpha);
 	width: 1em;
 	padding-right: .2em;
+	content: counter(choiceIndex, upper-alpha);
 }
 small::before {
-	content: "補足：";
 	width: 3em;
+	content: "補足：";
 }
 :checked ~ header h1:not(:only-child)::before,
 :checked ~ div label:not(:only-child)::before {
@@ -189,9 +177,7 @@ a:hover img {
 	height: 10.5em;
 }
 
-.overline {
-	text-decoration: overline;
-}
+.overline	{text-decoration: overline;}
 #darkgreen,
 #steelgreen	{color: white;}
 #vividblue	{color: mediumblue;}

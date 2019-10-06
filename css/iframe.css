@@ -36,6 +36,7 @@ sub,
 sup		{line-height: 0;}
 table	{border-collapse: collapse;}
 label	{cursor: pointer;}
+cite	{font-style: normal;}
 cite::before	{content: "『";}
 cite::after		{content: "』";}
 q::before		{content: "「";}

@@ -1,6 +1,6 @@
 .graph {
 	position: relative;
-	display: none\0; /* IE8+ */
+	display: none\0; /* IE */
 	padding-left: 2em;
 	--unit: calc(37rem / 99);
 }
@@ -159,7 +159,7 @@
 .graph li::before {
 	width: .5em;
 	height: .5em;
-	border: .05em solid #000;
+	border: .05em solid black;
 	margin: 0 .25em 0 0;
 	content: "";
 }

@@ -1,0 +1,153 @@
+/* jsが無効のとき */
+[data-period*=","] {
+	display: none;
+}
+#rangeWrapper {
+	position: relative;
+	max-width: 60%;
+	width: 20em;
+}
+#rangeWrapper::before {
+	content: "1951年";
+}
+#rangeWrapper::after {
+	content: "現在";
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+#rangeWrapper input {
+	width: 100%;
+}
+
+.fixedAspectRatio {
+	width: 37.5em;
+}
+.fixedAspectRatio::before {
+	padding-top: 100%;
+}
+
+.thickframes *,
+.frame,
+.building {
+	fill: transparent;
+	stroke: black;
+	stroke-width: 6;
+}
+.thickframes * {
+	stroke-width: 9;
+}
+[data-to] {
+	fill: white;
+	stroke: black;
+	stroke-width: 3;
+}
+.hideline {
+	fill: hsl(0,0%,99%);
+	stroke: hsl(0,0%,99%);
+}
+[data-captions] .building,
+[data-captions] .cover {
+	cursor: pointer;
+}
+.building.area {
+	stroke-dasharray: 6 10;
+}
+.cover {
+	fill: transparent;
+}
+.cover:hover {
+	fill: rgba(255,0,0,.1);
+}
+.building:hover {
+	stroke: red;
+	fill: rgba(255,0,0,.05);
+}
+
+.building:hover ~ text {
+	fill: red;
+}
+[data-period] text {
+	font-size: 40px;
+	pointer-events: none;
+}
+[data-period] text.large {
+	font-size: 60px;
+}
+#title text {
+	font-size: 70px;
+	font-weight: bold;
+}
+#aerialPhoto text {
+	font-size: 50px;
+}
+
+dialog,
+#close {
+	padding: 0;
+	border: none;
+	background-color: transparent;
+}
+dialog {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	z-index: 99;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: opacity .3s;
+}
+dialog:not([open]) {
+	opacity: 0;
+	pointer-events: none;
+}
+dialog::before { /* ::backdrop */
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.5);
+	cursor: pointer;
+	content: "";
+}
+dialog section {
+	position: relative;
+	width: 36em;
+	max-height: 100vh;
+	box-sizing: border-box;
+	padding: .75em;
+	margin: 0;
+	overflow: auto;
+	background-color: hsl(0,0%,99%);
+}
+@media (max-width:800px) {
+	dialog section {width: 23em;}
+}
+
+dialog h3 {
+	margin-bottom: .5em;
+}
+#close {
+	position: absolute;
+	font-size: 1.25em;
+	top: .8em;
+	right: .8em;
+	line-height: 1;
+	font-weight: bold;
+	text-shadow: 0 0 .5px;
+	cursor: pointer;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+#close:hover {
+	color: green;
+}
+#slider figure img,
+#btns {
+	height: 14em;
+}

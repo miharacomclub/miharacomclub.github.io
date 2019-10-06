@@ -75,7 +75,7 @@
 		padding-bottom: 0;
 	}
 	.themeButtons::after {
-		width: 9.4em;
+		width: 9.5em;
 		height: .1px;
 		content: "";
 	}
@@ -86,11 +86,12 @@
 	appearance: none;
 	font: inherit;
 	font-size: .9em;
-	width: 9.4em;
+	width: 9.5em;
+	padding: 0;
 	border: .05em solid #aaa;
 	margin: .15em 1em .15em 0;
 	background-color: #eee;
-	line-height: 1.8;
+	line-height: 1.9;
 	cursor: pointer;
 }
 .themeButtons button:active {
@@ -121,6 +122,7 @@
 	-ms-user-select: none;
 	user-select: none;
 	--unit-height: 1rem / 28; /* DからArrowまで入る高さ */
+	visibility: hidden; /* FOUC */
 }
 @media (max-width:800px) {
 	#rankList {
@@ -141,7 +143,7 @@
 	height: 99em;
 	max-height: calc(var(--score-range) * var(--unit-height));
 }
-#rankList li:nth-last-child(n+7) { /* Falcon+ */
+#rankList li:nth-last-child(n+7) { /* Falcon~ */
 	--is-visible: calc(var(--high-score) - var(--inferior-score));
 	height: calc((var(--is-visible) + 1) * 99em);
 	z-index: var(--is-visible);
@@ -156,7 +158,7 @@
 	background-color: hsl(0,0%,99%);
 	pointer-events: none;
 }
-#rankList li:nth-last-child(n+6)::before { /* Arrow+ */
+#rankList li:nth-last-child(n+6)::before { /* Arrow~ */
 	left: -5em;
 	max-width: calc(100% + 10em);
 	width: calc((var(--required-score) - var(--high-score)) * 99em);
@@ -198,6 +200,7 @@
 }
 #rankList li::after {
 	position: absolute;
+	left: 0;
 	bottom: -1px;
 	direction: rtl;
 }
@@ -314,9 +317,6 @@
 #nextSentence::before {
 	content: "次：";
 }
-#keyboard {
-	touch-action: manipulation;
-}
 [data-keycap],
 .alphabet,
 #shiftIsPressed:checked ~ * [data-on-shift] {
@@ -388,6 +388,9 @@
 }
 
 
+#keyboard {
+	touch-action: manipulation;
+}
 :root {
 	--key-width: 2.25em;
 	--key-height: 2.1em;
@@ -425,7 +428,6 @@ kbd {
 	-ms-user-select: none;
 	user-select: none;
 	-webkit-tap-highlight-color: transparent;
-	tap-highlight-color: transparent;
 }
 kbd.onType,
 kbd.onType::after,

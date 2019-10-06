@@ -1,110 +1,146 @@
-/* jsが無効のとき */
-[data-period*=","] {
+#rangeWrapper input {
+	max-width: 50%;
+	width: 20em;
+	float: left;
+}
+[type="checkbox"] {
 	display: none;
 }
-#rangeWrapper {
-	position: relative;
-	max-width: 60%;
-	width: 20em;
+#displayFrames + label {
+	margin-left: .6em;
 }
-#rangeWrapper::before {
-	content: "1951年";
+[type="checkbox"] + label {
+	float: left;
+	margin: 0 0 .4em .4em;
+	min-width: 2em;
+	padding: 0 .3em;
+	text-align: center;
+	outline: .1em solid currentcolor;
+	outline-offset: -.1em;
+	color: #bbb;
 }
-#rangeWrapper::after {
-	content: "現在";
-	position: absolute;
-	top: 0;
-	right: 0;
-}
-#rangeWrapper input {
-	width: 100%;
+:checked + label {
+	color: midnightblue;
 }
 
-.fixedAspectRatio {
-	width: 37.5em;
+#layout {
+	position: relative;
+	display: none\0; /* IE */
+	overflow: hidden;
+	width: 100%;
+	opacity: 0; /* FOUC */
 }
-.fixedAspectRatio::before {
+#layout::before {
+	content: "";
+	display: block;
 	padding-top: 100%;
 }
+#layout img, svg {
+	position: absolute;
+	top: -11%;
+	left: -11%;
+	width: 125%;
+	height: 125%;
+}
+#displayFade:checked ~ #layout,
+#displayFade:checked ~ #layout img,
+#displayFade:checked ~ #layout g text		{transition: opacity .3s linear;}
+#displayFade:checked ~ #layout g :not(text)	{transition: opacity .3s linear, fill .3s;}
 
-.thickframes *,
-.frame,
-.building {
-	fill: transparent;
-	stroke: black;
-	stroke-width: 6;
-}
-.thickframes * {
-	stroke-width: 9;
-}
-[data-to] {
-	fill: white;
-	stroke: black;
-	stroke-width: 3;
-}
-.hideline {
-	fill: hsl(0,0%,99%);
-	stroke: hsl(0,0%,99%);
-}
-[data-captions] .building,
-[data-captions] .cover {
-	cursor: pointer;
-}
-.building.area {
-	stroke-dasharray: 6 10;
-}
-.cover {
-	fill: transparent;
-}
-.cover:hover {
-	fill: rgba(255,0,0,.1);
-}
-.building:hover {
-	stroke: red;
-	fill: rgba(255,0,0,.05);
-}
-
-.building:hover ~ text {
-	fill: red;
-}
-[data-period] text {
-	font-size: 40px;
+.lastPhotoWrapper ~ a img {
+	opacity: 0;
 	pointer-events: none;
 }
-[data-period] text.large {
-	font-size: 60px;
+svg {
+	--shadow: drop-shadow(0 0 1.5px white);
+	filter: var(--shadow)var(--shadow);
+	pointer-events: none;
 }
-#title text {
-	font-size: 70px;
+svg * {
+	pointer-events: auto;
+}
+g {
+	color: midnightblue;
+	cursor: default;
+}
+[data-captions] {
+	cursor: pointer;
+}
+[data-captions]:hover {
+	color: green;
+}
+g :not(text) {
+	fill: transparent;
+	stroke-width: 1.5px;
+	stroke: currentcolor;
+}
+g:not(.exists) *,
+#displayFrames:not(:checked) ~ #layout g:not(:hover) :not(text),
+#displayNames:not(:checked) ~ #layout g:not(:hover) text {
+	opacity: 0;
+}
+g:not(.exists) * {
+	pointer-events: none;
+}
+g:hover :not(text) {
+	fill: rgba(255,255,255,.1);
+}
+text {
+	font-size: 18px;
+	fill: currentcolor;
+	paint-order: stroke;
+	stroke: white;
+	stroke-width: 1.8px;
+}
+.large {
+	font-size: 25px;
+	stroke-width: 2.5px;
+}
+.vertical {
+	writing-mode: vertical-rl;
+}
+#title,
+#year {
+	font-size: 35px;
+	stroke-width: 6px;
 	font-weight: bold;
 }
-#aerialPhoto text {
-	font-size: 50px;
+#year {
+	text-anchor: middle;
+}
+#yearTaken,
+#source {
+	text-anchor: end;
+	stroke-width: 3px;
+}
+#source {
+	stroke-width: 2.5px;
+	font-size: 20px;
 }
 
-dialog,
-#close {	
+#dialog,
+#close {
 	padding: 0;
 	border: none;
 	background-color: transparent;
 }
-dialog {
+#dialog {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100vh;
-	z-index: 99;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	transition: opacity .3s ease;
+	transition: opacity .3s;
+	visibility: hidden; /* FOUC */
 }
-dialog:not([open]) {
+#dialog:not(.open) {
 	opacity: 0;
 	pointer-events: none;
 }
-dialog::before { /* ::backdrop */
+#dialog::before { /* ::backdrop */
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -114,7 +150,7 @@ dialog::before { /* ::backdrop */
 	cursor: pointer;
 	content: "";
 }
-dialog section {
+#dialog section {
 	position: relative;
 	width: 36em;
 	max-height: 100vh;
@@ -125,10 +161,10 @@ dialog section {
 	background-color: hsl(0,0%,99%);
 }
 @media (max-width:800px) {
-	dialog section {width: 23em;}
+	#dialog section {width: 23em;}
 }
 
-dialog h3 {
+#dialog h3 {
 	margin-bottom: .5em;
 }
 #close {
@@ -136,13 +172,10 @@ dialog h3 {
 	font-size: 1.25em;
 	top: .8em;
 	right: .8em;
+	padding: .1em;
 	line-height: 1;
 	font-weight: bold;
-	text-shadow: 0 0 .5px;
 	cursor: pointer;
-	appearance: none;
-	-moz-appearance: none;
-	-webkit-appearance: none;
 }
 #close:hover {
 	color: green;

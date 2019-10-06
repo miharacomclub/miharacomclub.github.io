@@ -23,7 +23,8 @@
 	line-height: 1;
 	margin-top: .5em;
 }
-#bars, #bars * {
+#bars,
+#bars * {
 	position: relative;
 }
 #bars {
@@ -50,44 +51,36 @@
 	padding: .07em 0 .03em .1em;
 	background-repeat: no-repeat;
 }
-#bars .abo, #bars span:not(:only-child) {display: none\0;} /* IE8+ */
+#bars .abo, #bars span:not(:only-child) {display: none\0;} /* IE */
 
-.integrated {
-	top: .6em;
-}
 [style*="fade"] {
 	/* edgeは#rgbaに対応していない */
-	/* safariはtransparent(#0000)にすると、グラデーションが黒くなる */
-	background-image: linear-gradient(to var(--image-direction, left), rgba(255,255,255,.75), rgba(255,255,255,0));
-	background-position: var(--image-position, right);
+	/* safariはtransparent(#0000)を指定すると、グラデーションが黒くなる */
+	background-image: linear-gradient(to var(--grad-direction, left), rgba(255,255,255,.75), rgba(255,255,255,0));
+	background-position: var(--grad-position, right);
 	/* edgeはheight 100%を指定する必要がある */
 	background-size: calc(var(--fade-in, var(--fade-out)) / var(--length, 100) * 100%) 100%;
 }
 [style*="fade-in"] {
-	--image-direction: right;
-	--image-position: left;
+	--grad-direction: right;
+	--grad-position: left;
 }
 [style*="integrated"] {
-	--height: calc(var(--integrated) * 1.2em - var(--shift-top));
-	--shift-top: .75em;
-	--shift-bottom: .35em;
-	margin-bottom: calc((var(--integrated) - 1) * -1.2em + var(--shift-bottom));
+	--height: calc(var(--integrated) * 1.2em - .1em - var(--shift-top) - var(--shift-bottom));
+	--shift-top: .4em;
+	--shift-bottom: .4em;
+	margin: calc(var(--shift-top)) 0 -99em;
 	height: var(--height);
 	line-height: var(--height);
 	z-index: 1;
-	vertical-align: bottom;
-}
-[style*="integrated"] + [style*="integrated"] {
-	--shift-top: 1.1em;
-	--shift-bottom: .35em;
+	vertical-align: top;
 }
 #media,
 #natural {
 	direction: rtl;
-	line-height: 1.2;
-}
-#natural {
-	border-top: .5em solid transparent;
+	line-height: 1.1;
+	--shift-top: .8em;
+	border-top: .7em solid transparent;
 }
 
 .act.spo span {background-color: hsl(212,45%,83%);}

@@ -16,14 +16,14 @@
 
 #slider figure {
 	opacity: 0;
-	transition: opacity .5s linear;
+	transition: opacity .5s;
 }
 #slider :checked + label + figure {
 	opacity: 1;
 	z-index: 1;
 }
 #slider figure:first-of-type {
-	position: relative; /* z-index */
+	position: relative;
 	width: 100%;
 	order: -1;
 }

@@ -4,23 +4,23 @@ for (const input of $$("input")) input.checked = input.defaultChecked;
 const doDefault = Symbol();
 
 document.addEventListener("click", async event => {
-	const el = event.target;
-	if (!el.matches("#selectionScreen button")) return;
+	if (!event.target.matches("#selectionScreen button")) return;
+	const btn = event.target;
 
 	const category	= $("[name=tab]:checked").id;
-	const btns		= $$(`[data-tsv-name^="${el.dataset.tsvName}"]`);
+	const btns		= $$(`[data-tsv-name^="${btn.dataset.tsvName}"]`);
 	btns.length > 1 && btns.pop();
 
-	const tsvs		= await Promise.all(btns.map(btn =>
-		fetch(`/src/typing/${category}/${btn.dataset.tsvName}.tsv`).then(res => res.ok? res.text(): "")
+	const tsvs		= await Promise.all(btns.map(b =>
+		fetch(`/src/typing/${category}/${b.dataset.tsvName}.tsv`).then(resp => resp.ok? resp.text(): "")
 	));
 	const lines		= tsvs.join("\n").split(/\r?\n/).filter(v => v);
 
 	lines.length > 0 && Game.prepare(
 		lines,
-		el.textContent,
+		btn.textContent,
 		tsvs.length > 1 && 20,
-		!("inOrder" in el.dataset || ["long", "classic"].includes(category))
+		!("inOrder" in btn.dataset || ["long", "classic"].includes(category))
 	);
 });
 
@@ -63,8 +63,7 @@ const Game = (() => {
 
 
 	onKeyDown = key => {
-
-		const typedKbd = Kbds.search(key, true);
+		const typedKbd = Kbd.search(key, true);
 		if ($("#displayResults").checked) return Results.onKeyDown(key);
 
 		if (!startTime) {
@@ -73,7 +72,6 @@ const Game = (() => {
 			if (isRmnFocused)		return doDefault;
 			if (key === "Escape")	return $("#displaySelection").checked = true;
 		}
-
 		if (!typedKbd)					return doDefault;
 		if (key === "Escape")			return reset();
 		if (!Romaji.isKeyCorrect(key))	return onTypo();
@@ -135,7 +133,7 @@ const Game = (() => {
 
 
 	recolor = () => {
-		// 123.split(/(.{2}})(.*)/) → [,12,3,]
+		// abc.split(/(.{2}})(.*)/) → [,ab,c,]
 		const [, ...rubySentence] = $("#rubySentence").textContent
 			.split(new RegExp(`(.{${Romaji.indexOfKana()}})(.*)`));
 
@@ -148,7 +146,7 @@ const Game = (() => {
 		}
 
 		for (const [i, romaji] of Romaji.getCands().entries()) {
-			const kbd = Kbds.search(romaji);
+			const kbd = Kbd.search(romaji);
 			const className = i > 0? "otherCandidates": "candidate";
 			kbd.classList.add(className);
 			kbd.dataset.onShift === romaji && $("#Shift").classList.add(className);
@@ -226,28 +224,28 @@ const Results = (() => {
 	};
 
 
-	$$("#rankList li").reduce((superior, item) => {
-		const rankName		= item.textContent.trim();
-		const rankColor		= item.style.color;
-		const requiredScore	= +item.style.getPropertyValue("--required-score");
+	$$("#rankList li").reduce((superior, rank) => {
+		const rankName		= rank.textContent.trim();
+		const rankColor		= rank.style.color;
+		const requiredScore	= +rank.style.getPropertyValue("--required-score");
 		const superiorScore	= +superior.style.getPropertyValue("--required-score") || 950;
 
-		item.dataset.score	= requiredScore;
-		item.dataset.requiredKps = roundOff(requiredScore / 60 / 0.97 ** 2);
-		item.style.setProperty("--score-range", superiorScore - requiredScore);
+		rank.dataset.score	= requiredScore;
+		rank.dataset.requiredKps = roundOff(requiredScore / 60 / 0.97 ** 2);
+		rank.style.setProperty("--score-range", superiorScore - requiredScore);
 		superior.style.setProperty("--inferior-score", requiredScore);
 
 		if (rankName.length > 1) {
 			rankNamesAndColors[requiredScore] = [rankName, rankColor];
 		} else {
-			const suffixes = ["-","","+","++"];
+			const suffixes = ["-", "", "+", "++"];
 			for (let score = requiredScore; score < superiorScore; score += 25) {
 				rankNamesAndColors[score] = [rankName + suffixes.shift(), rankColor];
 			}
 		}
-		return item;
+		return rank;
 	});
-	$("#rankList").style.visibility = "";
+	$("#rankList").style.visibility = "visible";
 	storeHighScore(0);
 
 	return {onKeyDown, show};
@@ -256,20 +254,24 @@ const Results = (() => {
 
 
 const Romaji = (() => {
-	let romajis, kanaIndex, romajiIndex;
+	let kanaIndex, romajiIndex, romajis, firstCands;
 	const table = {},
 
-	prepare			= _romajis => [romajis, kanaIndex, romajiIndex] = [[..._romajis], 0, 0],
+	prepare		= _romajis => [kanaIndex, romajiIndex, romajis, firstCands] = [0, 0, [..._romajis], []],
 
-	getCands		= () => [...new Set(romajis[kanaIndex].map(cand => cand[romajiIndex]))],
+	getCands	= () => [...new Set(romajis[kanaIndex].map(cand => cand[romajiIndex]))],
 
-	indexOfKana		= () => kanaIndex < romajis.length? kanaIndex: -1,
+	indexOfKana	= () => kanaIndex < romajis.length? kanaIndex: -1,
 
-	getRomanized	= () => {
+
+	getRomanized = () => {
+		if (kanaIndex > 0) firstCands[kanaIndex - 1] = romajis[kanaIndex - 1][0];
 		const buf = [kanaIndex, romajiIndex, [...romajis]];
-		while (romajis[kanaIndex] && isKeyCorrect(romajis[kanaIndex][0][romajiIndex]));
 
-		const firstCands = romajis.map(cands => cands[0]);
+		for (let i = kanaIndex; i < romajis.length; i++) {
+			while (i === kanaIndex && isKeyCorrect(romajis[kanaIndex][0][romajiIndex]));
+			if (firstCands[i] === (firstCands[i] = romajis[i][0])) break;
+		}
 		[kanaIndex, romajiIndex, romajis] = buf;
 
 		const indeterminate = firstCands.slice(kanaIndex).join("").slice(romajiIndex);
@@ -310,7 +312,6 @@ const Romaji = (() => {
 		const _romajis = [...hiraganas].map(kana => [...(table[kana] || kana)]);
 
 		for (let i = hiraganas.length; --i > 0;) {
-
 			// うぁ [[wha拗,u,wu,whu], [la,xa]]
 			if ("ぁぃぅぇぉゃゅょ".includes(hiraganas[i])) {
 				const yoonRomaji = table[hiraganas.substr(i - 1, 2)];
@@ -334,7 +335,7 @@ const Romaji = (() => {
 	};
 
 
-	fetch("/src/typing/romaji.tsv").then(resp => resp.ok && resp.text()).then(tsv => {
+	fetch("/src/typing/romaji.tsv").then(resp => resp.ok? resp.text(): "").then(tsv => {
 		for (const line of tsv.split(/\r?\n/)) {
 			((key, ...values) => table[key] = values)(...line.split("\t"));
 		}
@@ -344,14 +345,14 @@ const Romaji = (() => {
 
 
 
-const Kbds = (() => {
+const Kbd = (() => {
 	const
-	els = $$("#typingScreen kbd"),
-	keys = els.map(kbd => [kbd.textContent, kbd.id, kbd.dataset.otherKey, kbd.dataset.onShift].filter(v => v)),
+	kbds = $$("#typingScreen kbd"),
+	keys = kbds.map(kbd => [kbd.textContent, kbd.id, kbd.dataset.otherKey, kbd.dataset.onShift].filter(v => v)),
 
 
 	search = (keyName, typeIfFound = false) => {
-		const kbd = els[keys.findIndex(keyNames => keyNames.includes(keyName))];
+		const kbd = kbds[keys.findIndex(keyNames => keyNames.includes(keyName))];
 
 		if (typeIfFound && kbd) {
 			kbd.classList.add("onType");
@@ -364,18 +365,15 @@ const Kbds = (() => {
 
 
 
-const Sounds = (() => {
-	// safariでの処理落ちを防ぐ
+const Sounds = (() => { // safariでの処理落ちを防ぐ
 	if (window.webkitAudioContext) window.AudioContext = new window.webkitAudioContext();
 
-	class SE {
-		constructor(name) {
-			this.sources = [...Array(10)].map(() => new Audio(`/src/typing/${name}.mp4`));
-			this.playCount = 0;
-		}
-		play() {
-			this.sources[this.playCount++ % 10].play();
-		}
+	function SE(name) {
+		this.sources = [...Array(10)].map(() => new Audio(`/src/typing/${name}.mp4`));
+		this.playCount = 0;
+	}
+	SE.prototype.play = function() {
+		this.sources[this.playCount++ % 10].play();
 	}
 	return {
 		correct: new SE("correct"),

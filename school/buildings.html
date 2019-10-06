@@ -5,22 +5,17 @@
 
 <title>建物・モニュメント｜淡路三原高校コンピュータ部</title>
 <style>
-#mottoList {
+#mottos {
 	list-style-type: none;
-}
-#dormitory blockquote {
-	white-space: nowrap;
 }
 /* not演算子を使うとき、all andは省略できない */
 @media not all and (max-width:800px) {
-	#tsuchigaImgs img {
+	#tsuchiga img,
+	p.sxs {
 		float: right;
 	}
-	#dormitory > p:last-of-type {
-		float: right;
-		margin-top: 0;
-		width: 50%;
-	}
+}@media (max-width:800px) {
+	p.sxs {width: 100%;}
 }
 </style>
 
@@ -82,7 +77,7 @@
 	</p>
 </section>
 
-<section>
+<section id="tsuchiga">
 	<h3>槌賀記念室</h3>
 	<p>
 		<time>1956年</time>に槌賀研究室が、教え子の寄付金により建てられました。<br>
@@ -94,10 +89,9 @@
 		貝類、コケ類などの標本が陳列されています。<br>
 		標本や資料の劣化を防ぐために、文化祭当日にのみ開放されます。
 	</p>
-	<div id="tsuchigaImgs" class="clear">
-		<a><img src="/src/buildings/tsuchiga2.jpg" alt="槌賀記念室"></a>
-		<a><img src="/src/buildings/tsuchiga1.jpg" alt="槌賀記念室のそばにある胸像"></a>
-	</div>
+	<a><img src="/src/buildings/tsuchiga2.jpg" alt="槌賀記念室"></a>
+	<a><img src="/src/buildings/tsuchiga1.jpg" alt="槌賀記念室のそばにある胸像"></a>
+	<div class="clear"></div>
 
 	<blockquote>
 		<p>
@@ -106,7 +100,7 @@
 			<time>明治四十二年</time>広島髙等師範学校ヲ卒業シ教育ニ従事スルヤ<br>
 			独特ノ教授法ニヨリ左ノモットーヲ以テ終始一貫ス
 		</p>
-		<ul id="mottoList">
+		<ul id="mottos">
 			<li>一、勉メテ自ラ研究セヨ
 			<li>一、精密ニ観察実験セヨ
 			<li>一、正確ニ思考セヨ
@@ -175,7 +169,7 @@
 		寄宿舎に収容できないため下宿している生徒は28名でした。<br>
 		また、寄宿舎の食堂を利用する生徒や教員は相当数いました。
 	</p>
-	<p>
+	<p class="sxs">
 		しかし<time>1989年</time>に、建物の老朽化と<br>
 		入寮者の減少により寄宿舎は廃止され、<br>
 		建物は取り壊されました。<br>
