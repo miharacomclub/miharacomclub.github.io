@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/css/style.css">
 <script src="/js/index.js" type="module"></script>
 
 <title>学校紹介｜淡路三原高校コンピュータ部</title>
 <style>
-#mapWrap::before {
+#mapWrapper::before {
 	padding-top: 100%;
 }
 #school {
@@ -30,8 +31,14 @@
 	height: 100%;
 }
 @keyframes autoSlider {
-	 0%, 30% {opacity: 0; visibility: hidden;}
-	10%, 20% {opacity: 1; visibility: visible;}
+	 0%, 30% {
+		opacity: 0;
+		visibility: hidden;
+	}
+	10%, 20% {
+		opacity: 1;
+		visibility: visible;
+	}
 }
 #autoSlider :nth-child(2) {animation-delay: 5s;}
 #autoSlider :nth-child(3) {animation-delay: 10s;}
@@ -64,11 +71,11 @@
 		また、<a href="clubs">部活動</a>では郷土部の人形浄瑠璃の海外公演や、<br>
 		放送部の高校放送コンテスト全国大会の出場など、様々な活躍を見せています。
 	</p>
-	<div id="mapWrap" class="fixedAspectRatio sxs">
+	<div id="mapWrapper" class="fixedAspectRatio sxs">
 		<iframe allowfullscreen src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1648.6580961236402!2d134.77974128716798!3d34.28190933358319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3554a6cebdc8120f%3A0xa1ecae9637c7c175!2z5YW15bqr55yM56uL5reh6Lev5LiJ5Y6f6auY562J5a2m5qCh!5e0!3m2!1sja!2sjp!4v1489550895967"></iframe>
 	</div>
 	<a href="layout">
-		<img class="sxs" src="/src/others/layout.png" alt="学校配置図">
+		<img class="sxs" src="/src/others/layout.jpg" alt="学校配置図">
 	</a>
 </section>
 

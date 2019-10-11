@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/css/style.css">
 <script src="/js/index.js" type="module"></script>
 
@@ -17,13 +18,8 @@
 
 <h2>生徒数の推移</h2>
 <section>
-	<p id="onlyIE">
-		現在お使いのブラウザでは、機能がご利用になれません。<br>
-		<a target="_blank" href="https://www.google.com/intl/ja_ALL/chrome/"
-		>Google Chrome</a>や、<a target="_blank" href="https://www.mozilla.org/ja/firefox/new/"
-		>Firefox</a>など他のブラウザをお使いください。
-	</p>
-	<figure id="cap" class="graph">
+	<script src="/js/IE.js" async></script>
+	<figure id="cap" class="graph notIE">
 		<figcaption>生徒定員</figcaption>
 		<div class="fixedAspectRatio">
 			<div class="hLines">
@@ -119,7 +115,7 @@
 </section>
 
 <section>
-	<figure id="grad" class="graph">
+	<figure id="grad" class="graph notIE">
 		<figcaption>卒業者数</figcaption>
 		<div class="fixedAspectRatio">
 			<div class="hLines">

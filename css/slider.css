@@ -16,7 +16,7 @@
 
 #slider figure {
 	opacity: 0;
-	transition: opacity .5s;
+	transition: opacity .5s linear;
 }
 #slider :checked + label + figure {
 	opacity: 1;

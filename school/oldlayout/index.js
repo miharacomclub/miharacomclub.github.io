@@ -6,12 +6,12 @@ const updateLayout = () => {
 		el.style.display = (period[0] <= y && y <= period[1])? "block": "none";
 	}
 
-	const photoYear = [1947,1968,1970,1975,1982,1986,2004][
+	const photoYear = ["1947-10","1968-05","1970-06","1975-03","1982-01","1986-04","2004-04"][
 		[1951,1968,1972,1978,1984,1989,1990].findIndex(v => y <= v)
-	] || 2007;
+	] || "2009";
 
 	$("#aerialPhoto image").setAttribute("xlink:href", `/src/buildings/${photoYear}.jpg`);
-	$("#aerialPhoto text").textContent	= `${photoYear}年撮影`;
+	$("#aerialPhoto text").textContent	= `${photoYear.slice(0, 4)}年撮影`;
 	$("#currentYear").textContent		= `（${y < $("#range").max? y + "年": "現在"}）`;
 };
 

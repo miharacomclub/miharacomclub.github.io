@@ -1,57 +1,51 @@
-[name="clubs"] {
+[type="checkbox"] {
 	display: none;
 }
-[name="clubs"] + label {
+[type="checkbox"] + label {
 	display: inline-block;
 	padding: 0 .1em;
 	border-width: .05em;
 	border-style: solid;
 	line-height: 1.4;
 }
-[name="clubs"]:checked + label {
+:checked + label {
 	border-bottom-width: .25em;
 }
-[for="active"]		{border-color: hsl(212,45%,70%);}
-[for="suspended"]	{border-color: hsl( 79,41%,70%);}
-[for="abolished"]	{border-color: hsl(  1,47%,70%);}
-[for="culture"]		{border-color: hsl(212,45%,70%);}
-[for="sports"]		{border-color: hsl(212,45%,83%);}
 
 #clubs {
 	position: relative;
 	overflow: hidden;
 	line-height: 1;
 	margin-top: .5em;
-}
-#bars,
-#bars * {
-	position: relative;
+	--unit: calc(1% / .76);
 }
 #bars {
-	left: calc(-44%/.76);
-	width: calc(100%/.76);
+	margin-left: calc(-44 * var(--unit));
+	width: calc(100 * var(--unit));
 }
 #bars div {
 	white-space: nowrap;
 	margin-bottom: .1em;
 }
-#sports:not(:checked)		~ #clubs .spo,
-#culture:not(:checked)		~ #clubs .cul,
-#active:not(:checked)		~ #clubs .act,
-#suspended:not(:checked)	~ #clubs .sus,
-#abolished:not(:checked)	~ #clubs .abo {
+#spo:not(:checked) ~ #clubs .spo,
+#cul:not(:checked) ~ #clubs .cul,
+#act:not(:checked) ~ #clubs .act,
+#sus:not(:checked) ~ #clubs .sus,
+#abo:not(:checked) ~ #clubs .abo {
 	display: none;
 }
 
 #bars span {
 	display: inline-block;
-	width: 100%;
-	width: calc(var(--length, 100) * 1%);
+	width: calc(var(--length, 999) * 1%);
+	margin-left: calc(var(--start, 0) * 1%);
 	box-sizing: border-box;
 	padding: .07em 0 .03em .1em;
 	background-repeat: no-repeat;
 }
-#bars .abo, #bars span:not(:only-child) {display: none\0;} /* IE */
+#bars span:empty::before {
+	content: "　";
+}
 
 [style*="fade"] {
 	/* edgeは#rgbaに対応していない */
@@ -59,7 +53,7 @@
 	background-image: linear-gradient(to var(--grad-direction, left), rgba(255,255,255,.75), rgba(255,255,255,0));
 	background-position: var(--grad-position, right);
 	/* edgeはheight 100%を指定する必要がある */
-	background-size: calc(var(--fade-in, var(--fade-out)) / var(--length, 100) * 100%) 100%;
+	background-size: calc(var(--fade-in, var(--fade-out)) / var(--length, 999) * 100%) 100%;
 }
 [style*="fade-in"] {
 	--grad-direction: right;
@@ -72,26 +66,25 @@
 	margin: calc(var(--shift-top)) 0 -99em;
 	height: var(--height);
 	line-height: var(--height);
-	z-index: 1;
 	vertical-align: top;
 }
 #media,
 #natural {
+	position: relative;
+	z-index: 1;
 	direction: rtl;
 	line-height: 1.1;
 	--shift-top: .8em;
 	border-top: .7em solid transparent;
 }
+@media not all and (max-width: 800px) {
+	#natural br {
+		display: none;
+	}
+}
 
-.act.spo span {background-color: hsl(212,45%,83%);}
-.act.cul span {background-color: hsl(212,45%,70%);}
-.sus.spo span {background-color: hsl( 79,41%,83%);}
-.sus.cul span {background-color: hsl( 79,41%,70%);}
-.abo.spo span {background-color: hsl(  1,47%,83%);}
-.abo.cul span {background-color: hsl(  1,47%,70%);}
-
-
-#years, #columns {
+#years,
+#columns {
 	display: flex;
 	position: absolute;
 	top: 0;
@@ -100,14 +93,14 @@
 	height: 100%;
 	min-height: 3.5em;
 }
-#columns {
-	z-index: 2;
-}
 #years {
-	left: calc(-9%/.76);
-	width: calc(80%/.76);
+	left: calc(-9 * var(--unit));
+	width: calc(80 * var(--unit));
 	pointer-events: none;
 	counter-reset: tickValue 1930;
+}
+#columns {
+	z-index: 2;
 }
 #years *,
 #columns * {
@@ -153,9 +146,14 @@
 #columns :not(:first-child) {
 	counter-increment: year jpYear;
 }
+#columns :nth-child(10n-3) {
+	border-left: 1px solid rgba(0,0,0,.2);
+	box-sizing: border-box;
+}
 #columns :hover {
 	background-color: rgba(0,0,0,.2);
 }
+
 #columns :hover::before,
 #columns :hover::after {
 	content: counter(year) "年度（"
@@ -169,7 +167,22 @@
 }
 #columns :nth-child(-n+75) {--era-name: "平成";}
 #columns :nth-child(-n+45) {--era-name: "昭和";}
-#columns :nth-child(10n-3) {
-	border-left: 1px solid rgba(0,0,0,.2);
-	box-sizing: border-box;
+
+:root { /* 配色 Office 2007 - 2010 */
+	--act: 212,45%; /* active */
+	--sus:  79,41%; /* suspended */
+	--abo:   1,47%; /* abolished */
+	--spo: 86%; /* 83% sports */
+	--cul: 73%; /* 70% culture */
 }
+[for="act"],
+[for="cul"] {border-color: hsl(var(--act),var(--cul));}
+[for="spo"] {border-color: hsl(var(--act),var(--spo));}
+[for="sus"] {border-color: hsl(var(--sus),var(--cul));}
+[for="abo"] {border-color: hsl(var(--abo),var(--cul));}
+.act.spo span {background-color: hsl(var(--act),var(--spo));}
+.act.cul span {background-color: hsl(var(--act),var(--cul));}
+.sus.spo span {background-color: hsl(var(--sus),var(--spo));}
+.sus.cul span {background-color: hsl(var(--sus),var(--cul));}
+.abo.spo span {background-color: hsl(var(--abo),var(--spo));}
+.abo.cul span {background-color: hsl(var(--abo),var(--cul));}

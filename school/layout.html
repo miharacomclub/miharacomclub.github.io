@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/css/style.css">
 <script src="/js/index.js" type="module"></script>
 
 <title>校舎の変遷｜淡路三原高校コンピュータ部</title>
+<link rel="preload" href="/src/buildings/2009.jpg" as="image">
 <link rel="stylesheet" href="/css/slider.css">
 <link rel="stylesheet" href="/css/layout.css">
 <script src="/js/layout.js" type="module"></script>
@@ -19,12 +21,7 @@
 
 <h2>校舎の変遷</h2>
 <section>
-	<p id="onlyIE">
-		現在お使いのブラウザではご利用になれません。<br>
-		<a target="_blank" href="https://www.google.com/intl/ja_ALL/chrome/"
-		>Google Chrome</a>や、<a target="_blank" href="https://www.mozilla.org/ja/firefox/new/"
-		>Firefox</a>など他のブラウザをお使いください。
-	</p>
+	<script src="/js/IE.js" async></script>
 	<ul>
 		<li>
 			<a target="_blank" href="https://www.hyogo-c.ed.jp/~mihara-hs/ga-kousya.html"
@@ -35,47 +32,42 @@
 			<a href="oldlayout/">以前の<cite>校舎の変遷</cite>はこちらからご覧ください。</a>
 	</ul>
 
-	<div id="rangeWrapper">
-		<input id="range" type="range" min="0" max="1" value="1">
-	</div>
-	<input id="displayFrames"	type="checkbox" checked>
-	<label for="displayFrames"	>枠</label>
-	<input id="displayNames"	type="checkbox" checked>
-	<label for="displayNames"	>名前</label>
-	<input id="displayFade"		type="checkbox">
-	<label for="displayFade"	>フェード</label>
+	<input id="range" type="range" min="0" max="1" value="1">
+	<input id="displayFrames"	type="checkbox" checked	><label for="displayFrames"	>枠</label>
+	<input id="displayNames"	type="checkbox" checked	><label for="displayNames"	>名前</label>
+	<input id="displayFade"		type="checkbox"			><label for="displayFade"	>フェード</label>
 
-	<div id="layout">
-		<a><img src="/src/buildings/1947.jpg" style="filter: contrast(.8)brightness(1.2)"></a>
-		<a><img src="/src/buildings/1968.jpg" style="filter: contrast(.5)brightness(1.3); transform: rotate(-.3deg)translate(.15%,.6%)"></a>
-		<a><img src="/src/buildings/1970.jpg" style="filter: contrast(.8)brightness(1.3)"></a>
-		<a><img src="/src/buildings/1975.jpg" style="filter: contrast(.8)"></a>
-		<a><img src="/src/buildings/1982.jpg" style="filter: contrast(.8)brightness(1.1)"></a>
-		<a><img src="/src/buildings/1986.jpg" style="filter: contrast(.8)brightness(1.1); transform: scale(.995)translate(-.3%,-.3%)"></a>
-		<a><img src="/src/buildings/2004.jpg" style="filter: contrast(.8)hue-rotate(-5deg); transform: scale(.99)translate(-.3%,-.3%)"></a>
-		<a><img src="/src/buildings/2007.jpg" style="filter: contrast(.8)brightness(1.2)"></a>
+	<div id="layout" class="fixedAspectRatio notIE">
+		<a data-period="1951"><img src="/src/buildings/1947-10.jpg" data-mapps-id="219827" style="filter: contrast(.8)brightness(1.2)"></a>
+		<a data-period="1952"><img src="/src/buildings/1968-05.jpg" data-mapps-id="664551" style="filter: contrast(.5)brightness(1.3); transform: rotate(-.3deg)translate(.15%,.6%)"></a>
+		<a data-period="1969"><img src="/src/buildings/1970-06.jpg" data-mapps-id="409019" style="filter: contrast(.8)brightness(1.3)"></a>
+		<a data-period="1973"><img src="/src/buildings/1975-03.jpg" data-mapps-id="944865" style="filter: contrast(.8)"></a>
+		<a data-period="1979"><img src="/src/buildings/1982-01.jpg" data-mapps-id="208420" style="filter: contrast(.8)brightness(1.1)"></a>
+		<a data-period="1985"><img src="/src/buildings/1986-04.jpg" data-mapps-id="339788" style="filter: contrast(.8)brightness(1.1); transform: scale(.995)translate(-.3%,-.3%)"></a>
+		<a data-period="1990"><img src="/src/buildings/2004-04.jpg" data-mapps-id="21633"  style="filter: contrast(.8)hue-rotate(-5deg); transform: scale(.99)translate(-.3%,-.3%)"></a>
+		<a data-period="2007"><img src="/src/buildings/2009.jpg" style="filter: contrast(.8)brightness(1.2)"></a>
 
-		<!--受水槽などの設備や、小さい自転車置場は省略する-->
-		<!-- edgeで.verticalとtextLength両方を指定するとずれる -->
+		<!--受水槽などの設備や、倉庫、小さい自転車置場などは省略する-->
+		<!--edgeでvertical-rlとtextLength両方を指定するとずれる -->
 		<svg viewBox="0 0 950 950">
-			<text x="90" y="120" id="title">学校配置図</text>
-			<text x="178" y="156" id="year"></text>
-			<a target="_blank">
-				<text x="840" y="813" id="yearTaken" class="large"></text>
-				<text x="840" y="837" id="source"></text>
+			<text x="178" y="122" id="title" font-weight="bold" text-anchor="middle">学校配置図</text>
+			<text x="178" y="158" id="year" font-weight="bold" text-anchor="middle"></text>
+			<a target="_blank" text-anchor="end">
+				<text x="837" y="811" id="dateTaken" class="large"></text>
+				<text x="837" y="837" id="citation"></text>
 			</a>
 
-			<g data-period="1951,1973" transform="translate(144 632)" data-img-name-prefix="shrine" data-captions="鳥居,拝殿" data-title="巌島神社（移築後）">
+			<g data-period=",1973" transform="translate(144 632)" data-img-name-prefix="shrine" data-captions="鳥居,拝殿" data-title="巌島神社（移築後）">
 				<path d="m0,0 l11,60 l56,-4 l53,19 l46,30 l75,15 l19,-88 l-143,-37 l-68,21z"></path>
 				<text x="44" y="47" textLength="180">巌島神社境内</text>
 			</g>
 			<g data-period="1954,1983" transform="translate(397 416)">
 				<path d="m0,0 v77 h42 l20,-76z"></path>
-				<text x="24" y="8" class="vertical">図書館</text>
+				<text x="24" y="8" writing-mode="vertical-rl">図書館</text>
 			</g>
-			<g data-period="1954,1983" transform="translate(135 544)">
-				<path d="m0,0 v42 l11,40 h9 v-82z"></path>
-				<text x="-11" y="3" class="vertical">売店購買</text>
+			<g data-period="1954,1983" transform="translate(135 551)">
+				<path d="m0,0 v35 l11,40 h9 v-75z"></path>
+				<text x="-11" y="-1" writing-mode="vertical-rl">売店購買</text>
 			</g>
 			<g data-period="1956,1982" transform="translate(273 332)">
 				<rect width="40" height="30"></rect>
@@ -103,7 +95,7 @@
 
 			<g data-period="1954,1982" transform="translate(358 755)rotate(14)">
 				<rect width="24" height="47"></rect>
-				<text x="35" y="-14" class="vertical">クラブ室</text>
+				<text x="35" y="-14" writing-mode="vertical-rl">クラブ室</text>
 			</g>
 			<g data-period="1986" transform="translate(374 331)" data-img-name-prefix="clubrooms1" data-captions="部室棟">
 				<rect width="85" height="23"></rect>
@@ -111,7 +103,7 @@
 			</g>
 			<g data-period="1990" transform="translate(371 288)" data-img-name-prefix="clubrooms2" data-captions="部室棟">
 				<rect width="18" height="35"></rect>
-				<text x="29" y="-43" class="vertical">部室棟②</text>
+				<text x="29" y="-43" writing-mode="vertical-rl">部室棟②</text>
 			</g>
 			<g data-period="1961,1990" transform="translate(172 232)">
 				<rect width="116" height="88"></rect>
@@ -125,37 +117,37 @@
 				<rect width="77" height="48"></rect>
 				<text x="6" y="30" textLength="65">黎明館</text>
 			</g>
-			<g data-period="1985,2007" transform="translate(163 692)">
-				<path d="m0,0 l17,117 l38,-5 l39,2 l-15,-107 l-32,5 l-3,-17z"></path>
-				<text x="18" y="53">自転車</text>
-				<text x="27" y="77">置場</text>
+			<g data-period="1985,2007" transform="translate(161 692)">
+				<path d="m0,0 l22,117 l35,-5 l39,2 l-15,-107 l-32,5 l-3,-17z"></path>
+				<text x="19" y="53">自転車</text>
+				<text x="28" y="77">置場</text>
 			</g>
-			<g data-period="2007" transform="translate(158 693)" data-img-name-prefix="lecture" data-captions="講義棟入口,講義棟,C棟3階から見た外観,三原、志知高校の碑">
-				<path d="m0,0 h72 v27 h20 v63 h-62 l-15,-26z"></path>
+			<g data-period="2007" transform="translate(158 693)" data-img-name-prefix="lecture" data-captions="講義棟入口,講義棟,C棟3階から見た外観,三原高校と志知高校の碑">
+				<path d="m0,0 h72 v27 h20 v63 h-62 l-15,-28z"></path>
 				<text x="20" y="52" textLength="62">講義棟</text>
 			</g>
 
-			<g data-period="1955,1964" transform="translate(163 381)">
-				<path d="m0,0 v34h145v-34z"></path>
+			<g data-period="1955,1964" transform="translate(163 380)">
+				<path d="m0,0 v33h145v-33z"></path>
 				<text x="10" y="25" textLength="127">第一号校舎</text>
 			</g>
-			<g data-period="1964,1982" transform="translate(163 381)">
-				<path d="m0,0 v34h198v-34z  m-38,0 v34h30v-34z"></path>
+			<g data-period="1964,1982" transform="translate(163 380)">
+				<path d="m0,0 v33h198v-33z  m-37,0 v33h29v-33z"></path>
 				<text x="12" y="25" textLength="185">第一号校舎（本館）</text><!--校務員室-->
 			</g>
-			<g data-period="1953,1962" transform="translate(134 445)">
-				<path d="m0,0 v34h20v-34z  m31,0 v34h145v-34z"></path>
+			<g data-period="1953,1962" transform="translate(134 444)">
+				<path d="m0,0 v33h20v-33z  m31,0 v33h145v-33z"></path>
 				<text x="39" y="24" textLength="127">第二号校舎</text>
 			</g>
-			<g data-period="1962,1964" transform="translate(134 445)">
-				<path d="m0,0 v34h20v-34z  m31,0 v34h194v-34z"></path>
+			<g data-period="1962,1964" transform="translate(134 444)">
+				<path d="m0,0 v33h20v-33z  m31,0 v33h194v-33z"></path>
 				<text x="50" y="24" textLength="154">第二号校舎</text>
 			</g>
-			<g data-period="1964,1982" transform="translate(134 445)">
-				<path d="m0,0 v34h20v-34z  m31,0 v34h194v-34z  m195,0 v34h13v-34z"></path>
+			<g data-period="1964,1982" transform="translate(134 444)">
+				<path d="m0,0 v33h20v-33z  m31,0 v33h194v-33z  m195,0 v33h13v-33z"></path>
 				<text x="50" y="24" textLength="154">第二号校舎</text><!--生徒会部室-->
 			</g>
-			<g data-period="1951,1958" transform="translate(134 510)">
+			<g data-period=",1958" transform="translate(134 510)">
 				<path d="m0,0 v33h20v-33z  m31,0 v33h145v-33z"></path>
 				<text x="39" y="23" textLength="127">第三号校舎</text>
 			</g>
@@ -167,7 +159,7 @@
 				<path d="m0,0 v33h20v-33z  m171,0 v33h55v-33z  m57,0 v33h20v-33z"></path>
 				<text x="163" y="52">第三号校舎</text>
 			</g>
-			<g data-period="1951,1974" transform="translate(166 575)">
+			<g data-period=",1974" transform="translate(166 575)">
 				<path d="m0,0 v58 h31 v-22 l93,-1 v-35z"></path>
 				<text x="5" y="25" textLength="112">第四号校舎<!--（理科教室棟）--></text>
 			</g>
@@ -182,7 +174,7 @@
 			</g>
 			<g data-period="1980" transform="translate(157 544)" data-img-name-prefix="buildingD" data-captions="外観,中庭から見た外観,ロッカールーム（生徒昇降口）,昇降口棟2階" data-title="昇降口棟（D棟）">
 				<rect width="35" height="79"></rect>
-				<text x="18" y="1" letter-spacing="-1" class="vertical">昇降口棟</text>
+				<text x="18" y="1" letter-spacing="-1" writing-mode="vertical-rl">昇降口棟</text>
 			</g>
 			<g data-period="1979,1980" transform="translate(162 508)">
 				<rect width="140" height="33"></rect>
@@ -206,7 +198,7 @@
 			</g>
 			<g data-period="1983" transform="translate(386 363)" data-img-name-prefix="dininghall" data-captions="外観1,外観2,B棟から見た外観,グラウンドから見た外観,食堂" data-special-img-names=",,,traces2,dininghall_back" data-title="格技場兼生徒集会室棟（食堂）">
 				<rect width="48" height="98"></rect>
-				<text x="24" y="6" class="vertical" letter-spacing="2">格技場棟</text>
+				<text x="24" y="6" writing-mode="vertical-rl" letter-spacing="2">格技場棟</text>
 			</g>
 			<g data-period="1984" transform="translate(170 335)" data-img-name-prefix="yard" data-captions="外観1,外観2,外観3,校歌碑">
 				<path d="m0,0 v24 h28 v63 h136 v-28 h-71 v-59z"></path>
@@ -220,27 +212,29 @@
 			</g>
 			<g data-period="1984" transform="translate(122 356)" data-img-name-prefix="gate0" data-captions="正門">
 				<rect width="28" height="60"></rect>
-				<text x="14" y="7" class="vertical" letter-spacing="8">正門</text>
+				<text x="14" y="7" writing-mode="vertical-rl" letter-spacing="8">正門</text>
 			</g>
-			<g data-period="1954,1984" transform="translate(117 403)">
-				<rect width="16" height="24"></rect>
-				<text x="-11" y="-28" class="vertical">旧通用門</text><!--正確な完成年は不明-->
+			<g data-period="1954,1984" transform="translate(117 405)">
+				<rect data-period=",1964" width="16" height="19"></rect>
+				<path data-period="1964,1982" d="m0,0 v19 h16 v-11 h-7 v-8z"></path>
+				<rect data-period="1982" width="16" height="19"></rect>
+				<text x="-11" y="-30" writing-mode="vertical-rl">旧通用門</text><!--正確な完成年は不明-->
 			</g>
 			<g data-period="1984" transform="translate(121 533)" data-img-name-prefix="gate1" data-captions="通用門">
 				<rect width="20" height="38"></rect>
-				<text x="-10" y="-21" class="vertical">通用門①</text>
+				<text x="-10" y="-21" writing-mode="vertical-rl">通用門①</text>
 			</g>
-			<g data-period="1984" transform="translate(130 613)rotate(-10)" data-img-name-prefix="gate2" data-captions="通用門">
-				<rect width="16" height="35"></rect>
-				<text x="-10" y="-21" class="vertical">通用門②</text>
+			<g data-period="1984" transform="translate(131 613)rotate(-10)" data-img-name-prefix="gate2" data-captions="通用門">
+				<rect width="15" height="35"></rect>
+				<text x="-10" y="-21" writing-mode="vertical-rl">通用門②</text>
 			</g>
 			<g data-period="1985" transform="translate(157 747)rotate(-10)" data-img-name-prefix="gate3" data-captions="通用門">
 				<rect width="14" height="32"></rect>
-				<text x="-10" y="-21" class="vertical">通用門③</text>
+				<text x="-10" y="-21" writing-mode="vertical-rl">通用門③</text>
 			</g>
 			<g data-period="1985" data-img-name-prefix="gate4" data-captions="通用門">
-				<rect transform="translate(164 783)rotate(-6)" width="15" height="31"></rect>
-				<text x="142" y="833">通用門④</text>
+				<rect transform="translate(164 783)rotate(-6)" width="14" height="31"></rect>
+				<text x="142" y="832">通用門④</text>
 			</g>
 
 			<g data-period="1952,1985" transform="translate(506 306)">
@@ -255,7 +249,7 @@
 				<path d="m0,0 l22,195 l214,112 l29,-32 l51,-75 l22,-24 l10,-33 l-111,-6 l-69,-23 l-84,-86z"></path>
 				<text x="53" y="179" textLength="245" class="large">旧第二グラウンド</text>
 			</g>
-			<g data-period="1985" transform="translate(500 185)" data-img-name-prefix="ground2" data-captions="外観1,外観2,第二グラウンドと石碑">
+			<g data-period="1985" transform="translate(500 185)" data-img-name-prefix="ground2" data-captions="外観1,外観2,第二グラウンドと碑">
 				<path d="m0,0 l9,54 l-12,84 l251,55 l28,-130z"></path>
 				<text x="20" y="108" textLength="230" class="large">第二グラウンド</text>
 			</g>
@@ -265,7 +259,7 @@
 			</g>
 			<g data-period="1984,1990" transform="translate(278 171)">
 				<path d="m0,0 l27,153 l92,-2 l-22,-181 l-31,4 l1,11 l-30,10z"></path>
-				<text x="61" y="19" class="large vertical" letter-spacing="14">球技場</text>
+				<text x="61" y="19" class="large" writing-mode="vertical-rl" letter-spacing="14">球技場</text>
 			</g>
 			<g data-period="1956,1984" transform="translate(409 277)">
 				<rect width="78" height="32"></rect>
@@ -276,17 +270,17 @@
 				<path d="m0,0 h95 l-11,49 l-84,-22z"></path>
 				<text x="9" y="23">旧プール</text>
 			</g>
-			<g data-period="1979" transform="translate(375 141)">
+			<g data-period="1979" transform="translate(375 141)" data-img-name-prefix="pool" data-captions="旧校地の門柱とプール">
 				<path d="m0,0 l10,77 l30,-4 l2,12 l61,-8 l-2,-12 l10,-1 l-11,-78z"></path>
 				<text x="23" y="45" textLength="68">プール</text>
 			</g>
-			<g data-period="1990" data-img-name-prefix="ground3" data-captions="球技場" transform="translate(278 171)">
+			<g data-period="1990" transform="translate(278 171)" data-img-name-prefix="ground3" data-captions="球技場">
 				<path d="m0,0 l10,65 l99,-3 l-12,-92 l-31,4 l1,11 l-30,10z"></path>
 				<text x="20" y="34" textLength="73">球技場</text>
 			</g>
-			<g data-period="1953" transform="translate(411 510)rotate(13)" data-img-name-prefix="pergola" data-captions="パーゴラ">
+			<g data-period="1953" transform="translate(411 510)rotate(13)" data-img-name-prefix="pergola" data-captions="パーゴラ" data-title="パーゴラ（日覆）">
 				<rect width="20" height="58"></rect>
-				<text x="31" y="-8" class="vertical">パーゴラ</text><!--正確な完成年は不明-->
+				<text x="31" y="-8" writing-mode="vertical-rl">パーゴラ</text><!--正確な完成年は不明-->
 			</g>
 		</svg>
 	</div>

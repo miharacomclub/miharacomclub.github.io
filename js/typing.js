@@ -7,7 +7,7 @@ document.addEventListener("click", async event => {
 	if (!event.target.matches("#selectionScreen button")) return;
 	const btn = event.target;
 
-	const category	= $("[name=tab]:checked").id;
+	const category	= $(`[name="tab"]:checked`).id;
 	const btns		= $$(`[data-tsv-name^="${btn.dataset.tsvName}"]`);
 	btns.length > 1 && btns.pop();
 
@@ -39,7 +39,7 @@ const onKbdPressed = event => {
 	event.preventDefault();
 };
 document.addEventListener("touchstart", onKbdPressed, {passive: false});
-document.addEventListener("mousedown", onKbdPressed);
+document.addEventListener("mousedown", e => e.button === 0 && onKbdPressed(e));
 
 
 document.addEventListener("keyup",   event =>  $("#shiftIsPressed").checked = event.shiftKey);

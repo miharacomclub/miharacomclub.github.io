@@ -28,7 +28,7 @@ audio {
 .songSection ol li {
 	margin: 0 2em 1em 2.5em;
 }
-@media (min-width:801px) {
+@media not all and (max-width:800px) {
 	.songSection ol li:nth-child(2) {
 		order: 3;
 	}

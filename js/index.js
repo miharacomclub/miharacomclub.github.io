@@ -3,10 +3,11 @@ window.$$ = (selector, target = document) => [...target.querySelectorAll(selecto
 
 
 window.openImgInNewTabOnClick = (target = document) => {
-	for (const a of $$("a", target).filter(a => !a.attributes.length)) {
+	for (const a of $$("a:not([href]):not([target])", target)) {
 		Object.assign(a, {
 			href: $("img", a).getAttribute("src"), // a.srcは絶対パスを返す
-			target: "_blank"
+			target: "_blank",
+			className: "enlargeable",
 		});
 	}
 };

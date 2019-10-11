@@ -1,25 +1,21 @@
 ﻿<!DOCTYPE html>
 <meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/css/style.css">
 <script src="/js/index.js" type="module"></script>
 
 <title>建物・モニュメント｜淡路三原高校コンピュータ部</title>
 <style>
-#mottos {
+#tsuchiga blockquote ul {
 	list-style-type: none;
 }
-/* not演算子を使うとき、all andは省略できない */
-@media not all and (max-width:800px) {
-	#tsuchiga img,
-	p.sxs {
+@media not all and (max-width:800px) { /* notを使うとallは省略できない */
+	#tsuchiga img {
 		float: right;
 	}
-}@media (max-width:800px) {
-	p.sxs {width: 100%;}
 }
 </style>
 
-<body class="sxsImgs">
 <header id="header">
 	<a href="/"><h1>淡路三原高校<br>コンピュータ部</h1></a>
 </header>
@@ -27,7 +23,7 @@
 	<a href="/school/">学校紹介</a><a href="/club/">部活動紹介</a><a href="/club/works">作ったもの</a><a href="/club/others">その他</a>
 </nav>
 <main>
-<article id="article">
+<article id="article" class="sxsImgs">
 
 <h2>建物・モニュメント</h2>
 <section>
@@ -64,11 +60,9 @@
 <section>
 	<h3>仮設の渡り廊下</h3>
 	<a><img src="/src/others/doors.jpg" alt="C棟の外観"></a>
-	<p>
+	<p class="sxs">
 		<time>1979年</time>、B棟の西半分が建てられました。<br>
-		（<a href="layout#1979">当時の配置図はこちら</a>）
-	</p>
-	<p>
+		（<a href="layout#1979">当時の配置図はこちら</a>）<br>
 		当時は昇降口棟が無く、<br>
 		B棟とC棟を繋ぐ通路が必要だったため、<br>
 		仮設の渡り廊下が設置されていました。<br>
@@ -92,15 +86,14 @@
 	<a><img src="/src/buildings/tsuchiga2.jpg" alt="槌賀記念室"></a>
 	<a><img src="/src/buildings/tsuchiga1.jpg" alt="槌賀記念室のそばにある胸像"></a>
 	<div class="clear"></div>
-
 	<blockquote>
 		<p>
-			槌賀安平先生ハ<time>明治十九年</time>三原郡南淡町賀集ニ<ruby>生<rt>ア</ruby>ル<br>
+			槌賀安平先生ハ<time>明治十九年</time>三原郡南淡町賀集ニ<ruby>生<rt>ウマ</ruby>ル<br>
 			幼ニシテ<ruby>穎悟<rt>エイゴ</ruby>今ヤ生物学界ノ権威タルノミナラズ<ruby>夙<rt>ツト</ruby>ニ大教育家ノ令名アリ<br>
 			<time>明治四十二年</time>広島髙等師範学校ヲ卒業シ教育ニ従事スルヤ<br>
 			独特ノ教授法ニヨリ左ノモットーヲ以テ終始一貫ス
 		</p>
-		<ul id="mottos">
+		<ul>
 			<li>一、勉メテ自ラ研究セヨ
 			<li>一、精密ニ観察実験セヨ
 			<li>一、正確ニ思考セヨ
@@ -121,10 +114,10 @@
 <section>
 	<h3>若い力</h3>
 	<a><img src="/src/buildings/artworks1.jpg" alt="若い力"></a>
-	<p class="clear">
+	<p class="sxs">
 		三原高校は、南あわじ市出身の<br>
 		彫刻家である菊川<ruby>晋<rt>のぶ</ruby>久氏に、<br>
-		16回生の卒業記念の彫刻を依頼しました。<br>
+		16回生卒業記念の彫刻を依頼しました。<br>
 		当時、やり投げで名を馳せていたため、<br>
 		やり投げの彫刻の予定でしたが、<br>
 		槍が折れる恐れがあるとして<br>
@@ -140,7 +133,7 @@
 <section>
 	<h3>清い心</h3>
 	<a><img src="/src/buildings/artworks3.jpg" alt="清い心"></a>
-	<p class="clear">
+	<p class="sxs">
 		<time>1965年</time>、17回生の卒業記念品代と<br>
 		防火貯水槽建設の予算を使い、防火用水を<br>
 		兼ねた噴水と庭園が完成しました。<br>

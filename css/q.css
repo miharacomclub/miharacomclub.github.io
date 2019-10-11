@@ -1,3 +1,6 @@
+html {
+	overflow-y: hidden;
+}
 body {
 	transform: translateZ(0); /* safari */
 	position: relative;
@@ -177,7 +180,9 @@ a:hover img {
 	height: 10.5em;
 }
 
-.overline	{text-decoration: overline;}
+.overline {
+	text-decoration: overline;
+}
 #darkgreen,
 #steelgreen	{color: white;}
 #vividblue	{color: mediumblue;}

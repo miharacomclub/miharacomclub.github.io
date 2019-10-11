@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/css/style.css">
 <script src="/js/index.js" type="module"></script>
 
@@ -41,7 +42,7 @@
 .noodles:hover	{background-color: hsl(120,65%,90%);}
 .rice			{background-color: hsl(180,65%,85%);}
 .rice:hover		{background-color: hsl(180,65%,90%);}
-.bowl			{background-color: hsl(210,65%,72%);}
+.bowl			{background-color: hsl(210,65%,74%);}
 .bowl:hover		{background-color: hsl(210,65%,85%);}
 
 [data-price]::before,
@@ -50,7 +51,6 @@
 	left: 0;
 	width: 100%;
 	text-align: center;
-	-ms-writing-mode: lr-tb; /* IE */
 	writing-mode: horizontal-tb;
 	letter-spacing: 0;
 }
@@ -77,7 +77,7 @@
 	outline: .15em solid crimson;
 	outline-offset: -.15em;
 }
-span[data-price]:nth-of-type(n+9) + a img {
+[data-price]:nth-of-type(n+9) + a img {
 	left: auto;
 	right: 0;
 }
@@ -98,7 +98,7 @@ span[data-price]:nth-of-type(n+9) + a img {
 <article id="article">
 
 <h2>食堂（生徒集会室）</h2>
-<section>
+<section class="sxsImgs">
 	<h3>食堂について</h3>
 	<p>
 		食堂は、格技場棟（A棟の東にある校舎）の1階にあります。<br>
@@ -109,8 +109,8 @@ span[data-price]:nth-of-type(n+9) + a img {
 		食堂では新しいメニューを募集しているので、<br>
 		要望があれば食堂の従業員の方にお伝えください。
 	</p>
-	<a><img class="sxs" src="/src/buildings/dininghall_front.jpg" alt="前方から撮った食堂の写真"></a>
-	<a><img class="sxs" src="/src/buildings/dininghall_back.jpg" alt="後方から撮った食堂の写真"></a>
+	<a><img src="/src/buildings/dininghall_front.jpg" alt="前方から撮った食堂の写真"></a>
+	<a><img src="/src/buildings/dininghall_back.jpg" alt="後方から撮った食堂の写真"></a>
 </section>
 
 <section>

@@ -125,7 +125,9 @@ dialog section {
 	background-color: hsl(0,0%,99%);
 }
 @media (max-width:800px) {
-	dialog section {width: 23em;}
+	dialog section {
+		width: 23em;
+	}
 }
 
 dialog h3 {

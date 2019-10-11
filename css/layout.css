@@ -1,13 +1,11 @@
-#rangeWrapper input {
-	max-width: 50%;
-	width: 20em;
+[type="range"] {
 	float: left;
+	width: 16em;
+	max-width: 50%;
+	margin-right: .2em;
 }
 [type="checkbox"] {
 	display: none;
-}
-#displayFrames + label {
-	margin-left: .6em;
 }
 [type="checkbox"] + label {
 	float: left;
@@ -17,50 +15,66 @@
 	text-align: center;
 	outline: .1em solid currentcolor;
 	outline-offset: -.1em;
-	color: #bbb;
+	color: silver;
 }
 :checked + label {
-	color: midnightblue;
+	color: darkblue;
 }
 
 #layout {
-	position: relative;
-	display: none\0; /* IE */
 	overflow: hidden;
-	width: 100%;
+	width: calc(var(--additional-width) * 2 + 100%);
+	max-width: none;
+	margin: calc(var(--additional-width) * -1);
+	margin-left: calc(var(--left-offset, -.6em) - var(--additional-width));
+	--additional-width: .5em;
 	opacity: 0; /* FOUC */
 }
+@media (max-width:800px) {
+	#layout {
+		--left-offset: -.1em;
+	}
+}
 #layout::before {
-	content: "";
-	display: block;
+	position: relative;
 	padding-top: 100%;
+	z-index: 1;
+	pointer-events: none;
+	--shadow: 0 0 .7em hsl(0,0%,99%) inset;
+	box-shadow: var(--shadow), var(--shadow), var(--shadow);
 }
-#layout img, svg {
-	position: absolute;
-	top: -11%;
-	left: -11%;
-	width: 125%;
-	height: 125%;
+#displayFade:checked ~ #layout [data-period],
+#displayFade:checked ~ #layout g * {
+	transition: opacity .3s linear var(--additional-rule, 0s);
 }
-#displayFade:checked ~ #layout,
-#displayFade:checked ~ #layout img,
-#displayFade:checked ~ #layout g text		{transition: opacity .3s linear;}
-#displayFade:checked ~ #layout g :not(text)	{transition: opacity .3s linear, fill .3s;}
+#layout img,
+#layout svg { /* cssの優先順位 */
+	--full-width: calc(100% - var(--additional-width) * 2);
+	--offset: calc(-.11 * var(--full-width) + var(--additional-width));
+	--width: calc(1.25 * var(--full-width));
+	margin: var(--offset) 0 0 var(--offset);
+	width: var(--width);
+	height: var(--width);
+}
 
-.lastPhotoWrapper ~ a img {
+[data-period]:not(.exists),
+#dialog:not(.open) {
 	opacity: 0;
 	pointer-events: none;
 }
+[data-period]:not(.exists) * {
+	pointer-events: inherit;
+}
 svg {
-	--shadow: drop-shadow(0 0 1.5px white);
-	filter: var(--shadow)var(--shadow);
+	filter: drop-shadow(0 0 1.5px white)drop-shadow(0 0 1.5px white);
 	pointer-events: none;
+	transform: translateZ(0); /* Firefox */
 }
 svg * {
 	pointer-events: auto;
 }
 g {
-	color: midnightblue;
+	color: darkblue;
 	cursor: default;
 }
 [data-captions] {
@@ -70,52 +84,40 @@ g {
 	color: green;
 }
 g :not(text) {
-	fill: transparent;
-	stroke-width: 1.5px;
+	stroke-width: 1.2px;
 	stroke: currentcolor;
+	fill: transparent;
+	--additional-rule: ,fill .3s;
 }
-g:not(.exists) *,
+g:hover :not(text) {
+	fill: rgba(255,255,255,.15);
+}
 #displayFrames:not(:checked) ~ #layout g:not(:hover) :not(text),
 #displayNames:not(:checked) ~ #layout g:not(:hover) text {
 	opacity: 0;
 }
-g:not(.exists) * {
-	pointer-events: none;
-}
-g:hover :not(text) {
-	fill: rgba(255,255,255,.1);
-}
 text {
 	font-size: 18px;
+	stroke-width: 1.8px;
+	stroke: white;
 	fill: currentcolor;
 	paint-order: stroke;
-	stroke: white;
-	stroke-width: 1.8px;
 }
 .large {
 	font-size: 25px;
 	stroke-width: 2.5px;
 }
-.vertical {
-	writing-mode: vertical-rl;
-}
 #title,
 #year {
 	font-size: 35px;
 	stroke-width: 6px;
-	font-weight: bold;
 }
-#year {
-	text-anchor: middle;
+#dateTaken {
+	stroke-width: 4px;
 }
-#yearTaken,
-#source {
-	text-anchor: end;
-	stroke-width: 3px;
-}
-#source {
-	stroke-width: 2.5px;
+#citation {
 	font-size: 20px;
+	stroke-width: 2.5px;
 }
 
 #dialog,
@@ -135,10 +137,7 @@ text {
 	justify-content: center;
 	transition: opacity .3s;
 	visibility: hidden; /* FOUC */
-}
-#dialog:not(.open) {
-	opacity: 0;
-	pointer-events: none;
+	z-index: 2;
 }
 #dialog::before { /* ::backdrop */
 	position: absolute;
@@ -161,7 +160,9 @@ text {
 	background-color: hsl(0,0%,99%);
 }
 @media (max-width:800px) {
-	#dialog section {width: 23em;}
+	#dialog section {
+		width: 23em;
+	}
 }
 
 #dialog h3 {

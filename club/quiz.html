@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/css/style.css">
 <script src="/js/index.js" type="module"></script>
 
@@ -30,13 +31,8 @@
 
 <h2>クイズ</h2>
 <section id="quiz">
-	<p id="onlyIE">
-		現在お使いのブラウザでは、一部の機能がご利用になれません。<br>
-		<a target="_blank" href="https://www.google.com/intl/ja_ALL/chrome/"
-		>Google Chrome</a>や、<a target="_blank" href="https://www.mozilla.org/ja/firefox/new/"
-		>Firefox</a>など他のブラウザをお使いください。
-	</p>
-	<iframe src="q/#about"></iframe>
+	<script src="/js/IE.js" async data-level="1"></script>
+	<iframe src="q/#about" name="test1"></iframe>
 </section>
 
 </article>

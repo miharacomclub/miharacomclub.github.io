@@ -71,7 +71,7 @@
 		padding: 1.25em .75em .5em 1em;
 	}
 	section.themeButtons {
-		overflow-x: scroll;
+		overflow-x: auto;
 		padding-bottom: 0;
 	}
 	.themeButtons::after {
@@ -81,18 +81,13 @@
 	}
 }
 .themeButtons button {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	font: inherit;
-	font-size: .9em;
+	font-size: .9rem;
 	width: 9.5em;
 	padding: 0;
 	border: .05em solid #aaa;
 	margin: .15em 1em .15em 0;
 	background-color: #eee;
 	line-height: 1.9;
-	cursor: pointer;
 }
 .themeButtons button:active {
 	background-color: transparent;
@@ -166,7 +161,7 @@
 }
 #rankList li:hover::before {
 	font-size: .9rem;
-	left: 0;
+	left: 0; /* safari */
 	width: 100%;
 	border-top: 2px solid transparent;
 	box-sizing: border-box;
@@ -243,6 +238,7 @@
 	font-size: 1.35em;
 	width: 2.1em;
 	border: 0;
+	line-height: 1.3;
 	background-color: transparent;
 	color: black;
 }
@@ -271,7 +267,7 @@
 }
 @keyframes mistyped {
 	from {box-shadow: 0 0 1.5em red inset;}
-	to {box-shadow: 0 0 0 0 red inset;}
+	to {box-shadow: 0 0 0 red inset;}
 }
 #sentencesFrame p {
 	margin: 0;
@@ -352,7 +348,7 @@
 	z-index: 1;
 }
 #displayResults:checked ~ * #typing {
-	opacity: 0.2;
+	opacity: .2;
 }
 #results h3 {
 	font-size: 1.5em;
@@ -399,17 +395,24 @@
 	--hue-saturation: 0,0%;
 	--max-lightness: 100%;
 }
-#invisibleMode:not(:checked) ~ * .candidate			{--hue-saturation: 0,100%;}
-#invisibleMode:not(:checked) ~ * .otherCandidates	{--hue-saturation: 210,100%;}
+#invisibleMode:not(:checked) ~ * .candidate {
+	--hue-saturation: 0,100%;
+}
+#invisibleMode:not(:checked) ~ * .otherCandidates {
+	--hue-saturation: 210,100%;
+}
 #invisibleMode:not(:checked) ~ * .candidate,
-#invisibleMode:not(:checked) ~ * .otherCandidates	{--max-lightness: 95%;}
+#invisibleMode:not(:checked) ~ * .otherCandidates {
+	--max-lightness: 95%;
+	--color-lightness: 50%;
+}
 kbd {
 	--top-color:	hsl(var(--hue-saturation), var(--max-lightness));
 	--bg-color:		hsl(var(--hue-saturation), calc(var(--max-lightness) - 5%));
 	--lr-color:		hsl(var(--hue-saturation), calc(var(--max-lightness) - 10%));
 	--btm-color:	hsl(var(--hue-saturation), calc(var(--max-lightness) - 15%));
 	--shadow-color:	hsl(var(--hue-saturation), calc(var(--max-lightness) - 25%));
-	color:			hsl(var(--hue-saturation), calc((var(--max-lightness) - 100%) * -10));
+	color:			hsl(var(--hue-saturation), var(--color-lightness, 0%));
 	display: inline-block;
 	font: inherit;
 	box-sizing: border-box;
