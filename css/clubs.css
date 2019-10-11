@@ -77,11 +77,6 @@
 	--shift-top: .8em;
 	border-top: .7em solid transparent;
 }
-@media not all and (max-width: 800px) {
-	#natural br {
-		display: none;
-	}
-}
 
 #years,
 #columns {
