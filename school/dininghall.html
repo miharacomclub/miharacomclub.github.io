@@ -82,9 +82,8 @@
 	right: 0;
 }
 
-.spacePadding::before {
-	content: "1";
-	visibility: hidden;
+#sideMenu td:last-child {
+	text-align: center;
 }
 </style>
 
@@ -106,7 +105,7 @@
 		また、1～3限目の休み時間に予約をすると、順番が優先されます。
 	</p>
 	<p>
-		食堂では新しいメニューを募集しているので、<br>
+		食堂は新しいメニューを募集しています。<br>
 		要望があれば食堂の従業員の方にお伝えください。
 	</p>
 	<a><img src="/src/buildings/dininghall_front.jpg" alt="前方から撮った食堂の写真"></a>
@@ -114,7 +113,7 @@
 </section>
 
 <section>
-	<h3>注文できるメニュー</h3>
+	<h3>メニュー表</h3>
 	<div id="menu">
 		<span data-price="260" class="udon">うどん</span>
 		<a><img src="/src/dininghall/udon.jpg" alt="うどん"></a>
@@ -165,17 +164,16 @@
 		<a><img src="/src/dininghall/bowl_fried_chicken.jpg" alt="からあげ丼"></a>
 	</div>
 	<ul>
-		<li>メニュー表に触れると、写真が表示されます。
 		<li>80円を追加で払うと、大盛りを注文できます。
 		<li>販売を休止している場合があります。
 	</ul>
 </section>
 
 <section>
-	<h3>注文できる主なサイドメニュー</h3>
-	<table class="listTable">
+	<h3>主なサイドメニュー</h3>
+	<table class="listTable" id="sideMenu">
 		<tr>
-			<th>メニュー名
+			<th>名前
 			<th>値段
 		<tr>
 			<td>おにぎり
@@ -209,7 +207,6 @@
 			<td>100 / 120
 	</table>
 	<ul>
-		<li>一覧にないサイドメニューもあります。
 		<li>販売を休止している場合があります。
 	</ul>
 </section>

@@ -3,13 +3,13 @@
 }
 [type="checkbox"] + label {
 	display: inline-block;
-	padding: 0 .1em;
-	border-width: .05em;
+	padding: 0 .2em;
+	border-width: .1em;
 	border-style: solid;
 	line-height: 1.4;
 }
 :checked + label {
-	border-bottom-width: .25em;
+	border-bottom-width: .3em;
 }
 
 #clubs {
@@ -21,7 +21,7 @@
 }
 #bars {
 	margin-left: calc(-44 * var(--unit));
-	width: calc(100 * var(--unit));
+	width: 100%;
 }
 #bars div {
 	white-space: nowrap;
@@ -37,8 +37,8 @@
 
 #bars span {
 	display: inline-block;
-	width: calc(var(--length, 999) * 1%);
-	margin-left: calc(var(--start, 0) * 1%);
+	width: calc(var(--length, 999) * var(--unit));
+	margin-left: calc(var(--start, 0) * var(--unit));
 	box-sizing: border-box;
 	padding: .07em 0 .03em .1em;
 	background-repeat: no-repeat;
@@ -71,7 +71,7 @@
 #media,
 #natural {
 	position: relative;
-	z-index: 1;
+	z-index: 0;
 	direction: rtl;
 	line-height: 1.1;
 	--shift-top: .8em;
@@ -94,9 +94,6 @@
 	pointer-events: none;
 	counter-reset: tickValue 1930;
 }
-#columns {
-	z-index: 2;
-}
 #years *,
 #columns * {
 	flex: auto;
@@ -113,7 +110,7 @@
 	position: absolute;
 	height: 1em;
 	padding-top: .15em;
-	background-color: hsl(0,0%,99%);
+	background-color: #fbfbfb;
 }
 #years ::after,
 #columns ::after {

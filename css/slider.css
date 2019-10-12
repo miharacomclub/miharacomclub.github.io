@@ -122,7 +122,7 @@
 	height: 15%;
 	content: "";
 	border-radius: calc(2.25em * .15);
-	background-color: hsl(0,0%,99%);
+	background-color: #fbfbfb;
 	transform-origin: top left;
 }
 #btns ::before {

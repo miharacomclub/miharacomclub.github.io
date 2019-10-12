@@ -150,7 +150,7 @@
 #rankList li::before {
 	position: absolute;
 	height: 100%;
-	background-color: hsl(0,0%,99%);
+	background-color: #fbfbfb;
 	pointer-events: none;
 }
 #rankList li:nth-last-child(n+6)::before { /* Arrow~ */
@@ -172,7 +172,7 @@
 #rankList li::after {
 	font-size: .9rem;
 	width: 100%;
-	border-top: 1px solid currentcolor;
+	border-top: 1px solid currentColor;
 	line-height: 0;
 	text-indent: 103%;
 	content: attr(data-score);
@@ -344,7 +344,7 @@
 	padding: 1.25em;
 	margin: auto;
 	white-space: nowrap;
-	background-color: hsl(0,0%,99%);
+	background-color: #fbfbfb;
 	z-index: 1;
 }
 #displayResults:checked ~ * #typing {

@@ -103,7 +103,7 @@ small {
 	border-width: .2rem 0 9em;
 	table-layout: fixed;
 	cursor: auto;
-	background-color: hsl(0,0%,99%);
+	background-color: #fbfbfb;
 	display: none;
 }
 :checked ~ .forceSup small,

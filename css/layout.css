@@ -13,7 +13,7 @@
 	min-width: 2em;
 	padding: 0 .3em;
 	text-align: center;
-	outline: .1em solid currentcolor;
+	outline: .1em solid currentColor;
 	outline-offset: -.1em;
 	color: silver;
 }
@@ -40,7 +40,7 @@
 	padding-top: 100%;
 	z-index: 1;
 	pointer-events: none;
-	--shadow: 0 0 .7em hsl(0,0%,99%) inset;
+	--shadow: 0 0 .7em #fbfbfb inset;
 	box-shadow: var(--shadow), var(--shadow), var(--shadow);
 }
 #displayFade:checked ~ #layout [data-period],
@@ -85,7 +85,7 @@ g {
 }
 g :not(text) {
 	stroke-width: 1.2px;
-	stroke: currentcolor;
+	stroke: currentColor;
 	fill: transparent;
 	--additional-rule: ,fill .3s;
 }
@@ -100,7 +100,7 @@ text {
 	font-size: 18px;
 	stroke-width: 1.8px;
 	stroke: white;
-	fill: currentcolor;
+	fill: currentColor;
 	paint-order: stroke;
 }
 .large {
@@ -157,7 +157,7 @@ text {
 	padding: .75em;
 	margin: 0;
 	overflow: auto;
-	background-color: hsl(0,0%,99%);
+	background-color: #fbfbfb;
 }
 @media (max-width:800px) {
 	#dialog section {

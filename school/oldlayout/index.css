@@ -43,8 +43,8 @@
 	stroke-width: 3;
 }
 .hideline {
-	fill: hsl(0,0%,99%);
-	stroke: hsl(0,0%,99%);
+	fill: #fbfbfb;
+	stroke: #fbfbfb;
 }
 [data-captions] .building,
 [data-captions] .cover {
@@ -122,7 +122,7 @@ dialog section {
 	padding: .75em;
 	margin: 0;
 	overflow: auto;
-	background-color: hsl(0,0%,99%);
+	background-color: #fbfbfb;
 }
 @media (max-width:800px) {
 	dialog section {

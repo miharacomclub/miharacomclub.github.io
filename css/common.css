@@ -3,7 +3,7 @@ html {
 }
 body {
 	-webkit-text-size-adjust: 100%;
-	background-color: hsl(0,0%,99%);
+	background-color: #fbfbfb;
 	margin: 0;
 }
 
@@ -138,9 +138,9 @@ blockquote footer {
 .anchorButtons > * {
 	display: inline-block;
 	padding: 0 .4em;
-	border: solid #aaa .05em;
+	border: solid #ccc .05em;
 	line-height: 1.8;
-	background-color: #e9e9e9;
+	background-color: #eee;
 	text-align: center;
 	color: black !important;
 }
