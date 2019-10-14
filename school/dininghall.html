@@ -22,13 +22,16 @@
 	padding: .25rem 0;
 	/* marginはホバーできないためborderにする */
 	border: 0 solid transparent;
-	border-width: .75em .03em;
+	border-width: .75em 0;
 	flex: auto;
 	-ms-writing-mode: tb-rl; /* IE */
 	writing-mode: vertical-rl;
 	letter-spacing: .15em;
 	line-height: 1;
 	background-clip: padding-box;
+}
+[data-price]:not(:first-of-type) {
+	border-left-width: 1px;
 }
 [data-price]:hover {
 	color: crimson;

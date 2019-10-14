@@ -138,9 +138,10 @@ blockquote footer {
 .anchorButtons > * {
 	display: inline-block;
 	padding: 0 .4em;
-	border: solid #ccc .05em;
 	line-height: 1.8;
 	background-color: #eee;
+	outline: 1px solid #ccc;
+	outline-offset: -1px;
 	text-align: center;
 	color: black !important;
 }

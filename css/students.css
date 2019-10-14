@@ -6,6 +6,7 @@
 }
 #cap  {--n-max: 72;}
 #grad {--n-max: 99;}
+
 @media (max-width:800px) {
 	.graph {
 		overflow-x: scroll;
@@ -43,6 +44,7 @@
 }
 #cap  .hLines {--tick-interval: 200;}
 #grad .hLines {--tick-interval: 100;}
+
 #cap  .vLines {
 	width: calc(70 * var(--unit));
 	counter-reset: tickValue 1950;
@@ -59,6 +61,7 @@
 }
 .hLines * {border-bottom-width: 1px;}
 .vLines * {border-right-width: 1px;}
+
 .hLines :not(:first-child),
 .vLines :not(:first-child) {
 	counter-increment: tickValue var(--tick-interval, 10);
@@ -151,18 +154,19 @@
 	display: inline-block;
 }
 .graph li:not(:last-child) {
-	margin-right: .5em;
+	margin-right: .75em;
 }
 .graph li::before {
 	width: .5em;
 	height: .5em;
-	border: .05em solid black;
-	margin: 0 .25em 0 0;
+	margin: .6em .25em 0 0;
+	vertical-align: top;
+	outline: 1px solid black;
 	content: "";
 }
 #cap li::before {
 	opacity: .9;
-	border-color: #999;
+	outline-color: #999;
 }
 #grad li::before {
 	opacity: .4;
@@ -199,6 +203,7 @@
 }
 #cap  .columns {counter-reset: year 1950 jpYear 25;}
 #grad .columns {counter-reset: year 1920 jpYear 9;}
+
 .columns :not(:first-child) {
 	counter-increment: year jpYear;
 }

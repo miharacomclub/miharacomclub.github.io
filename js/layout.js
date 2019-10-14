@@ -26,7 +26,7 @@ document.addEventListener("click", event => {
 	for (const [i, caption] of g.dataset.captions.split(",").entries()) {
 
 		const imgName = specialNames[i] || g.dataset.imgNamePrefix + (i + 1);
-		const img = `<img src="/src/buildings/${imgName}.jpg">`;
+		const img = `<img src="/src/buildings/${imgName}.jpg" alt="${caption}">`;
 
 		$("#slider").innerHTML += `
 			<input type="radio" name="slide" id="slide${i + 1}" ${i? "": "checked"}>

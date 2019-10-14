@@ -140,7 +140,7 @@ dialog h3 {
 	right: .8em;
 	line-height: 1;
 	font-weight: bold;
-	text-shadow: 0 0 .5px;
+	text-shadow: 0 0 1px;
 	cursor: pointer;
 	appearance: none;
 	-moz-appearance: none;

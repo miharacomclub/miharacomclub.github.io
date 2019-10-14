@@ -40,7 +40,7 @@
 	width: calc(var(--length, 999) * var(--unit));
 	margin-left: calc(var(--start, 0) * var(--unit));
 	box-sizing: border-box;
-	padding: .07em 0 .03em .1em;
+	padding: .1em;
 	background-repeat: no-repeat;
 }
 #bars span:empty::before {

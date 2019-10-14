@@ -58,13 +58,14 @@
 }
 [name="slide"] + label {
 	float: left;
-	border: .05em solid gray;
-	margin: 0 .2em .2em 0;
+	margin: 0 .15em .15em 0;
 	opacity: .4;
+	outline: 1px solid gray;
+	outline-offset: -1px;
 }
 [name="slide"]:checked + label {
 	opacity: 1;
-	border-color: coral;
+	outline-color: coral;
 }
 
 #btns * {

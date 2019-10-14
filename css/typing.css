@@ -84,10 +84,11 @@
 	font-size: .9rem;
 	width: 9.5em;
 	padding: 0;
-	border: .05em solid #aaa;
+	border: none;
 	margin: .15em 1em .15em 0;
+	outline: 1px solid #aaa;
 	background-color: #eee;
-	line-height: 1.9;
+	line-height: 2;
 }
 .themeButtons button:active {
 	background-color: transparent;
@@ -368,7 +369,7 @@
 	margin: 0;
 }
 #results dd {
-	border-bottom: .05em solid #999;
+	border-bottom: 1px solid #999;
 	margin: 0 0 .5em 0;
 }
 #results dt {
