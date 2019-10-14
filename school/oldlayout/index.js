@@ -11,8 +11,8 @@ const updateLayout = () => {
 	] || "2009";
 
 	$("#aerialPhoto image").setAttribute("xlink:href", `/src/buildings/${photoYear}.jpg`);
-	$("#aerialPhoto text").textContent	= `${photoYear.slice(0, 4)}年撮影`;
-	$("#currentYear").textContent		= `（${y < $("#range").max? y + "年": "現在"}）`;
+	$("#aerialPhoto text").textContent = `${photoYear.slice(0, 4)}年撮影`;
+	$("#currentYear").textContent      = `（${y < $("#range").max? y + "年": "現在"}）`;
 };
 
 
@@ -20,8 +20,8 @@ const displayDialogOnClick = event => {
 	if (!event.target.matches("[data-captions] .building, [data-captions] .cover")) return;
 
 	const g = event.target.parentNode;
-	$("dialog h3").textContent	= $("text:last-of-type", g).textContent;
-	$("#slider").innerHTML		= "";
+	$("dialog h3").textContent = $("text:last-of-type", g).textContent;
+	$("#slider").innerHTML     = "";
 
 	const specialNames = (g.dataset.specialImgNames || "").split(",");
 

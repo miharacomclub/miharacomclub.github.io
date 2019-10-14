@@ -4,9 +4,9 @@
 	border-radius: .5em;
 }
 [type="checkbox"],
-#displaySelection:not(:checked)	~ #selectionScreen,
-#displaySelection:checked		~ #typingScreen,
-#displayResults:not(:checked)	~ * #results {
+#displaySelection:not(:checked) ~ #selectionScreen,
+#displaySelection:checked       ~ #typingScreen,
+#displayResults:not(:checked)   ~ * #results {
 	display: none;
 }
 #selectionScreen,
@@ -407,12 +407,12 @@
 	--color-lightness: 50%;
 }
 kbd {
-	--top-color:	hsl(var(--hue-saturation), var(--max-lightness));
-	--bg-color:		hsl(var(--hue-saturation), calc(var(--max-lightness) - 5%));
-	--lr-color:		hsl(var(--hue-saturation), calc(var(--max-lightness) - 10%));
-	--btm-color:	hsl(var(--hue-saturation), calc(var(--max-lightness) - 15%));
-	--shadow-color:	hsl(var(--hue-saturation), calc(var(--max-lightness) - 25%));
-	color:			hsl(var(--hue-saturation), var(--color-lightness, 0%));
+	--top-color:    hsl(var(--hue-saturation), var(--max-lightness));
+	--bg-color:     hsl(var(--hue-saturation), calc(var(--max-lightness) - 5%));
+	--lr-color:     hsl(var(--hue-saturation), calc(var(--max-lightness) - 10%));
+	--btm-color:    hsl(var(--hue-saturation), calc(var(--max-lightness) - 15%));
+	--shadow-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 25%));
+	color:          hsl(var(--hue-saturation), var(--color-lightness, 0%));
 	display: inline-block;
 	font: inherit;
 	box-sizing: border-box;
@@ -443,13 +443,13 @@ kbd.onType::after,
 	line-height: 1.8;
 }
 
-[data-pseudo-key="Tab"]		{width: 3em;}
-[data-pseudo-key="Shift"]	{width: 4.5em;}
-[data-code="ShiftRight"]	{width: 3.9em;}
-#Hankaku	{width: 1.4em;}
-#Tab		{width: 2.75em;}
-#CapsLock	{width: 3.75em;}
-#Shift		{width: 5em;}
+[data-pseudo-key="Tab"]   {width: 3em;}
+[data-pseudo-key="Shift"] {width: 4.5em;}
+[data-code="ShiftRight"]  {width: 3.9em;}
+#Hankaku  {width: 1.4em;}
+#Tab      {width: 2.75em;}
+#CapsLock {width: 3.75em;}
+#Shift    {width: 5em;}
 #Space {
 	width: 8em;
 	margin-left: 13.5em;

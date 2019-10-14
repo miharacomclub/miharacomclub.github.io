@@ -50,7 +50,7 @@ header {
 h1,
 label {
 	display: table;
-	transition:	transform .3s, box-shadow .3s, background-color .3s;
+	transition: transform .3s, box-shadow .3s, background-color .3s;
 }
 h1 {
 	font-size: 1.05em;
@@ -184,11 +184,11 @@ a:hover img {
 	text-decoration: overline;
 }
 #darkgreen,
-#steelgreen	{color: white;}
-#vividblue	{color: mediumblue;}
-#darkgreen	{background-color: rgb(0,86,56);}
-#steelgreen	{background-color: darkslategray;}
-#freshgreen	{background-color: lightgreen;}
+#steelgreen {color: white;}
+#vividblue  {color: mediumblue;}
+#darkgreen  {background-color: rgb(0,86,56);}
+#steelgreen {background-color: darkslategray;}
+#freshgreen {background-color: lightgreen;}
 [id$="green"] {
 	margin: 0 .1em;
 	padding: 0 .4em;

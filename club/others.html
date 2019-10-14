@@ -12,13 +12,30 @@
 #links td {
 	padding: 0;
 }
-#links img {
+#links img,
+#comWrapper {
 	width: 5em;
 	display: block;
-}
-#links img:not([src*="Twitter"]) {
-	padding: calc(100% / 6);
 	box-sizing: border-box;
+}
+#mihara,
+#shichi,
+#facebook {
+	padding: calc(5em / 5);
+}
+#instagram {
+	padding: calc(5em / 4);
+}
+#comWrapper {
+	position: relative;
+	overflow: hidden;
+	height: 5em;
+	border: calc(5em / 5) solid transparent;
+}
+#comWrapper img {
+	position: absolute;
+	left: -.1em;
+	width: 5.4em;
 }
 #links ul {
 	list-style-type: none;
@@ -48,7 +65,7 @@
 	<table id="links" class="listTable">
 		<tr>
 			<td>
-				<a><img src="/src/others/mihara.png" alt="淡路三原高校"></a>
+				<a><img src="/src/others/mihara.png" id="mihara" alt="淡路三原高校"></a>
 			<td>
 				<ul>
 					<li><a target="_blank" href="https://www.hyogo-c.ed.jp/~awajimihara-hs/">兵庫県立淡路三原高等学校</a>
@@ -59,7 +76,7 @@
 				</ul>
 		<tr>
 			<td>
-				<a><img src="/src/others/shichi.png" alt="志知高校"></a>
+				<a><img src="/src/others/shichi.png" id="shichi" alt="志知高校"></a>
 			<td>
 				<ul>
 					<li><a target="_blank" href="https://www.hyogo-c.ed.jp/~shichi-hs/">兵庫県立志知高等学校</a>
@@ -69,7 +86,7 @@
 				</ul>
 		<tr>
 			<td>
-				<a><img src="/src/others/Twitter_Logo_Blue.svg" alt="Twitter"></a>
+				<a><img src="/src/others/Twitter_Logo_Blue.svg" id="twitter" alt="Twitter"></a>
 			<td>
 				<ul>
 					<li><a target="_blank" href="https://twitter.com/photo_awasan">淡路三原写真部</a>
@@ -81,12 +98,28 @@
 				</ul>
 		<tr>
 			<td>
-				<a><img src="/src/others/flogo_RGB_HEX-72.svg" alt="Facebook"></a>
+				<a><img src="/src/others/f_logo_RGB-Blue_144.png" id="facebook" alt="Facebook"></a>
 			<td>
 				<ul>
 					<li><a target="_blank" href="https://www.facebook.com/awajimiharafootballclub/">淡路三原高校サッカー部</a>
 					<li><a target="_blank" href="https://www.facebook.com/Awajimihara.VBC/">淡路三原高校男子バレーボール部</a>
 					<li><a target="_blank" href="https://www.facebook.com/%E6%B7%A1%E8%B7%AF%E4%B8%89%E5%8E%9F%E9%AB%98%E6%A0%A1%E3%83%90%E3%82%B9%E3%82%B1%E3%83%83%E3%83%88%E3%83%9C%E3%83%BC%E3%83%AB%E9%83%A8RedKoalas-954091354635640/">淡路三原高校バスケットボール部RedKoalas</a>
+				</ul>
+		<tr>
+			<td>
+				<a><img src="/src/others/glyph-logo_May2016.png" id="instagram" alt="Instagram"></a>
+			<td>
+				<ul>
+					<li><a target="_blank" href="https://www.instagram.com/awaji_mihara_soccer_gram/">淡路三原サッカー部</a>
+					<li><a target="_blank" href="https://www.instagram.com/dance_awajimihara/">淡路三原高校ダンス部</a>
+				</ul>
+		<tr>
+			<td>
+				<a id="comWrapper"><img src="/src/common/suwako.png" alt="洩矢諏訪子"></a>
+			<td>
+				<ul>
+					<li><a target="_blank" href="https://www.youtube.com/channel/UCRMpVJ2TdYH8eZ6GFXV1C4Q">淡路三原高校コンピュータ部 - YouTube</a>
+					<li><a target="_blank" href="https://github.com/miharacomclub/miharacomclub.github.io">淡路三原高校コンピュータ部 - GitHub</a>
 				</ul>
 	</table>
 </section>

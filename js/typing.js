@@ -7,14 +7,14 @@ document.addEventListener("click", async event => {
 	if (!event.target.matches("#selectionScreen button")) return;
 	const btn = event.target;
 
-	const category	= $(`[name="tab"]:checked`).id;
-	const btns		= $$(`[data-tsv-name^="${btn.dataset.tsvName}"]`);
+	const category = $(`[name="tab"]:checked`).id;
+	const btns     = $$(`[data-tsv-name^="${btn.dataset.tsvName}"]`);
 	btns.length > 1 && btns.pop();
 
-	const tsvs		= await Promise.all(btns.map(b =>
+	const tsvs = await Promise.all(btns.map(b =>
 		fetch(`/src/typing/${category}/${b.dataset.tsvName}.tsv`).then(resp => resp.ok? resp.text(): "")
 	));
-	const lines		= tsvs.join("\n").split(/\r?\n/).filter(v => v);
+	const lines = tsvs.join("\n").split(/\r?\n/).filter(v => v);
 
 	lines.length > 0 && Game.prepare(
 		lines,
@@ -68,17 +68,17 @@ const Game = (() => {
 
 		if (!startTime) {
 			const isRmnFocused = rmn === document.activeElement;
-			if (key === "Tab")		return rmn[isRmnFocused? "blur": "focus"]();
-			if (isRmnFocused)		return doDefault;
-			if (key === "Escape")	return $("#displaySelection").checked = true;
+			if (key === "Tab")    return rmn[isRmnFocused? "blur": "focus"]();
+			if (isRmnFocused)     return doDefault;
+			if (key === "Escape") return $("#displaySelection").checked = true;
 		}
-		if (!typedKbd)					return doDefault;
-		if (key === "Escape")			return reset();
-		if (!Romaji.isKeyCorrect(key))	return onTypo();
+		if (!typedKbd)                 return doDefault;
+		if (key === "Escape")          return reset();
+		if (!Romaji.isKeyCorrect(key)) return onTypo();
 
 		!startTime && start();
 		Sounds.correct.play();
-		if (Romaji.indexOfKana() >= 0)	return recolor();
+		if (Romaji.indexOfKana() >= 0) return recolor();
 
 		const aryIfOnEndOfGame = moveToNext();
 		if (aryIfOnEndOfGame) {
@@ -93,13 +93,13 @@ const Game = (() => {
 		text = lines.map(line => line.replace(/^[^\t]+$/, "$&\t$&").split(/\t/));
 		for (const line of text) line.push(Romaji.romanizeKana(line[1]));
 
-		rmn.max				= Math.min(text.length, 99);
-		rmn.defaultValue	= rmn.placeholder = defaultValue || +rmn.max;
+		rmn.max          = Math.min(text.length, 99);
+		rmn.defaultValue = rmn.placeholder = defaultValue || +rmn.max;
 
-		$("#textTitle").textContent		= title;
-		$("#englishMode").checked		= title.includes("英語");
-		$("#invisibleMode").checked		= $("#shiftIsPressed").checked;
-		$("#displaySelection").checked	= false;
+		$("#textTitle").textContent    = title;
+		$("#englishMode").checked      = title.includes("英語");
+		$("#invisibleMode").checked    = $("#shiftIsPressed").checked;
+		$("#displaySelection").checked = false;
 
 		reset(needsShuffle);
 	},
@@ -114,9 +114,9 @@ const Game = (() => {
 				[text[i], text[j]] = [text[j], text[i]];
 			}
 		}
-		startTime		= 0;
-		rmn.value		= +rmn.defaultValue + 1;
-		rmn.disabled	= false;
+		startTime    = 0;
+		rmn.value    = +rmn.defaultValue + 1;
+		rmn.disabled = false;
 
 		$("#sentencesFrame").classList.remove("frameOnTypo");
 		moveToNext();
@@ -126,9 +126,9 @@ const Game = (() => {
 	start = () => {
 		Sounds.correct.playCount = Sounds.incorrect.playCount = 0;
 		if (!rmn.checkValidity()) rmn.value = rmn.placeholder;
-		rmn.defaultValue	= rmn.value;
-		rmn.disabled		= true;
-		startTime			= new Date();
+		rmn.defaultValue = rmn.value;
+		rmn.disabled     = true;
+		startTime        = new Date();
 	},
 
 
@@ -170,9 +170,9 @@ const Game = (() => {
 		const lines = [...text].splice(rmn.defaultValue - rmn.value, 2);
 		Romaji.prepare(lines[0][2]);
 
-		$("#rubyBase").textContent		= lines[0][0];
-		$("#nextSentence").textContent	= rmn.value - 1? lines[1][+$("#englishMode").checked]: "";
-		$("#rubySentence").innerHTML	= `<span></span><span>${lines[0][1]}</span>`;
+		$("#rubyBase").textContent     = lines[0][0];
+		$("#nextSentence").textContent = rmn.value - 1? lines[1][+$("#englishMode").checked]: "";
+		$("#rubySentence").innerHTML   = `<span></span><span>${lines[0][1]}</span>`;
 		$("#meter").style.setProperty("--value", `${rmn.value / rmn.defaultValue * 100}%`);
 		recolor();
 	};
@@ -205,14 +205,14 @@ const Results = (() => {
 
 
 	show = (keystrokes, typos, time) => {
-		const kps		= keystrokes / time;
-		const kpm		= kps * 60;
-		const accuracy	= keystrokes / (keystrokes + typos);
-		const score		= Math.round(kpm * accuracy ** 2);
+		const kps      = keystrokes / time;
+		const kpm      = kps * 60;
+		const accuracy = keystrokes / (keystrokes + typos);
+		const score    = Math.round(kpm * accuracy ** 2);
 		const [rankName, rankColor] = rankNamesAndColors[
 			Object.keys(rankNamesAndColors).reverse().find(value => value <= score)
 		];
-		const ddValues	= [
+		const ddValues = [
 			score, rankName, roundOff(time), keystrokes, roundOff(kps),
 			roundOff(accuracy * 100), typos, Math.round(kpm)
 		];
@@ -225,12 +225,12 @@ const Results = (() => {
 
 
 	$$("#rankList li").reduce((superior, rank) => {
-		const rankName		= rank.textContent.trim();
-		const rankColor		= rank.style.color;
-		const requiredScore	= +rank.style.getPropertyValue("--required-score");
-		const superiorScore	= +superior.style.getPropertyValue("--required-score") || 950;
+		const rankName      = rank.textContent.trim();
+		const rankColor     = rank.style.color;
+		const requiredScore = +rank.style.getPropertyValue("--required-score");
+		const superiorScore = +superior.style.getPropertyValue("--required-score") || 950;
 
-		rank.dataset.score	= requiredScore;
+		rank.dataset.score  = requiredScore;
 		rank.dataset.requiredKps = roundOff(requiredScore / 60 / 0.97 ** 2);
 		rank.style.setProperty("--score-range", superiorScore - requiredScore);
 		superior.style.setProperty("--inferior-score", requiredScore);
@@ -257,11 +257,11 @@ const Romaji = (() => {
 	let kanaIndex, romajiIndex, romajis, firstCands;
 	const table = {},
 
-	prepare		= _romajis => [kanaIndex, romajiIndex, romajis, firstCands] = [0, 0, [..._romajis], []],
+	prepare     = _romajis => [kanaIndex, romajiIndex, romajis, firstCands] = [0, 0, [..._romajis], []],
 
-	getCands	= () => [...new Set(romajis[kanaIndex].map(cand => cand[romajiIndex]))],
+	getCands    = () => [...new Set(romajis[kanaIndex].map(cand => cand[romajiIndex]))],
 
-	indexOfKana	= () => kanaIndex < romajis.length? kanaIndex: -1,
+	indexOfKana = () => kanaIndex < romajis.length? kanaIndex: -1,
 
 
 	getRomanized = () => {

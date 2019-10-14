@@ -97,10 +97,10 @@
 }
 #cap  .columns {background-image: url(/src/students/cap.svg#lines);}
 #grad .columns {background-image: url(/src/students/grad.svg#areas);}
-#cap  .columns :nth-child(odd ):hover	{background-image: url(/src/students/cap.svg#odd);}
-#cap  .columns :nth-child(even):hover	{background-image: url(/src/students/cap.svg#even);}
-#grad .columns :nth-child(odd ):hover	{background-image: url(/src/students/grad.svg#odd);}
-#grad .columns :nth-child(even):hover	{background-image: url(/src/students/grad.svg#even);}
+#cap  .columns :nth-child(odd ):hover {background-image: url(/src/students/cap.svg#odd);}
+#cap  .columns :nth-child(even):hover {background-image: url(/src/students/cap.svg#even);}
+#grad .columns :nth-child(odd ):hover {background-image: url(/src/students/grad.svg#odd);}
+#grad .columns :nth-child(even):hover {background-image: url(/src/students/grad.svg#even);}
 
 .columns ::before,
 .columns ::after {
@@ -167,15 +167,15 @@
 #grad li::before {
 	opacity: .4;
 }
-.graph .mihara::before	{background-color: rgb(0, 86, 56);}
-.graph .shichi::before	{background-color: limegreen;}
-.graph .awaji::before	{background-color: darkcyan;}
-.graph .shinnyo::before	{background-color: lightsalmon;}
-.graph .kojo::before	{background-color: gold;}
-.graph .sumoto::before	{background-color: dodgerblue;}
+.mihara::before  {background-color: rgb(0, 86, 56);}
+.shichi::before  {background-color: limegreen;}
+.awaji::before   {background-color: darkcyan;}
+.shinnyo::before {background-color: lightsalmon;}
+.kojo::before    {background-color: gold;}
+.sumoto::before  {background-color: dodgerblue;}
 
 .columns :hover::after {
-	content: "　\a\a \a\a\a \a\a\a\a\a"
+	content: "　\a\a　\a\a\a　\a\a\a\a\a"
 		var(--data-1-value, "") "\a\a\a\a"
 		var(--data-2-value, "") "\a\a\a\a"
 		var(--data-3-value, "") "\a\a\a\a"
@@ -190,7 +190,7 @@
 	content: "　\a\a"
 		"　　　" counter(year) "年度\a\a\a"
 		"　　（" var(--era-name, "令和")
-		var(--era-year, counter(jpYear)) "年度）\a\a\a\a\a"
+		var(--era-year,    counter(jpYear)) "年度）\a\a\a\a\a"
 		var(--data-1-name, "三原高校") "\a\a\a\a"
 		var(--data-2-name, "志知高校") "\a\a\a\a"
 		var(--data-3-name, "淡路三原高校")
@@ -202,11 +202,11 @@
 .columns :not(:first-child) {
 	counter-increment: year jpYear;
 }
-#cap  .columns :nth-child(70),	/*  70 - 40 + 1 = 31 令和 */
-#grad .columns :nth-child(100),	/* 100 - 70 + 1 = 31 令和 */
-#cap  .columns :nth-child(40),	/*  25 + 40 - 1 = 64 平成 */
-#grad .columns :nth-child(70),	/*  70 -  7 + 1 = 64 平成 */
-#grad .columns :nth-child(7) {	/*   9 +  7 - 1 = 15 昭和 */
+#cap  .columns :nth-child(70),  /*  70 - 40 + 1 = 31 令和 */
+#grad .columns :nth-child(100), /* 100 - 70 + 1 = 31 令和 */
+#cap  .columns :nth-child(40),  /*  25 + 40 - 1 = 64 平成 */
+#grad .columns :nth-child(70),  /*  70 -  7 + 1 = 64 平成 */
+#grad .columns :nth-child(7) {  /*   9 +  7 - 1 = 15 昭和 */
 	counter-reset: jpYear 0;
 	--era-year: "元";
 }

@@ -6,9 +6,9 @@
 	}
 	.oddEl,
 	.evenEl {
-		marker-start:	var(--marker-url);
-		marker-mid:		var(--marker-url);
-		marker-end:		var(--marker-url);
+		marker-start: var(--marker-url);
+		marker-mid:   var(--marker-url);
+		marker-end:   var(--marker-url);
 		fill: none;
 	}
 	.oddEl  {
@@ -35,9 +35,9 @@
 		</mask>
 	</defs>
 
-	<view id="odd"		viewBox="-15    0 1500 600"/>
-	<view id="even"		viewBox="-15 1000 1500 600"/>
-	<view id="areas"	viewBox="-15 2000 1500 600"/>
+	<view id="odd"   viewBox="-15    0 1500 600"/>
+	<view id="even"  viewBox="-15 1000 1500 600"/>
+	<view id="areas" viewBox="-15 2000 1500 600"/>
 
 	<g color="lightsalmon" style="--marker-url: url(#shinnyo)">
 		<marker id="shinnyo" markerUnits="userSpaceOnUse" markerWidth="28" markerHeight="28" viewBox="0 0 2 2" refX="1" refY="1"><use xlink:href="#marker"/></marker>

@@ -6,9 +6,9 @@
 	}
 	.oddEl,
 	.evenEl {
-		marker-start:	var(--marker-url);
-		marker-mid:		var(--marker-url);
-		marker-end:		var(--marker-url);
+		marker-start: var(--marker-url);
+		marker-mid:   var(--marker-url);
+		marker-end:   var(--marker-url);
 		stroke: none;
 	}
 	.oddEl {
@@ -29,9 +29,9 @@
 	<defs>
 		<circle id="marker" cx="1" cy="1" r=".95" stroke-width=".1" stroke="#fbfbfb" fill="currentColor"/>
 	</defs>
-	<view id="odd"		viewBox="-40    0 2920 1600"/>
-	<view id="even"		viewBox="-40 2000 2920 1600"/>
-	<view id="lines"	viewBox="-40 4000 2920 1600"/>
+	<view id="odd"   viewBox="-40    0 2920 1600"/>
+	<view id="even"  viewBox="-40 2000 2920 1600"/>
+	<view id="lines" viewBox="-40 4000 2920 1600"/>
 
 	<g color="rgb(0, 86, 56)" style="--marker-url: url(#mihara)">
 		<!-- vector-effect="non-scaling-stroke"はedgeで対応していない-->

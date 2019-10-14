@@ -19,7 +19,7 @@ document.addEventListener("click", event => {
 	if (!event.target.matches("[data-captions] > *")) return;
 
 	const g = event.target.parentNode;
-	$("#dialog h3").textContent	= g.dataset.title || $("text", g).textContent;
+	$("#dialog h3").textContent = g.dataset.title || $("text", g).textContent;
 	$("#slider").innerHTML = "";
 
 	const specialNames = (g.dataset.specialImgNames || "").split(",");
