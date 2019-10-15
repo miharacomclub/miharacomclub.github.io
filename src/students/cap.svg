@@ -27,7 +27,7 @@
 	]]></style>
 
 	<defs>
-		<circle id="marker" cx="1" cy="1" r=".95" stroke-width=".1" stroke="#fbfbfb" fill="currentColor"/>
+		<circle id="marker" cx="1" cy="1" r="0.95" stroke-width="0.1" stroke="white" fill="currentColor"/>
 	</defs>
 	<view id="odd"   viewBox="-40    0 2920 1600"/>
 	<view id="even"  viewBox="-40 2000 2920 1600"/>

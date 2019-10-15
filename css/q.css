@@ -56,7 +56,7 @@ h1 {
 	font-size: 1.05em;
 	padding: .1em;
 	border: 0 solid #aaa;
-	border-width: 1px 0;
+	border-width: .06rem 0;
 	margin: 0;
 	font-weight: normal;
 }

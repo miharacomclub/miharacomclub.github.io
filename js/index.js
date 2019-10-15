@@ -6,9 +6,9 @@ window.openImgInNewTabOnClick = (target = document) => {
 	for (const a of $$("a:not([href]):not([target])", target)) {
 		Object.assign(a, {
 			href      : $("img", a).getAttribute("src"), // a.srcは絶対パスを返す
-			target    : "_blank",
-			className : "enlargeable",
+			target    : "_blank"
 		});
+		a.classList.add("enlargeable");
 	}
 };
 

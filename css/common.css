@@ -84,7 +84,7 @@ blockquote {
 blockquote::before,
 blockquote::after {
 	display: block;
-	height: .1px;
+	height: .006rem;
 	clear: both;
 	content: "";
 }
@@ -106,10 +106,10 @@ blockquote footer {
 
 .listTable {
 	line-height: 2;
-	border-top: 1px solid #ccc;
+	border-top: .06rem solid #ccc;
 }
 .listTable tr {
-	border-bottom: 1px solid #ccc;
+	border-bottom: .06rem solid #ccc;
 }
 .listTable th,
 .listTable td {
@@ -140,8 +140,8 @@ blockquote footer {
 	padding: 0 .4em;
 	line-height: 1.8;
 	background-color: #eee;
-	outline: 1px solid #ccc;
-	outline-offset: -1px;
+	outline: .06rem solid #ccc;
+	outline-offset: -.06rem;
 	text-align: center;
 	color: black !important;
 }
@@ -159,7 +159,7 @@ blockquote footer {
 	position: absolute;
 	top: 100%;
 	padding: 0 .2em;
-	border: 1px #777 solid;
+	border: .06rem #777 solid;
 	pointer-events: none;
 	z-index: 9;
 	font-weight: normal;

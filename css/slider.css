@@ -60,8 +60,8 @@
 	float: left;
 	margin: 0 .15em .15em 0;
 	opacity: .4;
-	outline: 1px solid gray;
-	outline-offset: -1px;
+	outline: .06rem solid gray;
+	outline-offset: -.06rem;
 }
 [name="slide"]:checked + label {
 	opacity: 1;
@@ -123,7 +123,7 @@
 	height: 15%;
 	content: "";
 	border-radius: calc(2.25em * .15);
-	background-color: #fbfbfb;
+	background-color: white;
 	transform-origin: top left;
 }
 #btns ::before {

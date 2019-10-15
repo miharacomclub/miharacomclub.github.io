@@ -1,6 +1,6 @@
 .frame {
 	box-sizing: border-box;
-	border: 1px black solid;
+	border: .06rem black solid;
 	border-radius: .5em;
 }
 [type="checkbox"],
@@ -30,7 +30,7 @@
 	float: left;
 	width: 5rem;
 	box-sizing: border-box;
-	border: 1px solid black;
+	border: .06rem solid black;
 	border-bottom: none;
 	margin-right: .25em;
 	border-radius: .5em .5em 0 0;
@@ -76,7 +76,7 @@
 	}
 	.themeButtons::after {
 		width: 9.5em;
-		height: .1px;
+		height: .006rem;
 		content: "";
 	}
 }
@@ -86,7 +86,7 @@
 	padding: 0;
 	border: none;
 	margin: .15em 1em .15em 0;
-	outline: 1px solid #aaa;
+	outline: .06rem solid #aaa;
 	background-color: #eee;
 	line-height: 2;
 }
@@ -164,7 +164,7 @@
 	font-size: .9rem;
 	left: 0; /* safari */
 	width: 100%;
-	border-top: 2px solid transparent;
+	border-top: calc(.06rem * 2) solid transparent;
 	box-sizing: border-box;
 	background-clip: content-box;
 	content: attr(data-required-kps) "打/秒";
@@ -173,7 +173,7 @@
 #rankList li::after {
 	font-size: .9rem;
 	width: 100%;
-	border-top: 1px solid currentColor;
+	border-top: .06rem solid currentColor;
 	line-height: 0;
 	text-indent: 103%;
 	content: attr(data-score);
@@ -197,7 +197,7 @@
 #rankList li::after {
 	position: absolute;
 	left: 0;
-	bottom: -1px;
+	bottom: -.06rem;
 	direction: rtl;
 }
 
@@ -213,8 +213,8 @@
 	box-sizing: border-box;
 	padding: 0 .75em;
 	line-height: 1.2;
-	outline: 1px solid black;
-	outline-offset: -1px;
+	outline: .06rem solid black;
+	outline-offset: -.06rem;
 	align-items: center;
 	text-align: left;
 	font-weight: normal;
@@ -244,7 +244,7 @@
 	color: black;
 }
 #remainingNum:not(:disabled) {
-	outline: 1px solid #aaa;
+	outline: .06rem solid #aaa;
 }
 #remainingNum:invalid {
 	box-shadow: 0 0 .5em red;
@@ -369,8 +369,8 @@
 	margin: 0;
 }
 #results dd {
-	border-bottom: 1px solid #999;
-	margin: 0 0 .5em 0;
+	border-bottom: .06rem solid #999;
+	margin-bottom: .5em;
 }
 #results dt {
 	float: left;

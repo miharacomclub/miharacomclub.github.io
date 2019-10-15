@@ -60,10 +60,10 @@
 	--grad-position: left;
 }
 [style*="integrated"] {
-	--height: calc(var(--integrated) * 1.2em - .1em - var(--shift-top) - var(--shift-bottom));
-	--shift-top: .4em;
-	--shift-bottom: .4em;
-	margin: calc(var(--shift-top)) 0 -99em;
+	--height: calc(var(--integrated) * 1.25em - .1em - var(--top) - var(--bottom));
+	--top: .4em;
+	--bottom: .35em;
+	margin: calc(var(--top)) 0 -99em;
 	height: var(--height);
 	line-height: var(--height);
 	vertical-align: top;
@@ -74,7 +74,7 @@
 	z-index: 0;
 	direction: rtl;
 	line-height: 1.1;
-	--shift-top: .8em;
+	--top: .8em;
 	border-top: .7em solid transparent;
 }
 
@@ -139,7 +139,7 @@
 	counter-increment: year jpYear;
 }
 #columns :nth-child(10n-3) {
-	border-left: 1px solid rgba(0,0,0,.2);
+	border-left: .06rem solid rgba(0,0,0,.2);
 	box-sizing: border-box;
 }
 #columns :hover {

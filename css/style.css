@@ -84,7 +84,7 @@ h3, h4 {
 	color: white;
 }
 #nav a:not(:last-child) {
-	border-right: 1px solid white;
+	border-right: .06rem solid white;
 }
 #nav a:hover {
 	opacity: .6;
