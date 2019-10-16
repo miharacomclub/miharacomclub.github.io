@@ -5,37 +5,27 @@
 ul {
 	margin-top: 0;
 }
-
 .anchorButtons {
 	position: relative;
 	font-size: .95em;
-	float: left;
 	display: flex;
 	flex-flow: column wrap;
 	align-content: flex-start;
-	height: 9.5em;
-	margin-top: 1.7em;
+	height: 7.5em;
+	margin-left: 1.5rem;
 }
-@media (max-width:424px) {
-	.anchorButtons {
-		height: 7em;
-	}
-}
-#school {
-	width: 23em;
-}
-.anchorButtons > * {
-	width: 5em;
-	margin: .1em;
-	line-height: 1.9;
-}
-.anchorButtons::before {
+[data-title]::before {
 	position: absolute;
-	left: 0;
-	bottom: 100%;
+	top: 2em;
+	right: calc(100% + .3em);
+	width: 1em;
+	line-height: 1.3;
 	content: attr(data-title);
 }
-
+.anchorButtons > * {
+	width: 5.5em;
+	margin: .1em;
+}
 .rnd {
 	position: relative;
 	overflow: hidden;
@@ -73,10 +63,10 @@ ul {
 </style>
 
 <ul>
-	<li>1つのジャンルにつき、約10問が出題されます。
+	<li>1つのジャンルにつき、約10問出題されます。
 	<li>解答後に<b>太字</b>となった選択肢に触れると、補足を見ることができます。
 </ul>
-<div id="school" class="anchorButtons" data-title="淡路三原高校">
+<div id="school" class="anchorButtons" data-title="高校">
 	<a href="history#1">沿革</a>
 	<a href="regulations#1">校則</a>
 	<a href="curriculum#1">教育課程</a>

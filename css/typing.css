@@ -438,8 +438,8 @@ kbd.onType::after,
 [data-pseudo-key]:active,
 #shiftIsPressed:checked ~ * #Shift {
 	--top-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 28%));
-	--bg-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 15%));
-	--lr-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 20%));
+	--bg-color:  hsl(var(--hue-saturation), calc(var(--max-lightness) - 15%));
+	--lr-color:  hsl(var(--hue-saturation), calc(var(--max-lightness) - 20%));
 	--btm-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 10%));
 	line-height: 1.8;
 }

@@ -1,4 +1,4 @@
-[type="range"] {
+#range {
 	float: left;
 	width: 16em;
 	max-width: 50%;
@@ -97,6 +97,7 @@ g:hover :not(text) {
 #displayNames:not(:checked) ~ #layout g:not(:hover) text {
 	opacity: 0;
 }
+_:lang(x)+_:-webkit-full-screen-document,text:not([writing-mode]){writing-mode:horizontal-bt;}/*safari*/
 text {
 	font-size: 18px;
 	stroke-width: 1.8px;
