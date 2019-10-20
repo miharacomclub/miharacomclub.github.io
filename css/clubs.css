@@ -76,7 +76,6 @@
 #media,
 #natural {
 	position: relative;
-	z-index: 0;
 	direction: rtl;
 	line-height: 1.1;
 	--top: .8em;

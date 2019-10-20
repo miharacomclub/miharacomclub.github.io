@@ -1,23 +1,19 @@
 #range {
 	float: left;
 	width: 16em;
-	max-width: 50%;
 	margin-right: .2em;
 }
-[type="checkbox"] {
+#fade {
 	display: none;
 }
-[type="checkbox"] + label {
+#fade + label {
 	float: left;
-	margin: 0 0 .4em .4em;
-	min-width: 2em;
-	padding: 0 .3em;
-	text-align: center;
+	margin: 0 0 .5em .75em;
+	padding: 0 .25em;
 	outline: .1em solid currentColor;
-	outline-offset: -.1em;
 	color: silver;
 }
-:checked + label {
+#fade:checked + label {
 	color: darkblue;
 }
 
@@ -43,8 +39,8 @@
 	--shadow: 0 0 .7em #fbfbfb inset;
 	box-shadow: var(--shadow), var(--shadow), var(--shadow);
 }
-#displayFade:checked ~ #layout [data-period],
-#displayFade:checked ~ #layout g * {
+#fade:checked ~ #layout [data-period],
+#fade:checked ~ #layout g * {
 	transition: opacity .3s linear var(--additional-rule, 0s);
 }
 #layout img,
@@ -92,10 +88,6 @@ g :not(text) {
 }
 g:hover :not(text) {
 	fill: rgba(255,255,255,.15);
-}
-#displayFrames:not(:checked) ~ #layout g:not(:hover) :not(text),
-#displayNames:not(:checked) ~ #layout g:not(:hover) text {
-	opacity: 0;
 }
 _:lang(x)+_:-webkit-full-screen-document,text:not([writing-mode]){writing-mode:horizontal-bt}/*safari*/
 text {
