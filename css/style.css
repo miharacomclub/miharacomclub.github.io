@@ -56,7 +56,7 @@ h2 {
 h2 ~ section {
 	margin-bottom: 2em;
 }
-h2 ~ section::after { /* .clear */
+h2 ~ section::after { /* clearfix */
 	display: block;
 	clear: both;
 	content: "";

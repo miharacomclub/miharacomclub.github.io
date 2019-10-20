@@ -189,8 +189,9 @@ const Results = (() => {
 	roundOff = num => Math.round(num * 10) / 10,
 
 	onKeyDown = key => {
-		$("#displayResults").checked = key !== "Escape";
-		return key !== "Escape" && doDefault;
+		if (key !== "Escape") return;
+		$("#displayResults").checked = false;
+		return doDefault;
 	},
 
 
@@ -369,7 +370,7 @@ const Sounds = (() => { // safariでの処理落ちを防ぐ
 	if (window.webkitAudioContext) window.AudioContext = new window.webkitAudioContext();
 
 	function SE(name) {
-		this.sources = [...Array(10)].map(() => new Audio(`/src/typing/${name}.mp4`));
+		this.sources = [...Array(10)].map(() => new Audio(`/src/typing/${name}.aac`));
 		this.playCount = 0;
 	}
 	SE.prototype.play = function() {

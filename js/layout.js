@@ -46,7 +46,6 @@ document.addEventListener("click", event => {
 });
 
 
-
 const years = [...new Set($$("[data-period]").reduce((str, el) => `${str},${el.dataset.period}`, "").split(","))]
 			.filter(v => v).map(v => +v).sort();
 range.value = range.max = years.length - 1;
@@ -64,15 +63,15 @@ const updateLayout = () => {
 		el.classList[+period[0] <= y && y < +period[1]? "add": "remove"]("exists");
 	}
 
-	if (photo === (photo = $$("a.exists img").pop())) return;
-	$("#dateTaken").textContent = photo.src.replace(/.+?(\d+)-?0?(\d*)\.jpg$/, "$1年$2月撮影").replace("年月", "年");
-
+	if (photo === (photo = $$("img.exists").pop())) return;
 	const source = photo.dataset.mappsId
 		? ["地図・空中写真閲覧サービス", "https://mapps.gsi.go.jp/maplibSearch.do?specificationId=" + photo.dataset.mappsId]
 		: ["地理院地図", "https://maps.gsi.go.jp/#17/34.282055/134.781588/&ls=std|airphoto"];
 
-	$("#citation").textContent = `『${source[0]}』より作成`;
-	$("svg a").setAttributeNS("http://www.w3.org/1999/xlink", "href", source[1]);
+	$("#dateTaken").textContent = photo.src.replace(/.+?(\d+)-?0?(\d*)\.jpg$/, "$1年$2月撮影").replace("年月", "年");
+	$("#citation" ).textContent = `『${source[0]}』より作成`;
+	$("#dateTaken").parentNode.setAttributeNS("http://www.w3.org/1999/xlink", "href", photo.getAttribute("src"));
+	$("#citation" ).parentNode.setAttributeNS("http://www.w3.org/1999/xlink", "href", source[1]);
 };
 
 range.addEventListener("input", updateLayout);

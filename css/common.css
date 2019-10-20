@@ -80,12 +80,10 @@ blockquote {
 	padding: 0 1em;
 	background-color: #eee;
 }
-.clear::after, /* marginとfloatによる崩れを防ぐ */
-blockquote::before,
+blockquote::before, /* marginの崩壊(collapse)を防ぐ */
 blockquote::after {
 	display: block;
-	height: .006rem;
-	clear: both;
+	height: .06rem;
 	content: "";
 }
 blockquote header,
@@ -99,6 +97,16 @@ blockquote footer {
 	text-align: right;
 }
 
+hr.clearfix {
+	border: 0;
+	margin: 0;
+	overflow: visible;
+}
+.clearfix::after {
+	display: block;
+	clear: both;
+	content: "";
+}
 .jpNumberingList {
 	list-style-type: simp-chinese-informal;
 	padding-left: 2.5em;

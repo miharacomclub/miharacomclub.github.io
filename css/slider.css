@@ -68,7 +68,7 @@
 	outline-color: coral;
 }
 
-#btns * {
+#btns label {
 	position: absolute;
 	display: none;
 	top: calc((100% - 2.25em) / 2);

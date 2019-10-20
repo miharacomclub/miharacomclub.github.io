@@ -15,22 +15,25 @@
 	align-items: center;
 	justify-content: space-between;
 }
-#autoSlider {
+#school ul {
+	margin: 0;
+}
+#slideshow {
 	width: 21em;
 	margin-right: 1em;
 }
-#autoSlider::before {
+#slideshow::before {
 	padding-top: 75%;
 }
-#autoSlider a {
+#slideshow a {
 	visibility: hidden;
-	animation: autoSlider 25s infinite;
+	animation: slideshow 25s infinite;
 	box-shadow: .3em .3em 1em #555;
 }
-#autoSlider img {
+#slideshow img {
 	height: 100%;
 }
-@keyframes autoSlider {
+@keyframes slideshow {
 	 0%, 30% {
 		opacity: 0;
 		visibility: hidden;
@@ -40,10 +43,10 @@
 		visibility: visible;
 	}
 }
-#autoSlider :nth-child(2) {animation-delay: 5s;}
-#autoSlider :nth-child(3) {animation-delay: 10s;}
-#autoSlider :nth-child(4) {animation-delay: 15s;}
-#autoSlider :nth-child(5) {animation-delay: 20s;}
+#slideshow :nth-child(2) {animation-delay: 5s;}
+#slideshow :nth-child(3) {animation-delay: 10s;}
+#slideshow :nth-child(4) {animation-delay: 15s;}
+#slideshow :nth-child(5) {animation-delay: 20s;}
 </style>
 
 <header id="header">
@@ -60,8 +63,8 @@
 	<h3>淡路三原高校について</h3>
 	<p>
 		淡路三原高校は淡路島の南部、南あわじ市にある唯一の高校です。<br>
-		<a href="history">三原高校</a>と<a href="shichi">志知高校</a
-		>の発展的統合により、<time>2007年</time>に開校しました。<br>
+		<a href="history">三原高校</a>と<a href="shichi"
+		>志知高校</a>の発展的統合により、<time>2007年</time>に開校しました。<br>
 		<a href="students">生徒定員</a>は680名で、5つの類型とサイエンスコースが設置されています。
 	</p>
 	<p>
@@ -72,7 +75,7 @@
 		放送部の高校放送コンテスト全国大会の出場など、様々な活躍を見せています。
 	</p>
 	<div id="mapWrapper" class="fixedAspectRatio sxs">
-		<iframe allowfullscreen src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1648.6580961236402!2d134.77974128716798!3d34.28190933358319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3554a6cebdc8120f%3A0xa1ecae9637c7c175!2z5YW15bqr55yM56uL5reh6Lev5LiJ5Y6f6auY562J5a2m5qCh!5e0!3m2!1sja!2sjp!4v1489550895967"></iframe>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1648.6580961236402!2d134.77974128716798!3d34.28190933358319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3554a6cebdc8120f%3A0xa1ecae9637c7c175!2z5YW15bqr55yM56uL5reh6Lev5LiJ5Y6f6auY562J5a2m5qCh!5e0!3m2!1sja!2sjp!4v1489550895967"></iframe>
 	</div>
 	<a href="layout">
 		<img class="sxs" src="/src/others/layout.jpg" alt="学校配置図">
@@ -97,7 +100,7 @@
 			<li><a href="shichi">志知高校</a>
 			<li><a href="references">出典一覧</a>
 		</ul>
-		<div id="autoSlider" class="fixedAspectRatio">
+		<div id="slideshow" class="fixedAspectRatio">
 			<a><img src="/src/buildings/buildingA1.jpg" alt="A棟"></a>
 			<a><img src="/src/buildings/buildingA3.jpg" alt="コモンスペース"></a>
 			<a><img src="/src/buildings/buildingC2.jpg" alt="C棟"></a>

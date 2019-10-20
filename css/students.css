@@ -30,6 +30,11 @@
 .graph .fixedAspectRatio::before {
 	padding-top: calc(40 * var(--unit)); /* 1600 / 40 = 600 / 15 */
 }
+.graph .fixedAspectRatio ol {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
 
 .hLines,
 .vLines {
@@ -132,15 +137,14 @@
 	text-align: right;
 }
 
-.graph ul {
+.legend {
 	font-size: .95em;
+	text-align: center;
 	padding: 0;
 	margin: 0;
-	list-style-type: none;
-	text-align: center;
 }
 @media not all and (max-width:800px) {
-	#cap ul {
+	#cap .legend {
 		position: absolute;
 		left: 30rem;
 		top: 50%;
@@ -149,14 +153,14 @@
 		text-align: left;
 	}
 }
-.graph li,
-.graph li::before {
+.legend li,
+.legend li::before {
 	display: inline-block;
 }
-.graph li:not(:last-child) {
+.legend li:not(:last-child) {
 	margin-right: .75em;
 }
-.graph li::before {
+.legend li::before {
 	width: .5em;
 	height: .5em;
 	margin: .6em .25em 0 0;
@@ -164,11 +168,11 @@
 	outline: .06rem solid black;
 	content: "";
 }
-#cap li::before {
+#cap .legend li::before {
 	opacity: .9;
 	outline-color: #999;
 }
-#grad li::before {
+#grad .legend li::before {
 	opacity: .4;
 }
 .mihara::before  {background-color: rgb(0, 86, 56);}

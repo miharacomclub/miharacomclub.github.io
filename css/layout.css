@@ -62,9 +62,6 @@
 	opacity: 0;
 	pointer-events: none;
 }
-[data-period]:not(.exists) * {
-	pointer-events: inherit;
-}
 svg {
 	--filter: drop-shadow(0 0 1.5px white);
 	filter: var(--filter)var(--filter);
@@ -73,6 +70,9 @@ svg {
 }
 svg * {
 	pointer-events: auto;
+}
+[data-period]:not(.exists) * {
+	pointer-events: none;
 }
 g {
 	color: darkblue;
@@ -97,7 +97,7 @@ g:hover :not(text) {
 #displayNames:not(:checked) ~ #layout g:not(:hover) text {
 	opacity: 0;
 }
-_:lang(x)+_:-webkit-full-screen-document,text:not([writing-mode]){writing-mode:horizontal-bt;}/*safari*/
+_:lang(x)+_:-webkit-full-screen-document,text:not([writing-mode]){writing-mode:horizontal-bt}/*safari*/
 text {
 	font-size: 18px;
 	stroke-width: 1.8px;

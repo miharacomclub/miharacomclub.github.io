@@ -6,24 +6,23 @@
 
 <title>食堂（生徒集会室）｜淡路三原高校コンピュータ部</title>
 <style>
-#menu,
-[data-price] {
+#menu {
 	position: relative;
 	display: flex;
-	align-items: center;
-}
-#menu {
 	width: 22.5em;
-	border: solid .5em sienna;
+	padding: 0;
+	border: .5em solid sienna;
+	margin: 0;
 	background-color: rgb(220,200,160);
 }
 [data-price] {
+	display: flex;
 	height: 10.5em;
 	padding: .25rem 0;
-	/* marginはホバーできないためborderにする */
 	border: 0 solid transparent;
 	border-width: .75em 0;
-	flex: auto;
+	align-items: center;
+	flex-grow: 1;
 	-ms-writing-mode: tb-rl; /* IE */
 	writing-mode: vertical-rl;
 	letter-spacing: .15em;
@@ -36,7 +35,41 @@
 [data-price]:hover {
 	color: crimson;
 }
-
+[data-price]::before,
+[data-price]::after {
+	-ms-writing-mode: lr-tb; /* IE */
+	writing-mode: horizontal-tb;
+	letter-spacing: 0;
+}
+[data-price]::before {
+	font-size: .7em;
+	display: flex;
+	flex-flow: column-reverse;
+	padding-bottom: .1em;
+	order: 1;
+	flex-grow: 1;
+	content: attr(data-price);
+}
+[data-price]::after {
+	font-size: .9em;
+	order: 2;
+	content: "円";
+}
+[data-price]:not(:hover) img {
+	display: none;
+}
+[data-price] img {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 19em;
+	outline: .15em solid currentColor;
+	outline-offset: -.1em;
+}
+[data-price]:nth-of-type(n+9) img {
+	left: auto;
+	right: 0;
+}
 .udon          {background-color: hsl(  0,65%,82%);}
 .udon:hover    {background-color: hsl(  0,65%,90%);}
 .curry         {background-color: hsl( 60,65%,80%);}
@@ -47,43 +80,6 @@
 .rice:hover    {background-color: hsl(180,65%,90%);}
 .bowl          {background-color: hsl(210,65%,75%);}
 .bowl:hover    {background-color: hsl(210,65%,85%);}
-
-[data-price]::before,
-[data-price]::after {
-	position: absolute;
-	left: 0;
-	width: 100%;
-	text-align: center;
-	writing-mode: horizontal-tb;
-	letter-spacing: 0;
-}
-[data-price]::before {
-	font-size: .7em;
-	bottom: 1.2rem;
-	content: attr(data-price);
-}
-[data-price]::after {
-	font-size: .9em;
-	bottom: .25rem;
-	content: "円";
-}
-[data-price]:not(:hover) + a img {
-	display: none;
-}
-[data-price]:hover + a img,
-[data-price] + a img:hover {
-	display: block;
-	position: absolute;
-	top: 100%;
-	left: 0;
-	width: 19em;
-	outline: .15em solid crimson;
-	outline-offset: -.15em;
-}
-[data-price]:nth-of-type(n+9) + a img {
-	left: auto;
-	right: 0;
-}
 
 #sideMenu td:last-child {
 	text-align: center;
@@ -112,60 +108,29 @@
 		要望があれば食堂の従業員の方にお伝えください。
 	</p>
 	<a><img src="/src/buildings/dininghall_front.jpg" alt="前方から撮った食堂の写真"></a>
-	<a><img src="/src/buildings/dininghall_back.jpg" alt="後方から撮った食堂の写真"></a>
+	<a><img src="/src/buildings/dininghall_back.jpg"  alt="後方から撮った食堂の写真"></a>
 </section>
 
 <section>
 	<h3>メニュー表</h3>
-	<div id="menu">
-		<span data-price="260" class="udon">うどん</span>
-		<a><img src="/src/dininghall/udon.jpg" alt="うどん"></a>
-
-		<span data-price="280" class="udon">はいからうどん</span>
-		<a><img src="/src/dininghall/udon_haikara.jpg" alt="はいからうどん"></a>
-
-		<span data-price="300" class="udon">ぶっかけうどん</span>
-		<a><img src="/src/dininghall/udon_bukkake.jpg" alt="ぶっかけうどん"></a>
-
-		<span data-price="330" class="curry">カレーうどん</span>
-		<a><img src="/src/dininghall/curry_udon.jpg" alt="カレーうどん"></a>
-
-		<span data-price="330" class="curry">カレーライス</span>
-		<a><img src="/src/dininghall/curry_rice.jpg" alt="カレーライス"></a>
-
-		<span data-price="330" class="curry">カレーラーメン</span>
-		<a><img src="/src/dininghall/curry_ramen.jpg" alt="カレーラーメン"></a>
-
-		<span data-price="410" class="curry">かつカレー</span>
-		<a><img src="/src/dininghall/curry_katsu.jpg" alt="かつカレー"></a>
-
-		<span data-price="290" class="noodles">ラーメン</span>
-		<a><img src="/src/dininghall/ramen.jpg" alt="ラーメン"></a>
-
-		<span data-price="390" class="noodles">ミートスパ</span>
-		<a><img src="/src/dininghall/spaghetti.jpg" alt="ミートスパ"></a>
-
-		<span data-price="390" class="rice">オムライス</span>
-		<a><img src="/src/dininghall/rice_omelet.jpg" alt="オムライス"></a>
-
-		<span data-price="390" class="rice">チャーハン</span>
-		<a><img src="/src/dininghall/rice_fried.jpg" alt="チャーハン"></a>
-
-		<span data-price="340" class="bowl">玉子丼</span>
-		<a><img src="/src/dininghall/bowl_egg.jpg" alt="玉子丼"></a>
-
-		<span data-price="390" class="bowl">親子丼</span>
-		<a><img src="/src/dininghall/bowl_egg_chicken.jpg" alt="親子丼"></a>
-
-		<span data-price="390" class="bowl">他人丼</span>
-		<a><img src="/src/dininghall/bowl_egg_beef.jpg" alt="他人丼"></a>
-
-		<span data-price="410" class="bowl">かつ丼</span>
-		<a><img src="/src/dininghall/bowl_katsu.jpg" alt="かつ丼"></a>
-
-		<span data-price="390" class="bowl">からあげ丼</span>
-		<a><img src="/src/dininghall/bowl_fried_chicken.jpg" alt="からあげ丼"></a>
-	</div>
+	<ul id="menu">
+		<li data-price="260" class="udon"   >うどん<a><img src="/src/dininghall/udon.jpg" alt="うどん"></a>
+		<li data-price="280" class="udon"   >はいからうどん<a><img src="/src/dininghall/udon_haikara.jpg" alt="はいからうどん"></a>
+		<li data-price="300" class="udon"   >ぶっかけうどん<a><img src="/src/dininghall/udon_bukkake.jpg" alt="ぶっかけうどん"></a>
+		<li data-price="330" class="curry"  >カレーうどん<a><img src="/src/dininghall/curry_udon.jpg" alt="カレーうどん"></a>
+		<li data-price="330" class="curry"  >カレーライス<a><img src="/src/dininghall/curry_rice.jpg" alt="カレーライス"></a>
+		<li data-price="330" class="curry"  >カレーラーメン<a><img src="/src/dininghall/curry_ramen.jpg" alt="カレーラーメン"></a>
+		<li data-price="410" class="curry"  >かつカレー<a><img src="/src/dininghall/curry_katsu.jpg" alt="かつカレー"></a>
+		<li data-price="290" class="noodles">ラーメン<a><img src="/src/dininghall/ramen.jpg" alt="ラーメン"></a>
+		<li data-price="390" class="noodles">ミートスパ<a><img src="/src/dininghall/spaghetti.jpg" alt="ミートスパ"></a>
+		<li data-price="390" class="rice"   >オムライス<a><img src="/src/dininghall/rice_omelet.jpg" alt="オムライス"></a>
+		<li data-price="390" class="rice"   >チャーハン<a><img src="/src/dininghall/rice_fried.jpg" alt="チャーハン"></a>
+		<li data-price="340" class="bowl"   >玉子丼<a><img src="/src/dininghall/bowl_egg.jpg" alt="玉子丼"></a>
+		<li data-price="390" class="bowl"   >親子丼<a><img src="/src/dininghall/bowl_egg_chicken.jpg" alt="親子丼"></a>
+		<li data-price="390" class="bowl"   >他人丼<a><img src="/src/dininghall/bowl_egg_beef.jpg" alt="他人丼"></a>
+		<li data-price="410" class="bowl"   >かつ丼<a><img src="/src/dininghall/bowl_katsu.jpg" alt="かつ丼"></a>
+		<li data-price="390" class="bowl"   >からあげ丼<a><img src="/src/dininghall/bowl_fried_chicken.jpg" alt="からあげ丼"></a>
+	</ul>
 	<ul>
 		<li>80円を追加で払うと、大盛りを注文できます。
 		<li>販売を休止している場合があります。
@@ -175,43 +140,21 @@
 <section>
 	<h3>主なサイドメニュー</h3>
 	<table class="listTable" id="sideMenu">
-		<tr>
-			<th>名前
-			<th>値段
-		<tr>
-			<td>おにぎり
-			<td class="spacePadding">80
-		<tr>
-			<td>サンドイッチ
-			<td>100
-		<tr>
-			<td>かつ / コロッケパン
-			<td>100
-		<tr>
-			<td>カレーパン
-			<td>130
-		<tr>
-			<td>ウインナーパン
-			<td>110
-		<tr>
-			<td>たこやき
-			<td>120
-		<tr>
-			<td>からあげ
-			<td>130
-		<tr>
-			<td>ハッシュドポテト
-			<td class="spacePadding">80
-		<tr>
-			<td>ポテト
-			<td>100
-		<tr>
-			<td>アイス
-			<td>100 / 120
+		<tr><th>名前<th>値段
+		<tr><td>おにぎり<td class="spacePadding">80
+		<tr><td>サンドイッチ<td>100
+		<tr><td>かつ / コロッケパン<td>100
+		<tr><td>カレーパン<td>130
+		<tr><td>ウインナーパン<td>110
+		<tr><td>たこやき<td>120
+		<tr><td>からあげ<td>130
+		<tr><td>ハッシュドポテト<td class="spacePadding">80
+		<tr><td>ポテト<td>100
+		<tr><td>アイス<td>100 / 120
 	</table>
-	<ul>
-		<li>販売を休止している場合があります。
-	</ul>
+	<p>
+		販売を休止している場合があります。
+	</p>
 </section>
 
 </article>

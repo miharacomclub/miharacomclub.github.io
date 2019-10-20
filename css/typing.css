@@ -76,7 +76,7 @@
 	}
 	.themeButtons::after {
 		width: 9.5em;
-		height: .006rem;
+		height: .06rem;
 		content: "";
 	}
 }
@@ -105,8 +105,6 @@
 }
 
 #rankList {
-	display: block;
-	display: none\0;
 	width: 6em;
 	flex-shrink: 0;
 	padding: 0 2.5em;
@@ -337,7 +335,7 @@
 }
 
 #results {
-	position: absolute;
+	position: absolute; /* clearfixが不要になる */
 	left: 0;
 	right: 0;
 	bottom: 1.25em;
