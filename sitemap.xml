@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url><loc>https://miharacomclub.github.io</loc></url>
+	<url><loc>https://miharacomclub.github.io/others</loc></url>
 	<url><loc>https://miharacomclub.github.io/sitemap</loc></url>
 	<url><loc>https://miharacomclub.github.io/club/</loc></url>
 	<url><loc>https://miharacomclub.github.io/club/history</loc></url>
-	<url><loc>https://miharacomclub.github.io/club/others</loc></url>
 	<url><loc>https://miharacomclub.github.io/club/quiz</loc></url>
 	<url><loc>https://miharacomclub.github.io/club/typing</loc></url>
 	<url><loc>https://miharacomclub.github.io/club/works</loc></url>
@@ -15,7 +15,7 @@
 	<url><loc>https://miharacomclub.github.io/school/dininghall</loc></url>
 	<url><loc>https://miharacomclub.github.io/school/history</loc></url>
 	<url><loc>https://miharacomclub.github.io/school/layout</loc></url>
-	<url><loc>https://miharacomclub.github.io/school/ookubo</loc></url>
+	<url><loc>https://miharacomclub.github.io/school/okubo</loc></url>
 	<url><loc>https://miharacomclub.github.io/school/references</loc></url>
 	<url><loc>https://miharacomclub.github.io/school/shichi</loc></url>
 	<url><loc>https://miharacomclub.github.io/school/songs</loc></url>

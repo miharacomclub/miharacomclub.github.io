@@ -14,7 +14,7 @@ a {
 a:hover {
 	color: green;
 }
-a[href*=":"]::after {
+a[href*="//"]::after {
 	content: "　";
 	display: inline-block;
 	width: 1em;
@@ -62,19 +62,26 @@ cite::before {
 cite::after {
 	content: "』";
 }
+hr {
+	border: 0;
+	margin: 0;
+	clear: both;
+	overflow: visible; /* chrome */
+}
 button {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
 	cursor: pointer;
 }
+
 blockquote {
 	margin: 1em 0;
 	padding: 0 1em;
 	background-color: #eee;
 }
-blockquote::before, /* marginの崩壊(collapse)を防ぐ */
-blockquote::after {
+blockquote::before,
+blockquote::after { /* marginの崩壊(collapse)を防ぐ */
 	display: block;
 	height: .06rem;
 	content: "";
@@ -88,21 +95,6 @@ blockquote header {
 }
 blockquote footer {
 	text-align: right;
-}
-
-hr.clearfix {
-	border: 0;
-	margin: 0;
-	overflow: visible;
-}
-.clearfix::after {
-	display: block;
-	clear: both;
-	content: "";
-}
-.jpNumberingList {
-	list-style-type: simp-chinese-informal;
-	padding-left: 2.5em;
 }
 
 .listTable {
