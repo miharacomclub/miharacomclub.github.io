@@ -39,13 +39,6 @@ sup {
 label {
 	cursor: pointer;
 }
-table {
-	border-collapse: collapse;
-}
-th,
-td {
-	padding: 0;
-}
 ul,
 ol {
 	padding-left: 1.5em;
@@ -113,15 +106,28 @@ hr.clearfix {
 }
 
 .listTable {
+	display: table;
+}
+.listTable:not(.noBorder) {
 	line-height: 2;
 	border-top: .06rem solid #ccc;
 }
-.listTable tr {
-	border-bottom: .06rem solid #ccc;
+.listTable > div {
+	display: table-row;
 }
-.listTable th,
-.listTable td {
+.listTable.hasHeader > div:first-child {
+	font-weight: bold;
+	text-align: center;
+}
+.listTable dt,
+.listTable dd {
+	display: table-cell;
+	vertical-align: middle;
+}
+.listTable:not(.noBorder) dt,
+.listTable:not(.noBorder) dd {
 	padding: 0 .25em;
+	border-bottom: .06rem solid #ccc;
 }
 
 .fixedAspectRatio {

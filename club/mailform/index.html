@@ -5,68 +5,55 @@
 body {
 	font-size: .95em;
 }
-table {
-	width: 100%;
+dl {
+	margin: 0;
 }
-td,
-input,
-textarea {
-	border: .06rem solid #aaa;
+dt {
+	font-size: .95em;
 }
-td {
-	padding: .6em .4em;
+dt:not(:first-of-type) {
+	margin-top: .4em;
 }
-td:first-child:not(:only-child) {
-	width: 1em;
-	white-space: nowrap;
-	text-align: center;
-	background-color: #eee;
+.required::after {
+	font-size: .9em;
+	content: " (必須)";
+	color: orangered;
 }
 input,
 textarea,
 button {
-	line-height: 1.2;
 	display: block;
 	box-sizing: border-box;
 }
 input,
 textarea {
-	padding: .1em;
+	padding: .25em;
+	border: .06rem solid #aaa;
 }
 input {
-	width: 12em;
-	max-width: 75%;
+	width: 17em;
+	line-height: 1;
 }
 textarea {
 	width: 100%;
 	height: 6em;
+	line-height: 1.3;
 	resize: none;
 }
 button {
-	margin: auto;
-	width: 4em;
+	width: 5em;
 	height: 2em;
-}
-.required::after {
-	content: " (必須)";
-	font-size: .9em;
-	color: orangered;
+	margin: .5em auto 0;
+	transform: translateX(-.25em);
 }
 </style>
 
 <form action="https://app.lisket.jp/form_maker/message/10082" method="post">
 	<input type="hidden" name="data[verification_code]" value="736890608bce8573abbadc9e786fb5f734742247">
-	<table>
-		<tr>
-			<td><label for="data_name">ハンドル名</label>
-			<td><input id="data_name" type="text" name="data[name]">
-		<tr>
-			<td><label for="data_mail">メールアドレス</label>
-			<td><input id="data_mail" type="email" name="data[mail]">
-		<tr>
-			<td><label for="data_field_2" class="required">内容</label>
-			<td><textarea id="data_field_2" name="data[field_2]" required></textarea>
-		<tr>
-			<td colspan="2"><button>送信</button>
-	</table>
+	<dl>
+		<dt>ハンドル名<dd><input type="text" name="data[name]">
+		<dt>メールアドレス<dd><input type="email" name="data[mail]">
+		<dt class="required">内容<dd><textarea name="data[field_2]" required></textarea>
+	</dl>
+	<button>送信</button>
 </form>

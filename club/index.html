@@ -7,13 +7,8 @@
 <title>部活動紹介｜淡路三原高校コンピュータ部</title>
 <link rel="stylesheet" href="/css/slider.css">
 <style>
-#clubInfo dt,
-#clubInfo dd {
-	float: left;
-}
-#clubInfo dt {
-	width: 5em;
-	clear: left;
+dt {
+	padding-right: 1em;
 }
 #slider small {
 	font-size: 1rem;
@@ -21,7 +16,7 @@
 	line-height: 1.5;
 }
 @media not all and (max-width:800px) {
-	#break {
+	#lineBreak {
 		margin-right: 3em;
 	}
 }
@@ -39,10 +34,10 @@
 <h2>部活動紹介</h2>
 <section>
 	<h3>部活動について</h3>
-	<dl id="clubInfo" class="clearfix">
-		<dt>活動場所<dd>C棟1階 生物第二実験室
-		<dt>活動曜日<dd>毎週水曜日、金曜日
-		<dt>活動内容<dd>プログラミング、ゲームなど
+	<dl class="listTable noBorder">
+		<div><dt>活動場所<dd>C棟1階 生物第二実験室</div>
+		<div><dt>活動曜日<dd>毎週水曜日、金曜日</div>
+		<div><dt>活動内容<dd>プログラミング、ゲームなど</div>
 	</dl>
 	<p>
 		僕たちコンピュータ部は各自が自由に課題を持って取り組んでいます。<br>
@@ -88,7 +83,7 @@
 			</figcaption>
 		</figure>
 		<input id="slide4" type="radio" name="slide">
-		<label for="slide4" id="break"><img src="/src/club/plant2.jpg" alt=""></label>
+		<label for="slide4" id="lineBreak"><img src="/src/club/plant2.jpg" alt=""></label>
 		<figure>
 			<a><img src="/src/club/plant2.jpg"></a>
 			<figcaption>

@@ -30,10 +30,10 @@
 .graph .fixedAspectRatio::before {
 	padding-top: calc(40 * var(--unit)); /* 1600 / 40 = 600 / 15 */
 }
-.graph .fixedAspectRatio ol {
+.graph ol {
 	padding: 0;
 	margin: 0;
-	list-style: none;
+	list-style-type: none;
 }
 
 .hLines,
@@ -65,7 +65,7 @@
 	border: 0 solid #aaa;
 }
 .hLines * {border-bottom-width: .06rem;}
-.vLines * {border-right-width: .06rem;}
+.vLines * {border-left-width: .06rem;}
 
 .hLines :not(:first-child),
 .vLines :not(:first-child) {
@@ -85,9 +85,10 @@
 	left: calc(-1em - .06rem);
 }
 
-.columns {
+.graph .columns {
 	display: flex;
 	background: center/cover;
+	margin-left: calc(var(--unit) / -2);
 }
 .columns * {
 	font-size: .9em;
