@@ -89,7 +89,7 @@ g :not(text) {
 g:hover :not(text) {
 	fill: rgba(255,255,255,.15);
 }
-_:lang(x)+_:-webkit-full-screen-document,text:not([writing-mode]){writing-mode:horizontal-bt}/*safari*/
+_:lang(x)+_:-webkit-full-screen-document,text:not([writing-mode]){writing-mode:horizontal-bt}/*Safari*/
 text {
 	font-size: 18px;
 	stroke-width: 1.8px;

@@ -87,7 +87,7 @@
 .graph .columns {
 	display: flex;
 	background: center/cover;
-	margin-left: calc(var(--unit) / -2);
+	margin-left: calc(var(--unit) / -2); /* markerがはみ出ないようにする */
 }
 .columns * {
 	font-size: .9em;

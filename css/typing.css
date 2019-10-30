@@ -160,7 +160,7 @@
 }
 #rankList li:hover::before {
 	font-size: .9rem;
-	left: 0; /* safari */
+	left: 0; /* Safari */
 	width: 100%;
 	border-top: calc(.06rem * 2) solid transparent;
 	box-sizing: border-box;

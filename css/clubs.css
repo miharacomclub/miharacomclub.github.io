@@ -53,11 +53,11 @@
 }
 
 [style*="fade"] {
-	/* edgeは#rgbaに対応していない */
-	/* safariはtransparent(#0000)を指定すると、グラデーションが黒くなる */
+	/* Edgeは#rgbaに対応していない */
+	/* Safariでtransparent(#0000)を指定すると、グラデーションが黒くなる */
 	background-image: linear-gradient(to var(--grad-direction, left), rgba(255,255,255,.75), rgba(255,255,255,0));
 	background-position: var(--grad-position, right);
-	/* edgeはheight 100%を指定する必要がある */
+	/* Edgeはheight 100%を指定する必要がある */
 	background-size: calc(var(--fade-in, var(--fade-out)) / var(--length, 999) * 100%) 100%;
 }
 [style*="fade-in"] {

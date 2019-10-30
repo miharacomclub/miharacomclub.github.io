@@ -366,7 +366,7 @@ const Kbd = (() => {
 
 
 
-const Sounds = (() => { // safariでの処理落ちを防ぐ
+const Sounds = (() => { // Safariでの処理落ちを防ぐ
 	if (window.webkitAudioContext) window.AudioContext = new window.webkitAudioContext();
 
 	function SE(name) {
