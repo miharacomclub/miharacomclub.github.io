@@ -1,28 +1,6 @@
-for (const input of $$("input")) input.checked = input.defaultChecked;
-
-
 const doDefault = Symbol();
 
-document.addEventListener("click", async event => {
-	if (!event.target.matches("#selectionScreen button")) return;
-	const btn = event.target;
-
-	const category = $(`[name="tab"]:checked`).id;
-	const btns     = $$(`[data-tsv-name^="${btn.dataset.tsvName}"]`);
-	btns.length > 1 && btns.pop();
-
-	const tsvs = await Promise.all(btns.map(b =>
-		fetch(`/src/typing/${category}/${b.dataset.tsvName}.tsv`).then(resp => resp.ok? resp.text(): "")
-	));
-	const lines = tsvs.join("\n").split(/\r?\n/).filter(v => v);
-
-	lines.length > 0 && Game.prepare(
-		lines,
-		btn.textContent,
-		tsvs.length > 1 && 20,
-		!("inOrder" in btn.dataset || ["long", "classic"].includes(category))
-	);
-});
+for (const input of $$("input")) input.checked = input.defaultChecked;
 
 
 const onKbdPressed = event => {
@@ -33,8 +11,7 @@ const onKbdPressed = event => {
 		$("#shiftIsPressed").checked = !$("#shiftIsPressed").checked;
 	} else {
 		const key = $("#shiftIsPressed").checked? el.dataset.onShift: el.textContent || el.id;
-		if (!key) return;
-		Game.onKeyDown(key);
+		if (!key || doDefault === Game.onKeyDown(key)) return;
 	}
 	event.preventDefault();
 };
@@ -42,6 +19,9 @@ document.addEventListener("touchstart", onKbdPressed, {passive: false});
 document.addEventListener("mousedown", e => e.button === 0 && onKbdPressed(e));
 
 
+document.addEventListener("click", event => {
+	event.target.matches(".themeButtons button") && Game.prepare(event.target);
+});
 document.addEventListener("keyup",   event =>  $("#shiftIsPressed").checked = event.shiftKey);
 document.addEventListener("keydown", event => {$("#shiftIsPressed").checked = event.shiftKey;
 	event.ctrlKey
@@ -58,7 +38,7 @@ document.addEventListener("keydown", event => {$("#shiftIsPressed").checked = ev
 
 const Game = (() => {
 	// text > line > romajis, kanas, sentence > cands > cand, romaji > key
-	let text, startTime;
+	let text, startTime, btn;
 	const rmn = $("#remainingNum"),
 
 
@@ -70,7 +50,7 @@ const Game = (() => {
 			const isRmnFocused = rmn === document.activeElement;
 			if (key === "Tab")    return rmn[isRmnFocused? "blur": "focus"]();
 			if (isRmnFocused)     return doDefault;
-			if (key === "Escape") return $("#displaySelection").checked = true;
+			if (key === "Escape") return exit();
 		}
 		if (!typedKbd)                 return doDefault;
 		if (key === "Escape")          return reset();
@@ -88,27 +68,40 @@ const Game = (() => {
 	},
 
 
-	prepare = (lines, title, defaultValue, needsShuffle) => {
+	prepare = async _btn => {
+		btn = _btn;
+		const btns = $$(`[data-tsv-name^="${btn.dataset.tsvName}"]`);
+		btns.length > 1 && btns.pop();
+
+		const category = $(`[name="tab"]:checked`).id;
+		const tsvs = (await Promise.all(btns.map(b =>
+			fetch(`/src/typing/${category}/${b.dataset.tsvName}.tsv`)
+			.then(resp => resp.ok? resp.text(): "")
+		))).filter(v => v);
+
+		const lines = tsvs.join("\n").split(/\r?\n/).filter(v => v);
+		if (lines.length === 0) return;
 
 		text = lines.map(line => line.replace(/^[^\t]+$/, "$&\t$&").split(/\t/));
 		for (const line of text) line.push(Romaji.romanizeKana(line[1]));
 
 		rmn.max          = Math.min(text.length, 99);
-		rmn.defaultValue = rmn.placeholder = defaultValue || +rmn.max;
+		rmn.placeholder  = Math.min(Math.floor(text.length / tsvs.length), rmn.max);
+		rmn.defaultValue = +btn.dataset.prevRmnValue || rmn.placeholder;
 
+		const title = btn.textContent;
 		$("#textTitle").textContent    = title;
 		$("#englishMode").checked      = title.includes("英語");
 		$("#invisibleMode").checked    = $("#shiftIsPressed").checked;
 		$("#displaySelection").checked = false;
 
-		reset(needsShuffle);
+		text.inOrder = "inOrder" in btn.dataset || ["long", "classic"].includes(category);
+		reset();
 	},
 
 
-	reset = needsShuffle => {
-		if (needsShuffle) text.needsShuffle = needsShuffle;
-
-		if (text.needsShuffle) {
+	reset = () => {
+		if (!text.inOrder) {
 			for (let i = text.length; --i > 0;) {
 				const j = Math.floor(Math.random() * (i + 1));
 				[text[i], text[j]] = [text[j], text[i]];
@@ -175,6 +168,12 @@ const Game = (() => {
 		$("#rubySentence").innerHTML   = `<span></span><span>${lines[0][1]}</span>`;
 		$("#meter").style.setProperty("--value", `${rmn.value / rmn.defaultValue * 100}%`);
 		recolor();
+	},
+
+
+	exit = () => {
+		btn.dataset.prevRmnValue = rmn.checkValidity()? rmn.value: rmn.placeholder;
+		$("#displaySelection").checked = true;
 	};
 
 	return {onKeyDown, prepare};
@@ -189,9 +188,8 @@ const Results = (() => {
 	roundOff = num => Math.round(num * 10) / 10,
 
 	onKeyDown = key => {
-		if (key !== "Escape") return;
+		if (key !== "Escape") return doDefault;
 		$("#displayResults").checked = false;
-		return doDefault;
 	},
 
 
