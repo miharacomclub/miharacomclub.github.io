@@ -15,9 +15,8 @@ dt {
 dt:not(:first-of-type) {
 	margin-top: .4em;
 }
-.required::after {
+small {
 	font-size: .9em;
-	content: " (必須)";
 	color: orangered;
 }
 input,
@@ -52,9 +51,8 @@ button {
 <form action="https://app.lisket.jp/form_maker/message/10082" method="post">
 	<input type="hidden" name="data[verification_code]" value="736890608bce8573abbadc9e786fb5f734742247">
 	<dl>
-		<dt>ハンドル名<dd><input type="text" name="data[name]">
-		<dt>メールアドレス<dd><input type="email" name="data[mail]">
-		<dt class="required">内容<dd><textarea name="data[field_2]" required></textarea>
+		<dt>名前<dd><input type="text" name="data[name]">
+		<dt>内容<small>（必須）</small><dd><textarea name="data[field_2]" required></textarea>
 	</dl>
 	<button>送信</button>
 </form>
