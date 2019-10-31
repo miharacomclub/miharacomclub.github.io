@@ -25,7 +25,7 @@ document.addEventListener("click", event => {
 	const specialNames = (g.dataset.specialImgNames || "").split(",");
 	for (const [i, caption] of g.dataset.captions.split(",").entries()) {
 
-		const imgName = specialNames[i] || g.dataset.imgNamePrefix + (i + 1);
+		const imgName = specialNames[i] || g.dataset.imgName + (i + 1);
 		const img = `<img src="/src/buildings/${imgName}.jpg">`;
 
 		$("#slider").innerHTML += `
@@ -46,12 +46,14 @@ document.addEventListener("click", event => {
 });
 
 
-const years = [...new Set($$("[data-period]").reduce((str, el) => `${str},${el.dataset.period}`, "").split(","))]
-			.filter(v => v).map(v => +v).sort();
-range.value = range.max = years.length - 1;
+const years = [...new Set(
+	$$("[data-period]").reduce((str, el) => `${str},${el.dataset.period}`, "").split(","))
+].filter(v => v).map(v => +v).sort();
 
-const hash = +location.hash.slice(1);
+range.value = range.max = years.length - 1;
+const hash  = +location.hash.slice(1);
 if (hash) range.value = [...years, 9999].findIndex(v => hash < v) - 1;
+
 
 let photo;
 const updateLayout = () => {

@@ -19,9 +19,6 @@ document.addEventListener("touchstart", onKbdPressed, {passive: false});
 document.addEventListener("mousedown", e => e.button === 0 && onKbdPressed(e));
 
 
-document.addEventListener("click", event => {
-	event.target.matches(".themeButtons button") && Game.prepare(event.target);
-});
 document.addEventListener("keyup",   event =>  $("#shiftIsPressed").checked = event.shiftKey);
 document.addEventListener("keydown", event => {$("#shiftIsPressed").checked = event.shiftKey;
 	event.ctrlKey
@@ -32,6 +29,9 @@ document.addEventListener("keydown", event => {$("#shiftIsPressed").checked = ev
 	|| $("#displaySelection").checked
 	|| doDefault === Game.onKeyDown(event.key)
 	|| event.preventDefault();
+});
+document.addEventListener("click", event => {
+	event.target.matches(".themeButtons button") && Game.prepare(event.target);
 });
 
 
@@ -307,7 +307,9 @@ const Romaji = (() => {
 
 
 	romanizeKana = sentence => {
-		const hiraganas = sentence.replace(/[ァ-ヶ]/g, katakana => String.fromCharCode(katakana.charCodeAt(0) - 0x60));
+		const hiraganas = sentence.replace(/[ァ-ヶ]/g,
+			katakana => String.fromCharCode(katakana.charCodeAt(0) - 0x60)
+		);
 		const _romajis = [...hiraganas].map(kana => [...(table[kana] || kana)]);
 
 		for (let i = hiraganas.length; --i > 0;) {
@@ -327,14 +329,16 @@ const Romaji = (() => {
 			// ん。 [[n.拗,nn,xn,n'], [.]]
 			// んう [[nw促,nn,xn,n'], [u,wu,whu]]
 			prependCandsIfPrevKanaIs("ん", cand =>
-				!"aiueony'".includes(cand[0]) && `n${cand[0]}${table[/[a-z]/.test(cand[0])? "sokuon": "yoon"]}`
+				!"aiueony'".includes(cand[0]) &&
+				`n${cand[0]}${table[/[a-z]/.test(cand[0])? "sokuon": "yoon"]}`
 			);
 		}
 		return _romajis;
 	};
 
 
-	fetch("/src/typing/romaji.tsv").then(resp => resp.ok? resp.text(): "").then(tsv => {
+	fetch("/src/typing/romaji.tsv")
+	.then(resp => resp.ok? resp.text(): "").then(tsv => {
 		for (const line of tsv.split(/\r?\n/)) {
 			((key, ...values) => table[key] = values)(...line.split("\t"));
 		}
@@ -347,8 +351,9 @@ const Romaji = (() => {
 const Kbd = (() => {
 	const
 	kbds = $$("#typingScreen kbd"),
-	keys = kbds.map(kbd => [kbd.textContent, kbd.id, kbd.dataset.otherKey, kbd.dataset.onShift].filter(v => v)),
-
+	keys = kbds.map(kbd => [
+		kbd.textContent, kbd.id, kbd.dataset.otherKey, kbd.dataset.onShift
+	].filter(v => v)),
 
 	search = (keyName, typeIfFound = false) => {
 		const kbd = kbds[keys.findIndex(keyNames => keyNames.includes(keyName))];
