@@ -32,7 +32,7 @@
 			<a href="oldlayout/">以前の<cite>校舎の変遷</cite>はこちらです。</a>
 	</ul>
 	<input id="range" type="range" min="0" max="1" value="1">
-	<input id="fade" type="checkbox"><label for="fade">フェード</label>
+	<input id="fade" type="checkbox" class="tabbable"><label for="fade">フェード</label>
 
 	<div id="layout" class="fixedAspectRatio notIE">
 		<img data-period="1951" src="/src/buildings/1947-10.jpg" data-mapps-id="219827" style="filter: contrast(.8)brightness(1.2)">
@@ -282,11 +282,11 @@
 			</g>
 		</svg>
 	</div>
-	<div id="dialog"><!-- <dialog>は未対応のブラウザが多い -->
+	<div id="dialog" style="display: none;"><!-- <dialog>は未対応のブラウザが多い -->
 		<section>
 			<h3></h3>
-			<button id="close">✕</button>
 			<div id="slider"></div>
+			<button id="close" tabindex="0">✕</button>
 		</section>
 	</div>
 </section>

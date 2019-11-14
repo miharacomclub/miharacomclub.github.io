@@ -5,87 +5,7 @@
 <script src="/js/index.js" type="module"></script>
 
 <title>食堂（生徒集会室）｜淡路三原高校コンピュータ部</title>
-<style>
-#menu,
-[data-price] {
-	display: flex;
-	position: relative;
-}
-#menu {
-	width: 22.5em;
-	padding: 0;
-	border: .5em solid sienna;
-	margin: 0;
-	background-color: rgb(220,200,160);
-}
-[data-price] {
-	height: 10.5em;
-	padding: .25rem 0;
-	border: 0 solid transparent;
-	border-width: .75em 0;
-	flex: auto;
-	align-items: center;
-	-ms-writing-mode: tb-rl; /* IE */
-	writing-mode: vertical-rl;
-	letter-spacing: .15em;
-	line-height: 1;
-	background-clip: padding-box;
-}
-[data-price]:not(:first-of-type) {
-	border-left-width: .06rem;
-}
-[data-price]:hover {
-	color: crimson;
-}
-[data-price]::before,
-[data-price]::after {
-	position: absolute;
-	-ms-writing-mode: lr-tb; /* IE */
-	writing-mode: horizontal-tb;
-	letter-spacing: 0;
-}
-[data-price]::before {
-	font-size: .7em;
-	bottom: 1.1rem;
-	content: attr(data-price);
-}
-[data-price]::after {
-	font-size: .9em;
-	bottom: .2em;
-	content: "円";
-}
-[data-price] + dd img {
-	position: absolute;
-	top: 100%;
-	left: 0;
-	width: 19em;
-	outline: .15em solid currentColor;
-	outline-offset: -.1em;
-	display: none;
-}
-[data-price]:nth-of-type(n+9) + dd img {
-	left: auto;
-	right: 0;
-}
-[data-price]:hover + dd img,
-dd:hover img {
-	display: block;
-}
-.udon          {background-color: hsl(  0,65%,82%);}
-.udon:hover    {background-color: hsl(  0,65%,90%);}
-.curry         {background-color: hsl( 60,65%,80%);}
-.curry:hover   {background-color: hsl( 60,65%,90%);}
-.noodles       {background-color: hsl(120,65%,85%);}
-.noodles:hover {background-color: hsl(120,65%,92%);}
-.rice          {background-color: hsl(180,65%,85%);}
-.rice:hover    {background-color: hsl(180,65%,90%);}
-.bowl          {background-color: hsl(210,65%,75%);}
-.bowl:hover    {background-color: hsl(210,65%,85%);}
-
-#sideMenu dd {
-	text-align: center;
-}
-</style>
+<link rel="stylesheet" href="/css/dininghall.css">
 
 <header id="header">
 	<a href="/"><h1>淡路三原高校<br>コンピュータ部</h1></a>
@@ -115,22 +35,22 @@ dd:hover img {
 <section>
 	<h3>メニュー表</h3>
 	<dl id="menu">
-		<dt data-price="260" class="udon"   >うどん<dd><a><img src="/src/dininghall/udon.jpg"></a>
-		<dt data-price="280" class="udon"   >はいからうどん<dd><a><img src="/src/dininghall/udon_haikara.jpg"></a>
-		<dt data-price="300" class="udon"   >ぶっかけうどん<dd><a><img src="/src/dininghall/udon_bukkake.jpg"></a>
-		<dt data-price="330" class="curry"  >カレーうどん<dd><a><img src="/src/dininghall/curry_udon.jpg"></a>
-		<dt data-price="330" class="curry"  >カレーライス<dd><a><img src="/src/dininghall/curry_rice.jpg"></a>
-		<dt data-price="330" class="curry"  >カレーラーメン<dd><a><img src="/src/dininghall/curry_ramen.jpg"></a>
-		<dt data-price="410" class="curry"  >かつカレー<dd><a><img src="/src/dininghall/curry_katsu.jpg"></a>
-		<dt data-price="290" class="noodles">ラーメン<dd><a><img src="/src/dininghall/ramen.jpg"></a>
-		<dt data-price="390" class="noodles">ミートスパ<dd><a><img src="/src/dininghall/spaghetti.jpg"></a>
-		<dt data-price="390" class="rice"   >オムライス<dd><a><img src="/src/dininghall/rice_omelet.jpg"></a>
-		<dt data-price="390" class="rice"   >チャーハン<dd><a><img src="/src/dininghall/rice_fried.jpg"></a>
-		<dt data-price="340" class="bowl"   >玉子丼<dd><a><img src="/src/dininghall/bowl_egg.jpg"></a>
-		<dt data-price="390" class="bowl"   >親子丼<dd><a><img src="/src/dininghall/bowl_egg_chicken.jpg"></a>
-		<dt data-price="390" class="bowl"   >他人丼<dd><a><img src="/src/dininghall/bowl_egg_beef.jpg"></a>
-		<dt data-price="410" class="bowl"   >かつ丼<dd><a><img src="/src/dininghall/bowl_katsu.jpg"></a>
-		<dt data-price="390" class="bowl"   >からあげ丼<dd><a><img src="/src/dininghall/bowl_fried_chicken.jpg"></a>
+		<dt data-price="260" tabindex="0" class="udon"   >うどん<dd><a><img src="/src/dininghall/udon.jpg"></a>
+		<dt data-price="280" tabindex="0" class="udon"   >はいからうどん<dd><a><img src="/src/dininghall/udon_haikara.jpg"></a>
+		<dt data-price="300" tabindex="0" class="udon"   >ぶっかけうどん<dd><a><img src="/src/dininghall/udon_bukkake.jpg"></a>
+		<dt data-price="330" tabindex="0" class="curry"  >カレーうどん<dd><a><img src="/src/dininghall/curry_udon.jpg"></a>
+		<dt data-price="330" tabindex="0" class="curry"  >カレーライス<dd><a><img src="/src/dininghall/curry_rice.jpg"></a>
+		<dt data-price="330" tabindex="0" class="curry"  >カレーラーメン<dd><a><img src="/src/dininghall/curry_ramen.jpg"></a>
+		<dt data-price="410" tabindex="0" class="curry"  >かつカレー<dd><a><img src="/src/dininghall/curry_katsu.jpg"></a>
+		<dt data-price="290" tabindex="0" class="noodles">ラーメン<dd><a><img src="/src/dininghall/ramen.jpg"></a>
+		<dt data-price="390" tabindex="0" class="noodles">ミートスパ<dd><a><img src="/src/dininghall/spaghetti.jpg"></a>
+		<dt data-price="390" tabindex="0" class="rice"   >オムライス<dd><a><img src="/src/dininghall/rice_omelet.jpg"></a>
+		<dt data-price="390" tabindex="0" class="rice"   >チャーハン<dd><a><img src="/src/dininghall/rice_fried.jpg"></a>
+		<dt data-price="340" tabindex="0" class="bowl"   >玉子丼<dd><a><img src="/src/dininghall/bowl_egg.jpg"></a>
+		<dt data-price="390" tabindex="0" class="bowl"   >親子丼<dd><a><img src="/src/dininghall/bowl_egg_chicken.jpg"></a>
+		<dt data-price="390" tabindex="0" class="bowl"   >他人丼<dd><a><img src="/src/dininghall/bowl_egg_beef.jpg"></a>
+		<dt data-price="410" tabindex="0" class="bowl"   >かつ丼<dd><a><img src="/src/dininghall/bowl_katsu.jpg"></a>
+		<dt data-price="390" tabindex="0" class="bowl"   >からあげ丼<dd><a><img src="/src/dininghall/bowl_fried_chicken.jpg"></a>
 	</dl>
 	<ul>
 		<li>80円を追加で払うと、大盛りを注文できます。

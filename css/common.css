@@ -140,6 +140,18 @@ blockquote footer {
 	height: 100%;
 }
 
+.tabbable {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+}
+.tabbable:focus + label {
+	outline: .1em solid dodgerblue;
+}
+.enlargeable:hover * {
+	opacity: .5;
+}
+
 .anchorButton,
 .anchorButtons > * {
 	display: inline-block;
@@ -152,7 +164,9 @@ blockquote footer {
 	color: black !important;
 }
 .anchorButton:active,
-.anchorButtons > :active {
+.anchorButton:focus,
+.anchorButtons > :active,
+.anchorButtons > :focus {
 	background-color: white;
 }
 

@@ -86,8 +86,9 @@ h3, h4 {
 #nav a:not(:last-child) {
 	border-right: .06rem solid white;
 }
-#nav a:hover {
-	opacity: .6;
+#nav a:hover,
+#nav a:focus {
+	opacity: .5;
 }
 #article {
 	margin: 1.5em 1.25em 0 2.75em;
@@ -112,9 +113,14 @@ h3, h4 {
 .sxsImgs a:not([href]) + p:not(.sxs),
 .sxsImgs a.enlargeable + p:not(.sxs) {
 	clear: both;
+	border-top: .5em solid transparent;
 }
 @media (max-width:800px) {
 	p.sxs {
 		width: 100%;
+		margin-right: 0;
+	}
+	p + p.sxs {
+		margin-bottom: 1em;
 	}
 }

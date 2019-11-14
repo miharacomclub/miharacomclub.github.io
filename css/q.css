@@ -2,35 +2,23 @@ html {
 	overflow-y: hidden;
 }
 body {
-	transform: translateZ(0); /* Safari */
 	position: relative;
 	box-sizing: border-box;
 	width: 30.3em;
 	max-width: 100%;
 	border: 0 solid transparent;
 	border-width: 0 .15em;
-	counter-reset: qCnt rightCnt;
 	line-height: 1.6;
+	counter-reset: qCnt rightCnt;
+	transform: translateZ(0); /* Safari */
 }
-input,
+:checked ~ input, /* focusを解除する（blur） */
 section:not(:target) {
 	position: absolute;
 	visibility: hidden; /* display:noneにするとcounterが動かない */
 }
 [id*="r"]:checked {
 	counter-increment: rightCnt;
-}
-aside {
-	font-size: .9em;
-	position: absolute;
-	top: 0;
-	width: 100%;
-}
-aside::before {
-	content: "ジャンル：";
-}
-aside::after {
-	content: "　" counter(rightCnt) "問正解（全" counter(qCnt) "問）";
 }
 
 header,
@@ -41,7 +29,7 @@ div {
 }
 header {
 	display: table;
-	border-top: calc(.9em * 1.6) solid transparent;
+	padding-top: 2.1rem;
 	margin-bottom: .3em;
 	counter-reset: choiceIndex;
 	counter-increment: qCnt;
@@ -62,8 +50,8 @@ h1 {
 }
 label {
 	table-layout: fixed;
-	width: 100%;
 	box-sizing: border-box;
+	width: 100%;
 	padding: .3em;
 	margin: .2em 0;
 	background-color: rgba(var(--bg-rgb, 0,110,255), var(--bg-opacity, .08));
@@ -83,11 +71,15 @@ label {
 	outline: .1em dashed #777;
 	outline-offset: -.1em;
 }
+input:nth-child(1):focus ~ :nth-of-type(1) label,
+input:nth-child(2):focus ~ :nth-of-type(2) label,
+input:nth-child(3):focus ~ :nth-of-type(3) label,
+input:nth-child(4):focus ~ :nth-of-type(4) label,
 div:hover label {
 	--bg-opacity: .16;
 }
-header:focus h1,
-div:focus label {
+:checked ~ header:focus h1,
+:checked ~ div:focus label {
 	transform: translateY(-.1em);
 	box-shadow: 0 .15em .15em #aaa;
 	--bg-opacity: .18;
@@ -99,13 +91,14 @@ small {
 	top: 100%;
 	left: 0;
 	width: 100%;
-	border: 0 solid transparent;
-	border-width: .2rem 0 9em;
+	margin-top: .3em;
+	border-bottom: 9em solid transparent;
 	table-layout: fixed;
 	cursor: auto;
 	background-color: #fbfbfb;
 	display: none;
 }
+:checked ~ :focus-within small {display: table} /* Edgeは対応していない */
 :checked ~ .forceSup small,
 :checked ~ :hover small,
 :checked ~ :focus small {
@@ -140,44 +133,52 @@ small::before {
 	font-weight: bold;
 }
 
-div:last-of-type {
-	margin-bottom: .3em;
+body::after,
+.anchorButton {
+	font-size: .95em;
+	position: absolute;
+	top: 0;
 }
-:checked ~ div:last-of-type::after {
-	float: left;
-	margin: .25em .25em 0 0;
-	pointer-events: none;
-	content: "不正解";
-}
-[id*="r"]:checked ~ div:last-of-type::after {
-	content: "正解";
-}
-[href^="#"]::after {
-	content: "次の問題";
-}
-[href="./"]::after {
-	content: "選択画面に戻る";
+body::after {
+	left: 0;
+	right: 0;
+	line-height: 2rem;
+	text-align: center;
+	content: counter(rightCnt) "問正解（全" counter(qCnt) "問）";
 }
 .anchorButton {
-	display: none;
-}
-:checked ~ .anchorButton {
-	display: inline-block;
-}
-a img {
-	position: absolute;
-	bottom: -.25em;
-	right: 0;
-	height: 3.5em;
-	transition: height .5s;
+	width: 5em;
 	z-index: 1;
+}
+[href^="#"] {
+	right: 0;
+	transition: opacity .3s;
+	pointer-events: none;
+	opacity: .4;
+}
+:checked ~ [href^="#"] {
+	pointer-events: auto;
+	opacity: 1;
+}
+[href^="#"]::after {
+	content: "次へ";
+}
+[href="."]::after {
+	content: "メニュー";
+}
+
+a:not([href]), /* FOUC */
+.enlargeable {
+	position: absolute;
+	bottom: -.1em;
+	right: 0;
+	background-color: white;
 	display: none;
 }
-:checked ~ a img {
+:checked ~ .enlargeable,
+.enlargeable img {
+	height: 5em;
 	display: block;
-}
-a:hover img {
-	height: 10.5em;
 }
 
 .overline {

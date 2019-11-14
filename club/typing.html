@@ -18,14 +18,14 @@
 <article id="article">
 
 <h2>タイピングゲーム</h2>
-<input id="displaySelection" type="checkbox" checked>
-<input id="displayResults"   type="checkbox">
-<input id="shiftIsPressed"   type="checkbox">
-<input id="invisibleMode"    type="checkbox">
-<input id="englishMode"      type="checkbox">
+<input id="displaySelection" type="checkbox" class="boolean" checked>
+<input id="displayResults"   type="checkbox" class="boolean">
+<input id="shiftIsPressed"   type="checkbox" class="boolean">
+<input id="invisibleMode"    type="checkbox" class="boolean">
+<input id="englishMode"      type="checkbox" class="boolean">
 
 <section id="selectionScreen" data-caption="">
-	<input id="words" type="radio" name="tab">
+	<input id="words" type="radio" class="tabbable" name="tab">
 	<section class="frame themeButtons">
 		<button data-tsv-name="syllabary_50" data-in-order>五十音</button>
 		<button data-tsv-name="countries_asia"         >アジアの国名</button>
@@ -33,10 +33,10 @@
 		<button data-tsv-name="countries_europe"       >ヨーロッパの国名</button>
 		<button data-tsv-name="countries_north_america">北アメリカの国名</button>
 		<button data-tsv-name="countries_south_america">南アメリカの国名</button>
-		<button data-tsv-name="countries_oceania"      >オセアニアの国名</button>
+		<button data-tsv-name="countries_oceania" data-prev-rmn-value="16">オセアニアの国名</button>
 		<button data-tsv-name="countries_"             >世界の国名</button>
 		<button data-tsv-name="kanji_countries"  >国名の漢字</button>
-		<button data-tsv-name="kanji_sports"     >スポーツの漢字</button>
+		<button data-tsv-name="kanji_sports"     data-prev-rmn-value="17">スポーツの漢字</button>
 		<button data-tsv-name="kanji_animals"    data-caption="主に哺乳類の漢字です。">動物の漢字</button>
 		<button data-tsv-name="kanji_aquatics"   >魚介類の漢字</button>
 		<button data-tsv-name="kanji_birds"      >鳥の漢字</button>
@@ -48,7 +48,7 @@
 		<button data-tsv-name="elements_famous"  >有名な元素記号</button>
 		<button data-tsv-name="elements_unknown" data-caption="あまり知られていない元素記号です。">難しい元素記号</button>
 	</section>
-	<input id="short" type="radio" name="tab">
+	<input id="short" type="radio" class="tabbable" name="tab">
 	<section class="frame themeButtons">
 		<button data-tsv-name="proverbs1"    data-caption="あ行の有名なことわざです。">ことわざ①</button>
 		<button data-tsv-name="proverbs2"    data-caption="か行の有名なことわざです。">ことわざ②</button>
@@ -71,7 +71,7 @@
 		<button data-tsv-name="english_proverbs2">英語のことわざ②</button>
 		<button data-tsv-name="english_proverbs3">英語のことわざ③</button>
 	</section>
-	<input id="long" type="radio" name="tab">
+	<input id="long" type="radio" class="tabbable" name="tab">
 	<section class="frame themeButtons">
 		<button data-tsv-name="rules_student_council1"       data-caption="淡路三原高校の生徒会会則 第1条から第9条までです。"  >生徒会会則①</button>
 		<button data-tsv-name="rules_student_council2"       data-caption="淡路三原高校の生徒会会則 第10条から第18条までです。">生徒会会則②</button>
@@ -94,7 +94,7 @@
 		<button data-tsv-name="preamble_of_constitution"     data-caption="「日本国民は、正当に選挙された…」日本国憲法の条文の前にある文章です。">日本国憲法前文</button>
 		<button data-tsv-name="a_tale_of_two_cities"         data-caption="『A Tale of Two Cities』チャールズ・ディケンズによる長編歴史小説です。">二都物語（英語）</button>
 	</section>
-	<input id="classic" type="radio" name="tab">
+	<input id="classic" type="radio" class="tabbable" name="tab">
 	<section class="frame themeButtons">
 		<button data-tsv-name="collection_of_japanese_poems"      data-caption="「やまと歌は、人の心を…」平安時代初期の勅撰和歌集です。紀貫之ら作。">古今和歌集</button>
 		<button data-tsv-name="the_tale_of_the_bamboo_cutter"     data-caption="「今は昔、竹取の翁…」平安時代初期の日本最古の物語です。作者不明。">竹取物語</button>
@@ -117,7 +117,7 @@
 		<button data-tsv-name="pangram_iroha"                     data-caption="「色は匂へど 散りぬるを」仮名が重複しない、47文字の有名な歌です。">いろは歌</button>
 		<button data-tsv-name="pangram_torina"                    data-caption="「鳥啼く声す 夢覚ませ」1903年発表の、仮名が重複しない48文字の歌です。">とりな歌</button>
 	</section>
-	<input id="about" type="radio" name="tab" checked>
+	<input id="about" type="radio" class="tabbable" name="tab" checked>
 	<section class="frame">
 		<div>
 			<h3>タイピングゲームについて</h3>
@@ -128,8 +128,8 @@
 			</p>
 			<p>
 				このゲームの特殊キーです。<wbr>
-				<kbd data-pseudo-key="Tab"    data-caption="ゲーム開始前に押すと、残りの文の数を変更できるようになります。">Tab</kbd
-				><kbd data-pseudo-key="Shift" data-caption="このキーを押しながらお題を選ぶと、読み仮名などが非表示になります。">Shift</kbd>
+				<kbd  tabindex="0" data-pseudo-key="Tab"   data-caption="ゲーム開始前に押すと、残りの文の数を変更できるようになります。">Tab</kbd
+				><kbd tabindex="0" data-pseudo-key="Shift" data-caption="このキーを押しながらお題を選ぶと、読み仮名などが非表示になります。">Shift</kbd>
 			</p>
 		</div>
 		<ol id="rankList" class="notIE" data-caption="正誤率が97%のときに必要な打鍵速度です。">
@@ -164,7 +164,8 @@
 <section id="typingScreen">
 	<header>
 		<div>
-			残り：<input id="remainingNum" type="number" min="3" required>
+			残り<input id="remainingNum" type="number" min="3" required
+			><span id="maxLines"></span>
 		</div>
 		<h3 id="textTitle"></h3>
 		<div>

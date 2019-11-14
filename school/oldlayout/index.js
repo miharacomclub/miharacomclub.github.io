@@ -29,7 +29,7 @@ const displayDialogOnClick = event => {
 
 		const img = `<img src=/src/buildings/${specialNames[i] || g.dataset.imgName + (i + 1)}.jpg`;
 		$("#slider").innerHTML += `
-			<input type="radio" name="slide" id="slide${i + 1}" ${i? "": "checked"}>
+			<input type="radio" name="slide" class="tabbable" id="slide${i + 1}" ${i? "": "checked"}>
 			<label for="slide${i + 1}">${img}</label>
 			<figure>
 				<a>${img}</a>

@@ -1,6 +1,6 @@
 .graph {
 	position: relative;
-	--y-axis-space: 2.1rem;
+	--y-axis-space: 2.4rem;
 	padding-left: var(--y-axis-space);
 	--unit: calc((39rem - var(--y-axis-space)) / 99);
 }

@@ -85,11 +85,13 @@ const Game = (() => {
 		text = lines.map(line => line.replace(/^[^\t]+$/, "$&\t$&").split(/\t/));
 		for (const line of text) line.push(Romaji.romanizeKana(line[1]));
 
-		rmn.max          = Math.min(text.length, 99);
-		rmn.placeholder  = Math.min(Math.floor(text.length / tsvs.length), rmn.max);
-		rmn.defaultValue = +btn.dataset.prevRmnValue || rmn.placeholder;
+		const initialValue = ({words:15, short:10})[category] || 99;
+		rmn.max            = Math.min(text.length, 99);
+		rmn.placeholder    = Math.min(initialValue, rmn.max);
+		rmn.defaultValue   = +btn.dataset.prevRmnValue || rmn.placeholder;
 
 		const title = btn.textContent;
+		$("#maxLines").textContent     = rmn.max;
 		$("#textTitle").textContent    = title;
 		$("#englishMode").checked      = title.includes("英語");
 		$("#invisibleMode").checked    = $("#shiftIsPressed").checked;
@@ -174,6 +176,7 @@ const Game = (() => {
 	exit = () => {
 		btn.dataset.prevRmnValue = rmn.checkValidity()? rmn.value: rmn.placeholder;
 		$("#displaySelection").checked = true;
+		btn.focus();
 	};
 
 	return {onKeyDown, prepare};

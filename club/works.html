@@ -6,15 +6,19 @@
 
 <title>作ったもの｜淡路三原高校コンピュータ部</title>
 <style>
-.thumbnail {
+.thumbnail img {
 	float: left;
 	width: 10em;
-	margin: 0 1.2em .2em 0;
-	box-shadow: .2em .2em .2em #aaa;
+	--shadow: .25em;
+	margin: 0 calc(1em + var(--shadow)) var(--shadow) 0;
+	box-shadow: var(--shadow) var(--shadow) var(--shadow) #aaa;
 }
-.thumbnail:hover {
-	transform: translate(.1em, .1em);
-	box-shadow: .1em .1em .2em #aaa;
+.thumbnail:hover img,
+.thumbnail:focus img {
+	--offset: .15em;
+	--shadow2: calc(var(--shadow) - var(--offset));
+	transform: translate(var(--offset), var(--offset));
+	box-shadow: var(--shadow2) var(--shadow2) var(--shadow) #aaa;
 }
 </style>
 
@@ -37,7 +41,7 @@
 
 <section>
 	<h3>クイズ</h3>
-	<a href="quiz"><img class="thumbnail" src="/src/misc/quiz.png" alt="クイズ"></a>
+	<a href="quiz" class="thumbnail"><img src="/src/misc/quiz.png" alt="クイズ"></a>
 	<p>
 		淡路三原高校や教科に関するクイズが出題されます。<br>
 		現在、教科クイズを含めて120問あります。
@@ -46,7 +50,7 @@
 
 <section>
 	<h3>タイピングゲーム</h3>
-	<a href="typing"><img class="thumbnail" src="/src/misc/typing.png" alt="タイピングゲーム"></a>
+	<a href="typing" class="thumbnail"><img src="/src/misc/typing.png" alt="タイピングゲーム"></a>
 	<p>
 		単語、短文、長文、古典の中から選べます。<br>
 		現在、英語のものを含めて80題あります。

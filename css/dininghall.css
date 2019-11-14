@@ -1,0 +1,93 @@
+#menu,
+[data-price] {
+	display: flex;
+	position: relative;
+}
+#menu {
+	width: 22.5em;
+	padding: 0;
+	border: .5em solid sienna;
+	margin: 0;
+	background-color: rgb(220,200,160);
+}
+[data-price] {
+	height: 10.5em;
+	padding: .25rem 0;
+	border: 0 solid transparent;
+	border-width: .75em 0;
+	flex: auto;
+	align-items: center;
+	-ms-writing-mode: tb-rl; /* IE */
+	writing-mode: vertical-rl;
+	letter-spacing: .15em;
+	line-height: 1;
+	background-clip: padding-box;
+}
+[data-price]:not(:first-of-type) {
+	border-left-width: .06rem;
+}
+[data-price]:hover,
+[data-price]:focus {
+	color: crimson;
+}
+[data-price]::before,
+[data-price]::after {
+	position: absolute;
+	-ms-writing-mode: lr-tb; /* IE */
+	writing-mode: horizontal-tb;
+	letter-spacing: 0;
+}
+[data-price]::before {
+	font-size: .7em;
+	bottom: 1.1rem;
+	content: attr(data-price);
+}
+[data-price]::after {
+	font-size: .9em;
+	bottom: .2em;
+	content: "円";
+}
+[data-price] + dd {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 19em;
+	background-color: white;
+	box-shadow: 0 0 .5em black;
+}
+[data-price]:nth-of-type(n+9) + dd {
+	left: auto;
+	right: 0;
+}
+[data-price] + dd img {
+	width: 100%;
+	display: none;
+}
+[data-price]:hover + dd img,
+[data-price]:focus + dd img,
+dd img:hover,
+dd a:focus img {
+	display: block;
+}
+[data-price]:focus + dd img {
+	z-index: 1;
+}
+.udon          {background-color: hsl(  0,65%,82%);}
+.udon:focus,
+.udon:hover    {background-color: hsl(  0,65%,90%);}
+.curry         {background-color: hsl( 60,65%,80%);}
+.curry:focus,
+.curry:hover   {background-color: hsl( 60,65%,90%);}
+.noodles       {background-color: hsl(120,65%,85%);}
+.noodles:focus,
+.noodles:hover {background-color: hsl(120,65%,92%);}
+.rice          {background-color: hsl(180,65%,85%);}
+.rice:focus,
+.rice:hover    {background-color: hsl(180,65%,90%);}
+.bowl          {background-color: hsl(210,65%,75%);}
+.bowl:focus,
+.bowl:hover    {background-color: hsl(210,65%,85%);}
+
+#sideMenu dd {
+	text-align: center;
+}

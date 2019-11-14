@@ -29,7 +29,7 @@ document.addEventListener("click", event => {
 		const img = `<img src="/src/buildings/${imgName}.jpg">`;
 
 		$("#slider").innerHTML += `
-			<input type="radio" name="slide" id="slide${i + 1}" ${i? "": "checked"}>
+			<input type="radio" name="slide" class="tabbable" id="slide${i + 1}" ${i? "": "checked"}>
 			<label for="slide${i + 1}">${img}</label>
 			<figure><a>${img}</a><figcaption>${caption}</figcaption></figure>`;
 	}
@@ -40,15 +40,14 @@ document.addEventListener("click", event => {
 	// スライドが2枚のとき、ボタンが足らなくなるので増やす
 	if ($$("#btns label").length === 2) $("#btns").innerHTML += $("#btns").innerHTML;
 
-	$("#dialog").style.visibility = "visible";
 	$("#dialog").classList.add("open");
 	openImgInNewTabOnClick($("#slider"));
 });
 
 
 const years = [...new Set(
-	$$("[data-period]").reduce((str, el) => `${str},${el.dataset.period}`, "").split(","))
-].filter(v => v).map(v => +v).sort();
+	$$("[data-period]").reduce((str, el) => `${str},${el.dataset.period}`, "").split(",")
+)].filter(v => v).map(v => +v).sort();
 
 range.value = range.max = years.length - 1;
 const hash  = +location.hash.slice(1);
@@ -79,3 +78,4 @@ const updateLayout = () => {
 range.addEventListener("input", updateLayout);
 updateLayout();
 $("#layout").style.opacity = 1;
+$("#dialog").style.display = "";

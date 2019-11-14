@@ -3,14 +3,12 @@
 	width: 16em;
 	margin-right: .2em;
 }
-#fade {
-	display: none;
-}
 #fade + label {
 	float: left;
 	margin: 0 0 .5em .75em;
 	padding: 0 .25em;
-	outline: .1em solid currentColor;
+	border: .1em solid currentColor;
+	line-height: 1.5;
 	color: silver;
 }
 #fade:checked + label {
@@ -130,8 +128,10 @@ text {
 	align-items: center;
 	justify-content: center;
 	transition: opacity .3s;
-	visibility: hidden; /* FOUC */
 	z-index: 2;
+}
+#dialog:not(.open) * {
+	visibility: hidden; /* blur */
 }
 #dialog::before { /* ::backdrop */
 	position: absolute;
