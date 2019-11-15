@@ -49,7 +49,7 @@ const Game = (() => {
 		if (!startTime) {
 			const isRmnFocused = rmn === document.activeElement;
 			if (key === "Tab")    return rmn[isRmnFocused? "blur": "focus"]();
-			if (isRmnFocused)     return doDefault;
+			if (isRmnFocused)     return key === "Escape"? rmn.blur(): doDefault;
 			if (key === "Escape") return exit();
 		}
 		if (!typedKbd)                 return doDefault;
@@ -113,17 +113,18 @@ const Game = (() => {
 		rmn.value    = +rmn.defaultValue + 1;
 		rmn.disabled = false;
 
+		$("#maxLines").textContent = rmn.max;
 		$("#sentencesFrame").classList.remove("frameOnTypo");
 		moveToNext();
 	},
 
 
 	start = () => {
-		Sounds.correct.playCount = Sounds.incorrect.playCount = 0;
 		if (!rmn.checkValidity()) rmn.value = rmn.placeholder;
-		rmn.defaultValue = rmn.value;
-		rmn.disabled     = true;
-		startTime        = new Date();
+		$("#maxLines").textContent = rmn.defaultValue = rmn.value;
+		Sounds.correct.playCount   = Sounds.incorrect.playCount = 0;
+		rmn.disabled = true;
+		startTime    = new Date();
 	},
 
 
@@ -168,7 +169,6 @@ const Game = (() => {
 		$("#rubyBase").textContent     = lines[0][0];
 		$("#nextSentence").textContent = rmn.value - 1? lines[1][+$("#englishMode").checked]: "";
 		$("#rubySentence").innerHTML   = `<span></span><span>${lines[0][1]}</span>`;
-		$("#meter").style.setProperty("--value", `${rmn.value / rmn.defaultValue * 100}%`);
 		recolor();
 	},
 

@@ -194,8 +194,8 @@
 		direction: rtl;
 		border-color: black;
 		color: white;
-		--shadow: 0 0 .15em black;
-		text-shadow: var(--shadow), var(--shadow), var(--shadow);
+		--text-shadow: 0 0 .15em black;
+		text-shadow: var(--text-shadow), var(--text-shadow), var(--text-shadow);
 	}
 }
 #rankList li::after {
@@ -237,16 +237,24 @@
 }
 #typingScreen {
 	position: relative;
+	padding-top: .2em;
+	box-sizing: border-box;
 }
 #typingScreen header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin: 0 0 .5em;
+	margin-bottom: .5em;
 }
 #typingScreen header div {
 	width: 6.25em;
-	text-align: center;
+}
+#typingScreen header div:first-child {
+	padding-left: .1em;
+}
+#typingScreen header div:last-child {
+	text-align: right;
+	padding-right: .1em;
 }
 #remainingNum {
 	font-size: 1.3em;
@@ -271,8 +279,10 @@
 #remainingNum:invalid {
 	box-shadow: 0 0 .5em red;
 }
+#maxLines {
+	font-size: 1.05em;
+}
 #maxLines::before {
-	font-size: 1.1em;
 	padding: 0 .25em 0 .4em;
 	content: "/";
 }
@@ -289,13 +299,16 @@
 #sentencesFrame {
 	width: 100%;
 	padding: .75em 0 .75em 1.25em;
+	margin-bottom: .5em;
+	--frame-shadow: .1em .15em .3em #aaa;
+	box-shadow: var(--frame-shadow);
 }
 .frameOnTypo {
 	animation: mistyped .75s;
 }
 @keyframes mistyped {
-	from {box-shadow: 0 0 1.5em red inset;}
-	to {box-shadow: 0 0 0 red inset;}
+	from {box-shadow: var(--frame-shadow), 0 0 1.5em red inset;}
+	to   {box-shadow: var(--frame-shadow), 0 0 0 red inset;}
 }
 #sentencesFrame p {
 	margin: 0;
@@ -420,27 +433,27 @@
 	--key-height: 2.1em;
 	--border-width: .2em;
 	--key-gap: .2em;
-	--hue-saturation: 0,0%;
-	--max-lightness: 100%;
+	--hs: 0,0%;
+	--max-l: 100%;
 }
 #invisibleMode:not(:checked) ~ * .candidate {
-	--hue-saturation: 0,100%;
+	--hs: 0,100%;
 }
 #invisibleMode:not(:checked) ~ * .otherCandidates {
-	--hue-saturation: 210,100%;
+	--hs: 210,100%;
 }
 #invisibleMode:not(:checked) ~ * .candidate,
 #invisibleMode:not(:checked) ~ * .otherCandidates {
-	--max-lightness: 95%;
-	--color-lightness: 50%;
+	--max-l: 95%;
+	--text-l: 50%;
 }
 kbd {
-	--top-color:    hsl(var(--hue-saturation), var(--max-lightness));
-	--bg-color:     hsl(var(--hue-saturation), calc(var(--max-lightness) - 5%));
-	--lr-color:     hsl(var(--hue-saturation), calc(var(--max-lightness) - 10%));
-	--btm-color:    hsl(var(--hue-saturation), calc(var(--max-lightness) - 15%));
-	--shadow-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 25%));
-	color:          hsl(var(--hue-saturation), var(--color-lightness, 0%));
+	--top-color:  hsl(var(--hs), var(--max-l));
+	--bg-color:   hsl(var(--hs), calc(var(--max-l) - 5%));
+	--lr-color:   hsl(var(--hs), calc(var(--max-l) - 10%));
+	--btm-color:  hsl(var(--hs), calc(var(--max-l) - 15%));
+	--edge-color: hsl(var(--hs), calc(var(--max-l) - 25%));
+	color:        hsl(var(--hs), var(--text-l, 0%));
 	display: inline-block;
 	font: inherit;
 	box-sizing: border-box;
@@ -451,7 +464,7 @@ kbd {
 	margin: var(--key-gap);
 	border-radius: var(--border-width);
 	background-color: var(--bg-color);
-	box-shadow: 0 0 0 .1em var(--shadow-color);
+	box-shadow: 0 0 0 .1em var(--edge-color);
 	text-align: center;
 	vertical-align: middle;
 	cursor: pointer;
@@ -464,10 +477,10 @@ kbd.onType,
 kbd.onType::after,
 [data-pseudo-key]:focus,
 #shiftIsPressed:checked ~ * #Shift {
-	--top-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 28%));
-	--bg-color:  hsl(var(--hue-saturation), calc(var(--max-lightness) - 15%));
-	--lr-color:  hsl(var(--hue-saturation), calc(var(--max-lightness) - 20%));
-	--btm-color: hsl(var(--hue-saturation), calc(var(--max-lightness) - 10%));
+	--top-color: hsl(var(--hs), calc(var(--max-l) - 28%));
+	--bg-color:  hsl(var(--hs), calc(var(--max-l) - 15%));
+	--lr-color:  hsl(var(--hs), calc(var(--max-l) - 20%));
+	--btm-color: hsl(var(--hs), calc(var(--max-l) - 10%));
 	line-height: 1.8;
 }
 

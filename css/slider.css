@@ -9,7 +9,7 @@
 	height: 100%; /* 画面のスクロールを防ぐ */
 }
 [name="slide"]:focus ~ #btns label {
-	outline: .1em solid dodgerblue;
+	outline: .06rem solid dodgerblue;
 }
 #slider a {
 	display: table;
