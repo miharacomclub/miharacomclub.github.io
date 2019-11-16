@@ -103,24 +103,33 @@ h3, h4 {
 	text-align: center;
 }
 
-.sxs,
-.sxsImgs img {
-	float: left;
-	width: 19em;
-	margin: 0 .5em .5em 0;
+.sbs, /* side by side */
+.sbs img {
+	display: inline-block;
+	width: 19.25em;
+	vertical-align: top;
 }
-.sxs + p:not(.sxs),
-.sxsImgs a:not([href]) + p:not(.sxs),
-.sxsImgs a.enlargeable + p:not(.sxs) {
-	clear: both;
-	border-top: .5em solid transparent;
+.sbs + .sbs + .sbs {
+	vertical-align: text-top;
+}
+@media not all and (max-width:800px) { /* notを使うとallは省略できない */
+	p.sbs {
+		margin: 0;
+	}
+	.sbs + p.sbs {
+		float: right;
+	}
+	.reverseOrder {
+		direction: rtl;
+		text-align: left;
+	}
 }
 @media (max-width:800px) {
-	p.sxs {
+	p.sbs {
+		display: block;
 		width: 100%;
-		margin-right: 0;
 	}
-	p + p.sxs {
-		margin-bottom: 1em;
+	.sbs:not(p) + .sbs {
+		vertical-align: text-top;
 	}
 }

@@ -9,11 +9,6 @@
 #tsuchiga blockquote ol {
 	list-style-type: none;
 }
-@media not all and (max-width:800px) { /* notを使うとallは省略できない */
-	#tsuchiga img {
-		float: right;
-	}
-}
 </style>
 
 <header id="header">
@@ -23,7 +18,7 @@
 	<a href="/school/">学校紹介</a><a href="/club/">部活動紹介</a><a href="/club/works">作ったもの</a><a href="/others">その他</a>
 </nav>
 <main>
-<article id="article" class="sxsImgs">
+<article id="article">
 
 <h2>建物・モニュメント</h2>
 <section>
@@ -39,8 +34,8 @@
 		>県立学校施設の耐震化の進捗状況について</a>）<br>
 		ちなみに、A棟は<time>1982年</time>に建てられたため、工事の対象ではありません。
 	</p>
-	<a><img src="/src/buildings/tmp1.jpg" alt="仮設校舎の外観"></a>
-	<a><img src="/src/buildings/tmp2.jpg" alt="仮設校舎の教室"></a>
+	<a class="sbs"><img src="/src/buildings/tmp1.jpg" alt="仮設校舎の外観"></a>
+	<a class="sbs"><img src="/src/buildings/tmp2.jpg" alt="仮設校舎の教室"></a>
 </section>
 
 <section>
@@ -53,14 +48,13 @@
 		ベランダを設置する予定でしたが、最終的に中止となりました。<br>
 		しかし、格技場棟自体は当初の予定通りに建設されたため、その形跡が残っています。
 	</p>
-	<a><img src="/src/buildings/traces1.jpg" alt="格技場兼生徒集会室棟の外観"></a>
-	<a><img src="/src/buildings/traces2.jpg" alt="格技場兼生徒集会室棟の外観"></a>
+	<a class="sbs"><img src="/src/buildings/traces1.jpg" alt="格技場兼生徒集会室棟の外観"></a>
+	<a class="sbs"><img src="/src/buildings/traces2.jpg" alt="格技場兼生徒集会室棟の外観"></a>
 </section>
 
 <section>
 	<h3>仮設の渡り廊下</h3>
-	<a><img src="/src/misc/doors.jpg" alt="C棟の外観"></a>
-	<p class="sxs">
+	<p class="sbs">
 		<time>1979年</time>、B棟の西半分が建てられました。<br>
 		（<a href="layout#1979">当時の配置図はこちら</a>）<br>
 		当時は昇降口棟が無く、<br>
@@ -69,6 +63,7 @@
 		B14教室とC棟廊下にある扉は<br>
 		その名残です。
 	</p>
+	<a class="sbs"><img src="/src/misc/doors.jpg" alt="C棟の外観"></a>
 </section>
 
 <section id="tsuchiga">
@@ -83,9 +78,10 @@
 		貝類、コケ類などの標本が陳列されています。<br>
 		標本や資料の劣化を防ぐために、文化祭当日にのみ開放されます。
 	</p>
-	<a><img src="/src/buildings/tsuchiga2.jpg" alt="槌賀記念室"></a>
-	<a><img src="/src/buildings/tsuchiga1.jpg" alt="槌賀記念室のそばにある胸像"></a>
-	<hr>
+	<figure class="reverseOrder">
+		<a class="sbs"><img src="/src/buildings/tsuchiga2.jpg" alt="槌賀記念室"></a>
+		<a class="sbs"><img src="/src/buildings/tsuchiga1.jpg" alt="槌賀記念室のそばにある胸像"></a>
+	</figure>
 	<blockquote>
 		<p>
 			槌賀安平先生ハ<time>明治十九年</time>三原郡南淡町賀集ニ<ruby>生<rt>ウマ</ruby>ル<br>
@@ -113,8 +109,8 @@
 
 <section>
 	<h3>若い力</h3>
-	<a><img src="/src/buildings/artworks1.jpg" alt="若い力"></a>
-	<p class="sxs">
+	<a class="sbs"><img src="/src/buildings/artworks1.jpg" alt="若い力"></a>
+	<p class="sbs">
 		三原高校は、南あわじ市出身の<br>
 		彫刻家である菊川<ruby>晋<rt>のぶ</ruby>久氏に、<br>
 		16回生卒業記念の彫刻を依頼しました。<br>
@@ -132,8 +128,8 @@
 
 <section>
 	<h3>清い心</h3>
-	<a><img src="/src/buildings/artworks3.jpg" alt="清い心"></a>
-	<p class="sxs">
+	<a class="sbs"><img src="/src/buildings/artworks3.jpg" alt="清い心"></a>
+	<p class="sbs">
 		<time>1965年</time>、17回生の卒業記念品代と<br>
 		防火貯水槽建設の予算を使い、防火用水を<br>
 		兼ねた噴水と庭園が完成しました。<br>
@@ -162,7 +158,7 @@
 		寄宿舎に収容できないため下宿している生徒は28名でした。<br>
 		また、寄宿舎の食堂を利用する生徒や教員は相当数いました。
 	</p>
-	<p class="sxs">
+	<p class="sbs">
 		しかし、<time>1989年</time>に建物の老朽化と<br>
 		入寮者の減少により寄宿舎は廃止され、<br>
 		建物は取り壊されました。<br>
@@ -170,7 +166,7 @@
 		>寄宿舎（旧三原高校）跡</a>には<br>
 		石碑が立っています。
 	</p>
-	<a><img src="/src/buildings/stele.jpg" alt="寄宿舎跡"></a>
+	<a class="sbs"><img src="/src/buildings/stele.jpg" alt="寄宿舎跡"></a>
 </section>
 
 <section>
@@ -181,8 +177,8 @@
 		>三原健康広場の西隣</a>に移築されました。<br>
 		現在、神社の跡地に特別教室棟（C棟）があります。
 	</p>
-	<a><img src="/src/buildings/shrine1.jpg" alt="巌島神社の鳥居"></a>
-	<a><img src="/src/buildings/shrine2.jpg" alt="巌島神社の拝殿"></a>
+	<a class="sbs"><img src="/src/buildings/shrine1.jpg" alt="巌島神社の鳥居"></a>
+	<a class="sbs"><img src="/src/buildings/shrine2.jpg" alt="巌島神社の拝殿"></a>
 </section>
 
 </article>

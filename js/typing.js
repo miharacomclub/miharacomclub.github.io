@@ -88,7 +88,7 @@ const Game = (() => {
 		const initialValue = ({words:15, short:10})[category] || 99;
 		rmn.max            = Math.min(text.length, 99);
 		rmn.placeholder    = Math.min(initialValue, rmn.max);
-		rmn.defaultValue   = +btn.dataset.prevRmnValue || rmn.placeholder;
+		if (!btn.dataset.prevRmnValue) btn.dataset.prevRmnValue = rmn.placeholder;
 
 		const title = btn.textContent;
 		$("#maxLines").textContent     = rmn.max;
@@ -110,7 +110,7 @@ const Game = (() => {
 			}
 		}
 		startTime    = 0;
-		rmn.value    = +rmn.defaultValue + 1;
+		rmn.value    = +btn.dataset.prevRmnValue + 1;
 		rmn.disabled = false;
 
 		$("#maxLines").textContent = rmn.max;
@@ -121,8 +121,8 @@ const Game = (() => {
 
 	start = () => {
 		if (!rmn.checkValidity()) rmn.value = rmn.placeholder;
-		$("#maxLines").textContent = rmn.defaultValue = rmn.value;
-		Sounds.correct.playCount   = Sounds.incorrect.playCount = 0;
+		$("#maxLines").textContent = btn.dataset.prevRmnValue = rmn.value = +rmn.value; // 0.9e+1 → 9
+		Sounds.incorrect.playCount = Sounds.correct.playCount = 0;
 		rmn.disabled = true;
 		startTime    = new Date();
 	},
@@ -163,7 +163,7 @@ const Game = (() => {
 		if (--rmn.value < 1) return [
 			Sounds.correct.playCount, Sounds.incorrect.playCount, (new Date() - startTime) / 1000
 		];
-		const lines = [...text].splice(rmn.defaultValue - rmn.value, 2);
+		const lines = [...text].splice(btn.dataset.prevRmnValue - rmn.value, 2);
 		Romaji.prepare(lines[0][2]);
 
 		$("#rubyBase").textContent     = lines[0][0];

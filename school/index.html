@@ -9,13 +9,17 @@
 #mapWrapper::before {
 	padding-top: 100%;
 }
-#school {
+#pages {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
 }
-#school ul {
+#pages::after,
+#pages h3 {
+	width: 100%;
+}
+#pages ul {
 	margin: 0;
 }
 #slideshow {
@@ -74,40 +78,38 @@
 		また、<a href="clubs">部活動</a>では郷土部の人形浄瑠璃の海外公演や、<br>
 		放送部の高校放送コンテスト全国大会の出場など、様々な活躍を見せています。
 	</p>
-	<div id="mapWrapper" class="fixedAspectRatio sxs">
+	<figure id="mapWrapper" class="sbs fixedAspectRatio">
 		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1648.6580961236402!2d134.77974128716798!3d34.28190933358319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3554a6cebdc8120f%3A0xa1ecae9637c7c175!2z5YW15bqr55yM56uL5reh6Lev5LiJ5Y6f6auY562J5a2m5qCh!5e0!3m2!1sja!2sjp!4v1489550895967"></iframe>
-	</div>
-	<a href="layout">
-		<img class="sxs" src="/src/misc/layout.jpg" alt="学校配置図">
+	</figure>
+	<a class="sbs" href="layout">
+		<img src="/src/misc/layout.jpg" alt="学校配置図">
 	</a>
 </section>
 
-<section>
+<section id="pages">
 	<h3>淡路三原高校に関するページ</h3>
-	<div id="school">
-		<ul>
-			<li><a href="layout">校舎の変遷</a>
-			<li><a href="history">三原高校の歴史</a>
-			<li><a href="buildings">建物・モニュメント</a>
-			<li><a href="dininghall">食堂（生徒集会室）</a>
-			<li><a href="specialties">三高名物</a>
-			<li><a href="decoration">デコレーション作り</a>
-			<li><a href="okubo">大久保踊り</a>
-			<li><a href="tenmei">天明の縄騒動</a>
-			<li><a href="students">生徒数の推移</a>
-			<li><a href="clubs">部活動の変遷</a>
-			<li><a href="songs">高校の歌一覧</a>
-			<li><a href="shichi">志知高校</a>
-			<li><a href="references">出典一覧</a>
-		</ul>
-		<div id="slideshow" class="fixedAspectRatio">
-			<a><img src="/src/buildings/buildingA1.jpg" alt="A棟"></a>
-			<a><img src="/src/buildings/buildingA3.jpg" alt="コモンスペース"></a>
-			<a><img src="/src/buildings/buildingC2.jpg" alt="C棟"></a>
-			<a><img src="/src/buildings/buildingD1.jpg" alt="昇降口棟"></a>
-			<a><img src="/src/buildings/yard4.jpg"      alt="校歌碑"></a>
-		</div>
-	</div>
+	<ul>
+		<li><a href="layout">校舎の変遷</a>
+		<li><a href="history">三原高校の歴史</a>
+		<li><a href="buildings">建物・モニュメント</a>
+		<li><a href="dininghall">食堂（生徒集会室）</a>
+		<li><a href="specialties">三高名物</a>
+		<li><a href="decoration">デコレーション作り</a>
+		<li><a href="okubo">大久保踊り</a>
+		<li><a href="tenmei">天明の縄騒動</a>
+		<li><a href="students">生徒数の推移</a>
+		<li><a href="clubs">部活動の変遷</a>
+		<li><a href="songs">高校の歌一覧</a>
+		<li><a href="shichi">志知高校</a>
+		<li><a href="references">出典一覧</a>
+	</ul>
+	<figure id="slideshow" class="fixedAspectRatio">
+		<a><img src="/src/buildings/buildingA1.jpg" alt="A棟"></a>
+		<a><img src="/src/buildings/buildingA3.jpg" alt="コモンスペース"></a>
+		<a><img src="/src/buildings/buildingC2.jpg" alt="C棟"></a>
+		<a><img src="/src/buildings/buildingD1.jpg" alt="昇降口棟"></a>
+		<a><img src="/src/buildings/yard4.jpg"      alt="校歌碑"></a>
+	</figure>
 </section>
 
 </article>

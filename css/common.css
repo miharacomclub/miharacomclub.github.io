@@ -62,12 +62,6 @@ cite::before {
 cite::after {
 	content: "』";
 }
-hr {
-	border: 0;
-	margin: 0;
-	clear: both;
-	overflow: visible; /* Chrome */
-}
 button {
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -142,11 +136,12 @@ blockquote footer {
 
 .tabbable {
 	position: absolute;
+	margin: 0;
 	opacity: 0;
 	pointer-events: none;
 }
 .tabbable:focus + label {
-	outline: .06rem solid dodgerblue;
+	box-shadow: 0 0 0 .06rem dodgerblue;
 }
 .enlargeable:hover * {
 	opacity: .5;

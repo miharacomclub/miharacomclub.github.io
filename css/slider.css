@@ -5,11 +5,8 @@
 	display: flex;
 	flex-wrap: wrap;
 }
-[name="slide"] {
-	height: 100%; /* 画面のスクロールを防ぐ */
-}
 [name="slide"]:focus ~ #btns label {
-	outline: .06rem solid dodgerblue;
+	box-shadow: 0 0 0 .06rem dodgerblue;
 }
 #slider a {
 	display: table;
@@ -46,6 +43,7 @@
 	color: white;
 	background-color: #aaa;
 }
+[name="slide"], /* 画面のスクロールを防ぐ */
 #slider figure img,
 #btns {
 	display: block;

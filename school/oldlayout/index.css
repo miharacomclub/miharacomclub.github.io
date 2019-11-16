@@ -149,6 +149,7 @@ dialog h3 {
 #close:hover {
 	color: green;
 }
+[name="slide"],
 #slider figure img,
 #btns {
 	height: 14em;

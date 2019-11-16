@@ -53,7 +53,7 @@
 [name="tab"]:nth-of-type(3):focus ~ #categoryTabs :nth-child(3),
 [name="tab"]:nth-of-type(4):focus ~ #categoryTabs :nth-child(4),
 [name="tab"]:last-of-type:focus   ~ #categoryTabs :last-child {
-	outline: dodgerblue solid .06rem;
+	box-shadow: 0 0 0 .06rem dodgerblue;
 }
 [name="tab"]:not(:checked) + section {
 	display: none;
@@ -104,10 +104,10 @@
 	justify-content: space-between;
 }
 #about + section h3 {
+	font-size: 1.1em;
 	padding: 0;
 	border: none;
 	margin: 0 0 1em;
-	font-size: 1.1em;
 }
 
 #rankList {
@@ -341,12 +341,6 @@
 }
 #invisibleMode:checked ~ * #typing p:not(#rubyBase) {
 	color: transparent;
-}
-#meter {
-	height: .2em;
-	margin: .2em .5em;
-	outline: inset .1em #ddd;
-	background-image: linear-gradient(to right, tomato var(--value), transparent var(--value));
 }
 #nextSentence {
 	margin: 0 0 .1em .3em;
