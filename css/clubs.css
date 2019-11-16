@@ -14,7 +14,7 @@
 	overflow: hidden;
 	line-height: 1;
 	margin-top: .5em;
-	--unit: calc(1% / .76);
+	--unit: calc(100% / (119 - 44 + 1));
 }
 #clubs ol {
 	padding: 0;
@@ -22,12 +22,19 @@
 	list-style-type: none;
 }
 #clubs #bars {
-	margin-left: calc(-44 * var(--unit));
+	position: relative;
 	width: 100%;
+	margin-left: calc(-44 * var(--unit));
+	z-index: 0;
 }
 #bars li {
 	white-space: nowrap;
 	margin-bottom: .1em;
+}
+#bars li::after {
+	display: inline-block;
+	padding: .1em;
+	content: "　";
 }
 #spo:not(:checked) ~ #clubs .spo,
 #cul:not(:checked) ~ #clubs .cul,
@@ -38,26 +45,30 @@
 }
 
 #bars span {
+	position: absolute;
 	display: inline-block;
-	width: calc(var(--length, 999) * var(--unit));
-	margin-left: calc(var(--start, 0) * var(--unit));
+	left: 0;
+	--length: (var(--end, 999) - var(--start));
+	width: calc(var(--length) * var(--unit));
 	box-sizing: border-box;
 	padding: .1em;
+	margin-left: calc(var(--start, 0) * var(--unit));
 	background-repeat: no-repeat;
 }
 #bars span:empty::before {
 	content: "　";
 }
-
 [style*="fade"] {
 	/* Edgeは#rgbaに対応していない */
 	/* Safariでtransparent(#0000)を指定すると、グラデーションが黒くなる */
 	background-image: linear-gradient(to var(--grad-direction, left), rgba(255,255,255,.75), rgba(255,255,255,0));
 	background-position: var(--grad-position, right);
 	/* Edgeはheight 100%を指定する必要がある */
-	background-size: calc(var(--fade-in, var(--fade-out)) / var(--length, 999) * 100%) 100%;
+	background-size: calc(var(--fade-width) / var(--length) * 100%) 100%;
+	--fade-width: (var(--end) - var(--fade-start));
 }
-[style*="fade-in"] {
+[style*="fade-end"] {
+	--fade-width: (var(--fade-end) - var(--start));
 	--grad-direction: right;
 	--grad-position: left;
 }
@@ -72,11 +83,11 @@
 }
 #media,
 #natural {
-	position: relative;
+	border-top: .7em solid transparent;
+	--top: .8em;
+	z-index: 1;
 	direction: rtl;
 	line-height: 1.1;
-	--top: .8em;
-	border-top: .7em solid transparent;
 }
 
 #years,
@@ -127,11 +138,10 @@
 #columns ::before,
 #columns ::after {
 	right: 0;
-	pointer-events: none;
 	padding-left: .5em;
+	pointer-events: none;
 	z-index: 1;
 }
-
 
 #columns {
 	counter-reset: year 1944 jpYear 19;

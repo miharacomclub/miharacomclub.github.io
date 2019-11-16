@@ -133,6 +133,9 @@ text {
 #dialog:not(.open) * {
 	visibility: hidden; /* blur */
 }
+#dialog * {
+	transition: visibility .3s;
+}
 #dialog::before { /* ::backdrop */
 	position: absolute;
 	top: 0;

@@ -53,6 +53,7 @@ figure {
 q {
 	quotes: "「" "」";
 }
+dfn,
 cite {
 	font-style: normal;
 }
