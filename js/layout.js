@@ -6,7 +6,7 @@ document.addEventListener("keydown", event => {
 		dialog.classList.remove("open");
 
 	} else if (/Arrow(Left|Right)/.test(event.key) && !dialog) {
-		$("#range").value -= event.key.includes("Left")? 1: -1;
+		$("#yearSlider").value -= event.key.includes("Left")? 1: -1;
 		updateLayout();
 
 	} else return;
@@ -46,22 +46,22 @@ document.addEventListener("click", event => {
 
 
 const years = [...new Set(
-	$$("[data-period]").reduce((str, el) => `${str},${el.dataset.period}`, "").split(",")
+	$$("[data-range]").reduce((yearsStr, el) => `${yearsStr},${el.dataset.range}`, "").split(",")
 )].filter(v => v).map(v => +v).sort();
 
-range.value = range.max = years.length - 1;
+$("#yearSlider").value = $("#yearSlider").max = years.length - 1;
 const hash  = +location.hash.slice(1);
-if (hash) range.value = [...years, 9999].findIndex(v => hash < v) - 1;
+if (hash) $("#yearSlider").value = [...years, 9999].findIndex(v => hash < v) - 1;
 
 
 let photo;
 const updateLayout = () => {
-	const y = years[+range.value];
-	$("#year").textContent = `（${+range.value < +range.max? y + "年": "現在"}）`;
+	const year = years[+$("#yearSlider").value];
+	$("#year").textContent = `（${+$("#yearSlider").value < +$("#yearSlider").max? year + "年": "現在"}）`;
 
-	for (const el of $$("[data-period]")) {
-		const period = `${el.dataset.period},9999`.split(",");
-		el.classList[+period[0] <= y && y < +period[1]? "add": "remove"]("exists");
+	for (const el of $$("[data-range]")) {
+		const range = `${el.dataset.range},9999`.split(",");
+		el.classList[+range[0] <= year && year < +range[1]? "add": "remove"]("exists");
 	}
 
 	if (photo === (photo = $$("img.exists").pop())) return;
@@ -75,7 +75,7 @@ const updateLayout = () => {
 	$("#citation" ).parentNode.setAttributeNS("http://www.w3.org/1999/xlink", "href", source[1]);
 };
 
-range.addEventListener("input", updateLayout);
+$("#yearSlider").addEventListener("input", updateLayout);
 updateLayout();
 $("#layout").style.opacity = 1;
 $("#dialog").style.display = "";

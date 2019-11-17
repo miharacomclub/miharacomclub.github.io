@@ -4,9 +4,4 @@
 
 メールの送信に失敗しました。<br>
 時間をおいてもう一度お試しください。<br>
-<a href="javascript:history.back()" id="js">フォームに戻ります。</a>
-
-<noscript>
-	<style>#js {display: none;}</style>
-	<a href="./">フォームに戻ります。</a>
-</noscript>
+<script>document.body.innerHTML += "<a href=javascript:history.back()>フォームに戻ります。</a>"</script>

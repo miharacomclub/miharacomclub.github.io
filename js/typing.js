@@ -1,38 +1,5 @@
-const doDefault = Symbol();
-
 for (const input of $$("input")) input.checked = input.defaultChecked;
-
-
-const onKbdPressed = event => {
-	const el = event.target;
-	if (!el.matches("#typingScreen kbd")) return;
-
-	if (el.textContent === "Shift") {
-		$("#shiftIsPressed").checked = !$("#shiftIsPressed").checked;
-	} else {
-		const key = $("#shiftIsPressed").checked? el.dataset.onShift: el.textContent || el.id;
-		if (!key || doDefault === Game.onKeyDown(key)) return;
-	}
-	event.preventDefault();
-};
-document.addEventListener("touchstart", onKbdPressed, {passive: false});
-document.addEventListener("mousedown", e => e.button === 0 && onKbdPressed(e));
-
-
-document.addEventListener("keyup",   event =>  $("#shiftIsPressed").checked = event.shiftKey);
-document.addEventListener("keydown", event => {$("#shiftIsPressed").checked = event.shiftKey;
-	event.ctrlKey
-	|| event.metaKey
-	|| event.altKey
-	|| event.key === "Shift"
-	|| (event.shiftKey && event.key === "0")
-	|| $("#displaySelection").checked
-	|| doDefault === Game.onKeyDown(event.key)
-	|| event.preventDefault();
-});
-document.addEventListener("click", event => {
-	event.target.matches(".themeButtons button") && Game.prepare(event.target);
-});
+const doDefault = Symbol();
 
 
 
@@ -42,34 +9,10 @@ const Game = (() => {
 	const rmn = $("#remainingNum"),
 
 
-	onKeyDown = key => {
-		const typedKbd = Kbd.search(key, true);
-		if ($("#displayResults").checked) return Results.onKeyDown(key);
+	prepare = async event => {
+		if (!event.target.matches(".themeButtons button")) return;
+		btn = event.target;
 
-		if (!startTime) {
-			const isRmnFocused = rmn === document.activeElement;
-			if (key === "Tab")    return rmn[isRmnFocused? "blur": "focus"]();
-			if (isRmnFocused)     return key === "Escape"? rmn.blur(): doDefault;
-			if (key === "Escape") return exit();
-		}
-		if (!typedKbd)                 return doDefault;
-		if (key === "Escape")          return reset();
-		if (!Romaji.isKeyCorrect(key)) return onTypo();
-
-		!startTime && start();
-		Sounds.correct.play();
-		if (Romaji.indexOfKana() >= 0) return recolor();
-
-		const aryIfOnEndOfGame = moveToNext();
-		if (aryIfOnEndOfGame) {
-			reset();
-			Results.show(...aryIfOnEndOfGame);
-		}
-	},
-
-
-	prepare = async _btn => {
-		btn = _btn;
 		const btns = $$(`[data-tsv-name^="${btn.dataset.tsvName}"]`);
 		btns.length > 1 && btns.pop();
 
@@ -99,6 +42,32 @@ const Game = (() => {
 
 		text.inOrder = "inOrder" in btn.dataset || ["long", "classic"].includes(category);
 		reset();
+	},
+
+
+	onKeyDown = key => {
+		const typedKbd = Kbd.search(key, true);
+		if ($("#displayResults").checked) return Results.onKeyDown(key);
+
+		if (!startTime) {
+			const isRmnFocused = rmn === document.activeElement;
+			if (key === "Tab")    return rmn[isRmnFocused? "blur": "focus"]();
+			if (isRmnFocused)     return key === "Escape"? rmn.blur(): doDefault;
+			if (key === "Escape") return exit();
+		}
+		if (!typedKbd)                 return doDefault;
+		if (key === "Escape")          return reset();
+		if (!Romaji.isKeyCorrect(key)) return onTypo();
+
+		!startTime && start();
+		Sounds.correct.play();
+		if (Romaji.indexOfKana() >= 0) return recolor();
+
+		const aryIfOnEndOfGame = moveToNext();
+		if (aryIfOnEndOfGame) {
+			reset();
+			Results.show(...aryIfOnEndOfGame);
+		}
 	},
 
 
@@ -133,7 +102,7 @@ const Game = (() => {
 		const [, ...rubySentence] = $("#rubySentence").textContent
 			.split(new RegExp(`(.{${Romaji.indexOfKana()}})(.*)`));
 
-		const updateSentence = (els, values) => els.forEach(el => el.textContent = values.shift());
+		const updateSentence = (spans, values) => spans.forEach(span => span.textContent = values.shift());
 		updateSentence($$("#rubySentence span"), rubySentence);
 		updateSentence($$("#romanized span"), Romaji.getRomanized());
 
@@ -177,9 +146,37 @@ const Game = (() => {
 		btn.dataset.prevRmnValue = rmn.checkValidity()? rmn.value: rmn.placeholder;
 		$("#displaySelection").checked = true;
 		btn.focus();
+	},
+
+
+
+	onKbdPressed = event => {
+		if (!event.target.matches("#typingScreen kbd")) return;
+		const kbd = event.target;
+
+		if (kbd.textContent === "Shift") {
+			$("#shiftIsPressed").checked = !$("#shiftIsPressed").checked;
+		} else {
+			const key = $("#shiftIsPressed").checked? kbd.dataset.onShift: kbd.textContent || kbd.id;
+			if (!key || doDefault === onKeyDown(key)) return;
+		}
+		event.preventDefault();
 	};
 
-	return {onKeyDown, prepare};
+	document.addEventListener("click",      prepare);
+	document.addEventListener("touchstart", onKbdPressed, {passive: false});
+	document.addEventListener("mousedown",  event =>  event.button === 0 && onKbdPressed(event));
+	document.addEventListener("keyup",      event =>  $("#shiftIsPressed").checked = event.shiftKey);
+	document.addEventListener("keydown",    event => {$("#shiftIsPressed").checked = event.shiftKey;
+		event.ctrlKey
+		|| event.metaKey
+		|| event.altKey
+		|| event.key === "Shift"
+		|| (event.shiftKey && event.key === "0")
+		|| $("#displaySelection").checked
+		|| doDefault === onKeyDown(event.key)
+		|| event.preventDefault();
+	});
 })();
 
 

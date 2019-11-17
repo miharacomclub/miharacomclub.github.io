@@ -35,7 +35,7 @@ const complementTimeElAttrs = (target = document) => {
 const parseJpDateStr = jpDateStr => {
 	const eraNames     = "令和,平成,昭和,大正,明治,天明".split(",");
 	const zerothYears  = [2018,1988,1925,1911,1867,1780];
-	const splitIntoYmd = str => str.split(/年度?|月|日/).filter(v => v);
+	const splitIntoYmd = dateStr => dateStr.split(/年度?|月|日/).filter(v => v);
 
 	if (+jpDateStr[0]) {
 		const ymd      = splitIntoYmd(jpDateStr).map(v => +v);

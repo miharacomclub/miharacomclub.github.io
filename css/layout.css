@@ -1,4 +1,4 @@
-#range {
+#yearSlider {
 	float: left;
 	width: 16em;
 	margin-right: .2em;
@@ -37,7 +37,7 @@
 	--shadow: 0 0 .7em #fbfbfb inset;
 	box-shadow: var(--shadow), var(--shadow), var(--shadow);
 }
-#fade:checked ~ #layout [data-period],
+#fade:checked ~ #layout [data-range],
 #fade:checked ~ #layout g * {
 	transition: opacity .3s linear var(--additional-rule, 0s);
 }
@@ -51,7 +51,7 @@
 	height: var(--width);
 }
 
-[data-period]:not(.exists),
+[data-range]:not(.exists),
 #dialog:not(.open) {
 	opacity: 0;
 	pointer-events: none;
@@ -65,7 +65,7 @@ svg {
 svg * {
 	pointer-events: auto;
 }
-[data-period]:not(.exists) * {
+[data-range]:not(.exists) * {
 	pointer-events: none;
 }
 g {
@@ -127,14 +127,15 @@ text {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	transition: opacity .3s;
 	z-index: 2;
-}
-#dialog:not(.open) * {
-	visibility: hidden; /* blur */
+	transition: opacity .3s, visibility .3s;
 }
 #dialog * {
 	transition: visibility .3s;
+}
+#dialog:not(.open),
+#dialog:not(.open) * { /* blur */
+	visibility: hidden;
 }
 #dialog::before { /* ::backdrop */
 	position: absolute;
