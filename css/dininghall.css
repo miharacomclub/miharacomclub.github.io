@@ -47,30 +47,35 @@
 	bottom: .2em;
 	content: "円";
 }
-[data-price] + dd {
+[data-price] + dd a {
 	position: absolute;
 	top: 100%;
 	left: 0;
 	width: 19em;
 	background-color: white;
 	box-shadow: 0 0 .5em black;
+	opacity: 0; /* tab */
+	pointer-events: none;
 }
-[data-price]:nth-of-type(n+9) + dd {
+[data-price]:nth-of-type(n+9) + dd a {
 	left: auto;
 	right: 0;
 }
-[data-price] + dd img {
-	width: 100%;
-	display: none;
-}
-[data-price]:hover + dd img,
-[data-price]:focus + dd img,
-dd img:hover,
-dd a:focus img {
+[data-price]:hover + dd a,
+[data-price]:focus + dd a,
+dd a:hover,
+dd a:focus {
 	display: block;
+	opacity: 1;
+	pointer-events: auto;
 }
-[data-price]:focus + dd img {
+[data-price]:focus + dd a,
+dd a:focus {
 	z-index: 1;
+}
+dd img {
+	display: block;
+	width: 100%;
 }
 .udon          {background-color: hsl(  0,65%,82%);}
 .udon:focus,
