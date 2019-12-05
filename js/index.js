@@ -24,8 +24,8 @@ const complementTimeElAttrs = (target = document) => {
 		timeEl.setAttribute("datetime", isoDateStr);
 
 		// [data-tooltip]内は、改行されないため短くする
-		timeEl.innerHTML  = timeEl.innerHTML.replace(/(.+年度?)([^度]+)/, "<dfn>$1</dfn>$2");
-		const tooltipedEl = $("dfn", timeEl) || timeEl;
+		timeEl.innerHTML  = timeEl.innerHTML.replace(/(.+年度?)([^度]+)/, "<span>$1</span>$2");
+		const tooltipedEl = $("span", timeEl) || timeEl;
 		const yearUnit    = `${jpDateStr}年`.match(/年度?/)[0];
 		tooltipedEl.dataset.tooltip = yearValue + yearUnit;
 	}
