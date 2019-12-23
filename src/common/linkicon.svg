@@ -8,8 +8,8 @@
 	}
 	]]></style>
 	<defs id="hover">
-		<rect id="rect" width="9.5" height="9" stroke-width="1.5" fill="white"/>
+		<rect id="part" width="9.5" height="9" stroke-width="1.5" fill="white"/>
 	</defs>
-	<use xlink:href="#rect" x="4.5" y="7.5"/>
-	<use xlink:href="#rect" x="9" y="3"/>
+	<use xlink:href="#part" x="4.5" y="7.5"/>
+	<use xlink:href="#part" x="9" y="3"/>
 </svg>

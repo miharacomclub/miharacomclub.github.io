@@ -45,21 +45,25 @@
 		<img data-range="2007" src="/src/buildings/2009.jpg" style="filter: contrast(.8)brightness(1.2)">
 
 		<svg viewBox="0 0 950 950">
-			<defs>
-				<path id="linkicon" d="M6,4 h-5 v11 h11 v-5  M8,1 h7 v7  M6.5,9.5 L14,2" transform="translate(3,3)" fill="none"/>
-			</defs>
 			<text x="178" y="122" id="title" font-weight="bold" text-anchor="middle">学校配置図</text>
 			<text x="178" y="158" id="year" font-weight="bold" text-anchor="middle"></text>
-
 			<a target="_blank" text-anchor="end">
 				<text x="837" y="809" id="dateTaken" class="large"></text>
 			</a>
-			<a target="_blank" text-anchor="end" transform="translate(820,820)">
-				<text y="17" id="citation"></text>
-				<rect width="20" height="20" fill="transparent"/>
-				<use xlink:href="#linkicon" stroke-width="5" stroke="white" stroke-linecap="square"/>
-				<use xlink:href="#linkicon" stroke-width="2" stroke="black"/>
+
+			<defs>
+				<rect id="part" width="9.5" height="9" fill="white"/>
+			</defs>
+			<symbol id="icon" viewbox="0 0 22 22">
+				<use xlink:href="#part" x="4.5" y="7.5"/>
+				<use xlink:href="#part" x="9" y="3"/>
+			</symbol>
+			<a target="_blank" text-anchor="end" transform="translate(837,837)"><!-- Edgeではsymbolにxywhを指定できない -->
+				<use class="linkicon" xlink:href="#icon" y="-17" width="22" height="22" stroke-width="4" stroke="white"/>
+				<use class="linkicon" xlink:href="#icon" y="-17" width="22" height="22" stroke-width="1.5"/>
+				<text id="citation"></text>
 			</a>
+
 			<g data-range=",1973" transform="translate(144 632)" data-img-name="shrine" data-captions="鳥居,拝殿" data-title="巌島神社（移築後）">
 				<path d="m0,0 l11,60 l56,-4 l53,19 l46,30 l75,15 l19,-88 l-143,-37 l-68,21z"/>
 				<text x="44" y="47" textLength="180">巌島神社境内</text>
