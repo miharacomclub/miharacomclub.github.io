@@ -24,9 +24,15 @@ a[href*="//"]::before {
 a[href*="//"]:hover::before {
 	background-image: url(/src/common/linkicon.svg#hover);
 }
-a[href$=".pdf"]::before {
+:root a[href$=".pdf"]::before {
 	background-image: url(/src/common/PDF_24.png);
 }
+:root a[href$=".mid"]::before {
+	background: none;
+	content: "♪";
+	text-align: center;
+}
+
 
 kbd,
 input,

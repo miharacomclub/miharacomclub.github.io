@@ -1,12 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 22 22" width="22" height="22">
 	<style type="text/css"><![CDATA[
-	:target #x {
+	use {
+		stroke: #00a;
+	}
+	:target ~ use {
 		stroke: green;
 	}
 	]]></style>
 	<defs id="hover">
-		<rect id="x" width="9.5" height="9" stroke-width="1.5" stroke="#00a" fill="white" />
+		<rect id="rect" width="9.5" height="9" stroke-width="1.5" fill="white"/>
 	</defs>
-	<use xlink:href="#x" x="4.5" y="7.5" />
-	<use xlink:href="#x" x="9" y="3" />
+	<use xlink:href="#rect" x="4.5" y="7.5"/>
+	<use xlink:href="#rect" x="9" y="3"/>
 </svg>
