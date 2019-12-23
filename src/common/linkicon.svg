@@ -1,3 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 22 22" width="22" height="22">
-	<path d="M6,4 h-5 v11 h11 v-5  M8,1 h7 v7  M6.5,9.5 L14,2" transform="translate(3,3)" stroke-width="2" stroke="black" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 22 22" width="22" height="22">
+	<style type="text/css"><![CDATA[
+	:target #x {
+		stroke: green;
+	}
+	]]></style>
+	<defs id="hover">
+		<rect id="x" width="9.5" height="9" stroke-width="1.5" stroke="#00a" fill="white" />
+	</defs>
+	<use xlink:href="#x" x="4.5" y="7.5" />
+	<use xlink:href="#x" x="9" y="3" />
 </svg>

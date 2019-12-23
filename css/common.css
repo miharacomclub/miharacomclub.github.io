@@ -14,16 +14,18 @@ a {
 a:hover {
 	color: green;
 }
-a[href*="//"]::after {
-	content: "　";
+a[href*="//"]::before {
 	display: inline-block;
-	width: 1em;
-	background: center/1.1em no-repeat url(/src/common/linkicon.svg);
+	width: .8em;
+	background: center/1em no-repeat url(/src/common/linkicon.svg);
+	content: "　";
+	padding: 0 .1em;
 }
-a[href$=".pdf"]::after {
-	width: 2em;
-	background-position: -3%, 103%;
-	background-image: url(/src/common/PDF_24.png), url(/src/common/linkicon.svg);
+a[href*="//"]:hover::before {
+	background-image: url(/src/common/linkicon.svg#hover);
+}
+a[href$=".pdf"]::before {
+	background-image: url(/src/common/PDF_24.png);
 }
 
 kbd,
@@ -91,27 +93,27 @@ blockquote footer {
 	text-align: right;
 }
 
-.listTable {
+.table {
 	display: table;
 }
-.listTable:not(.noBorder) {
+.table:not(.borderless) {
 	line-height: 2;
 	border-top: .06rem solid #ccc;
 }
-.listTable > div {
+.table > div {
 	display: table-row;
 }
-.listTable.hasHeader > div:first-child {
+.table.headered > div:first-child {
 	font-weight: bold;
 	text-align: center;
 }
-.listTable dt,
-.listTable dd {
+.table dt,
+.table dd {
 	display: table-cell;
 	vertical-align: middle;
 }
-.listTable:not(.noBorder) dt,
-.listTable:not(.noBorder) dd {
+.table:not(.borderless) dt,
+.table:not(.borderless) dd {
 	padding: 0 .25em;
 	border-bottom: .06rem solid #ccc;
 }
@@ -143,7 +145,7 @@ blockquote footer {
 .tabbable:focus + label {
 	box-shadow: 0 0 0 .06rem dodgerblue;
 }
-.enlargeable:hover * {
+a:hover img {
 	opacity: .5;
 }
 
