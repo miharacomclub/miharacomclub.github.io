@@ -16,21 +16,15 @@ a:hover {
 }
 a[href*="//"]::before {
 	display: inline-block;
-	width: .8em;
+	width: 1em;
 	background: center/1em no-repeat url(/src/common/linkicon.svg);
 	content: "　";
-	padding: 0 .1em;
 }
 a[href*="//"]:hover::before {
 	background-image: url(/src/common/linkicon.svg#hover);
 }
 :root a[href$=".pdf"]::before {
 	background-image: url(/src/common/PDF_24.png);
-}
-:root a[href$=".mid"]::before {
-	background: none;
-	content: "♪";
-	text-align: center;
 }
 
 kbd,

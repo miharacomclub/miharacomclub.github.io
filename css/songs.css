@@ -38,3 +38,9 @@ audio {
 	list-style-type: none;
 	margin-left: 1.5em;
 }
+
+:root a[href$=".mid"]::before {
+	background: none;
+	content: "♫";
+	text-align: center;
+}

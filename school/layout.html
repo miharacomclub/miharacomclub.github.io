@@ -26,7 +26,7 @@
 		<li>
 			<a target="_blank" href="https://www.hyogo-c.ed.jp/~mihara-hs/ga-kousya.html"
 			>過去の校舎</a>、<a target="_blank" href="http://fu-archi.com/%E6%B7%A1%E8%B7%AF%E4%B8%89%E5%8E%9F%E8%AC%9B%E7%BE%A9%E6%A3%9F"
-			>講義棟</a>、<a target="_blank" href="https://awajimihara-dosokai.jimdo.com/%E5%90%8C%E7%AA%93%E4%BC%9A%E9%A4%A8-%E9%BB%8E%E6%98%8E%E9%A4%A8/"
+			>講義棟</a>、<a target="_blank" href="https://awajimihara-dosokai.jimdofree.com/%E5%90%8C%E7%AA%93%E4%BC%9A%E9%A4%A8-%E9%BB%8E%E6%98%8E%E9%A4%A8/"
 			>黎明館</a>の写真がご覧になれます。
 		<li>
 			<a href="oldlayout/">以前の<cite>校舎の変遷</cite>はこちらです。</a>
@@ -54,14 +54,15 @@
 			<defs>
 				<rect id="part" width="9.5" height="9" fill="white"/>
 			</defs>
-			<symbol id="icon" viewbox="0 0 22 22">
-				<use xlink:href="#part" x="4.5" y="7.5"/>
-				<use xlink:href="#part" x="9" y="3"/>
+			<symbol id="symbolIcon" viewbox="0 0 22 22">
+				<use xlink:href="#part" x="9" y="4"/>
+				<use xlink:href="#part" x="4.5" y="8"/>
 			</symbol>
-			<a target="_blank" text-anchor="end" transform="translate(837,837)"><!-- Edgeではsymbolにxywhを指定できない -->
-				<use class="linkicon" xlink:href="#icon" y="-17" width="22" height="22" stroke-width="4" stroke="white"/>
-				<use class="linkicon" xlink:href="#icon" y="-17" width="22" height="22" stroke-width="1.5"/>
+			<a target="_blank" text-anchor="end" transform="translate(837 837)"><!-- Edgeではsymbolにxywhを指定できない -->
 				<text id="citation"></text>
+				<use  xlink:href="#symbolIcon" y="-17" width="22" height="22" stroke-width="4" stroke="white"/>
+				<use  xlink:href="#symbolIcon" y="-17" width="22" height="22" stroke-width="1.5" id="icon"/>
+				<rect y="-19" width="24" height="24" fill="transparent"/>
 			</a>
 
 			<g data-range=",1973" transform="translate(144 632)" data-img-name="shrine" data-captions="鳥居,拝殿" data-title="巌島神社（移築後）">
@@ -178,7 +179,7 @@
 			</g>
 			<g data-range="1980" transform="translate(157 544)" data-img-name="buildingD" data-captions="外観,中庭から見た外観,ロッカールーム（生徒昇降口）,昇降口棟2階" data-title="昇降口棟（D棟）">
 				<rect width="35" height="79"/>
-				<text x="18" y="1" letter-spacing="-1" writing-mode="vertical-rl">昇降口棟</text>
+				<text x="18" y="2" letter-spacing="-1.5" writing-mode="vertical-rl">昇降口棟</text>
 			</g>
 			<g data-range="1979,1980" transform="translate(162 508)">
 				<rect width="140" height="33"/>
@@ -243,7 +244,7 @@
 				<path d="m0,0 l210,107 l6,116 l-32,86 l-122,179 l-170,-51z"/>
 				<text x="-41" y="259" textLength="225" class="large">旧第一グラウンド</text>
 			</g>
-			<g data-range="1985" transform="translate(505,334)" data-img-name="ground1" data-captions="外観1,外観2,外観3,A棟廊下から見た外観">
+			<g data-range="1985" transform="translate(505 334)" data-img-name="ground1" data-captions="外観1,外観2,外観3,A棟廊下から見た外観">
 				<path d="m0,0 l-24,36 l-77,376 l117,36 l127,23 l98,-419z"/>
 				<text x="-42" y="225" textLength="220" class="large">第一グラウンド</text>
 			</g>
@@ -273,7 +274,7 @@
 				<text x="9" y="23">旧プール</text>
 			</g>
 			<g data-range="1979" transform="translate(375 141)" data-img-name="pool" data-captions="旧校地の門柱とプール">
-				<path d="m0,0 l10,77 l30,-4 l2,12 l61,-8 l-2,-12 l10,-1 l-11,-78z"/>
+				<path d="m0,0 l10,77 l30,-4 l2,12 l61,-8 l-2,-12 l11.5,-1.5 l-12.5,-78z"/>
 				<text x="23" y="45" textLength="68">プール</text>
 			</g>
 			<g data-range="1990" transform="translate(278 171)" data-img-name="ground3" data-captions="球技場">

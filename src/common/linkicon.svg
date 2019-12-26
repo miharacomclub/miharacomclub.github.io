@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewbox="0 0 22 22" width="22" height="22">
-	<style type="text/css"><![CDATA[
+	<style><![CDATA[
 	use {
 		stroke: #00a;
 	}
@@ -10,6 +10,6 @@
 	<defs id="hover">
 		<rect id="part" width="9.5" height="9" stroke-width="1.5" fill="white"/>
 	</defs>
-	<use xlink:href="#part" x="4.5" y="7.5"/>
-	<use xlink:href="#part" x="9" y="3"/>
+	<use xlink:href="#part" x="9" y="4"/>
+	<use xlink:href="#part" x="4.5" y="8"/>
 </svg>

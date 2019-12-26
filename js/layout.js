@@ -73,7 +73,7 @@ const updateLayout = () => {
 	$("#citation" ).textContent = `『${source[0]}』より作成`;
 	$("#dateTaken").parentNode.setAttributeNS("http://www.w3.org/1999/xlink", "href", photo.getAttribute("src"));
 	$("#citation" ).parentNode.setAttributeNS("http://www.w3.org/1999/xlink", "href", source[1]);
-	$$(".linkicon").forEach(icon => icon.setAttribute("x", $("#citation").getStartPositionOfChar(0).x - 15));
+	$$("#citation~*").forEach(icon => icon.setAttribute("x", $("#citation").getStartPositionOfChar(0).x - 19));
 };
 
 $("#yearSlider").addEventListener("input", updateLayout);

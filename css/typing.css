@@ -88,10 +88,14 @@
 .themeButtons button {
 	font-size: .9rem;
 	width: 9.5em;
-	padding: 0;
+	padding: 0 .5em;
+	box-sizing: border-box;
 	border: none;
 	margin: .15em 1em .15em 0;
 	outline: .06rem solid #aaa;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 	background-color: #eee;
 	line-height: 2;
 }

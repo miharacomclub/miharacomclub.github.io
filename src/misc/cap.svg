@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2920" height="1600">
-	<style type="text/css"><![CDATA[
+	<style><![CDATA[
 	g > :not(marker) { /* polyline */
 		fill: none;
 		transform: translateY(calc(var(--view-index) * 2000px - 400px))scaleY(-1);

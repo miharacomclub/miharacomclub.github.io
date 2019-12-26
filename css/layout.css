@@ -111,10 +111,10 @@ text {
 	font-size: 20px;
 	stroke-width: 2.5px;
 }
-.linkicon:not([stroke]) {
+#icon {
 	stroke: #00a;
 }
-a:hover .linkicon:not([stroke]) {
+a:hover #icon {
 	stroke: green;
 }
 
