@@ -157,7 +157,7 @@ const Game = (() => {
 		if (kbd.textContent === "Shift") {
 			$("#shiftIsPressed").checked = !$("#shiftIsPressed").checked;
 		} else {
-			const key = $("#shiftIsPressed").checked? kbd.dataset.onShift: kbd.textContent || kbd.id;
+			const key = ($("#shiftIsPressed").checked? kbd.dataset.onShift: kbd.textContent) || kbd.id;
 			if (!key || doDefault === onKeyDown(key)) return;
 		}
 		event.preventDefault();
