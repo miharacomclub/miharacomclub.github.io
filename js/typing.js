@@ -168,11 +168,10 @@ const Game = (() => {
 	document.addEventListener("mousedown",  event =>  event.button === 0 && onKbdPressed(event));
 	document.addEventListener("keyup",      event =>  $("#shiftIsPressed").checked = event.shiftKey);
 	document.addEventListener("keydown",    event => {$("#shiftIsPressed").checked = event.shiftKey;
-		event.ctrlKey
+		event.key === "Shift"
+		|| event.ctrlKey
 		|| event.metaKey
 		|| event.altKey
-		|| event.key === "Shift"
-		|| (event.shiftKey && event.key === "0")
 		|| $("#displaySelection").checked
 		|| doDefault === onKeyDown(event.key)
 		|| event.preventDefault();
