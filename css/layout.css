@@ -50,7 +50,9 @@
 	width: var(--width);
 	height: var(--width);
 }
-
+#layout img {
+	pointer-events: none;
+}
 [data-range]:not(.exists),
 #dialog:not(.open) {
 	opacity: 0;

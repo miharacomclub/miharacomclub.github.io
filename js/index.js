@@ -1,3 +1,4 @@
+window.addEventListener("touchstart", () => {}); // iOS Safariの:hoverを有効にする
 window.$  = (selector, target = document) => target.querySelector(selector);
 window.$$ = (selector, target = document) => [...target.querySelectorAll(selector)];
 
