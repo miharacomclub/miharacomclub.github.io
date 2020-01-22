@@ -256,6 +256,7 @@
 }
 #typingScreen header div {
 	width: 6.25em;
+	white-space: nowrap; /* Safari */
 }
 #typingScreen header div:first-child {
 	padding-left: .1em;

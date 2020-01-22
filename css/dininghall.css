@@ -36,6 +36,10 @@
 	-ms-writing-mode: lr-tb; /* IE */
 	writing-mode: horizontal-tb;
 	letter-spacing: 0;
+	/* Safari */
+	left: 0;
+	width: 100%;
+	text-align: center;
 }
 [data-price]::before {
 	font-size: .7em;
