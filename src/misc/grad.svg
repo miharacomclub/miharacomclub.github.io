@@ -71,8 +71,8 @@
 	</g>
 	<g color="darkcyan" style="--marker-url: url(#awaji)">
 		<marker id="awaji" markerUnits="userSpaceOnUse" markerWidth="28" markerHeight="28" viewBox="0 0 2 2" refX="1" refY="1"><use xlink:href="#marker"/></marker>
-		<polyline class="odd"  points="1350,273 1380,278 1410,274 1440,234 1470,230"/>
-		<polyline class="even" points="1335,275 1365,237 1395,269 1425,275 1455,231"/>
-		<polygon  class="area" points="1335,275 1350,273 1365,237 1380,278 1395,269 1410,274 1425,275 1440,234 1455,231 1470,230     1470,0 1335,0 1320,158"/>
+		<polyline class="odd"  points="1350,273 1380,278 1410,267 1440,231 1470,230"/>
+		<polyline class="even" points="1335,275 1365,237 1395,269 1425,275 1455,230"/>
+		<polygon  class="area" points="1335,275 1350,273 1365,237 1380,278 1395,269 1410,267 1425,275 1440,231 1455,230 1470,230     1470,0 1335,0 1320,158"/>
 	</g>
 </svg>

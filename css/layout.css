@@ -22,7 +22,6 @@
 	margin: calc(var(--additional-width) * -1);
 	margin-left: calc(var(--left-offset, -.6em) - var(--additional-width));
 	--additional-width: .5em;
-	opacity: 0; /* FOUC */
 }
 @media (max-width:800px) {
 	#layout {
@@ -120,12 +119,6 @@ a:hover #icon {
 	stroke: green;
 }
 
-#dialog,
-#close {
-	padding: 0;
-	border: none;
-	background-color: transparent;
-}
 #dialog {
 	position: fixed;
 	top: 0;
@@ -180,6 +173,8 @@ a:hover #icon {
 	top: .8em;
 	right: .8em;
 	padding: .1em;
+	border: none;
+	background-color: transparent;
 	line-height: 1;
 	font-weight: bold;
 	cursor: pointer;

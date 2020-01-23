@@ -40,6 +40,7 @@ document.addEventListener("click", event => {
 	// スライドが2枚のとき、ボタンが足らなくなるので増やす
 	if ($$("#btns label").length === 2) $("#btns").innerHTML += $("#btns").innerHTML;
 
+	$("#dialog").style.left = "";
 	$("#dialog").classList.add("open");
 	openImgInNewTabOnClick($("#slider"));
 });
@@ -79,4 +80,3 @@ const updateLayout = () => {
 $("#yearSlider").addEventListener("input", updateLayout);
 updateLayout();
 $("#layout").style.opacity = 1;
-$("#dialog").style.display = "";
