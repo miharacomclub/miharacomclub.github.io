@@ -12,7 +12,7 @@ body {
 	counter-reset: qCnt rightCnt;
 	transform: translateZ(0); /* Safari */
 }
-:checked ~ input, /* focusを解除する（blur） */
+:checked ~ input, /* focusを解除する(blur) */
 section:not(:target) {
 	position: absolute;
 	visibility: hidden; /* display:noneにするとcounterが動かない */

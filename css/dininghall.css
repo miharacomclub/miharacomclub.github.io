@@ -1,6 +1,5 @@
 ins {
 	text-decoration: none;
-	font-size: 1.03em;
 }
 #menu,
 [data-price] {
@@ -62,7 +61,7 @@ ins {
 	width: 19em;
 	background-color: white;
 	box-shadow: 0 0 .5em black;
-	opacity: 0; /* tab */
+	opacity: 0; /* tabbable */
 	pointer-events: none;
 }
 [data-price]:nth-of-type(n+9) + dd a {
