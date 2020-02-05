@@ -58,11 +58,16 @@ const parseJpDateStr = jpDateStr => {
 };
 
 
+openImgInNewTabOnClick();
+complementTimeElAttrs();
+
+
 for (const iframe of $$(`iframe:not([src*="."])`)) {
 	iframe.addEventListener("load", () => {
 		openImgInNewTabOnClick(iframe.contentDocument);
 		complementTimeElAttrs(iframe.contentDocument);
 	});
 }
-openImgInNewTabOnClick();
-complementTimeElAttrs();
+for (const tooltip of $$("[data-tooltip]")) {
+	tooltip.insertAdjacentElement("beforebegin", document.createElement("wbr"));
+}
