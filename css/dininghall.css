@@ -20,7 +20,6 @@ ins {
 	border-width: .75em 0;
 	flex: auto;
 	align-items: center;
-	-ms-writing-mode: tb-rl; /* IE */
 	writing-mode: vertical-rl;
 	letter-spacing: .15em;
 	line-height: 1;
@@ -36,7 +35,6 @@ ins {
 [data-price]::before,
 [data-price]::after {
 	position: absolute;
-	-ms-writing-mode: lr-tb; /* IE */
 	writing-mode: horizontal-tb;
 	letter-spacing: 0;
 	/* Safari */

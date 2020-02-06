@@ -1,2 +1,4 @@
-/trident/i.test(navigator.userAgent) && (function(script) {script.outerHTML = '<style>.notIE {display: none !important;}</style><p style="font-weight:bold">現在お使いのブラウザでは' + (script.dataset.level === "1"? "、一部の機能が": "") +
-'ご利用になれません。<br><a target="_blank" href="https://www.google.com/intl/ja_ALL/chrome/">Google Chrome</a>や、<a target="_blank" href="https://www.mozilla.org/ja/firefox/new/">Firefox</a>などのブラウザをお使いください。</p>'})(document.querySelector("script[src*='/IE.js']"));
+if (/trident/i.test(navigator.userAgent)) setTimeout(function() {document.getElementsByTagName("h2")[0].outerHTML +=
+'<p style="font-weight:bold;background:lavender;padding:1em;">現在お使いのブラウザでは、一部機能がご利用になれません。<br>' +
+'<a target="_blank" href="https://www.google.com/intl/ja_ALL/chrome/">Google Chrome</a>や、' +
+'<a target="_blank" href="https://www.mozilla.org/ja/firefox/new/" style="white-space:nowrap">Firefox</a>などのブラウザをお使いください。</p>'}, 1);

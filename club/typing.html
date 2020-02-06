@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/css/style.css">
 <script src="/js/index.js" type="module"></script>
+<script src="/js/IE.js" async defer></script>
 
 <title>タイピングゲーム｜淡路三原高校コンピュータ部</title>
 <link rel="stylesheet" href="/css/typing.css">
@@ -121,18 +122,17 @@
 	<section class="frame">
 		<div>
 			<h3>タイピングゲームについて</h3>
-			<script src="/js/IE.js" async></script>
 			<p>
 				キーの入力と同時にゲームが開始します。<br
 				>ゲーム終了時にスコアとランクが表示されます。
 			</p>
 			<p>
-				このゲームの特殊キーです。<wbr>
+				このゲームの特殊キーです。
 				<kbd  tabindex="0" data-pseudo-key="Tab"   data-caption="ゲーム開始前に押すと、残りの文の数を変更できるようになります。">Tab</kbd
 				><kbd tabindex="0" data-pseudo-key="Shift" data-caption="このキーを押しながらお題を選ぶと、読み仮名などが非表示になります。">Shift</kbd>
 			</p>
 		</div>
-		<ol id="rankList" class="notIE" data-caption="正誤率が97%のときに必要な打鍵速度です。">
+		<ol id="rankList" data-caption="正誤率が97%のときに必要な打鍵速度です。">
 			<li style="color:transparent">
 			<li style="--required-score:900;color:purple"    >Cheater
 			<li style="--required-score:850;color:navy"      >Tachyon
