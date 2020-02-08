@@ -27,16 +27,16 @@ const complementTimeElAttrs = (target = document) => {
 		// [data-tooltip]内は、改行されないため短くする
 		timeEl.innerHTML  = timeEl.innerHTML.replace(/(.+年度?)([^度]+)/, "<span>$1</span>$2");
 		const tooltipedEl = $("span", timeEl) || timeEl;
-		const yearUnit    = `${jpDateStr}年`.match(/年度?/)[0];
-		tooltipedEl.dataset.tooltip = yearValue + yearUnit;
+		tooltipedEl.dataset.tooltip = yearValue;
 	}
 };
 
 
-const parseJpDateStr = jpDateStr => {
+window.parseJpDateStr = jpDateStr => {
 	const eraNames     = "令和,平成,昭和,大正,明治,天明".split(",");
 	const zerothYears  = [2018,1988,1925,1911,1867,1780];
 	const splitIntoYmd = dateStr => dateStr.split(/年度?|月|日/).filter(v => v);
+	const yearUnit     = `${jpDateStr}年`.match(/年度?/)[0];
 
 	if (+jpDateStr[0]) {
 		const ymd      = splitIntoYmd(jpDateStr).map(v => +v);
@@ -44,7 +44,7 @@ const parseJpDateStr = jpDateStr => {
 
 		let jpYear = ymd[0] - zerothYears[eraIndex];
 		if (jpYear === 1) jpYear = "元";
-		return [ymd, eraNames[eraIndex] + jpYear];
+		return [ymd, eraNames[eraIndex] + jpYear + yearUnit];
 	}
 
 	// 二十三 → (2)1?0(3) → 23
@@ -54,7 +54,7 @@ const parseJpDateStr = jpDateStr => {
 	);
 	const eraIndex = eraNames.indexOf(jpDateStr.slice(0, 2));
 	ymd[0] += zerothYears[eraIndex];
-	return [ymd, ymd[0]];
+	return [ymd, ymd[0] + yearUnit];
 };
 
 

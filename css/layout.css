@@ -37,7 +37,7 @@
 	box-shadow: var(--shadow), var(--shadow), var(--shadow);
 }
 #fade:checked ~ #layout [data-range],
-#fade:checked ~ #layout g * {
+#fade:checked ~ #layout [data-range] * {
 	transition: opacity .3s linear var(--additional-rule, 0s);
 }
 #layout img,
@@ -105,17 +105,29 @@ text {
 	font-size: 35px;
 	stroke-width: 6px;
 }
+.jp,
+#year:hover  .ad,
+#year:hover  ~ * .ad,
+#title:hover ~ * .ad {
+	display: none;
+}
+#year:hover  .jp,
+#year:hover  ~ * .jp,
+#title:hover ~ * .jp{
+	display: block;
+}
 #dateTaken {
+	font-size: 24px;
 	stroke-width: 4px;
 }
 #citation {
 	font-size: 20px;
 	stroke-width: 2.5px;
 }
-#icon {
+#linkicon {
 	stroke: #00a;
 }
-a:hover #icon {
+a:hover #linkicon {
 	stroke: green;
 }
 

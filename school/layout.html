@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/css/style.css">
 <script src="/js/index.js" type="module"></script>
-<script src="/js/IE.js" async defer></script>
+<script src="/js/IE.js" defer></script>
 
 <title>校舎の変遷｜淡路三原高校コンピュータ部</title>
 <link rel="preload" href="/src/buildings/2009.jpg" as="image">
@@ -44,21 +44,21 @@
 		<svg viewBox="0 0 950 950">
 			<text x="178" y="122" id="title" font-weight="bold" text-anchor="middle">学校配置図</text>
 			<text x="178" y="158" id="year" font-weight="bold" text-anchor="middle"></text>
-			<a target="_blank" text-anchor="end">
-				<text x="837" y="809" id="dateTaken" class="large"></text>
-			</a>
 
+			<a target="_blank">
+				<text x="840" y="810" text-anchor="end" id="dateTaken"></text>
+			</a>
 			<defs>
 				<rect id="part" width="9.5" height="9" fill="white"/>
+				<symbol id="symbol" viewbox="0 0 22 22"><!--Edgeではsymbolにxywhを指定できない-->
+					<use xlink:href="#part" x="9" y="4"/>
+					<use xlink:href="#part" x="4.5" y="8"/>
+				</symbol>
 			</defs>
-			<symbol id="symbolIcon" viewbox="0 0 22 22">
-				<use xlink:href="#part" x="9" y="4"/>
-				<use xlink:href="#part" x="4.5" y="8"/>
-			</symbol>
-			<a target="_blank" text-anchor="end" transform="translate(837 837)"><!-- Edgeではsymbolにxywhを指定できない -->
+			<a target="_blank" text-anchor="end" transform="translate(840 837)">
 				<text id="citation"></text>
-				<use  xlink:href="#symbolIcon" y="-17" width="22" height="22" stroke-width="4" stroke="white"/>
-				<use  xlink:href="#symbolIcon" y="-17" width="22" height="22" stroke-width="1.5" id="icon"/>
+				<use  xlink:href="#symbol" y="-17" width="22" height="22" stroke-width="4" stroke="white"/>
+				<use  xlink:href="#symbol" y="-17" width="22" height="22" stroke-width="1.5" id="linkicon"/>
 				<rect y="-19" width="24" height="24" fill="transparent"/>
 			</a>
 
@@ -253,8 +253,14 @@
 				<path d="m0,0 l9,54 l-12,84 l251,55 l28,-130z"/>
 				<text x="20" y="108" textLength="230" class="large">第二グラウンド</text>
 			</g>
+
+			<mask id="mask"><!--<use>を用いるとpointer-events:noneが反映されない-->
+				<rect x="-99" y="-99" width="999" height="999" fill="white"/>
+				<rect transform="translate(-278 -171)" x="409" y="277" width="78" height="32"/>
+				<path transform="translate(-278 -171)" data-range="1979" d="m375,141 l10,77 l30,-4 l2,12 l61,-8 l-2,-12 l11.5,-1.5 l-12.5,-78z"/>
+			</mask>
 			<g data-range="1958,1984" transform="translate(278 171)">
-				<path d="m0,0 l27,153 l180,-2 l13,-56 l-23,-140 l-131,19 l1,11 l-30,10z"/>
+				<path mask="url(#mask)" d="m0,0 l27,153 l180,-2 l13,-56 l-23,-140 l-131,19 l1,11 l-30,10z"/>
 				<text x="55" y="80" textLength="120" class="large">球技場</text>
 			</g>
 			<g data-range="1984,1990" transform="translate(278 171)">

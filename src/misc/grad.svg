@@ -26,12 +26,12 @@
 
 	<defs>
 		<circle id="marker" cx="1" cy="1" r="0.95" stroke-width="0.1" stroke="white" fill="currentColor"/>
-		<polygon id="area_sumoto" points="465,19 480,25 495,53 510,83 525,75 540,64 555,45 570,58 585,44 600,95 615,78 630,90 645,69 660,57 675,116 690,131 705,139 720,139 735,129 750,240 765,132 780,133 795,127 810,125    825,0 450,0"/>
-		<polygon id="area_shichi" points="825,129 840,128 855,125 870,163 885,168 900,172 915,169 930,172 945,165 960,169 975,165 990,171 1005,176 1020,168 1035,167 1050,181 1065,174 1080,179 1095,168 1110,152 1125,150 1140,156 1155,115 1170,154 1185,119 1200,115 1215,114 1230,152 1245,157 1260,118 1275,117 1290,119 1305,107 1320,110    1335,0 825,0 810,125"/>
+		<polygon id="areaSumoto" points="465,19 480,25 495,53 510,83 525,75 540,64 555,45 570,58 585,44 600,95 615,78 630,90 645,69 660,57 675,116 690,131 705,139 720,139 735,129 750,240 765,132 780,133 795,127 810,125    825,0 450,0"/>
+		<polygon id="areaShichi" points="825,129 840,128 855,125 870,163 885,168 900,172 915,169 930,172 945,165 960,169 975,165 990,171 1005,176 1020,168 1035,167 1050,181 1065,174 1080,179 1095,168 1110,152 1125,150 1140,156 1155,115 1170,154 1185,119 1200,115 1215,114 1230,152 1245,157 1260,118 1275,117 1290,119 1305,107 1320,110    1335,0 825,0 810,125"/>
 		<mask id="miharaMask">
 			<rect x="0" y="0" width="1500" height="600" fill="white"/>
-			<use xlink:href="#area_sumoto"/>
-			<use xlink:href="#area_shichi"/>
+			<use xlink:href="#areaSumoto"/>
+			<use xlink:href="#areaShichi"/>
 		</mask>
 	</defs>
 
@@ -61,13 +61,13 @@
 		<marker id="sumoto" markerUnits="userSpaceOnUse" markerWidth="28" markerHeight="28" viewBox="0 0 2 2" refX="1" refY="1"><use xlink:href="#marker"/></marker>
 		<polyline class="odd"  points="480,25 510,83 540,64 570,58 600,95 630,90 660,57 690,131 720,139 750,240 780,133 810,125"/>
 		<polyline class="even" points="465,19 495,53 525,75 555,45 585,44 615,78 645,69 675,116 705,139 735,129 765,132 795,127"/>
-		<use class="area" xlink:href="#area_sumoto"/>
+		<use class="area" xlink:href="#areaSumoto"/>
 	</g>
 	<g color="limegreen" style="--marker-url: url(#shichi)">
 		<marker id="shichi" markerUnits="userSpaceOnUse" markerWidth="28" markerHeight="28" viewBox="0 0 2 2" refX="1" refY="1"><use xlink:href="#marker"/></marker>
 		<polyline class="odd"  points="840,128 870,163 900,172 930,172 960,169 990,171 1020,168 1050,181 1080,179 1110,152 1140,156 1170,154 1200,115 1230,152 1260,118 1290,119 1320,110"/>
 		<polyline class="even" points="825,129 855,125 885,168 915,169 945,165 975,165 1005,176 1035,167 1065,174 1095,168 1125,150 1155,115 1185,119 1215,114 1245,157 1275,117 1305,107"/>
-		<use class="area" xlink:href="#area_shichi"/>
+		<use class="area" xlink:href="#areaShichi"/>
 	</g>
 	<g color="darkcyan" style="--marker-url: url(#awaji)">
 		<marker id="awaji" markerUnits="userSpaceOnUse" markerWidth="28" markerHeight="28" viewBox="0 0 2 2" refX="1" refY="1"><use xlink:href="#marker"/></marker>
