@@ -2,7 +2,7 @@ html {
 	overflow-y: scroll;
 	background-color: rgba(0,80,56,.1);
 }
-@media (max-width:468px) {
+@media (max-width:468px) { /* 26em */
 	html {
 		font-size: 3.84vw;
 	}
@@ -13,7 +13,7 @@ body {
 }
 @media (max-width:800px) {
 	body {
-		width: 25em;
+		width: 25.3em;
 	}
 	p br {
 		display: none;
@@ -91,11 +91,11 @@ h3, h4 {
 	opacity: .5;
 }
 #article {
-	margin: 1.5em 1.25em 0 2.75em;
+	margin: 1.5em 1.25em 0 2.75em; /* 39em */
 }
 @media (max-width:800px) {
 	#article {
-		margin: 1em .65em 0 .85em;
+		margin: 1em .65em 0 .65em; /* 24em */
 	}
 }
 #footer {

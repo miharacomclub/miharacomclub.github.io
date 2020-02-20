@@ -10,17 +10,17 @@
 #mapWrapper::before {
 	padding-top: 100%;
 }
-#pages {
+#school {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
 }
-#pages::after,
-#pages h3 {
+#school::after,
+#school h3 {
 	width: 100%;
 }
-#pages ul {
+#school ul {
 	margin: 0;
 }
 #slideshow {
@@ -28,15 +28,18 @@
 	margin: 1em;
 }
 #slideshow::before {
-	padding-top: 75%;
+	padding-top: calc(2 / 3 * 100%);
 }
 #slideshow a {
+	overflow: hidden;
 	visibility: hidden;
 	animation: slideshow 25s infinite;
 	box-shadow: .3em .3em 1em #555;
 }
 #slideshow img {
-	height: 100%;
+	position: relative;
+	top: -8%;
+	width: 100%;
 	opacity: 1;
 }
 @keyframes slideshow {
@@ -88,7 +91,7 @@
 	</a>
 </section>
 
-<section id="pages">
+<section id="school">
 	<h3>淡路三原高校に関するページ</h3>
 	<ul>
 		<li><a href="layout">校舎の変遷</a>

@@ -90,6 +90,9 @@ blockquote footer {
 	text-align: right;
 }
 
+.nowrap {
+	display: inline-block;
+}
 .table {
 	display: table;
 }
@@ -142,6 +145,7 @@ blockquote footer {
 .tabbable:focus + label {
 	box-shadow: 0 0 0 .06rem dodgerblue;
 }
+
 a:hover img {
 	opacity: .5;
 }

@@ -172,7 +172,7 @@ a:not([href]),
 	position: absolute;
 	bottom: -.1em;
 	right: 0;
-	background-color: white;
+	background-color: #fbfbfb;
 	display: none;
 }
 :checked ~ .enlargeable,

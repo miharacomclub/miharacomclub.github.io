@@ -57,7 +57,7 @@ ins {
 	top: 100%;
 	left: 0;
 	width: 19em;
-	background-color: white;
+	background-color: #fbfbfb;
 	box-shadow: 0 0 .5em black;
 	opacity: 0; /* tabbable */
 	pointer-events: none;
