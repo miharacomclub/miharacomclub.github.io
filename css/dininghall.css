@@ -1,13 +1,17 @@
 ins {
 	text-decoration: none;
 }
+ins p {
+	background-color: lavender;
+	padding: 1em;
+}
 #menu,
 [data-price] {
 	display: flex;
 	position: relative;
 }
 #menu {
-	width: 22.5em;
+	width: 23em;
 	padding: 0;
 	border: .5em solid sienna;
 	margin: 0;

@@ -172,7 +172,7 @@ a:hover #linkicon {
 }
 @media (max-width:800px) {
 	#dialog section {
-		width: 23em;
+		width: 24em;
 	}
 }
 
@@ -193,9 +193,4 @@ a:hover #linkicon {
 }
 #close:hover {
 	color: green;
-}
-[name="slide"],
-#slider figure img,
-#btns {
-	height: 14em;
 }
