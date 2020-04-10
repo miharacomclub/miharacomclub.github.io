@@ -62,8 +62,14 @@ openImgInNewTabOnClick();
 complementTimeElAttrs();
 
 
+
+const isIframeSameOrigin = iframe => {
+	try {return iframe.contentDocument} catch(e){}
+};
+
 for (const iframe of $$(`iframe:not([src*="."])`)) {
 	iframe.addEventListener("load", () => {
+		if (!isIframeSameOrigin(iframe)) return;
 		openImgInNewTabOnClick(iframe.contentDocument);
 		complementTimeElAttrs(iframe.contentDocument);
 	});
@@ -71,3 +77,6 @@ for (const iframe of $$(`iframe:not([src*="."])`)) {
 for (const tooltip of $$("[data-tooltip]")) {
 	tooltip.insertAdjacentElement("beforebegin", document.createElement("wbr"));
 }
+
+
+window.mailform && mailform.contentWindow.addEventListener("submit", () => {$("address").classList.add("submited")});
