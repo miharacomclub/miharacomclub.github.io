@@ -1,9 +1,11 @@
 html {
 	font: 18px/1.7 Arial,sans-serif;
+	--bg-white: #fbfbfb;
 }
 body {
 	-webkit-text-size-adjust: 100%;
-	background-color: #fbfbfb;
+	background: white\0; /* IE */
+	background: var(--bg-white);
 	margin: 0;
 }
 
@@ -159,7 +161,7 @@ a:hover img {
 	width: 100%;
 	height: 100%;
 	pointer-events: none;
-	background-color: #fbfbfb;
+	background-color: var(--bg-white);
 	opacity: .5;
 	content: "";
 }

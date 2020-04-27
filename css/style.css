@@ -133,3 +133,9 @@ h3, h4 {
 		vertical-align: text-top;
 	}
 }
+
+.warning {
+	padding: 1em;
+	background-color: lavender;
+	font-weight: bold;
+}

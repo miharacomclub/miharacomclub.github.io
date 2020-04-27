@@ -122,7 +122,7 @@
 	position: absolute;
 	height: 1em;
 	padding: .1em;
-	background-color: #fbfbfb;
+	background-color: var(--bg-white);
 }
 #years ::after,
 #columns ::after {

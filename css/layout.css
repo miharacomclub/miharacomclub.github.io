@@ -33,7 +33,7 @@
 	padding-top: 100%;
 	z-index: 1;
 	pointer-events: none;
-	--shadow: 0 0 .7em #fbfbfb inset;
+	--shadow: 0 0 .7em var(--bg-white) inset;
 	box-shadow: var(--shadow), var(--shadow), var(--shadow);
 }
 #fade:checked ~ #layout [data-range],
@@ -168,7 +168,7 @@ a:hover #linkicon {
 	padding: .75em;
 	margin: 0;
 	overflow: auto;
-	background-color: #fbfbfb;
+	background-color: var(--bg-white);
 }
 @media (max-width:800px) {
 	#dialog section {

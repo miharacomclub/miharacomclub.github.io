@@ -95,7 +95,7 @@ small {
 	border-bottom: 9em solid transparent;
 	table-layout: fixed;
 	cursor: auto;
-	background-color: #fbfbfb;
+	background-color: var(--bg-white);
 	display: none;
 }
 :checked ~ :focus-within small {display: table} /* Edgeは対応していない */
@@ -172,7 +172,7 @@ a:not([href]),
 	position: absolute;
 	bottom: -.1em;
 	right: 0;
-	background-color: #fbfbfb;
+	background-color: var(--bg-white);
 	display: none;
 }
 :checked ~ .enlargeable,
