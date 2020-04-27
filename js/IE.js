@@ -9,12 +9,11 @@ if (/trident/i.test(navigator.userAgent)) {
 		'</p>';
 }
 
-if (new Date() < new Date('2020/10/1')) {
-	if (location.search.indexOf("from=webcrow") > -1 || h2.textContent === 'トップページ') {
+if (new Date() < new Date('2020/7/1')) {
+	if (location.search.indexOf("from=webcrow") > -1) {
 		h2.outerHTML +=
 			'<p class="warning">' +
-				'<time datetime="2020-09-30">2020年9月30日</time>に、旧URL（http://miharacomb.webcrow.jp）から<br>' +
-				'現URL（https://miharacomclub.github.io）へのリダイレクトを終了します。' +
+				'<time datetime="2020-06-30">2020年6月30日</time>をもって、旧URLのリダイレクトを終了します。' +
 			'</p>';
 	}
 }
