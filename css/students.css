@@ -5,7 +5,7 @@
 	--unit: calc((39rem - var(--y-axis-space)) / 99);
 }
 #cap  {--n-max: 72;}
-#grad {--n-max: 99;}
+#grad {--n-max: 100;}
 
 @media (max-width:800px) {
 	.graph {
@@ -30,14 +30,10 @@
 .graph .fixedAspectRatio::before {
 	padding-top: calc(40 * var(--unit)); /* 1600 / 40 = 600 / 15 */
 }
-.graph ol {
-	padding: 0;
-	margin: 0;
-	list-style-type: none;
-}
 
 .hLines,
 .vLines {
+	font-size: .9em;
 	display: flex;
 	justify-content: space-between;
 }
@@ -60,11 +56,7 @@
 .hLines *,
 .vLines * {
 	position: relative;
-	font-size: .9em;
-	border: 0 solid #aaa;
 }
-.hLines * {border-bottom-width: .06rem;}
-.vLines * {border-left-width: .06rem;}
 
 .hLines :not(:first-child),
 .vLines :not(:first-child) {
@@ -84,34 +76,26 @@
 	left: calc(-1em - .06rem);
 }
 
-.graph .columns {
-	display: flex;
-	background: center/cover;
-	margin-left: calc(var(--unit) / -2); /* markerがはみ出ないようにする */
+.graph ol {
+	padding: 0 calc(var(--unit)/2);
+	margin: 0;
+	list-style-type: none;
 }
-.columns * {
-	font-size: .9em;
-	position: relative;
-	flex: auto;
+.columns {
+	display: flex;
 	cursor: pointer;
-	background: calc((var(--n) - 1) / (var(--n-max) - 1) * 100%)/cover;
+	overflow: hidden;
+}
+.columns li {
+	font-size: .9em;
+	flex: auto;
 }
 #grad .columns :first-child {
 	pointer-events: none;
 }
-.columns :hover {
-	padding: 0 calc(var(--unit) / 2);
-	margin: 0 calc(var(--unit) / -2);
-}
-#cap  .columns {background-image: url(/src/misc/cap.svg#lines);}
-#grad .columns {background-image: url(/src/misc/grad.svg#areas);}
-#cap  .columns :nth-child(odd ):hover {background-image: url(/src/misc/cap.svg#odd);}
-#cap  .columns :nth-child(even):hover {background-image: url(/src/misc/cap.svg#even);}
-#grad .columns :nth-child(odd ):hover {background-image: url(/src/misc/grad.svg#odd);}
-#grad .columns :nth-child(even):hover {background-image: url(/src/misc/grad.svg#even);}
 
-.columns ::before,
-.columns ::after {
+.columns :hover::before,
+.columns :hover::after {
 	position: absolute;
 	top: calc(50% - 4em);
 	left: 1.5em;
@@ -121,19 +105,20 @@
 	pointer-events: none;
 	white-space: pre;
 	line-height: .4;
+	z-index: 1;
 }
-#cap  .columns :nth-child(n+32)::before,
-#cap  .columns :nth-child(n+32)::after,
-#grad .columns :nth-child(n+47)::before,
-#grad .columns :nth-child(n+47)::after {
-	left: -12em;
+#cap  .columns :hover:nth-child(n+35)::before,
+#cap  .columns :hover:nth-child(n+35)::after,
+#grad .columns :hover:nth-child(n+50)::before,
+#grad .columns :hover:nth-child(n+50)::after {
+	left: -12.5em;
 }
-.columns ::before {
+.columns :hover::before {
 	border-radius: 1em;
 	background-color: rgba(255,255,255,.9);
-	box-shadow: .2em .2em 1em #555;
+	box-shadow: .2em .2em .7em #555;
 }
-.columns ::after {
+.columns :hover::after {
 	text-align: right;
 }
 
@@ -253,4 +238,70 @@
 	--data-3-name: "真如高等女学校";
 	--data-4-name: "";
 	--border-color: lightsalmon;
+}
+
+
+#cap .columns {
+	background: url(/src/misc/cap.svg) center/contain;
+}
+#grad .columns {
+	background: url(/src/misc/grad.svg) center/contain;
+}
+.columns li:hover {
+	position: relative;
+	background-color: white;
+	box-shadow: 0 0 0 calc(var(--unit) / 2) white;
+}
+
+
+.columns li:last-child {
+	position: absolute;
+	right: calc(var(--unit) / -2);
+	top: 0;
+	height: 100%;
+	width: var(--unit);
+	pointer-events: none;
+}
+.columns li:last-child::before,
+.columns li:last-child::after {
+	width: calc(var(--unit) * (var(--n-max) + 1)) !important;
+	left: auto !important;
+	right: calc(var(--unit) / 2) !important;
+}
+
+
+.columns li:hover + li {
+	box-shadow: calc(var(--unit) * -1.52) 0, calc(var(--unit) * -.75) 0;
+	background: linear-gradient(to right, black 51%, white 51%);
+	mix-blend-mode: darken;
+}
+.columns li:hover + li::before,
+.columns li:hover + li::after {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	content: "";
+}
+.columns li:hover + li::before {
+	mix-blend-mode: darken;
+	background-color: white;
+}
+.columns li:hover + li::after {
+	background: center/contain;
+	background-color: var(--bg-white);
+	mix-blend-mode: screen;
+}
+#cap  .columns li:nth-child(odd):hover  + li::after {background-image: url(/src/misc/cap.svg#odd);}
+#cap  .columns li:nth-child(even):hover + li::after {background-image: url(/src/misc/cap.svg#even);}
+#grad .columns li:nth-child(odd):hover  + li::after {background-image: url(/src/misc/grad.svg#odd);}
+#grad .columns li:nth-child(even):hover + li::after {background-image: url(/src/misc/grad.svg#even);}
+
+@supports not (vector-effect: non-scaling-stroke) {
+	.columns {
+		display: none;
+	}
 }
