@@ -9,11 +9,11 @@ if (/trident/i.test(navigator.userAgent) || (!CSS.supports("(vector-effect: non-
 		'</p>';
 }
 
-if (new Date() < new Date('2020/7/1')) {
+if (new Date() < new Date('2020/10/1')) {
 	if (/from=webcrow/.test(location.search) || h2.textContent === 'トップページ') {
 		h2.outerHTML +=
 			'<p class="warning">' +
-				'<time>2020年6月30日</time>をもって、' +
+				'<time>2020年9月30日</time>をもって、' +
 				'<span data-tooltip="miharacomb.webcrow.jp">旧URL</span>のリダイレクトを終了します。' +
 			'</p>';
 	}
