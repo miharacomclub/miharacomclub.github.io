@@ -209,7 +209,7 @@
 	direction: rtl;
 }
 
-[data-caption=""]::before,
+#selectionScreen::before,
 [data-caption]:hover::before,
 [data-caption]:focus::before {
 	font-size: 1rem;
@@ -232,8 +232,12 @@
 	z-index: 1;
 	background-color: var(--bg-white);
 }
-[data-caption=""]::before {
+[data-caption]:hover::before {
 	z-index: 2;
+	background-color: var(--bg-white);
+}
+#selectionScreen::before {
+	z-index: 3;
 	outline: .06rem solid black;
 	outline-offset: -.06rem;
 }

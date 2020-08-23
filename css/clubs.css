@@ -14,7 +14,7 @@
 	overflow: hidden;
 	line-height: 1;
 	margin-top: .5em;
-	--unit: calc(100% / (119 - 44 + 1));
+	--unit: calc(100% / (120 - 44 + 1));
 }
 #clubs ol {
 	padding: 0;
@@ -82,12 +82,17 @@
 	vertical-align: top;
 }
 #media,
-#science {
+#natural {
 	border-top: .7em solid transparent;
 	--top: .8em;
 	z-index: 1;
 	direction: rtl;
-	line-height: 1.1;
+	line-height: 2.2;
+}
+@media (max-width:800px) {
+	#science {
+		line-height: 2.6;
+	}
 }
 
 #years,
@@ -102,7 +107,7 @@
 }
 #years {
 	left: calc(-9 * var(--unit));
-	width: calc(80 * var(--unit));
+	width: calc(90 * var(--unit));
 	pointer-events: none;
 	counter-reset: tickValue 1930;
 }
@@ -130,7 +135,7 @@
 }
 #years ::before,
 #years ::after {
-	left: 0;
+	left: -.15em;
 	width: 100%;
 	text-align: center;
 	content: counter(tickValue);

@@ -271,8 +271,9 @@
 
 
 .columns li:hover + li {
-	box-shadow: calc(var(--unit) * -1.52) 0, calc(var(--unit) * -.75) 0;
+	box-shadow: calc(var(--unit) * -1.52) 0, calc(var(--unit) * -0.75) 0;
 	background: linear-gradient(to right, black 51%, white 51%);
+	background-color: black;
 	mix-blend-mode: darken;
 }
 .columns li:hover + li::before,
@@ -293,7 +294,8 @@
 .columns li:hover + li::after {
 	background: center/contain;
 	background-color: var(--bg-white);
-	mix-blend-mode: screen;
+	mix-blend-mode: lighten;
+	/* mix-blend-mode: darken; */
 }
 #cap  .columns li:nth-child(odd):hover  + li::after {background-image: url(/src/misc/cap.svg#odd);}
 #cap  .columns li:nth-child(even):hover + li::after {background-image: url(/src/misc/cap.svg#even);}
