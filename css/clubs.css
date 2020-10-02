@@ -81,12 +81,17 @@
 	line-height: var(--height);
 	vertical-align: top;
 }
+
+#media,
+#natural,
+#music {
+	direction: rtl;
+	z-index: 1;
+}
 #media,
 #natural {
 	border-top: .7em solid transparent;
 	--top: .8em;
-	z-index: 1;
-	direction: rtl;
 	line-height: 2.2;
 }
 @media (max-width:800px) {
@@ -94,6 +99,7 @@
 		line-height: 2.6;
 	}
 }
+
 
 #years,
 #columns {
