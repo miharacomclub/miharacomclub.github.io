@@ -73,7 +73,7 @@ const updateLayout = () => {
 	if (bgPhotoEl === (bgPhotoEl = $$("img.exists").pop())) return;
 
 
-	const dateTaken = bgPhotoEl.src.replace(/.+?(\d+)-?0?(\d*)\.jpg$/, "$1年$2月");
+	const dateTaken = bgPhotoEl.src.replace(/.+(\d{4})(\d\d)\d\d\.jpg$/, "$1年$2月");
 	const [ymd, jpYearTaken] = parseJpDateStr(dateTaken);
 	$("#dateTaken").innerHTML = `${generateYearTspans(ymd[0] + "年", jpYearTaken)}${ymd[1]? ymd[1] + "月": ""}撮影`;
 
