@@ -134,8 +134,7 @@ h3, h4 {
 	}
 }
 
-.warning {
+.notice p {
 	padding: 1em;
 	background-color: lavender;
-	font-weight: bold;
 }

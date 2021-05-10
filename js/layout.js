@@ -55,32 +55,30 @@ const hash  = +location.hash.slice(1);
 if (hash) $("#yearSlider").value = [...years, 9999].findIndex(v => hash < v) - 1;
 
 
-let photo;
+let bgPhotoEl;
+
 const updateLayout = () => {
 	const year = years[+$("#yearSlider").value];
 	const generateYearTspans = (ad, jp) => `<tspan class="ad">${ad}</tspan><tspan class="jp">${jp}</tspan>`;
 
 	$("#year").innerHTML = `（${
 		+$("#yearSlider").value < +$("#yearSlider").max
-		? generateYearTspans(year + "年", parseJpDateStr("" + year)[1]) : "現在"
+		? generateYearTspans(year + "年", parseJpDateStr("" + year)[1])
+		: "現在"
 	}）`;
 	for (const el of $$("[data-range]")) {
 		const range = `${el.dataset.range},9999`.split(",");
 		el.classList[+range[0] <= year && year < +range[1]? "add": "remove"]("exists");
 	}
-	if (photo === (photo = $$("img.exists").pop())) return;
+	if (bgPhotoEl === (bgPhotoEl = $$("img.exists").pop())) return;
 
-	const source = photo.dataset.mappsId
-		? ["地図・空中写真閲覧サービス", "https://mapps.gsi.go.jp/maplibSearch.do?specificationId=" + photo.dataset.mappsId]
-		: ["地理院地図", "https://maps.gsi.go.jp/#17/34.282055/134.781588/&ls=std|airphoto"];
 
-	const dateTaken = photo.src.replace(/.+?(\d+)-?0?(\d*)\.jpg$/, "$1年$2月");
-	const [ymd, jpYearTaken]    = parseJpDateStr(dateTaken);
-	$("#dateTaken").innerHTML   = `${generateYearTspans(ymd[0] + "年", jpYearTaken)}${ymd[1]? ymd[1] + "月": ""}撮影`;
-	$("#citation" ).textContent = `『${source[0]}』より作成`;
+	const dateTaken = bgPhotoEl.src.replace(/.+?(\d+)-?0?(\d*)\.jpg$/, "$1年$2月");
+	const [ymd, jpYearTaken] = parseJpDateStr(dateTaken);
+	$("#dateTaken").innerHTML = `${generateYearTspans(ymd[0] + "年", jpYearTaken)}${ymd[1]? ymd[1] + "月": ""}撮影`;
 
-	$("#dateTaken").parentNode.setAttributeNS("http://www.w3.org/1999/xlink", "href", photo.getAttribute("src"));
-	$("#citation" ).parentNode.setAttributeNS("http://www.w3.org/1999/xlink", "href", source[1]);
+	$("#dateTaken").parentNode.setAttributeNS("http://www.w3.org/1999/xlink", "href", bgPhotoEl.getAttribute("src"));
+	$("#citation" ).parentNode.setAttributeNS("http://www.w3.org/1999/xlink", "href", "https://mapps.gsi.go.jp/maplibSearch.do?specificationId=" + bgPhotoEl.dataset.mappsId);
 	$$("#citation~*").forEach(icon => icon.setAttribute("x", $("#citation").getStartPositionOfChar(0).x - 19));
 };
 

@@ -28,7 +28,7 @@
 	max-width: none;
 }
 .graph .fixedAspectRatio::before {
-	padding-top: calc(40 * var(--unit)); /* 1600 / 40 = 600 / 15 */
+	padding-top: calc(40 * var(--unit)); /* 1600 / 40 = 700 / 17.5 */
 }
 
 .hLines,

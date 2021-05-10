@@ -208,3 +208,11 @@ a:hover img {
 [data-tooltip]:hover::before {
 	content: attr(data-tooltip);
 }
+
+ins {
+	text-decoration: none;
+}
+ins p {
+	background-color: lavender;
+	padding: 1em;
+}
